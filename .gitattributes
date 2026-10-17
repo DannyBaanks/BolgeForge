@@ -1,0 +1,4 @@
+# Byte-exact quine artifacts: never normalize line endings.
+*.mal binary
+*.mb binary
+*.malbolge binary

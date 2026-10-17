@@ -1,0 +1,35 @@
+name: verify
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  oracle:
+    name: Verify committed quines byte-for-byte
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build oracle
+        run: make
+      - name: Run oracle on every committed quine
+        run: |
+          set -e
+          for f in artifacts/*.mal; do
+            ./mb_ref "$f" > /tmp/out.mal
+            diff -q "$f" /tmp/out.mal
+            echo "OK $f ($(wc -c < "$f") bytes, self-reproduction exact)"
+          done
+
+  synthesize-record:
+    name: Synthesize m=281 and check byte-exact regression
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build oracle
+        run: make
+      - name: Synthesize the record (~13 min, deterministic)
+        run: python3 synthesize.py 281
+      - name: Byte-exact regression vs published record
+        run: |
+          echo "96b670b825372a0f41fa3b574d47457f92654b76411e5d5be4c438003087610e  artifacts/candidate_m281_53562b.mal" | sha256sum -c -

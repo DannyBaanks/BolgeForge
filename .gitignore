@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+mb_ref
+artifacts/output_m*.mal
+artifacts/strat_m*.jsonl

@@ -1,0 +1,5 @@
+[repo_engine]
+template = "hackathon"
+phase = "building"
+visual_language = "evidence dashboard"
+required_artifacts = ["README.md", "demo", "evidence", ".github/workflows"]
