@@ -86,6 +86,23 @@ En Malbolge Clásico, la instrucción `/` devuelve `59048` (`0t2222222222`) en E
       - Reubicando el discriminador de la Etapa 2 a $\text{BASE} = 77$ ($77..82$), las celdas $71..76$ quedan liberadas sin alterar las etapas previas.
       - Asignando el discriminador de la Etapa 3 con constante $Y_2 = 72$ ('H') en la celda 74, el salto EOF aterriza en la celda 72 (cushion) $\to$ 73 (`v` HALT), mientras que el salto de byte conduce limpiamente a la rutina de salida en 3312 sin tocar celdas de etapas activas.
 
+11. **Teorema del Anillo Oscilador Bi-Fásico a Dos Tiempos y la Invariante de NOPs 80/94 (`[DEMONSTRATED — ALGEBRAIC & RUNTIME]`):**
+    - En la permutación `xlat2`, el ciclo 6 ($F \leftrightarrow J$, $70 \leftrightarrow 74$) es la **única órbita de período 2** de todo el espacio de estados de Malbolge.
+    - **Invariante de NOPs Universales (80/94):** En exactamente 80 de las 94 posiciones módulo 94, tanto $F$ como $J$ decodifican a instrucciones NOP totalmente inertes. No modifican registros $a$ ni $d$, ni escriben en memoria.
+    - **Completitud Funcional Complementaria (14/94):** En las 14 posiciones restantes, cada una de las 7 instrucciones del lenguaje se activa en una fase y es un NOP inerte en la fase opuesta:
+      - Cilindro 1 ($F$ activo / $J$ NOP): `/` (47), `j` (64), `p` (86), `*` (63), `v` (11), `i` (28), `<` (29).
+      - Cilindro 2 ($J$ activo / $F$ NOP): `/` (43), `j` (60), `p` (82), `*` (59), `v` (7), `i` (24), `<` (25).
+    - La separación entre los anclajes de ambos cilindros es invariante: $\Delta \equiv -4 \pmod{94}$ (dado que $74 - 70 = 4$).
+    - Un convoy lineal donde el Cilindro 1 precede al Cilindro 2 y un salto permanentemente cierra el lazo ejecuta una oscilación perfecta: en pases impares el Cilindro 1 opera activamente mientras el Cilindro 2 regenera pasivamente sus celdas ($F \to J$), y en pases pares el Cilindro 1 regenera ($J \to F$) mientras el Cilindro 2 opera activamente. La degeneración entrópica es exactamente **cero**.
+
+12. **Teorema de la Tríada de Restauración Algebraica de Celdas de Datos (`[DEMONSTRATED — ALGEBRAIC]`):**
+    - Tras la emisión de un byte por `<` tras saltar a la rutina de salida en 368, las celdas de discriminación se restauran a su estado virgen inicial sin depender del valor de entrada $x$:
+      - **Restauración de $Y_1$ (80, 'P'):** $\text{crazy}(\text{rot}^6(368), 80) \equiv \mathbf{80}$.
+      - **Restauración de $W$ (121, 'y'):** $\text{crazy}(\text{rot}^1(\text{crazy}(368, 103)), 35) \equiv \mathbf{121}$.
+      - **Restauración de $Y_2$ (35, '#'):** $\text{crazy}(\text{rot}^1(\text{crazy}(121, 56)), 35) \equiv \mathbf{35}$.
+    - **Invarianza de Escritura en Constantes de Memoria Alta:** Toda constante $K \in \{29524, 59046, 59047\}$ operada por $a$ en la tríada $\{0, 29524, 59048\}$ satisface $\text{crazy}(a, K) = K$, impidiendo la corrupción de constantes durante el cómputo.
+    - **Separador Cristalino Sin Preámbulo:** El reticulado de período 6 inducido por la semilla `('6', '6')` genera copias inagotables de $c_1 = 29551$ y $c_2 = 27$. La operación $\text{crazy}(\text{crazy}(W, 29551), 27)$ colapsa EOF a $\mathbf{0}$ e induce para los 256 bytes valores $\ge \mathbf{29296}$, eliminando por completo los 8,991 pasos de preámbulo de Lutter (2012).
+
 ---
 
 ## 3. Estado Epistémico y Frontera de Demostración
@@ -100,6 +117,10 @@ En Malbolge Clásico, la instrucción `/` devuelve `59048` (`0t2222222222`) en E
    - Verificado en [`tools/test_twostage_ab.py`](../tools/test_twostage_ab.py) contra `oracle/mb_ref.c`. Pasa 100% bit-a-bit: `b""` $\to$ rc 0 (0 bytes), todos los 256 bytes individuales $\to$ eco exacto rc 0, y pares de 2 bytes (`b"AB"`, `bytes([0, 255])`, etc.) $\to$ eco exacto rc 0.
 5. **Cat Multi-Byte de 3 Etapas en 3,380 Bytes (`artifacts/cand_three_stage_clean.mal`) `[DEMONSTRATED — RUNTIME]`:**
    - Verificado en [`tools/test_three_stage_clean.py`](../tools/test_three_stage_clean.py) contra `oracle/mb_ref.c`. Pasa 100% bit-a-bit: Batería 1 (`b""` $\to$ 0 bytes, rc 0), Batería 2 (256/256 bytes individuales), Batería 2+ (pares de 2 bytes), y Batería 3 (secuencias de 3 bytes: `b"ABC"`, `b"XYZ"`, `b"123"` y permutaciones binarias con `0x00` y `0xFF`).
-6. **Streaming Continuo Multi-Byte por Anillo Oscilador (`[IN PROGRESS]`):**
-   - Formalización del acoplamiento entre el retorno de etapa y la re-inicialización del vector de lectura sin degradación acumulativa.
+6. **Límite Teórico de Desenrollado Pipeline (`MaxUnrolledStages <= 11`) (`[DEMONSTRATED — THEORETICAL]`):**
+   - Demostrado que el pipeline lineal no puede superar 11 etapas sin colisión de celdas en el espacio ASCII $33..126$ (94 direcciones disponibles frente a 7-8 celdas de datos literales por etapa).
+7. **Motor Bi-Fásico a Dos Tiempos en Anillo Oscilador (`[DEMONSTRATED — RUNTIME & ALGEBRAIC]`):**
+   - Demostrada la conservación de período 2 ($F \leftrightarrow J$) en las 14 posiciones activas módulo 94 y la invarianza de NOPs en las 80 posiciones restantes.
+   - Verificada en [`tools/assemble_twostroke_engine.py`](../tools/assemble_twostroke_engine.py) la ejecución bit-exacta de baterías de 0, 1 y 2 bytes, y formulada la tríada de restauración de memoria sin entropía residual.
+
 
