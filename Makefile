@@ -25,6 +25,7 @@ synth-cat: mb_ref
 
 microcat: mb_ref
 	python3 tools/microcat.py
+	python3 tools/assemble_microcat.py
 
 test: mb_ref test-corpus microcat
 	@echo "Verifying committed quines..."
