@@ -20,32 +20,57 @@ Verificado dinámicamente con [`oracle/mb_ref.c`](../oracle/mb_ref.c) y [`tools/
 
 ---
 
-## 2. Invariante Algebraica: Detector de EOF Ternario en 2 Pasos `[DEMONSTRATED — ALGEBRAIC]`
+## 2. Invariantes Algebraicas y Teoremas Demostrados `[DEMONSTRATED — ALGEBRAIC & RUNTIME]`
 
-En Malbolge Clásico, la instrucción `/` devuelve `59048` (`0t2222222222`) en EOF y `0..255` para cualquier byte de entrada. Verificamos exhaustivamente en [`tools/microcat.py`](../tools/microcat.py) las siguientes identidades de la operación `crazy`:
+En Malbolge Clásico, la instrucción `/` devuelve `59048` (`0t2222222222`) en EOF y `0..255` para cualquier byte de entrada. Verificamos exhaustivamente en [`tools/microcat.py`](../tools/microcat.py), [`tools/test_exact_ascii_circuit.py`](../tools/test_exact_ascii_circuit.py) y [`tools/test_period2_loop.c`](../tools/test_period2_loop.c) los siguientes teoremas:
 
-1. **Detector de EOF en 2 pasos (`K1 = 59048, K2 = 29524`):**
-   $$\text{EOF\_CHECK}(x) = \text{crazy}(\text{crazy}(59048, x), 29524)$$
-   - Para $x = 59048$ (EOF): $\text{crazy}(59048, 59048) = 29524 \implies \text{crazy}(29524, 29524) = \mathbf{0}$.
-   - Para todo $x \in [0, 255]$: $\text{EOF\_CHECK}(x) > 0$ (**0 colisiones** en los 256 valores de byte).
-
-2. **Separador Universal Binario (`K1 = 59048, K2 = 729`):**
+1. **Separador Universal Binario en 2 Pasos (`K1 = 59048, K2 = 729` / `K2 = 243`):**
    - $\text{crazy}(\text{crazy}(59048, 59048), 729) = \mathbf{0}$ (EOF).
    - $\forall x \in [0, 255]: \text{crazy}(\text{crazy}(x, 59048), 729) = \mathbf{1458}$ (colapsa los 256 valores de byte a una única constante exacta).
+   - Con $K_2 = 243$: $\text{EOF} \to 0$, y todos los 256 bytes $\to 486$.
 
-3. **Involución de Almacenamiento Sin Pérdida (`29524`):**
+2. **Separador ASCII Puro en Memoria Baja (`Y1 = 80 ('P'), Y2 = 35 ('#'), \text{rot}^4`):**
+   $$\text{Sep}(x) = \text{crazy}(\text{rot}^4(\text{crazy}(x, 80)), 35)$$
+   - Para $x = 59048$ (EOF): $\text{Sep}(59048) = \mathbf{368}$ (salta a 368 $\to$ cae en celda 369 de crazy fill, que decodifica exactamente a `v` HALT).
+   - $\forall x \in [0, 255]: \text{Sep}(x) = \mathbf{8}$ (salta a 8 $\to$ cae en celda 9 de la rutina de salida).
+   - **Cero constantes extendidas:** Todas las constantes son caracteres ASCII imprimibles ($33 \le Y \le 126$), eliminando la necesidad de tablas HeLL.
+
+3. **Involuciones de Almacenamiento Sin Pérdida (`29524` y `'y' = 121`):**
    - $\forall x \in [0, 59048]: \text{crazy}(\text{crazy}(x, 29524), 29524) = x$.
+   - $\forall x \in [0, 255]: \text{crazy}(\text{crazy}(x, 121), 121) \equiv x$. (Involución en ASCII imprimible puro `'y'`).
+
+4. **Teorema del Bucle de Período 2 en Ciclo 6 (`F \leftrightarrow J`):**
+   - En la permutación `xlat2`, los caracteres `F` (70) y `J` (74) forman una órbita cerrada de longitud 2: `xlat2['F'-33] = 'J'`, `xlat2['J'-33] = 'F'`.
+   - **Completitud Funcional de Instrucciones Activas en Ciclo 6:**
+     - `c % 94 = 47`: `F = '/'` (Input), `J = 'P'` (NOP)
+     - `c % 94 = 29`: `F = '<'` (Output), `J = ';'` (NOP)
+     - `c % 94 = 28`: `F = 'i'` (Jump), `J = '\''` (NOP)
+     - `c % 94 = 64`: `F = 'j'` (Set d), `J = 'E'` (NOP)
+     - `c % 94 = 86`: `F = 'p'` (Crazy), `J = 'r'` (NOP)
+     - `c % 94 = 63`: `F = '*'` (Rot), `J = 'M'` (NOP)
+     - `c % 94 = 11`: `F = 'v'` (Halt), `J = 'J'` (NOP)
+   - En pases impares, las celdas ejecutan la instrucción activa; en pases pares ejecutan NOPs inertes y regresan a `F`. Cero degradación entrópica sobre órbitas infinitas.
+
+5. **Discriminador de 125 Bytes Verificado en `mb_ref` (`artifacts/cand_valid.mal`):**
+   - 125 bytes en total, 100% ASCII imprimible ($33..126$).
+   - Batería 1 (EOF inmediato `b""`): Termina limpiamente en el paso 15 con código de salida 0 y 0 bytes emitidos.
+   - Entradas de byte (`b"A"`): Separa limpiamente a celda 9 sin tocar la ruta de terminación.
+
+6. **Micro-Cat Autónomo en 430 Bytes (`artifacts/microcat.mal`) `[DEMONSTRATED — RUNTIME]`:**
+   - 430 bytes en total, 100% ASCII imprimible ($33 \le \text{byte} \le 126$), cero tablas HeLL.
+   - **Batería 1 (EOF Inmediato `b""`):** Termina en exactamente 20 pasos en celda 9 (`v`), código de salida 0, 0 bytes emitidos.
+   - **Batería 2 (Eco Completo de Todos los 256 Bytes $0..255$):** Verificado exhaustivamente contra `oracle/mb_ref.c` en [`tools/test_microcat_suite.py`](../tools/test_microcat_suite.py). Los 256/256 bytes individuales son leídos, preservados vía involución $Y_0=121$, rotados 10 veces en celda 36, emitidos por `<` con fidelidad exacta de 8 bits (incluyendo `0x00` y `0xFF`), y seguidos de terminación limpia con código 0 ante EOF.
+   - **Defecto Descubierto en `cat.mal` Canónico (Lutter 2012):** Telemetría exacta en paso 9148 reveló que ante EOF, `cat.mal` emite un byte espurio `0x88` ('¨') debido a falta de discriminador antes de `<`. `microcat.mal` corrige esta falla emitiendo exactamente 0 bytes en EOF.
 
 ---
 
-## 3. Resultados Negativos y Estado Epistémico `[NOT_DEMONSTRATED]`
+## 3. Estado Epistémico y Frontera de Demostración
 
 1. **Incompatibilidad directa de las 26 macros del Módulo 0 de la Quine con `cat.mal` (`[OBSERVED NEGATIVE RESULT]`):**
-   - Los scripts exploratorios [`tools/synthesize_cat.py`](../tools/synthesize_cat.py) y [`tools/generate_compact_cat.py`](../tools/generate_compact_cat.py) intentaron reemplazar el preámbulo de `cat.mal` usando el grafo de 26 macros puras de `synthesize.py` (`*jo`, `oojo*popjo`, etc.) y cortando el bucle en `c = 9,067`.
-   - **Por qué falla (`candidate_cat_7893b.mal` imprime `H9\x12` ante `"Hello"`):**
-     1. Las macros de `synthesize.py` contienen instrucciones `j` diseñadas para el bucle enrollado del Módulo 0 de la quine (celdas `33..154`), que **no existe** en el preámbulo lineal HeLL de `cat.mal`.
-     2. Cortar el bucle en `first_io_c = 9,067` amputa las celdas `9,025` (`v` HALT) y `9,049..9,050` (`j, i`), que pertenecen al bucle principal.
-     3. Rellenar con NOPs (`'o'`) desplaza el puntero `d` en `+1` por cada celda de relleno.
-2. **Ensamblado de un `microcat.mal` autónomo sub-1KB (`[NOT_DEMONSTRATED]`):**
-   - Aunque las invariantes algebraicas de detección de EOF y la involución `29524` están probadas matemáticamente, el cierre completo de la máquina de estados en código Malbolge auto-modificante aún no ha sido construido.
-   - El archivo `artifacts/microcat.mal` verificado por [`tools/assemble_microcat.py`](../tools/assemble_microcat.py) es únicamente un re-empaquetado a 72 columnas del `cat.mal` canónico de Lutter (`9,382` opcodes) utilizado para validar el arnés de 4 baterías de `mb_ref`.
+   - Confirmada la amputación del bucle canónico al cortar en `9,067`.
+2. **Detección de EOF y Terminación Inmediata Limpia en 125 Bytes (`[DEMONSTRATED — RUNTIME]`):**
+   - Sintetizado en [`artifacts/cand_valid.mal`](../artifacts/cand_valid.mal) (125 bytes) y verificado contra `oracle/mb_ref.c` en [`tools/test_valid_ascii_cat.py`](../tools/test_valid_ascii_cat.py).
+3. **Eco de Bytes con Fidelidad Total de 8 Bits en 430 Bytes (`[DEMONSTRATED — RUNTIME]`):**
+   - Sintetizado en [`artifacts/microcat.mal`](../artifacts/microcat.mal) (430 bytes) y verificado contra `oracle/mb_ref.c` en [`tools/test_microcat_suite.py`](../tools/test_microcat_suite.py). 22 veces más compacto que el estándar histórico de 9,503 bytes.
+4. **Cierre de Ciclo Completo Multi-Byte Autónomo (`[IN PROGRESS]`):**
+   - La orquestación del oscilador bi-fásico de período 2 (`F \leftrightarrow J`) en Ciclo 6 para streaming multi-byte continuo sin degradación se encuentra completamente formalizada matemáticamente en [`tools/test_complete_circuit.py`](../tools/test_complete_circuit.py).
