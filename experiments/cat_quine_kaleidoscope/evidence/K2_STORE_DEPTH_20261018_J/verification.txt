@@ -1,0 +1,16 @@
+test_byte_routing_matches_across_model_and_both_oracles (__main__.K2StoreDepthTests.test_byte_routing_matches_across_model_and_both_oracles) ... ok
+test_exactly_148_cell_values_are_complete_after_one_cycle (__main__.K2StoreDepthTests.test_exactly_148_cell_values_are_complete_after_one_cycle) ... ok
+test_explicit_three_cycle_witnesses_close_the_worst_gap (__main__.K2StoreDepthTests.test_explicit_three_cycle_witnesses_close_the_worst_gap) ... ok
+test_input_domain_is_a_raw_byte_or_eof_in_both_engines (__main__.K2StoreDepthTests.test_input_domain_is_a_raw_byte_or_eof_in_both_engines) ... ok
+test_one_cycle_never_suffices_for_the_candidates_own_image (__main__.K2StoreDepthTests.test_one_cycle_never_suffices_for_the_candidates_own_image) ... ok
+test_print_operand_is_the_accumulator_in_both_engines (__main__.K2StoreDepthTests.test_print_operand_is_the_accumulator_in_both_engines)
+`<` emits `a & 255`: an echo only has to hit the right residue class. ... ok
+test_psi_is_the_eof_read_store_and_an_involution (__main__.K2StoreDepthTests.test_psi_is_the_eof_read_store_and_an_involution)
+An EOF read followed by a store applies psi = op(59048, .) to the cell. ... ok
+test_three_cycles_are_enough_for_every_cell_value (__main__.K2StoreDepthTests.test_three_cycles_are_enough_for_every_cell_value) ... ok
+test_two_cycles_are_enough_for_40646_cell_values (__main__.K2StoreDepthTests.test_two_cycles_are_enough_for_40646_cell_values) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 39.505s
+
+OK

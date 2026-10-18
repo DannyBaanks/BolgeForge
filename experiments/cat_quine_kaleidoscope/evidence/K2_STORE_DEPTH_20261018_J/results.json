@@ -1,0 +1,224 @@
+{
+  "timestamp_utc": "2026-10-18T13:29:20.154362+00:00",
+  "cwd": ".",
+  "path_recording": "repo-relative; temporary build paths reduced to <tmp>/<basename>",
+  "environment": {
+    "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]"
+  },
+  "exit_status": 0,
+  "tests": 9,
+  "failures": 0,
+  "errors": 0,
+  "elapsed_seconds": 39.508391846997256,
+  "algebra_seconds": 38.26,
+  "inputs_sha256": {
+    "experiments/cat_quine_kaleidoscope/work/candidate_selector_m281.mal": "7cab1285f63ef99e56d8cec97bb575a8e03a0fccfa6530038b18187f690af61c",
+    "oracle/mb_ref.c": "a51a036c063fa460ea265852a9b80760a88173796c54971dd6b91931fabe97f7",
+    "experiments/cat_quine_kaleidoscope/tools/trace_loop.c": "8b2024881c96ca6d17417ecb8d2e4c0776609ccbed542b2aa0eede7c03473da5",
+    "experiments/cat_quine_kaleidoscope/tools/test_k2_store_depth.py": "8c66324d24ef90c335d2b2f58ac5c616b13509c00ad7c1530090557cf100cb98"
+  },
+  "oracle_binaries_sha256": {
+    "<tmp>/mb_ref": "bbfedc87e127384580d04eb0f4754a4ce1706bd788c566b569e9aa2e4c94d6c7",
+    "<tmp>/trace_loop": "7f92b5948c24d4d322ebde4218b86001d4a1c6c6dd4a23296e99ddfb15c12412"
+  },
+  "print_semantics": {
+    "output_operand": "(a & 255)",
+    "store_operand": "op(a, mem[d])",
+    "input_operand": "a := raw byte 0..255, 59048 at EOF",
+    "sources": [
+      "oracle/mb_ref.c",
+      "experiments/cat_quine_kaleidoscope/tools/trace_loop.c"
+    ]
+  },
+  "input_domain": {
+    "readable_a_values": "0..255 plus 59048 at EOF",
+    "count": 257
+  },
+  "depth1_complete_cell_values": {
+    "count": 148,
+    "lowest": 526,
+    "highest": 58927,
+    "first_16": [
+      526,
+      607,
+      1255,
+      1336,
+      2065,
+      2713,
+      2794,
+      3442,
+      3523,
+      4252,
+      4495,
+      4738,
+      4981,
+      5224,
+      5467,
+      5710
+    ],
+    "present_in_candidate_image": 0
+  },
+  "depth2": {
+    "complete": 40646,
+    "of": 59049
+  },
+  "depth3": {
+    "complete": 59049,
+    "of": 59049,
+    "short": 0
+  },
+  "candidate_image_census": {
+    "image_cells": 52828,
+    "cells_by_minimum_cycles": {
+      "1": 0,
+      "2": 7970,
+      "3": 44858
+    },
+    "distinct_image_values": {
+      "values": 94,
+      "complete_at_one": 0,
+      "complete_at_two": 13,
+      "need_three": 81
+    }
+  },
+  "worst_gap_witness": {
+    "worst_cell_value": 74,
+    "bytes_covered_after_two_cycles": 243,
+    "bytes_missing_after_two_cycles": 13,
+    "missing_bytes": [
+      206,
+      207,
+      208,
+      209,
+      210,
+      211,
+      212,
+      213,
+      214,
+      215,
+      216,
+      217,
+      218
+    ],
+    "witnesses": {
+      "206": [
+        29440,
+        29415,
+        58830,
+        0
+      ],
+      "207": [
+        29440,
+        29417,
+        58831,
+        0
+      ],
+      "208": [
+        29440,
+        29416,
+        58832,
+        0
+      ],
+      "209": [
+        29440,
+        29457,
+        58833,
+        0
+      ],
+      "210": [
+        29440,
+        29459,
+        58834,
+        0
+      ],
+      "211": [
+        29440,
+        29458,
+        58835,
+        0
+      ],
+      "212": [
+        29440,
+        29556,
+        59004,
+        1
+      ],
+      "213": [
+        29314,
+        29637,
+        29397,
+        0
+      ],
+      "214": [
+        29440,
+        29559,
+        59010,
+        1
+      ],
+      "215": [
+        29440,
+        29460,
+        58839,
+        0
+      ],
+      "216": [
+        29440,
+        29462,
+        58840,
+        0
+      ],
+      "217": [
+        29440,
+        29461,
+        58841,
+        0
+      ],
+      "218": [
+        29440,
+        29475,
+        58842,
+        0
+      ]
+    },
+    "witness_reading": "cell -> op(a1,cell) -> op(a2,.) -> op(a3,.), then `*` iff rotations=1; a_i is a stdin byte or 59048"
+  },
+  "byte_routing_parity": {
+    "model": {
+      "81": "Q",
+      "67": "not-Q",
+      "113": "not-Q"
+    },
+    "mb_ref": {
+      "81": "Q",
+      "67": "not-Q",
+      "113": "not-Q"
+    },
+    "mod32_pair": [
+      81,
+      113
+    ],
+    "q_output_bytes": 53562,
+    "trace_loop_matches_mb_ref_on_byte_Q": true
+  },
+  "claims": {
+    "`<` prints a & 255 and `/` loads a raw byte in both engines": "DEMONSTRATED",
+    "psi = op(59048, .) is the EOF-read-plus-store action, an involution": "DEMONSTRATED",
+    "exactly 148 cell values can print every byte after ONE read/store cycle": "DEMONSTRATED",
+    "no cell value present in the candidate image is in that 148-value set": "DEMONSTRATED",
+    "two read/store cycles suffice for 40,646 of the 59,049 cell values": "DEMONSTRATED",
+    "three read/store cycles suffice for every cell value (0 short)": "DEMONSTRATED",
+    "the worst two-cycle gap is closed with explicit three-cycle witnesses": "DEMONSTRATED",
+    "model, mb_ref and trace_loop agree on which input byte takes which branch": "DEMONSTRATED",
+    "an executable C-branch read/store loop": "NOT_DEMONSTRATED",
+    "C echoes stdin bytes (CAT row)": "NOT_DEMONSTRATED",
+    "single program satisfying both QUINE and CAT rows (K2)": "NOT_DEMONSTRATED"
+  },
+  "not_demonstrated": [
+    "rail machinery for 2-3 chained `/`+`p` cycles onto one chosen cell",
+    "that the print loop can be re-entered after each cycle",
+    "payload echo in the C branch",
+    "executable K2",
+    "self-modifying stability across a read/store loop"
+  ]
+}
