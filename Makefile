@@ -11,4 +11,13 @@ mb_ref: oracle/mb_ref.c
 clean:
 	rm -f mb_ref
 
-.PHONY: all clean
+test-corpus: mb_ref
+	python3 test_corpus.py
+
+test: mb_ref test-corpus
+	@echo "Verifying committed quines..."
+	@for f in artifacts/*.mal; do \
+		./mb_ref "$$f" > /tmp/out.mal && diff -q "$$f" /tmp/out.mal && echo "OK $$f"; \
+	done
+
+.PHONY: all clean test test-corpus

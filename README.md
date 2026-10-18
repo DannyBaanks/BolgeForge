@@ -93,10 +93,18 @@ propia). Evidencia completa con hashes:
 ```
 synthesize.py          ← el sintetizador (CLI)
 constants.py           ← constantes de máquina Malbolge (tablas y ops de trits)
-oracle/mb_ref.c        ← oráculo de verificación (compilar con `make`)
-reference/             ← quine de referencia de Lutter (dato de entrada)
+test_corpus.py         ← test runner del corpus canónico de malbolge.org
+oracle/mb_ref.c        ← oráculo de verificación en C (compilar con `make`)
+reference/             ← artefactos base y corpus malbolge.org (cat, adder, digital_root)
 artifacts/             ← quines verificadas commiteadas (récord + escalera)
-docs/NOTES.md          ← bitácora de investigación
+docs/NOTES.md          ← bitácora de investigación y optimización
+docs/ROADMAP.md        ← hoja de ruta de reproducción y nuevos programas
+```
+
+Ejecutar la suite completa de pruebas:
+
+```bash
+make test              # Compila mb_ref, valida malbolge.org y todas las quines
 ```
 
 ## Procedencia

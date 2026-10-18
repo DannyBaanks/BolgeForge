@@ -125,7 +125,7 @@ Also verified this session: m=293 (55,850 B), m=308 regression (58,709 B). Lutte
   previous record since 2026-10-17)
 - `candidate_m287_54706b.mal`  3da997b9e559230d43acf828188269d441afc03d773e71a83f49ae7e9d663efb
 - `candidate_m293_55850b.mal`  1719515d85fa2d5dfc0c36cdcc935eefd363fca0a435b2588ef36a1509b1b2ea
-- `candidate_m308_58709b.mal`  2fbdfb82b089819bcc266bfef7100f780ebf3e886abf737be381614d55ca0a06
+- `candidate_m308_58709b.mal`  67628cf1cd8befe907c39aac6476d31927499f0421013c34195891f2ec4ca071
 - `synthesize_v2.py`           56088d2c49f1c8311db563a918beeffe0d4323a43dd490991e3b2d155c16056b
   (26-edge graph + SYNTHFAIL/OVERFLOW diagnostics + `do_composite_inc` fallback, 2026-10-17)
 

@@ -12,6 +12,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Build oracle
         run: make
+      - name: Verify malbolge.org reference corpus
+        run: make test-corpus
       - name: Run oracle on every committed quine
         run: |
           set -e
