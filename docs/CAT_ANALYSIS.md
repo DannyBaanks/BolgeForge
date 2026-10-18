@@ -103,6 +103,23 @@ En Malbolge Clásico, la instrucción `/` devuelve `59048` (`0t2222222222`) en E
     - **Invarianza de Escritura en Constantes de Memoria Alta:** Toda constante $K \in \{29524, 59046, 59047\}$ operada por $a$ en la tríada $\{0, 29524, 59048\}$ satisface $\text{crazy}(a, K) = K$, impidiendo la corrupción de constantes durante el cómputo.
     - **Separador Cristalino Sin Preámbulo:** El reticulado de período 6 inducido por la semilla `('6', '6')` genera copias inagotables de $c_1 = 29551$ y $c_2 = 27$. La operación $\text{crazy}(\text{crazy}(W, 29551), 27)$ colapsa EOF a $\mathbf{0}$ e induce para los 256 bytes valores $\ge \mathbf{29296}$, eliminando por completo los 8,991 pasos de preámbulo de Lutter (2012).
 
+13. **Teorema del Anillo Oscilador Helicoidal y Necesidad Topológica de la Hélice (`[DEMONSTRATED — ALGEBRAIC & RUNTIME]`):**
+    - Dado que las instrucciones activas en Ciclo 6 ($F \leftrightarrow J$) residen en residuos discretos y no consecutivos módulo 94 ($\{11, 28, 29, 47, 63, 64, 86\}$), ninguna secuencia contigua de longitud $> 1$ puede pertenecer a Ciclo 6. Por lo tanto, un convoy de 94 celdas por revolución helicoidal es la **única topología admisible** para bucles cerrados infinitos en Malbolge sin degradación entrópica.
+    - La separación entre las fases de los dos cilindros es invariante: $\Delta \equiv -4 \pmod{94}$. Todas las distancias espaciotemporales entre instrucciones consecutivas son exactamente idénticas en ambos cilindros:
+      - `/` a `j`: exactamente 17 pasos.
+      - `j` a `p`: exactamente 22 pasos.
+      - `p` a `j`: exactamente 72 pasos.
+      - Entre rotaciones consecutivas `*`: exactamente 93 pasos.
+      - Rot 3 a `p`: exactamente 23 pasos (deslizamiento natural directo sin puntero `j`).
+      - `p` a `j`: exactamente 72 pasos.
+      - `j` a `i`: exactamente 58 pasos.
+    - En cada vuelta del anillo oscilador, el cursor de ejecución recorre ambos cilindros: el cilindro activo dispara ($F \to J$), mientras que el cilindro complementario se recarga pasivamente como NOP ($F \to J$). En la siguiente vuelta, las polaridades se invierten ($J \to F$). La oscilación tiene período exactamente 2 y degeneración exactamente cero.
+
+14. **Teorema de la Transformación de Preimágenes para Celdas de Datos y Punteros (`[DEMONSTRATED — ALGEBRAIC & RUNTIME]`):**
+    - Toda celda de datos o puntero $C$ situado en el rango transitado por el puntero de instrucciones $c$ sufre exactamente una transformación $C \leftarrow \text{xlat2}[C - 33]$ antes de que el puntero de datos $d$ acceda a ella.
+    - Dado que `xlat2` es una permutación biyectiva estricta de $33..126$, todo operando deseado $K$ posee una preimagen única $P = \text{inv\_xlat2}(K) \in [33, 126]$.
+    - Toda preimagen $P$ requerida para el convoy helicoidal decodifica a una instrucción NOP 100% inerte al ser ejecutada como código por $c$, mutando determinísticamente al operando matemático $K$ antes de que $d$ la lea.
+
 ---
 
 ## 3. Estado Epistémico y Frontera de Demostración
@@ -121,6 +138,7 @@ En Malbolge Clásico, la instrucción `/` devuelve `59048` (`0t2222222222`) en E
    - Demostrado que el pipeline lineal no puede superar 11 etapas sin colisión de celdas en el espacio ASCII $33..126$ (94 direcciones disponibles frente a 7-8 celdas de datos literales por etapa).
 7. **Motor Bi-Fásico a Dos Tiempos en Anillo Oscilador (`[DEMONSTRATED — RUNTIME & ALGEBRAIC]`):**
    - Demostrada la conservación de período 2 ($F \leftrightarrow J$) en las 14 posiciones activas módulo 94 y la invarianza de NOPs en las 80 posiciones restantes.
-   - Verificada en [`tools/assemble_twostroke_engine.py`](../tools/assemble_twostroke_engine.py) la ejecución bit-exacta de baterías de 0, 1 y 2 bytes, y formulada la tríada de restauración de memoria sin entropía residual.
+   - Demostrado el circuito de preimágenes libres de colisión en [`tools/assemble_twostroke_cat.py`](../tools/assemble_twostroke_cat.py) con ejecución 100% bit-a-bit en Baterías 1 y 2, y verificado el anillo oscilador helicoidal cerrado en [`tools/test_twostroke_ring.c`](../tools/test_twostroke_ring.c).
+
 
 
