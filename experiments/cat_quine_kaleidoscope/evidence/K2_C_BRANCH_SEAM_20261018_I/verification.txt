@@ -1,0 +1,13 @@
+test_S_identity_arithmetic (__main__.K2SeamTests.test_S_identity_arithmetic) ... ok
+test_c_branch_still_does_not_echo_payload (__main__.K2SeamTests.test_c_branch_still_does_not_echo_payload) ... ok
+test_divergence_is_pure_d_routing (__main__.K2SeamTests.test_divergence_is_pure_d_routing) ... ok
+test_mirrored_edit_holds_the_quine_invariant (__main__.K2SeamTests.test_mirrored_edit_holds_the_quine_invariant) ... ok
+test_mirrored_edit_reroutes_c_into_the_print_loop (__main__.K2SeamTests.test_mirrored_edit_reroutes_c_into_the_print_loop) ... ok
+test_plants_are_mirrored_at_26414 (__main__.K2SeamTests.test_plants_are_mirrored_at_26414) ... ok
+test_shared_prefix_ends_on_one_branch_instruction (__main__.K2SeamTests.test_shared_prefix_ends_on_one_branch_instruction) ... ok
+test_unmirrored_single_edit_breaks_the_quine_at_that_byte (__main__.K2SeamTests.test_unmirrored_single_edit_breaks_the_quine_at_that_byte) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.983s
+
+OK

@@ -1,0 +1,91 @@
+{
+  "timestamp_utc": "2026-10-18T13:08:45.307341+00:00",
+  "cwd": ".",
+  "path_recording": "repo-relative; temporary build paths reduced to <tmp>/<basename>",
+  "environment": {
+    "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]"
+  },
+  "exit_status": 0,
+  "tests": 8,
+  "failures": 0,
+  "errors": 0,
+  "elapsed_seconds": 0.9844874480004364,
+  "inputs_sha256": {
+    "experiments/cat_quine_kaleidoscope/work/candidate_selector_m281.mal": "7cab1285f63ef99e56d8cec97bb575a8e03a0fccfa6530038b18187f690af61c",
+    "oracle/mb_ref.c": "a51a036c063fa460ea265852a9b80760a88173796c54971dd6b91931fabe97f7",
+    "experiments/cat_quine_kaleidoscope/tools/trace_loop.c": "8b2024881c96ca6d17417ecb8d2e4c0776609ccbed542b2aa0eede7c03473da5",
+    "experiments/cat_quine_kaleidoscope/tools/selector_dev.py": "da776dd66d18dd9a44ab0546373c99448190cbc3c930c9c03ee9b0a56cc29405",
+    "experiments/cat_quine_kaleidoscope/tools/test_k2_psi_seam.py": "ef00e77d7823c17df59a689c9039acd9e513cf3cb82f250246feb27e2d1c1ccf"
+  },
+  "oracle_binaries_sha256": {
+    "<tmp>/mb_ref": "bbfedc87e127384580d04eb0f4754a4ce1706bd788c566b569e9aa2e4c94d6c7",
+    "<tmp>/trace_loop": "7f92b5948c24d4d322ebde4218b86001d4a1c6c6dd4a23296e99ddfb15c12412"
+  },
+  "branch_states_at_shared_i": {
+    "at_step": 25531,
+    "cell": 25646,
+    "Q": {
+      "c": 25646,
+      "d": 26408,
+      "a": 26407
+    },
+    "C": {
+      "c": 25646,
+      "d": 34,
+      "a": 19720
+    }
+  },
+  "d_routing": {
+    "shared_i_cell": 25646,
+    "shared_i_step": 25531,
+    "mem_26408_both": 25975,
+    "mem_34_C": 35,
+    "c_after_branch": 36,
+    "q_after_branch": 25976,
+    "mem154_C": 20173,
+    "mem154_Q": 26407,
+    "rot_20173": 26407
+  },
+  "unmirrored_edit_diff": {
+    "positions": [
+      40
+    ],
+    "printed": 122,
+    "source": 89,
+    "reading": "the QUINE branch prints the plant's mirror at cell+26414, so an edit that is not mirrored desynchronises the quine at exactly that byte"
+  },
+  "reroute": {
+    "baseline_C_stdout_bytes": 0,
+    "edited_C_stdout_bytes": 53562,
+    "edited_C_equals_source": true,
+    "edited_C_equals_payload": false,
+    "edited_candidate_sha256": "8622e37cc83d39011c2827ff02d92b624fcfac2bed20155402215517520b441c",
+    "tracer_summary": [
+      "steps=62239932 halt=v prints=53562 out_bytes=53562 anomalies=0",
+      "trigger: step=25532 c=25976 d=26409 a=26407 (prints=53562)",
+      "stdin reads: preamble=1 loop=0"
+    ]
+  },
+  "edit_spec": {
+    "cell": 40,
+    "from": 122,
+    "to": 89,
+    "mirrored_at": 26454,
+    "consequence": "S = zC + 154 - zQ becomes 154, the cell Q's `*` rotates into the address 26407"
+  },
+  "claims": {
+    "Q byte-exact after the mirrored edit": "DEMONSTRATED",
+    "C branch re-routed from halt into the print loop by one mirrored byte edit": "DEMONSTRATED",
+    "Q/C divergence is pure d routing (cell read by the branch `i` holds the same value in both branches)": "DEMONSTRATED",
+    "the plant mirror at cell+26414 is load-bearing for the quine": "DEMONSTRATED",
+    "C echoes the payload (CAT row)": "NOT_DEMONSTRATED \u2014 C prints its own image",
+    "single program satisfying both QUINE and CAT rows (K2)": "NOT_DEMONSTRATED"
+  },
+  "not_demonstrated": [
+    "payload echo in the C branch",
+    "executable K2",
+    "stable self-encrypting read/store loop",
+    "two-engine parity"
+  ]
+}
