@@ -33,5 +33,8 @@ test: mb_ref test-corpus microcat
 		./mb_ref "$$f" > /tmp/out.mal && diff -q "$$f" /tmp/out.mal && echo "OK $$f"; \
 	done
 
-.PHONY: all clean test test-corpus analyze-corpus synth-cat microcat
+audit: mb_ref
+	python3 tools/audit_bloat.py
+
+.PHONY: all clean test test-corpus analyze-corpus synth-cat microcat audit
 
