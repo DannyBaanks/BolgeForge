@@ -146,6 +146,17 @@ En Malbolge Clásico, la instrucción `/` devuelve `59048` (`0t2222222222`) en E
       - Los punteros de salto inter-etapa e inter-vuelta alojados en memoria baja permanecen perpetuamente invariantes y libres de degradación entrópica.
     - **Demostración en Runtime:** Verificada en simulación y ejecución bit-a-bit en [`artifacts/cand_twostroke.mal`](../artifacts/cand_twostroke.mal) procesando secuencias de 3 bytes (`b"ABC"`) con fidelidad total y 0 bytes espurios intermedios.
 
+18. **Teorema del Trampolín de Re-Excitación por Salto y la Rotación Estacionaria en Ciclo 6 (`[DEMONSTRATED — ALGEBRAIC & TELEMETRIC]`):**
+    - **Mecanismo Dinámico del Salto:** En la semántica de Olmstead (`oracle/mb_ref.c`), la instrucción `i` en la celda $c$ ejecutando un salto hacia $T = \text{mem}[d]$ realiza:
+      $$c \leftarrow T, \quad \text{mem}[T] \leftarrow \text{xlat2}[\text{mem}[T] - 33], \quad c \leftarrow c + 1$$
+    - **Paradoja de la Re-Excitación:** Si una celda $R$ en Ciclo 6 reside en estado pasivo $F$ (70), un salto indirecto que aterrice en $R$ muta $R$ forzosamente a su estado activo $J$ (74), dejando $c$ en $R + 1$.
+    - **El Trampolín de Dos Saltos (Telemetría de `cat.mal` Lutter 2012 Desmitificada):** Telemetría exacta en pasos 9022–9025 y 9430–9432 reveló que Lutter mantuvo la celda 9083 ejecutando `*` indefinidamente sin degradación usando un lazo de rebote:
+      1. Un salto a $R$ excita la celda pasiva de $F \to J$ (74), aterrizando el cursor en $R + 1$.
+      2. En $R + 1$, un salto `i` hacia $R - 1$ muta el colchón sacrificial y sitúa $c \leftarrow R$.
+      3. La celda $R$ se ejecuta en fase activa $J$ (rotación `*`), mutando de regreso de $J \to F$ (70).
+      4. Al concluir la rotación, la celda $R$ queda 100% regenerada en su estado virgen $F$, lista para la siguiente invocación.
+    - **Reducción de Huella Espacial:** Este trampolín permite ejecutar las 10 rotaciones de involución sobre una **única celda estacionaria de 3 bytes** en lugar de desenrollar 10 revoluciones helicoidales de 940 bytes, abriendo la vía para colapsar el motor regenerativo completo por debajo de 1 KB sin introducir degradación entrópica residual.
+
 ---
 
 ## 3. Estado Epistémico y Frontera de Demostración
