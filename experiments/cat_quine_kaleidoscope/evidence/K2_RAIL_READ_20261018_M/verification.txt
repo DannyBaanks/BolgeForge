@@ -1,0 +1,16 @@
+test_baseline_is_the_quine_and_never_reads_in_loop (__main__.K2RailReadTests.test_baseline_is_the_quine_and_never_reads_in_loop) ... ok
+test_flips_that_read_only_before_loop_entry_are_counted_separately (__main__.K2RailReadTests.test_flips_that_read_only_before_loop_entry_are_counted_separately)
+A rail cell can also gain a read in the loader phase; that is not a loop read ... ok
+test_loop_visits_a_bounded_set_of_rail_cells (__main__.K2RailReadTests.test_loop_visits_a_bounded_set_of_rail_cells) ... ok
+test_no_single_flip_survives_to_a_byte_exact_quine (__main__.K2RailReadTests.test_no_single_flip_survives_to_a_byte_exact_quine) ... ok
+test_one_mirrored_rail_edit_makes_the_loop_phase_read_stdin (__main__.K2RailReadTests.test_one_mirrored_rail_edit_makes_the_loop_phase_read_stdin)
+The claim this stage exists to establish: reads INSIDE the print loop, not in ... ok
+test_reading_in_the_loop_does_not_print_what_was_read (__main__.K2RailReadTests.test_reading_in_the_loop_does_not_print_what_was_read)
+The C branch needs an echo, not a read: no loop-reading flip prints a run of ... ok
+test_the_inert_flips_are_erased_by_self_modification_before_the_fetch (__main__.K2RailReadTests.test_the_inert_flips_are_erased_by_self_modification_before_the_fetch)
+The image value of these rail cells is not the value the machine fetches: the ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 1.592s
+
+OK
