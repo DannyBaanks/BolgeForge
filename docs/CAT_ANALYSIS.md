@@ -72,6 +72,12 @@ En Malbolge Clásico, la instrucción `/` devuelve `59048` (`0t2222222222`) en E
      $$\text{mem}[N + 6k] = \mathbf{29524}, \quad \text{mem}[N + 6k + 1] = 54, \quad \text{mem}[N + 6k + 2] = 29551, \dots$$
    - Genera más de 9,800 copias inalteradas del operador de involución universal `29524` sin consumir un solo byte de código fuente adicional.
 
+9. **Teorema del Motor Regenerativo Bi-Fásico a Dos Tiempos (Pista Helicoidal Módulo 94):**
+   - Las 7 instrucciones del lenguaje forman una hélice lineal perfecta en orden de ejecución cronológico módulo 94:
+     $$47 \text{ (/ in)} \longrightarrow 63 \text{ (* rot)} \longrightarrow 64 \text{ (j set d)} \longrightarrow 86 \text{ (p op)} \longrightarrow 105 \text{ (v halt)} \longrightarrow 122 \text{ (i jump)} \longrightarrow 123 \text{ (< out)}$$
+   - Todas las celdas intermedias entre estos anclajes decodifican a NOPs 100% inertes en Ciclo 5 (`F`).
+   - En una arquitectura de doble pista (Pista 1 para bytes impares, Pista 2 para bytes pares), mientras la Pista 1 procesa un byte ($F \to J$), la Pista 2 regenera sus celdas mediante un deslizamiento pasivo de NOPs ($J \to F$). Al alternar cilindros en cada byte, el motor opera indefinidamente con **0 degradación de código**, resolviendo el problema de la degeneración entrópica en Malbolge.
+
 ---
 
 ## 3. Estado Epistémico y Frontera de Demostración
