@@ -80,6 +80,38 @@ def test_quines():
         print("PASS (0-byte diff bit-for-bit)")
 
 
+def test_hello_world():
+    print("Testing hello_world.mal...", end=" ", flush=True)
+    prog = CORPUS_DIR / 'hello_world.mal'
+    out = run_prog(prog)
+    assert out == "Hello, world.", f"hello_world mismatch: got {out!r}"
+    print("PASS")
+
+
+def test_rot13():
+    print("Testing rot13.mal...", end=" ", flush=True)
+    prog = CORPUS_DIR / 'rot13.mal'
+    vectors = [
+        ("Hello, World!\n", "Uryyb, Jbeyq!\n"),
+        ("Malbolge 2026\n", "Znyobytr 2026\n"),
+        ("The Quick Brown Fox Jumps Over The Lazy Dog.\n", "Gur Dhvpx Oebja Sbk Whzcf Bire Gur Ynml Qbt.\n"),
+    ]
+    for inp, expected in vectors:
+        out = run_prog(prog, inp)
+        assert out == expected, f"rot13 mismatch on {inp!r}: expected {expected!r}, got {out!r}"
+    print("PASS")
+
+
+def test_99_bottles():
+    print("Testing 99_bottles.mal (sample execution)...", end=" ", flush=True)
+    prog = CORPUS_DIR / '99_bottles.mal'
+    res = subprocess.run([str(MB_REF), str(prog), "500000"], capture_output=True)
+    assert res.returncode == 0
+    assert b"99 bottles of beer on the wall" in res.stdout
+    assert b"Take one down, pass it around" in res.stdout
+    print("PASS")
+
+
 def main():
     if not MB_REF.exists():
         print(f"ERROR: {MB_REF} not found. Run `make` first to build the oracle.", file=sys.stderr)
@@ -91,6 +123,9 @@ def main():
     test_digital_root()
     test_adder()
     test_quines()
+    test_hello_world()
+    test_rot13()
+    test_99_bottles()
     elapsed = time.time() - t0
     print(f"=== ALL MALBOLGE.ORG CORPUS TESTS PASSED ({elapsed:.2f}s) ===")
 
