@@ -1,0 +1,65 @@
+file=artifacts/candidate_m281_53562b.mal
+src_bytes=53562 clean=52828
+steps=2000000 halt=max_steps prints=1699 out_len=1699
+SANITY out==src: False
+first diff at 1699 (out=1699 src=53562)
+loop threshold c>=25940 first reached at step=25452 c=25976 d=26409 a=26407
+loop-phase steps=1974548
+executed c (preamble phase): 3 range(s)
+  [0..0] cells=1 events=1
+  [99..99] cells=1 events=1
+  [117..25566] cells=25450 events=25450
+executed c (loop phase): 19 range(s)
+  [0..0] cells=1 events=16770
+  [25947..25948] cells=2 events=559
+  [25975..25976] cells=2 events=3353
+  [26004..26005] cells=2 events=232
+  [26008..26009] cells=2 events=71235
+  [26098..26099] cells=2 events=349608
+  [26101..26102] cells=2 events=75588
+  [26192..26193] cells=2 events=10052
+  [26196..26197] cells=2 events=98925
+  [26255..26256] cells=2 events=5097
+  [26286..26287] cells=2 events=22617
+  [26290..26291] cells=2 events=13412
+  [26293..26311] cells=19 events=942329
+  [26313..26318] cells=6 events=77958
+  [26380..26381] cells=2 events=13414
+  [26388..26389] cells=2 events=120724
+  [26394..26395] cells=2 events=33540
+  [26400..26403] cells=4 events=101529
+  [59047..59048] cells=2 events=17606
+written d (all phases, p+*): 22 range(s)
+  [45..157] cells=113 events=4879
+  [26164..26179] cells=16 events=126
+  [26181..26189] cells=9 events=19
+  [26192..26193] cells=2 events=6
+  [26196..26252] cells=57 events=39507
+  [26255..26281] cells=27 events=55
+  [26286..26287] cells=2 events=4
+  [26290..26291] cells=2 events=5
+  [26293..26311] cells=19 events=29
+  [26313..26351] cells=39 events=3425
+  [26353..26355] cells=3 events=8
+  [26358..26371] cells=14 events=27
+  [26373..26377] cells=5 events=9
+  [26380..26381] cells=2 events=4
+  [26384..26385] cells=2 events=5
+  [26388..26389] cells=2 events=2
+  [26394..26395] cells=2 events=4
+  [26400..26411] cells=12 events=25
+  [26414..28090] cells=1677 events=3354
+  [52828..52828] cells=1 events=1
+  [59032..59032] cells=1 events=1
+  [59046..59048] cells=3 events=4
+written d (loop phase): 9 range(s)
+  [26171..26171] cells=1 events=46
+  [26174..26174] cells=1 events=46
+  [26208..26208] cells=1 events=2513
+  [26211..26211] cells=1 events=7539
+  [26220..26220] cells=1 events=5026
+  [26235..26235] cells=1 events=2513
+  [26240..26240] cells=1 events=21796
+  [26325..26325] cells=1 events=3354
+  [26414..28090] cells=1677 events=3354
+trace written: experiments/cat_quine_kaleidoscope/evidence/M3_20261018/loop_window_m281.txt (400 lines)

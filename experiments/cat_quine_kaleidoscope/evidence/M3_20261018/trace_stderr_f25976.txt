@@ -1,0 +1,1 @@
+[trigger] step=25452 c=25976 d=26409 a=26407 prints=0

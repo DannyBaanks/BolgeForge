@@ -1,0 +1,29 @@
+valid y: 8
+candidates found: 1816
+== candidate
+   y = 124
+   vQ = 29446
+   vC = 29544
+   qQ = 29447
+   qC = 29545
+   LQ = 44
+   LC = 40
+   m = 64
+   zQ = 89
+   zC = 122
+   S = 187
+   s1 = 188
+   m1 = 34
+   h1 = 35
+   H = 34
+   Z = 36
+   plants: {34: 35, 36: 45, 38: 124, 40: 122, 44: 89}
+   edits: 22  script cells: 87
+P0 = 0
+== dry-run Q
+  orig  entry: reason=loop_entry c=25976 d=26409 a=26407 step=25452
+  patch entry: reason=loop_entry c=25976 d=26409 a=26407 step=25532 ip=1
+  diffs vs original run: 110 (allowed 110), outside allowed: 0
+== dry-run C
+  C run: reason=halt c=36 d=35 a=19720 step=25533 ip=1 prints=0
+DRY-RUN OK
