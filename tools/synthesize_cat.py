@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
-"""tools/synthesize_cat.py - BolgeForge Cat Resynthesizer (Victoria A).
+"""tools/synthesize_cat.py - BolgeForge Cat Dijkstra Cost Estimator ([NOT_DEMONSTRATED]).
 
-Resynthesizes Matthias Lutter's canonical `cat.mal` (9,503 B) by replacing
-the unrolled 7,500-op preamble with an optimized Dijkstra-generated preamble
-using BolgeForge's 26-edge pure macro graph.
+Measures the theoretical opcode path cost of reaching the 123 high-memory variables
+of Matthias Lutter's canonical `cat.mal` (9,503 B) under BolgeForge's 26-edge
+Module-0 macro graph.
 
-Target: < 7,500 bytes (saving > 2,000 bytes vs original cat.mal).
-Verification: independent C oracle `mb_ref` with stdin test vectors.
+NOTE (Epistemic Status): This script computes theoretical path lengths only and does
+NOT emit a runnable Malbolge program. Because `cat.mal` uses a linear HeLL preamble
+rather than Lutter's rolled Module-0 quine loop (cells 33..154), dropping Module-0
+macros (`*jo`) into `cat.mal` without a Module-0 driver table is invalid.
 """
 from __future__ import annotations
 
@@ -22,9 +24,7 @@ sys.path.insert(0, str(REPO_ROOT))
 
 from constants import rot_op, crazy_op, XLAT1, XLAT2, MEM_SIZE
 
-MB_REF = REPO_ROOT / 'mb_ref'
 CAT_REF = REPO_ROOT / 'reference' / 'malbolge_org' / 'cat.mal'
-OUT_FILE = REPO_ROOT / 'artifacts' / 'cat_compact_lutter.mal'
 
 
 def build_dijkstra_graph():
@@ -193,16 +193,17 @@ def main():
         total_ops += cost
         curr = cand_x[0]
 
-    print(f"Synthesis cost: {total_ops} opcodes (mean {total_ops/len(targets):.1f} ops/var).")
-    est_compact_len = 1473 + total_ops + (len(clean_cat) - 9067)
+    print(f"Theoretical Dijkstra path cost: {total_ops} opcodes (mean {total_ops/len(targets):.1f} ops/var).")
+    est_compact_len = 1473 + total_ops + (len(clean_cat) - 9003)
     est_wrapped = int(est_compact_len * 73 / 72)
     saved = orig_file_len - est_wrapped
-    print("-" * 50)
-    print(f"Original cat.mal:      {orig_file_len:,} bytes")
-    print(f"Projected Compact Cat: {est_wrapped:,} bytes")
-    print(f"Direct Reduction:      -{saved:,} bytes ({saved/orig_file_len*100:.1f}%)")
-    print("-" * 50)
-    print(f"Phase completed in {time.time()-t0:.2f}s.")
+    print("-" * 60)
+    print(f"Original cat.mal:                {orig_file_len:,} bytes")
+    print(f"Theoretical Module-0 Projection: {est_wrapped:,} bytes [NOT_DEMONSTRATED]")
+    print(f"Theoretical Delta:               -{saved:,} bytes ({saved/orig_file_len*100:.1f}%)")
+    print("Note: No artifact emitted; Module-0 macros require a dedicated 33..154 driver table.")
+    print("-" * 60)
+    print(f"Cost estimation completed in {time.time()-t0:.2f}s.")
 
 
 if __name__ == '__main__':

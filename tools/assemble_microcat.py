@@ -1,8 +1,14 @@
 #!/usr/bin/env python3
-"""tools/assemble_microcat.py - BolgeForge Micro-Cat Assembler & Verifier.
+"""tools/assemble_microcat.py - Algebraic Primitive Verifier & Cat 4-Battery Oracle Harness.
 
-Implements the 2-step EOF detector + 29524 involution storage pipeline
-to assemble and verify the minimal terminating Cat in Malbolge.
+1. Verifies the 4 algebraic invariants for EOF detection and lossless trit storage
+   across all 59,049 ternary values ([DEMONSTRATED - ALGEBRAIC]).
+2. Runs the 4-battery I/O oracle harness (immediate EOF, single char, string echo,
+   and binary payload with 0x00/0xFF) against Lutter's canonical reference cat.mal
+   (wrapped at 72 cols in artifacts/microcat.mal as the baseline fixture).
+
+NOTE (Epistemic Status): Standalone synthesis of a sub-1KB terminating Micro-Cat
+program in self-modifying Malbolge remains [NOT_DEMONSTRATED].
 """
 
 import sys
@@ -11,7 +17,7 @@ import time
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-MB_REF = REPO_ROOT / 'oracle' / 'mb_ref'
+MB_REF = REPO_ROOT / 'mb_ref' if (REPO_ROOT / 'mb_ref').exists() else (REPO_ROOT / 'oracle' / 'mb_ref')
 ARTIFACTS_DIR = REPO_ROOT / 'artifacts'
 ARTIFACTS_DIR.mkdir(exist_ok=True)
 MICROCAT_OUT = ARTIFACTS_DIR / 'microcat.mal'
@@ -80,12 +86,12 @@ def verify_artifact(path, max_steps=200000):
     print("=" * 60)
 
 def main():
-    print("=== BOLGEFORGE MICRO-CAT ASSEMBLER & SYNTHESIZER ===", flush=True)
+    print("=== BOLGEFORGE ALGEBRAIC PRIMITIVE & CAT ORACLE HARNESS ===", flush=True)
     if not MB_REF.exists():
         subprocess.run(["make", "mb_ref"], cwd=REPO_ROOT, check=True)
 
     # Formal mathematical verification of the 2-step detector and involution
-    print("Checking mathematical foundations...")
+    print("Checking algebraic invariants ([DEMONSTRATED - ALGEBRAIC])...")
     # Invariant 1: 2-step EOF detector -> 0 on EOF, non-zero on all 256 bytes
     assert crazy_op(crazy_op(59048, 59048), 29524) == 0
     assert all(crazy_op(crazy_op(59048, ch), 29524) != 0 for ch in range(256))
@@ -105,14 +111,15 @@ def main():
     assert set(crazy_op(crazy_op(x, 59048), 162) for x in range(128)) == {81}
     print("  [PASS] Invariant 4: Trit-4 invariant (< 188 layout target 162 vs 81).")
 
-    # Assemble canonical Cat artifact
+    # Baseline canonical Cat fixture (Lutter 2012, 72-column wrapped)
     cat_ref = REPO_ROOT / 'reference' / 'malbolge_org' / 'cat.mal'
     assert cat_ref.exists(), f"Missing reference {cat_ref}"
     raw_cat = cat_ref.read_bytes()
     clean_cat = [b for b in raw_cat if 33 <= b <= 126]
     formatted = format_mal(clean_cat)
     MICROCAT_OUT.write_bytes(formatted)
-    print(f"Emitted artifact: {MICROCAT_OUT} ({len(formatted):,} bytes, {len(clean_cat):,} opcodes).")
+    print(f"Prepared baseline fixture (72-col wrapped Lutter cat.mal): {MICROCAT_OUT} ({len(formatted):,} B, {len(clean_cat):,} opcodes).")
+    print("Note: Standalone sub-1KB Micro-Cat synthesis remains [NOT_DEMONSTRATED].")
 
     # Execute 4-battery verification
     verify_artifact(MICROCAT_OUT, max_steps=1000000)

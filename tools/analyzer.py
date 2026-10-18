@@ -124,7 +124,7 @@ def main():
     print(f"Target Variables:      {data['high_memory_variables_count']} cells in memory range {data['variable_address_range']}")
     print("-" * 60)
     pot = data['bolgeforge_synthesis_potential']
-    print(f"BolgeForge Resynthesis Potential:")
+    print(f"BolgeForge Resynthesis Potential [THEORETICAL ESTIMATE - NOT_DEMONSTRATED]:")
     print(f"  Estimated Synth Ops: {pot['estimated_synth_ops']:,}")
     print(f"  Estimated File Size: {pot['estimated_compact_file_bytes']:,} bytes")
     print(f"  Projected Reduction: -{data['total_file_bytes'] - pot['estimated_compact_file_bytes']:,} bytes ({pot['estimated_reduction_percentage']}%)")

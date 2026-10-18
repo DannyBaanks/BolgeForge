@@ -1,5 +1,17 @@
 __pycache__/
 *.pyc
 mb_ref
+oracle/mb_ref
 artifacts/output_m*.mal
 artifacts/strat_m*.jsonl
+artifacts/candidate_cat_*.mal
+tools/check_*
+tools/classify_high_mem*
+tools/compare_sim*
+tools/disasm_loop*
+tools/find_*
+tools/inspect_*
+tools/profile_bottles*
+tools/test_relocate*
+tools/trace_*
+tools/generate_compact_cat.py

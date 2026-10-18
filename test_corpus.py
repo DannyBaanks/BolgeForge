@@ -103,13 +103,15 @@ def test_rot13():
 
 
 def test_99_bottles():
-    print("Testing 99_bottles.mal (sample execution)...", end=" ", flush=True)
+    print("Testing 99_bottles.mal (full 99-verse execution)...", end=" ", flush=True)
     prog = CORPUS_DIR / '99_bottles.mal'
-    res = subprocess.run([str(MB_REF), str(prog), "500000"], capture_output=True)
+    res = subprocess.run([str(MB_REF), str(prog)], capture_output=True, check=True)
     assert res.returncode == 0
-    assert b"99 bottles of beer on the wall" in res.stdout
-    assert b"Take one down, pass it around" in res.stdout
-    print("PASS")
+    assert len(res.stdout) == 11459, f"Expected 11,459 bytes, got {len(res.stdout)}"
+    assert res.stdout.startswith(b"99 bottles of beer on the wall,\n99 bottles of beer,\nTake one down, pass it around,\n")
+    assert b"\n1 bottle of beer on the wall.\n\n1 bottle of beer on the wall,\n1 bottle of beer,\n" in res.stdout
+    assert res.stdout.endswith(b"Take one down, pass it around,\nNo more bottles of beer on the wall.\n\n")
+    print("PASS (11,459 bytes, 99 verses)")
 
 
 def main():
