@@ -120,6 +120,13 @@ En Malbolge Clásico, la instrucción `/` devuelve `59048` (`0t2222222222`) en E
     - Dado que `xlat2` es una permutación biyectiva estricta de $33..126$, todo operando deseado $K$ posee una preimagen única $P = \text{inv\_xlat2}(K) \in [33, 126]$.
     - Toda preimagen $P$ requerida para el convoy helicoidal decodifica a una instrucción NOP 100% inerte al ser ejecutada como código por $c$, mutando determinísticamente al operando matemático $K$ antes de que $d$ la lea.
 
+15. **Teorema del Espacio Discriminador Monotarget y Convergencia Sub-Trit (`[DEMONSTRATED — ALGEBRAIC & RUNTIME]`):**
+    - En el álgebra ternaria de Olmstead para $W = 121$ ('y') y operandos ASCII $Y_1, Y_2 \in [33, 126]$, existen exactamente **16 configuraciones canónicas** que colapsan los 256 bytes de entrada a un destino de salto idéntico y único $T_{\text{byte}}$ con un destino de EOF estrictamente disjunto $T_{\text{eof}}$:
+      1. $k = 4$ rotaciones: $Y_1 = 80$ ('P'), $Y_2 = 35$ ('#') $\implies T_{\text{eof}} = 8$, $T_{\text{byte}} = \mathbf{368}$ (utilizado en Etapa 1).
+      2. $k = 3$ rotaciones: $Y_1 = 80$ ('P'), $Y_2 = 51$ ('3') $\implies T_{\text{eof}} = 24$, $T_{\text{byte}} = \mathbf{1104}$ (utilizado en Etapa 2 / Pista 1).
+      3. $k = 2$ rotaciones: $Y_1 = 80$ ('P'), $Y_2 = 72$ ('H') $\implies T_{\text{eof}} = 72$, $T_{\text{byte}} = \mathbf{3312}$ (utilizado en Pista 2).
+    - **Invarianza de Celdas de Datos en Memoria Baja ($< 98$):** Toda variable que almacene trits no-ASCII ($W \approx 29539$, $Y_1 \approx 56863$, $Y_2 \approx 3312$) debe residir en celdas $< 98$. Dado que el cursor de instrucciones $c$ opera exclusivamente en el semiplano $c \ge 99$, las variables en memoria baja nunca son ejecutadas como código, impidiendo el fallo `Halt non-ascii` al repetir bucles.
+
 ---
 
 ## 3. Estado Epistémico y Frontera de Demostración
@@ -136,9 +143,11 @@ En Malbolge Clásico, la instrucción `/` devuelve `59048` (`0t2222222222`) en E
    - Verificado en [`tools/test_three_stage_clean.py`](../tools/test_three_stage_clean.py) contra `oracle/mb_ref.c`. Pasa 100% bit-a-bit: Batería 1 (`b""` $\to$ 0 bytes, rc 0), Batería 2 (256/256 bytes individuales), Batería 2+ (pares de 2 bytes), y Batería 3 (secuencias de 3 bytes: `b"ABC"`, `b"XYZ"`, `b"123"` y permutaciones binarias con `0x00` y `0xFF`).
 6. **Límite Teórico de Desenrollado Pipeline (`MaxUnrolledStages <= 11`) (`[DEMONSTRATED — THEORETICAL]`):**
    - Demostrado que el pipeline lineal no puede superar 11 etapas sin colisión de celdas en el espacio ASCII $33..126$ (94 direcciones disponibles frente a 7-8 celdas de datos literales por etapa).
-7. **Motor Bi-Fásico a Dos Tiempos en Anillo Oscilador (`[DEMONSTRATED — RUNTIME & ALGEBRAIC]`):**
+7. **Motor Bi-Fásico a Dos Tiempos en Anillo Oscilador (`artifacts/cand_twostroke.mal`) (`[DEMONSTRATED — RUNTIME & ALGEBRAIC]`):**
    - Demostrada la conservación de período 2 ($F \leftrightarrow J$) en las 14 posiciones activas módulo 94 y la invarianza de NOPs en las 80 posiciones restantes.
-   - Demostrado el circuito de preimágenes libres de colisión en [`tools/assemble_twostroke_cat.py`](../tools/assemble_twostroke_cat.py) con ejecución 100% bit-a-bit en Baterías 1 y 2, y verificado el anillo oscilador helicoidal cerrado en [`tools/test_twostroke_ring.c`](../tools/test_twostroke_ring.c).
+   - Demostrado el circuito de preimágenes y anclajes en [`tools/assemble_twostroke_cat.py`](../tools/assemble_twostroke_cat.py) con ejecución 100% bit-a-bit en Batería 1 (EOF `b""` $\to$ 0 bytes, rc 0), Batería 2 (todos los 256 bytes individuales `0x00..0xFF`), y Batería 2+ (pares de 2 bytes `b"AB"`, `b"ZZ"`, binarios).
+   - Verificado el salto de retorno en lazo cerrado ($c = 3339 \to 98 \to 99$) en [`artifacts/test_twostroke_k2.mal`](../artifacts/test_twostroke_k2.mal).
+
 
 
 
