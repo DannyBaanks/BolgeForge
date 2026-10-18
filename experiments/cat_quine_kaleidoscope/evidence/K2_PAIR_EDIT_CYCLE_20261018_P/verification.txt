@@ -1,0 +1,25 @@
+test_a_second_store_into_the_same_cell_never_narrows_the_byte (__main__.K2PairEditTests.test_a_second_store_into_the_same_cell_never_narrows_the_byte)
+Repeat-after-read in one cell cannot recover what the first store lost. ... ok
+test_a_two_cell_edit_makes_the_branch_print_one_stdin_byte (__main__.K2PairEditTests.test_a_two_cell_edit_makes_the_branch_print_one_stdin_byte)
+The output-side positive result: a `<` immediately after the edited read prints ... ok
+test_a_two_cell_edit_set_can_read_and_store_in_the_same_cycle (__main__.K2PairEditTests.test_a_two_cell_edit_set_can_read_and_store_in_the_same_cycle)
+The headline dynamic claim: `/` on a rail with a store instruction in the very ... ok
+test_baseline_is_the_quine_and_pair_geometry_is_measured (__main__.K2PairEditTests.test_baseline_is_the_quine_and_pair_geometry_is_measured) ... ok
+test_events_are_attributed_to_the_cells_the_machine_executed (__main__.K2PairEditTests.test_events_are_attributed_to_the_cells_the_machine_executed)
+The trace, not the edit list, decides where an event happened: a two-cell edit ... ok
+test_no_two_cell_edit_set_keeps_the_byte_exact_quine_or_echoes (__main__.K2PairEditTests.test_no_two_cell_edit_set_keeps_the_byte_exact_quine_or_echoes) ... ok
+test_one_store_does_not_determine_the_byte (__main__.K2PairEditTests.test_one_store_does_not_determine_the_byte)
+Recovering the byte from the stored value is injectivity, not arithmetic luck. ... ok
+test_the_byte_dependent_stores_are_the_p_successors_not_the_rot_successors (__main__.K2PairEditTests.test_the_byte_dependent_stores_are_the_p_successors_not_the_rot_successors)
+A `*` successor also stores, but its value is a function of the old cell only - ... ok
+test_the_injectivity_census_is_highly_skewed (__main__.K2PairEditTests.test_the_injectivity_census_is_highly_skewed)
+The census result is not 'usually fine': record how bad the common case is. ... ok
+test_the_stored_value_moves_with_the_stdin_byte (__main__.K2PairEditTests.test_the_stored_value_moves_with_the_stdin_byte)
+Prediction alone could be a coincidence of the operand order (T24). Re-running ... ok
+test_two_distinct_store_cells_recover_the_byte_only_with_a_reservoir_state (__main__.K2PairEditTests.test_two_distinct_store_cells_recover_the_byte_only_with_a_reservoir_state)
+The constructive half, and its limit: two observations of ONE byte can be ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 4.987s
+
+OK
