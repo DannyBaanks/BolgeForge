@@ -14,10 +14,19 @@ clean:
 test-corpus: mb_ref
 	python3 test_corpus.py
 
+analyze-corpus: mb_ref
+	@for f in reference/malbolge_org/*.mal; do \
+		python3 tools/analyzer.py "$$f"; \
+		echo ""; \
+	done
+
+synth-cat: mb_ref
+	python3 tools/synthesize_cat.py
+
 test: mb_ref test-corpus
 	@echo "Verifying committed quines..."
 	@for f in artifacts/*.mal; do \
 		./mb_ref "$$f" > /tmp/out.mal && diff -q "$$f" /tmp/out.mal && echo "OK $$f"; \
 	done
 
-.PHONY: all clean test test-corpus
+.PHONY: all clean test test-corpus analyze-corpus synth-cat
