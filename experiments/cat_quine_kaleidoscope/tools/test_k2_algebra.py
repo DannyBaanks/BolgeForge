@@ -57,6 +57,26 @@ def sha256(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def rel(path):
+    """Normalise a path for the evidence record.
+
+    Absolute repo paths become repo-relative; absolute paths outside the
+    repository (the interpreter, the per-run temporary build) are reduced to
+    their basename under a fixed placeholder, so no workstation location can
+    reach a published report. Relative arguments (flags, argv tokens) pass
+    through unchanged. Recorded commands stay runnable with "cwd": ".".
+    """
+    path = Path(path)
+    if not path.is_absolute():
+        return str(path)
+    if path == ROOT:
+        return "."
+    try:
+        return str(path.relative_to(ROOT))
+    except ValueError:
+        return f"<outside-repo>/{path.name}"
+
+
 class K2AlgebraTests(unittest.TestCase):
     evidence = None
 
@@ -75,6 +95,8 @@ class K2AlgebraTests(unittest.TestCase):
         subprocess.run(cls.compile_command, check=True, capture_output=True)
         cls.compiler_version = subprocess.run(
             [cc, "--version"], check=True, capture_output=True, text=True).stdout
+        cls.recorded_compile_command = [rel(cc), "-O2", "-std=c99", "-shared",
+                                        "-fPIC", "-I", ".", rel(src), "-o", rel(lib)]
         cls.library_sha256 = sha256(lib)
         cls.library = ctypes.CDLL(str(lib))
         cls.library.k2_op.argtypes = [ctypes.c_ushort, ctypes.c_ushort]
@@ -250,11 +272,13 @@ class K2AlgebraTests(unittest.TestCase):
         type(self).vm_runs = []
         for name, feed in (("Q", b"Q"), ("C", b"C" + bytes(range(256)))):
             output = self.temporary / f"trace_{name}.bin"
-            command = [str(oracle), str(source), "70000000"]
-            primary = subprocess.run(command, input=feed, capture_output=True, timeout=30)
-            trace_command = [str(tracer), str(source), "70000000", "-f", "25976",
-                             "-w", "0", "-o", str(output)]
-            trace = subprocess.run(trace_command, input=feed, capture_output=True, timeout=30)
+            command = [str(oracle), rel(source), "70000000"]
+            primary = subprocess.run(command, input=feed, capture_output=True,
+                                     timeout=30, cwd=ROOT)
+            trace_argv = [str(tracer), rel(source), "70000000", "-f", "25976",
+                          "-w", "0", "-o", str(output)]
+            trace = subprocess.run(trace_argv, input=feed, capture_output=True,
+                                   timeout=30, cwd=ROOT)
             self.assertEqual(primary.returncode, 0)
             self.assertEqual(trace.returncode, 0)
             self.assertIn(b"halt=v ", trace.stdout)
@@ -269,7 +293,9 @@ class K2AlgebraTests(unittest.TestCase):
                            if line.startswith("steps="))
             print(f"compiled C mode {name}: {summary}")
             type(self).vm_runs.append({
-                "mode": name, "oracle_command": command, "trace_command": trace_command,
+                "mode": name, "cwd": ".",
+                "oracle_command": [rel(oracle)] + command[1:],
+                "trace_command": [rel(tracer)] + trace_argv[1:-2] + ["-o", rel(output)],
                 "oracle_exit": primary.returncode, "trace_exit": trace.returncode,
                 "oracle_sha256": sha256(oracle), "tracer_sha256": sha256(tracer),
                 "summary": summary,
@@ -306,14 +332,17 @@ def main():
                    WORK / "candidate_selector_m281.mal"]
         report = {
             "timestamp_utc": datetime.now(timezone.utc).isoformat(),
-            "command": sys.orig_argv, "cwd": str(Path.cwd()),
+            "command": [rel(a) for a in sys.orig_argv],
+            "cwd": rel(Path.cwd()),
+            "path_recording": ("repo-relative; out-of-repo paths (interpreter, temporary "
+                               "build) reduced to <outside-repo>/<basename>"),
             "environment": {"platform": platform.platform(), "python": sys.version},
             "exit_status": 0 if result.wasSuccessful() else 1,
             "tests": result.testsRun, "failures": len(result.failures),
             "errors": len(result.errors), "skipped": len(result.skipped),
             "elapsed_seconds": time.monotonic() - started,
             "compiler": getattr(K2AlgebraTests, "compiler_version", None),
-            "compile_command": getattr(K2AlgebraTests, "compile_command", None),
+            "compile_command": getattr(K2AlgebraTests, "recorded_compile_command", None),
             "c_oracle_library_sha256": getattr(K2AlgebraTests, "library_sha256", None),
             "vm_runs": getattr(K2AlgebraTests, "vm_runs", []),
             "scope": "Algebra and unchanged-selector regression, single oracle lineage",

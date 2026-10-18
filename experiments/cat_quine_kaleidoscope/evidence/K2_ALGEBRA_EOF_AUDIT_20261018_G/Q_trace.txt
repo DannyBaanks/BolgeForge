@@ -1,0 +1,67 @@
+file=experiments/cat_quine_kaleidoscope/work/candidate_selector_m281.mal
+clean_cells=52828 loaded=59049
+steps=62239932 halt=v prints=53562 out_bytes=53562 anomalies=0
+trigger: step=25532 c=25976 d=26409 a=26407 (prints=53562)
+stdin reads: preamble=1 loop=0
+SANITY out==src: 1 (byte-for-byte, 53562 bytes)
+executed c, preamble phase: 25532 range(s), 25532 events
+  [0..0] cells=1 events=1
+  [99..99] cells=1 events=1
+  [117..25646] cells=25530 events=25530
+executed c, loop phase: 103 range(s), 62214400 events
+  [0..0] cells=1 events=528280
+  [25947..25948] cells=2 events=17609
+  [25975..25976] cells=2 events=105657
+  [26004..26005] cells=2 events=7342
+  [26008..26009] cells=2 events=2245160
+  [26098..26099] cells=2 events=11014633
+  [26101..26102] cells=2 events=2381652
+  [26123..26163] cells=41 events=41
+  [26192..26193] cells=2 events=316960
+  [26196..26197] cells=2 events=3116836
+  [26255..26256] cells=2 events=160686
+  [26286..26287] cells=2 events=713160
+  [26290..26291] cells=2 events=422624
+  [26293..26311] cells=19 events=29689336
+  [26313..26318] cells=6 events=2456484
+  [26380..26381] cells=2 events=422624
+  [26384..26385] cells=2 events=4
+  [26388..26389] cells=2 events=3803616
+  [26394..26395] cells=2 events=1056560
+  [26400..26403] cells=4 events=3200444
+  [59047..59048] cells=2 events=554692
+written d, preamble phase: 334 range(s), 5313 events
+  [38..38] cells=1 events=1
+  [45..157] cells=113 events=4879
+  [26164..26179] cells=16 events=34
+  [26181..26189] cells=9 events=19
+  [26192..26193] cells=2 events=6
+  [26196..26252] cells=57 events=120
+  [26255..26281] cells=27 events=55
+  [26286..26287] cells=2 events=4
+  [26290..26291] cells=2 events=5
+  [26293..26311] cells=19 events=29
+  [26313..26351] cells=39 events=71
+  [26353..26355] cells=3 events=8
+  [26358..26371] cells=14 events=27
+  [26373..26377] cells=5 events=9
+  [26380..26381] cells=2 events=4
+  [26384..26385] cells=2 events=5
+  [26388..26389] cells=2 events=2
+  [26394..26395] cells=2 events=4
+  [26400..26411] cells=12 events=25
+  [52828..52828] cells=1 events=1
+  [59032..59032] cells=1 events=1
+  [59046..59048] cells=3 events=4
+written d, loop phase: 26425 range(s), 1455694 events
+  [26171..26171] cells=1 events=1468
+  [26174..26174] cells=1 events=1468
+  [26208..26208] cells=1 events=79240
+  [26211..26211] cells=1 events=237720
+  [26220..26220] cells=1 events=158480
+  [26235..26235] cells=1 events=79240
+  [26240..26240] cells=1 events=686763
+  [26249..26250] cells=2 events=2
+  [26325..26325] cells=1 events=105656
+  [26370..26370] cells=1 events=1
+  [26414..52827] cells=26414 events=105656

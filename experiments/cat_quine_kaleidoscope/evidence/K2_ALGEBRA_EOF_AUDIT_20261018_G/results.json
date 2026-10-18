@@ -1,0 +1,151 @@
+{
+  "timestamp_utc": "2026-10-18T12:49:08.638303+00:00",
+  "command": [
+    "python3",
+    "-B",
+    "experiments/cat_quine_kaleidoscope/tools/test_k2_algebra.py",
+    "--evidence",
+    "experiments/cat_quine_kaleidoscope/evidence/K2_ALGEBRA_EOF_AUDIT_20261018_G"
+  ],
+  "cwd": ".",
+  "path_recording": "repo-relative; out-of-repo paths (interpreter, temporary build) reduced to <outside-repo>/<basename>",
+  "environment": {
+    "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+    "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]"
+  },
+  "exit_status": 0,
+  "tests": 10,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "elapsed_seconds": 11.856603866999649,
+  "compiler": "cc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+  "compile_command": [
+    "<outside-repo>/cc",
+    "-O2",
+    "-std=c99",
+    "-shared",
+    "-fPIC",
+    "-I",
+    ".",
+    "<outside-repo>/shim.c",
+    "-o",
+    "<outside-repo>/shim.so"
+  ],
+  "c_oracle_library_sha256": "fc93e7afb3a666a58b1d898eba25dca10068b34e4531c40049ea7a8f1ed1723a",
+  "vm_runs": [
+    {
+      "mode": "Q",
+      "cwd": ".",
+      "oracle_command": [
+        "<outside-repo>/mb_ref",
+        "experiments/cat_quine_kaleidoscope/work/candidate_selector_m281.mal",
+        "70000000"
+      ],
+      "trace_command": [
+        "<outside-repo>/trace_loop",
+        "experiments/cat_quine_kaleidoscope/work/candidate_selector_m281.mal",
+        "70000000",
+        "-f",
+        "25976",
+        "-w",
+        "0",
+        "-o",
+        "<outside-repo>/trace_Q.bin"
+      ],
+      "oracle_exit": 0,
+      "trace_exit": 0,
+      "oracle_sha256": "bbfedc87e127384580d04eb0f4754a4ce1706bd788c566b569e9aa2e4c94d6c7",
+      "tracer_sha256": "7f92b5948c24d4d322ebde4218b86001d4a1c6c6dd4a23296e99ddfb15c12412",
+      "summary": "steps=62239932 halt=v prints=53562 out_bytes=53562 anomalies=0"
+    },
+    {
+      "mode": "C",
+      "cwd": ".",
+      "oracle_command": [
+        "<outside-repo>/mb_ref",
+        "experiments/cat_quine_kaleidoscope/work/candidate_selector_m281.mal",
+        "70000000"
+      ],
+      "trace_command": [
+        "<outside-repo>/trace_loop",
+        "experiments/cat_quine_kaleidoscope/work/candidate_selector_m281.mal",
+        "70000000",
+        "-f",
+        "25976",
+        "-w",
+        "0",
+        "-o",
+        "<outside-repo>/trace_C.bin"
+      ],
+      "oracle_exit": 0,
+      "trace_exit": 0,
+      "oracle_sha256": "bbfedc87e127384580d04eb0f4754a4ce1706bd788c566b569e9aa2e4c94d6c7",
+      "tracer_sha256": "7f92b5948c24d4d322ebde4218b86001d4a1c6c6dd4a23296e99ddfb15c12412",
+      "summary": "steps=25533 halt=v prints=0 out_bytes=0 anomalies=0"
+    }
+  ],
+  "scope": "Algebra and unchanged-selector regression, single oracle lineage",
+  "not_demonstrated": [
+    "executable K2",
+    "CAT payload echo",
+    "rearm routing",
+    "stable self-encrypting echo loop",
+    "two-engine parity"
+  ],
+  "inputs_sha256": {
+    "experiments/cat_quine_kaleidoscope/tools/test_k2_algebra.py": "bcf58df88d32944d29e7b7ca1bb575b8b5399e96866fb9a6abbf76a6377c68b6",
+    "oracle/mb_ref.c": "a51a036c063fa460ea265852a9b80760a88173796c54971dd6b91931fabe97f7",
+    "constants.py": "d1a65a4da8cbe0c7084122db61d4c55decd924e1e96aa101d8040f7bae3286ef",
+    "experiments/cat_quine_kaleidoscope/tools/trace_loop.c": "8b2024881c96ca6d17417ecb8d2e4c0776609ccbed542b2aa0eede7c03473da5",
+    "experiments/cat_quine_kaleidoscope/tools/selector_dev.py": "da776dd66d18dd9a44ab0546373c99448190cbc3c930c9c03ee9b0a56cc29405",
+    "experiments/cat_quine_kaleidoscope/work/k2_branch.py": "e8a616c10ec175f0472664284f9b9c15d24d61516ad1cff03053730ae732ae47",
+    "experiments/cat_quine_kaleidoscope/work/k2_branch2.py": "d1e1ba55e6c8314a826813b78c6a8e0f6e00ee67491fe08f03992558dc07445b",
+    "experiments/cat_quine_kaleidoscope/work/k2_gate.py": "3098ac27fb8142a211679f6b5852a93df6682cf43bb96c6e4fe49fdf0f8b9e6a",
+    "experiments/cat_quine_kaleidoscope/work/k2_reach_full.pkl": "00a5dd0b582825cc83f3a1a6eb4320528f7c2ea5564e60c97f222a1896578ebe",
+    "artifacts/candidate_m281_53562b.mal": "96b670b825372a0f41fa3b574d47457f92654b76411e5d5be4c438003087610e",
+    "experiments/cat_quine_kaleidoscope/work/candidate_selector_m281.mal": "7cab1285f63ef99e56d8cec97bb575a8e03a0fccfa6530038b18187f690af61c"
+  },
+  "searches": {
+    "raw": {
+      "stats": {
+        "gates": 42864,
+        "unique_classes": 13744,
+        "no_preimage": 13480,
+        "scanned_yf": 105560,
+        "hits": 11336
+      },
+      "best": [
+        22,
+        16,
+        29880,
+        13373,
+        6569,
+        13616,
+        6075,
+        26118,
+        25875
+      ]
+    },
+    "stored": {
+      "stats": {
+        "gates": 41726,
+        "unique_classes": 18448,
+        "no_preimage": 17819,
+        "scanned_yf": 263200,
+        "hits": 29914
+      },
+      "best": [
+        24,
+        19,
+        7263,
+        46196,
+        55430,
+        49355,
+        45319,
+        25649,
+        25892
+      ]
+    }
+  }
+}

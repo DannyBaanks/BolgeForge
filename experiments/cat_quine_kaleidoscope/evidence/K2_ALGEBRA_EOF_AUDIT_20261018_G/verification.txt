@@ -1,0 +1,30 @@
+test_all_returned_candidates_against_c (__main__.K2AlgebraTests.test_all_returned_candidates_against_c) ... stored=False: {'gates': 42864, 'unique_classes': 13744, 'no_preimage': 13480, 'scanned_yf': 105560, 'hits': 11336}; 110 gate witnesses checked over 257 inputs
+best stored=False: (22, 16, 29880, 13373, 6569, 13616, 6075, 26118, 25875)
+stored=True: {'gates': 41726, 'unique_classes': 18448, 'no_preimage': 17819, 'scanned_yf': 263200, 'hits': 29914}; 314 gate witnesses checked over 257 inputs
+best stored=True: (24, 19, 7263, 46196, 55430, 49355, 45319, 25649, 25892)
+ok
+test_eof_is_base9_eights_not_twos (__main__.K2AlgebraTests.test_eof_is_base9_eights_not_twos) ... ok
+test_full_initial_memory_parity (__main__.K2AlgebraTests.test_full_initial_memory_parity) ... candidate_m281_53562b.mal: 59049 cells match C; swapped pad mismatches=4666
+candidate_selector_m281.mal: 59049 cells match C; swapped pad mismatches=4666
+ok
+test_legacy_search_reports_use_real_eof (__main__.K2AlgebraTests.test_legacy_search_reports_use_real_eof) ... k2_gate: 40 printed gate witnesses verified with real EOF
+k2_branch: 30 printed gate witnesses verified with real EOF
+ok
+test_operator_and_orientation_against_c (__main__.K2AlgebraTests.test_operator_and_orientation_against_c) ... operator parity: 354294 full-word C comparisons; swapped-order control differs
+ok
+test_optimized_search_matches_small_bruteforce (__main__.K2AlgebraTests.test_optimized_search_matches_small_bruteforce) ... ok
+test_r4_storage_and_blind_rearm (__main__.K2AlgebraTests.test_r4_storage_and_blind_rearm) ... rearm controls (29524,59048,0): all 59049 cell values -> 29524
+rearm is a register-level primitive; addressing and instruction cycles not demonstrated
+ok
+test_reach_cache_paths_and_closure (__main__.K2AlgebraTests.test_reach_cache_paths_and_closure) ... reach cache: 26944 witnessed values; closed under R and P(33..126)
+ok
+test_selector_is_unchanged_and_original_paths_survive (__main__.K2AlgebraTests.test_selector_is_unchanged_and_original_paths_survive) ... selector unchanged: Q preentry preserved; C still halts without echo
+ok
+test_selector_q_and_c_on_compiled_oracle (__main__.K2AlgebraTests.test_selector_q_and_c_on_compiled_oracle) ... compiled C mode Q: steps=62239932 halt=v prints=53562 out_bytes=53562 anomalies=0
+compiled C mode C: steps=25533 halt=v prints=0 out_bytes=0 anomalies=0
+ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 11.855s
+
+OK
