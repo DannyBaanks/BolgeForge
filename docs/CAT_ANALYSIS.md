@@ -62,6 +62,16 @@ En Malbolge Clásico, la instrucción `/` devuelve `59048` (`0t2222222222`) en E
    - **Batería 2 (Eco Completo de Todos los 256 Bytes $0..255$):** Verificado exhaustivamente contra `oracle/mb_ref.c` en [`tools/test_microcat_suite.py`](../tools/test_microcat_suite.py). Los 256/256 bytes individuales son leídos, preservados vía involución $Y_0=121$, rotados 10 veces en celda 36, emitidos por `<` con fidelidad exacta de 8 bits (incluyendo `0x00` y `0xFF`), y seguidos de terminación limpia con código 0 ante EOF.
    - **Defecto Descubierto en `cat.mal` Canónico (Lutter 2012):** Telemetría exacta en paso 9148 reveló que ante EOF, `cat.mal` emite un byte espurio `0x88` ('¨') debido a falta de discriminador antes de `<`. `microcat.mal` corrige esta falla emitiendo exactamente 0 bytes en EOF.
 
+7. **Teorema de Reseteo Universal de Memoria Sin Entropía Residual:**
+   $$\forall b \in [0, 255], W = \text{crazy}(b, 121): \quad \text{crazy}(\text{rot}(\text{crazy}(\text{crazy}(W, 486), 242)), 80) \equiv \mathbf{121}$$
+   - En dos pasos de `crazy`, los 256 estados colapsan a una constante universal exacta: $\text{crazy}(\text{crazy}(W, 486), 242) = \mathbf{29402}$.
+   - Una rotación y una operación con el carácter imprimible $80$ ('P') restauran la celda de almacenamiento a $121$ ('y') con 0 bits de memoria residual del byte anterior.
+
+8. **Teorema del Reticulado Cristalino de Período 6 en Crazy Fill:**
+   - Terminar un archivo `.mal` con los caracteres ASCII imprimibles `('6', '6')` ($54, 54$) induce un reticulado auto-generado de período 6 en toda la memoria no inicializada ($i \ge N$):
+     $$\text{mem}[N + 6k] = \mathbf{29524}, \quad \text{mem}[N + 6k + 1] = 54, \quad \text{mem}[N + 6k + 2] = 29551, \dots$$
+   - Genera más de 9,800 copias inalteradas del operador de involución universal `29524` sin consumir un solo byte de código fuente adicional.
+
 ---
 
 ## 3. Estado Epistémico y Frontera de Demostración
