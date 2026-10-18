@@ -23,10 +23,14 @@ analyze-corpus: mb_ref
 synth-cat: mb_ref
 	python3 tools/synthesize_cat.py
 
-test: mb_ref test-corpus
+microcat: mb_ref
+	python3 tools/microcat.py
+
+test: mb_ref test-corpus microcat
 	@echo "Verifying committed quines..."
-	@for f in artifacts/*.mal; do \
+	@for f in artifacts/candidate_m*.mal; do \
 		./mb_ref "$$f" > /tmp/out.mal && diff -q "$$f" /tmp/out.mal && echo "OK $$f"; \
 	done
 
-.PHONY: all clean test test-corpus analyze-corpus synth-cat
+.PHONY: all clean test test-corpus analyze-corpus synth-cat microcat
+
