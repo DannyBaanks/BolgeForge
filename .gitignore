@@ -15,3 +15,4 @@ tools/profile_bottles*
 tools/test_relocate*
 tools/trace_*
 tools/generate_compact_cat.py
+.build/
