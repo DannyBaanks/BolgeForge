@@ -125,7 +125,17 @@ En Malbolge Clásico, la instrucción `/` devuelve `59048` (`0t2222222222`) en E
       1. $k = 4$ rotaciones: $Y_1 = 80$ ('P'), $Y_2 = 35$ ('#') $\implies T_{\text{eof}} = 8$, $T_{\text{byte}} = \mathbf{368}$ (utilizado en Etapa 1).
       2. $k = 3$ rotaciones: $Y_1 = 80$ ('P'), $Y_2 = 51$ ('3') $\implies T_{\text{eof}} = 24$, $T_{\text{byte}} = \mathbf{1104}$ (utilizado en Etapa 2 / Pista 1).
       3. $k = 2$ rotaciones: $Y_1 = 80$ ('P'), $Y_2 = 72$ ('H') $\implies T_{\text{eof}} = 72$, $T_{\text{byte}} = \mathbf{3312}$ (utilizado en Pista 2).
-    - **Invarianza de Celdas de Datos en Memoria Baja ($< 98$):** Toda variable que almacene trits no-ASCII ($W \approx 29539$, $Y_1 \approx 56863$, $Y_2 \approx 3312$) debe residir en celdas $< 98$. Dado que el cursor de instrucciones $c$ opera exclusivamente en el semiplano $c \ge 99$, las variables en memoria baja nunca son ejecutadas como código, impidiendo el fallo `Halt non-ascii` al repetir bucles.
+16. **Teorema de la Restauración Hexádica de Datos en el Anillo Oscilador (`[DEMONSTRATED — ALGEBRAIC]`):**
+    - En ambos cilindros del oscilador bi-fásico, las 6 variables de discriminación y almacenamiento son regeneradas determinísticamente a sus constantes virgen ASCII sin dependencia del valor de entrada $x$:
+      - **Tríada de Pista 1 (desde el objetivo de salto 1104):**
+        - $Y1_1 \to \mathbf{80}$ ('P'): $\text{crazy}(\text{rot}^7(1104), 80) \equiv \mathbf{80}$.
+        - $Y2_1 \to \mathbf{51}$ ('3'): $\text{crazy}(\text{crazy}(33, 33), 1104) \equiv \mathbf{51}$.
+        - $W1 \to \mathbf{121}$ ('y'): $\text{crazy}(\text{rot}^2(\text{crazy}(1104, 33)), 36) \equiv \mathbf{121}$.
+      - **Tríada de Pista 2 (desde el objetivo de salto 3312):**
+        - $Y1_2 \to \mathbf{80}$ ('P'): $\text{crazy}(\text{rot}^8(3312), 80) \equiv \mathbf{80}$.
+        - $W2 \to \mathbf{121}$ ('y'): $\text{crazy}(\text{rot}^3(\text{crazy}(3312, 36)), 38) \equiv \mathbf{121}$.
+        - $Y2_2 \to \mathbf{72}$ ('H'): $\text{crazy}(\text{rot}^1(\text{crazy}(121, 53)), 72) \equiv \mathbf{72}$.
+    - Esta hexada garantiza que todas las celdas de datos vuelvan a ser caracteres ASCII estándar antes del inicio del siguiente lapso, eliminando por completo la degeneración entrópica residual en las variables del circuito.
 
 ---
 
