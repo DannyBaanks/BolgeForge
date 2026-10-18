@@ -1,0 +1,36 @@
+file=experiments/cat_quine_kaleidoscope/work/candidate_selector_m281.mal
+clean_cells=52828 loaded=59049
+steps=25533 halt=v prints=0 out_bytes=0 anomalies=0
+stdin reads: preamble=1 loop=0
+SANITY out==src: 0 (first diff at 0: out=-1 src=98)
+executed c, preamble phase: 25533 range(s), 25533 events
+  [0..0] cells=1 events=1
+  [36..36] cells=1 events=1
+  [99..99] cells=1 events=1
+  [117..25646] cells=25530 events=25530
+executed c, loop phase: 0 range(s), 0 events
+written d, preamble phase: 335 range(s), 5313 events
+  [38..38] cells=1 events=1
+  [45..157] cells=113 events=4878
+  [187..187] cells=1 events=1
+  [26164..26179] cells=16 events=34
+  [26181..26189] cells=9 events=19
+  [26192..26193] cells=2 events=6
+  [26196..26252] cells=57 events=120
+  [26255..26281] cells=27 events=55
+  [26286..26287] cells=2 events=4
+  [26290..26291] cells=2 events=5
+  [26293..26311] cells=19 events=29
+  [26313..26351] cells=39 events=71
+  [26353..26355] cells=3 events=8
+  [26358..26371] cells=14 events=27
+  [26373..26377] cells=5 events=9
+  [26380..26381] cells=2 events=4
+  [26384..26385] cells=2 events=5
+  [26388..26389] cells=2 events=2
+  [26394..26395] cells=2 events=4
+  [26400..26411] cells=12 events=25
+  [52828..52828] cells=1 events=1
+  [59032..59032] cells=1 events=1
+  [59046..59048] cells=3 events=4
+written d, loop phase: 0 range(s), 0 events
