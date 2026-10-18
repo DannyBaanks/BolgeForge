@@ -1,0 +1,135 @@
+{
+  "kind": "K2 recovery impossibility + byte-preserving psi route",
+  "generated_utc": "2026-10-18T12:38:50+00:00",
+  "wall_seconds": 0.794,
+  "path_policy": "all recorded paths are relative to the repository root",
+  "environment": {
+    "python": "3.12.3",
+    "platform": "Linux 7.0.0-38-generic x86_64",
+    "cc": "/usr/bin/cc",
+    "shim_sha256": "c0e432367f6aa6134ed05bacda57d6d69aebebf8d8d4f136f8aaf0f9723fbb5b",
+    "command": "python3 -B experiments/cat_quine_kaleidoscope/tools/test_k2_psi_route.py --evidence <new-dir>"
+  },
+  "tests": {
+    "run": 7,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "claims": [
+    {
+      "claim": "rot fixes exactly {0, 29524, 59048} in Classic 3^10",
+      "status": "DEMONSTRATED",
+      "scope": "all 59049 values, this revision"
+    },
+    {
+      "claim": "psi = op(59048, cell) is an involution on bytes and maps EOF to 29524 with disjoint ranges",
+      "status": "DEMONSTRATED",
+      "scope": "compiled C operator, 0..255 and EOF"
+    },
+    {
+      "claim": "R4 = op(., 29524) round-trips every byte exactly",
+      "status": "DEMONSTRATED",
+      "scope": "compiled C operator, 0..255"
+    },
+    {
+      "claim": "no p-against-constant sequence of any length recovers the byte after a lossy class gate",
+      "status": "DEMONSTRATED",
+      "scope": "single-store-cell design family; closure verified complete"
+    },
+    {
+      "claim": "the 29914 stored-byte candidates of audit D are not realisable as programs by their intended shape",
+      "status": "DEMONSTRATED",
+      "scope": "follows from the family result above"
+    },
+    {
+      "claim": "a working CAT loop exists that echoes arbitrary payloads",
+      "status": "DEMONSTRATED",
+      "scope": "reference/malbolge_org/cat.mal on mb_ref"
+    },
+    {
+      "claim": "rot-invariant reservoirs are available at the K2 branch point",
+      "status": "DEMONSTRATED",
+      "scope": "step-25445 snapshot of candidate_selector_m281.mal; absent from the loaded image, minted by the preamble"
+    },
+    {
+      "claim": "executable K2 (single P satisfying Q and CAT)",
+      "status": "NOT_DEMONSTRATED",
+      "scope": "psi-based echo loop not built yet"
+    },
+    {
+      "claim": "psi route fits the candidate layout with j-chain d routing",
+      "status": "NOT_DEMONSTRATED",
+      "scope": "address plan not yet derived"
+    },
+    {
+      "claim": "second independent Classic engine parity",
+      "status": "NOT_DEMONSTRATED",
+      "scope": "single-engine state unchanged"
+    }
+  ],
+  "reservoir_cells_initial_image": {
+    "initial": {
+      "59048": [],
+      "29524": [],
+      "0": []
+    },
+    "step_25445": {
+      "59048": [
+        147,
+        153,
+        26171,
+        26235,
+        26249,
+        26325
+      ],
+      "29524": [
+        140,
+        151,
+        26208,
+        26211,
+        26370
+      ],
+      "0": [
+        150
+      ]
+    }
+  },
+  "cat_runs": [
+    {
+      "program": "reference/malbolge_org/cat.mal",
+      "case": "payload_0_255",
+      "input_sha256": "40aff2e9d2d8922e47afd4648e6967497158785fbd1da870e7110266bf944880",
+      "output_sha256": "40aff2e9d2d8922e47afd4648e6967497158785fbd1da870e7110266bf944880",
+      "exit": 0,
+      "bytes": 256
+    },
+    {
+      "program": "reference/malbolge_org/cat.mal",
+      "case": "payload_text",
+      "input_sha256": "66381cf6011217e07d11991653dd7aeecab19ce14bacb24d19908b11cc39df07",
+      "output_sha256": "66381cf6011217e07d11991653dd7aeecab19ce14bacb24d19908b11cc39df07",
+      "exit": 0,
+      "bytes": 17
+    },
+    {
+      "program": "reference/malbolge_org/cat.mal",
+      "case": "payload_empty",
+      "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exit": 0,
+      "bytes": 0
+    }
+  ],
+  "source_sha256": {
+    "experiments/cat_quine_kaleidoscope/tools/test_k2_psi_route.py": "7b978b61d14165a9c834312a8cdc3b41274dfa84fd33e2296d80aae368c53307",
+    "oracle/mb_ref.c": "a51a036c063fa460ea265852a9b80760a88173796c54971dd6b91931fabe97f7",
+    "constants.py": "d1a65a4da8cbe0c7084122db61d4c55decd924e1e96aa101d8040f7bae3286ef",
+    "experiments/cat_quine_kaleidoscope/tools/trace_loop.c": "8b2024881c96ca6d17417ecb8d2e4c0776609ccbed542b2aa0eede7c03473da5",
+    "experiments/cat_quine_kaleidoscope/tools/selector_dev.py": "da776dd66d18dd9a44ab0546373c99448190cbc3c930c9c03ee9b0a56cc29405",
+    "experiments/cat_quine_kaleidoscope/work/candidate_selector_m281.mal": "7cab1285f63ef99e56d8cec97bb575a8e03a0fccfa6530038b18187f690af61c",
+    "reference/malbolge_org/cat.mal": "ce04a6f27b7045b6e0010d6c97873ad8b34ba87c7be6e16d53be0b97a7224a52",
+    "experiments/cat_quine_kaleidoscope/evidence/M3_20261018/snap25445.json": "02927857645a138e1e6069b7a208f1792b8a5155adbaab8bc237e51989663b38",
+    "experiments/cat_quine_kaleidoscope/evidence/K2_ALGEBRA_EOF_AUDIT_20261018_D/REPORT.md": "0e8320ffe53b8b54e6c6f0d3499b49ee4ec56be2a13c6c977ee4608a26c4353e"
+  }
+}

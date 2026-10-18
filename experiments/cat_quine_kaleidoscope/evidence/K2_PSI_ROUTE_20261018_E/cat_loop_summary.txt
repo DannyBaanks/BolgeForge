@@ -1,0 +1,56 @@
+Hifile=reference/malbolge_org/cat.mal
+clean_cells=9382 loaded=59049
+steps=10082 halt=v prints=2 out_bytes=2 anomalies=0
+trigger: step=8892 c=8990 d=75 a=235 (prints=2)
+stdin reads: preamble=0 loop=3
+executed c, preamble phase: 8892 range(s), 8892 events
+  [0..0] cells=1 events=1
+  [99..8989] cells=8891 events=8891
+executed c, loop phase: 50 range(s), 1190 events
+  [0..0] cells=1 events=3
+  [8990..9003] cells=14 events=14
+  [9025..9025] cells=1 events=1
+  [9049..9050] cells=2 events=6
+  [9067..9068] cells=2 events=9
+  [9083..9084] cells=2 events=101
+  [9088..9089] cells=2 events=213
+  [9178..9179] cells=2 events=186
+  [9182..9183] cells=2 events=63
+  [9272..9273] cells=2 events=54
+  [9276..9277] cells=2 events=45
+  [9366..9367] cells=2 events=35
+  [9370..9371] cells=2 events=32
+  [58845..58850] cells=6 events=222
+  [58876..58877] cells=2 events=30
+  [58924..58927] cells=4 events=171
+  [59047..59048] cells=2 events=5
+written d, preamble phase: 159 range(s), 2615 events
+  [33..39] cells=7 events=980
+  [41..41] cells=1 events=1
+  [48..55] cells=8 events=439
+  [58..59] cells=2 events=26
+  [71..78] cells=8 events=788
+  [82..83] cells=2 events=72
+  [87..96] cells=10 events=129
+  [58844..58866] cells=23 events=32
+  [58868..58873] cells=6 events=9
+  [58876..58909] cells=34 events=53
+  [58911..58913] cells=3 events=5
+  [58924..58933] cells=10 events=13
+  [58935..58946] cells=12 events=19
+  [58948..58974] cells=27 events=41
+  [58976..58978] cells=3 events=4
+  [59046..59048] cells=3 events=4
+written d, loop phase: 12 range(s), 78 events
+  [94..94] cells=1 events=1
+  [58864..58864] cells=1 events=3
+  [58871..58871] cells=1 events=3
+  [58881..58881] cells=1 events=3
+  [58884..58884] cells=1 events=3
+  [58890..58890] cells=1 events=3
+  [58893..58893] cells=1 events=3
+  [58896..58896] cells=1 events=3
+  [58903..58903] cells=1 events=4
+  [58931..58931] cells=1 events=3
+  [58934..58934] cells=1 events=13
+  [58947..58947] cells=1 events=36

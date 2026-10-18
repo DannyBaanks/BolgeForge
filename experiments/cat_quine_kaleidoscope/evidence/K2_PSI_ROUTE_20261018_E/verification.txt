@@ -1,0 +1,34 @@
+test_lutter_cat_echoes_payload_on_compiled_oracle (__main__.K2PsiRouteTests.test_lutter_cat_echoes_payload_on_compiled_oracle) ... cat.mal payload_0_255: echoed 256 bytes byte-exact, exit 0
+cat.mal payload_text: echoed 17 bytes byte-exact, exit 0
+cat.mal payload_empty: echoed 0 bytes byte-exact, exit 0
+loop trace captured: store at step 9000, psi-toggle 9278/9295, print at step 9306 (a=72)
+ok
+test_p_only_recovery_after_lossy_gate_is_impossible (__main__.K2PsiRouteTests.test_p_only_recovery_after_lossy_gate_is_impossible) ... algebra matches the recorded cat.mal trace at steps 9000/9015/9278/9295
+store-row / landing-column pairs that stay injective on 0..8: [(4, 8)]
+row-composition closure: 207 maps, closed under all 9 rows
+required inverse of h_8 = (4, 5, 3, 7, 8, 6, 1, 2, 0) is NOT in the closure
+=> no sequence of p-against-constant steps of ANY length recovers the byte after a lossy class gate; the 29914 stored-byte candidates are not realisable as programs
+ok
+test_psi_is_byte_preserving_involution (__main__.K2PsiRouteTests.test_psi_is_byte_preserving_involution) ... psi = op(59048, cell): involutive on 0..255 and on EOF
+psi(EOF)=29524, psi(bytes) max=510, ranges disjoint => EOF is separable without destroying the byte
+ok
+test_python_table_matches_c_operator (__main__.K2PsiRouteTests.test_python_table_matches_c_operator) ... table parity vs compiled C operator: exact over the sampled grid; swapped operands give a different algebra (T24)
+ok
+test_r4_storage_involution (__main__.K2PsiRouteTests.test_r4_storage_involution) ... R4 = op(., 29524): storage round trip exact for all 256 bytes
+ok
+test_reservoir_constants_exist_in_candidate_image (__main__.K2PsiRouteTests.test_reservoir_constants_exist_in_candidate_image) ... loaded image cells holding 59048: 0 []
+loaded image cells holding 29524: 0 []
+loaded image cells holding 0: 0 []
+step-25445 snapshot cells holding 59048: 6 [147, 153, 26171, 26235, 26249, 26325]
+step-25445 snapshot cells holding 29524: 5 [140, 151, 26208, 26211, 26370]
+step-25445 snapshot cells holding 0: 1 [150]
+reservoirs are absent from the loaded image and minted by the preamble, so they are already accounted for by the quine print logic
+ok
+test_rot_fixed_values_are_exactly_three (__main__.K2PsiRouteTests.test_rot_fixed_values_are_exactly_three) ... rot-fixed values over all 59049: [0, 29524, 59048]
+=> only these can be re-supplied by '*' without consuming the cell
+ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.793s
+
+OK
