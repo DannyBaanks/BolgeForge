@@ -78,6 +78,14 @@ En Malbolge Clásico, la instrucción `/` devuelve `59048` (`0t2222222222`) en E
    - Todas las celdas intermedias entre estos anclajes decodifican a NOPs 100% inertes en Ciclo 5 (`F`).
    - En una arquitectura de doble pista (Pista 1 para bytes impares, Pista 2 para bytes pares), mientras la Pista 1 procesa un byte ($F \to J$), la Pista 2 regenera sus celdas mediante un deslizamiento pasivo de NOPs ($J \to F$). Al alternar cilindros en cada byte, el motor opera indefinidamente con **0 degradación de código**, resolviendo el problema de la degeneración entrópica en Malbolge.
 
+10. **Teorema del Pipeline Multi-Etapa y la Invariante del Colchón Sacrificial de Salto (`[DEMONSTRATED — RUNTIME]`):**
+    - En la especificación Olmstead (`oracle/mb_ref.c`), al ejecutar un salto `i` en la celda $c$ hacia $\text{mem}[d] = T$:
+      $$c \leftarrow T, \quad \text{mem}[T] \leftarrow \text{xlat2}[\text{mem}[T] - 33], \quad c \leftarrow c + 1$$
+    - La instrucción `i` que origina el salto **no se muta**; únicamente la celda de aterrizaje $T$ sufre cifrado `xlat2`. En consecuencia, todo destino de salto $T$ actúa como un **colchón de aterrizaje sacrificial** y no puede alojar constantes de datos estáticas.
+    - **Reubicación de Discriminadores Sin Colisión:**
+      - Reubicando el discriminador de la Etapa 2 a $\text{BASE} = 77$ ($77..82$), las celdas $71..76$ quedan liberadas sin alterar las etapas previas.
+      - Asignando el discriminador de la Etapa 3 con constante $Y_2 = 72$ ('H') en la celda 74, el salto EOF aterriza en la celda 72 (cushion) $\to$ 73 (`v` HALT), mientras que el salto de byte conduce limpiamente a la rutina de salida en 3312 sin tocar celdas de etapas activas.
+
 ---
 
 ## 3. Estado Epistémico y Frontera de Demostración
@@ -88,5 +96,10 @@ En Malbolge Clásico, la instrucción `/` devuelve `59048` (`0t2222222222`) en E
    - Sintetizado en [`artifacts/cand_valid.mal`](../artifacts/cand_valid.mal) (125 bytes) y verificado contra `oracle/mb_ref.c` en [`tools/test_valid_ascii_cat.py`](../tools/test_valid_ascii_cat.py).
 3. **Eco de Bytes con Fidelidad Total de 8 Bits en 430 Bytes (`[DEMONSTRATED — RUNTIME]`):**
    - Sintetizado en [`artifacts/microcat.mal`](../artifacts/microcat.mal) (430 bytes) y verificado contra `oracle/mb_ref.c` en [`tools/test_microcat_suite.py`](../tools/test_microcat_suite.py). 22 veces más compacto que el estándar histórico de 9,503 bytes.
-4. **Cierre de Ciclo Completo Multi-Byte Autónomo (`[IN PROGRESS]`):**
-   - La orquestación del oscilador bi-fásico de período 2 (`F \leftrightarrow J`) en Ciclo 6 para streaming multi-byte continuo sin degradación se encuentra completamente formalizada matemáticamente en [`tools/test_complete_circuit.py`](../tools/test_complete_circuit.py).
+4. **Cat Multi-Byte de 2 Etapas en 1,150 Bytes (`artifacts/cand_two_stage.mal`) `[DEMONSTRATED — RUNTIME]`:**
+   - Verificado en [`tools/test_twostage_ab.py`](../tools/test_twostage_ab.py) contra `oracle/mb_ref.c`. Pasa 100% bit-a-bit: `b""` $\to$ rc 0 (0 bytes), todos los 256 bytes individuales $\to$ eco exacto rc 0, y pares de 2 bytes (`b"AB"`, `bytes([0, 255])`, etc.) $\to$ eco exacto rc 0.
+5. **Cat Multi-Byte de 3 Etapas en 3,380 Bytes (`artifacts/cand_three_stage_clean.mal`) `[DEMONSTRATED — RUNTIME]`:**
+   - Verificado en [`tools/test_three_stage_clean.py`](../tools/test_three_stage_clean.py) contra `oracle/mb_ref.c`. Pasa 100% bit-a-bit: Batería 1 (`b""` $\to$ 0 bytes, rc 0), Batería 2 (256/256 bytes individuales), Batería 2+ (pares de 2 bytes), y Batería 3 (secuencias de 3 bytes: `b"ABC"`, `b"XYZ"`, `b"123"` y permutaciones binarias con `0x00` y `0xFF`).
+6. **Streaming Continuo Multi-Byte por Anillo Oscilador (`[IN PROGRESS]`):**
+   - Formalización del acoplamiento entre el retorno de etapa y la re-inicialización del vector de lectura sin degradación acumulativa.
+
