@@ -1,0 +1,34 @@
+# M0 literal commands and results — 2026-10-18 — CWD = repo root (BolgeForge)
+# Env: Ubuntu 24.04, python3 3.12.3, gcc 13.3.0, GNU make 4.3
+
+make                                          # up to date; mb_ref binary present
+sha256sum reference/malbolge_org/*.mal artifacts/*.mal > reference_hashes.txt
+
+# --- CAT fixtures (historical cat.mal ce04a6f2) -------------------------------
+printf 'ABC'        > cat_abc.stdin;       timeout 120 ./mb_ref reference/malbolge_org/cat.mal 2000000000 < cat_abc.stdin       > cat_abc.stdout
+#   exit=0, out=3 B, hex 414243 : MATCH  (real 0m0,004s)
+:                   > cat_empty.stdin;     timeout 120 ./mb_ref reference/malbolge_org/cat.mal 2000000000 < cat_empty.stdin     > cat_empty.stdout
+#   exit=0, out=0 B : MATCH
+printf 'A'          > cat_A.stdin;         timeout 120 ./mb_ref reference/malbolge_org/cat.mal 2000000000 < cat_A.stdin         > cat_A.stdout
+#   exit=0, out=1 B : MATCH
+printf 'ABC\n'      > cat_abcnl.stdin;     timeout 120 ./mb_ref reference/malbolge_org/cat.mal 2000000000 < cat_abcnl.stdin     > cat_abcnl.stdout
+#   exit=0, out=4 B : MATCH
+printf '\x00\xff\n' > cat_special.stdin;   timeout 120 ./mb_ref reference/malbolge_org/cat.mal 2000000000 < cat_special.stdin   > cat_special.stdout
+#   exit=0, out=3 B, hex 00ff0a : MATCH
+
+# --- K0: cat + historical quines as payload -----------------------------------
+cp reference/malbolge_org/quine-2012.mal k0_quine2012.stdin
+timeout 300 ./mb_ref reference/malbolge_org/cat.mal 2000000000 < k0_quine2012.stdin > k0_quine2012.stdout
+#   exit=0; real 0m0,072s; cmp byte-exact; in=out sha256 419e274e...; 59,032 B
+timeout 300 ./mb_ref reference/malbolge_org/cat.mal 2000000000 < reference/malbolge_org/quine.mal > k0_quine_lutter.stdout
+#   exit=0; cmp byte-exact vs quine.mal; sha256 dca8476f...; 59,852 B
+
+# --- F09-style truncation control ---------------------------------------------
+timeout 60 ./mb_ref reference/malbolge_org/cat.mal 500000 < k0_quine2012.stdin > ctrl_truncated.stdout
+#   exit=0; out=1,206 B (vs 59,032 full) : the full run needs > 500k steps
+
+# --- selector + EOF-detector algebra (exact op() table from oracle/mb_ref.c) ---
+# python3 one-liner over o[9][9]/p9[5]:
+#   op(81, 29524) = 29443   (Q -> target)   op(67, 29524) = 29538  (C -> target)
+#   op(29524, 81) = 0       op(29524, 67) = 54     (alternative: selector in memory)
+#   op(op(59048,x),29524)==0 iff x==59048  over all 257 inputs : True  (also swapped order)
