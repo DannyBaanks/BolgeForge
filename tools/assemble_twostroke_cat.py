@@ -200,19 +200,26 @@ if __name__ == '__main__':
     out_file.write_bytes(code)
     print(f"Assembled {len(code)} bytes to {out_file}")
 
-    # Test EOF
+    # Battery 1: Empty input (Clean EOF HALT, 0 bytes emitted)
     p = subprocess.run([str(MB_REF), str(out_file)], input=b'', capture_output=True)
-    print(f"Test b''    -> rc={p.returncode}, stdout={p.stdout!r}")
-    assert p.returncode == 0 and p.stdout == b'', f"EOF failed: {p}"
+    assert p.returncode == 0 and p.stdout == b'', f"Battery 1 EOF failed: {p}"
+    print("Battery 1 (Empty stdin -> 0 bytes, rc=0) [PASS]")
 
-    # Test 1 byte
-    p = subprocess.run([str(MB_REF), str(out_file)], input=b'A', capture_output=True)
-    print(f"Test b'A'   -> rc={p.returncode}, stdout={p.stdout!r}")
-    assert p.returncode == 0 and p.stdout == b'A', f"Failed on 'A': {p}"
+    # Battery 2: All 256 single bytes
+    for b in range(256):
+        payload = bytes([b])
+        p = subprocess.run([str(MB_REF), str(out_file)], input=payload, capture_output=True)
+        assert p.returncode == 0 and p.stdout == payload, f"Battery 2 failed on byte {b}: {p}"
+    print("Battery 2 (All 256 single bytes 0x00..0xFF) [PASS]")
 
-    # Test 2 bytes
-    p = subprocess.run([str(MB_REF), str(out_file)], input=b'AB', capture_output=True)
-    print(f"Test b'AB'  -> rc={p.returncode}, stdout={p.stdout!r}")
-    assert p.returncode == 0 and p.stdout == b'AB', f"Failed on 'AB': {p}"
+    # Battery 2+: Two-byte corner cases and binary pairs
+    two_byte_samples = [
+        b'AB', b'hi', b'12', b'\n\n', b'\x00\x00', b'\xff\xff',
+        bytes([0, 255]), bytes([255, 0]), bytes([127, 128]), bytes([65, 0]), bytes([0, 65])
+    ]
+    for payload in two_byte_samples:
+        p = subprocess.run([str(MB_REF), str(out_file)], input=payload, capture_output=True)
+        assert p.returncode == 0 and p.stdout == payload, f"Battery 2+ failed on {payload!r}: {p}"
+    print("Battery 2+ (Two-byte corner cases & binary pairs) [PASS]")
 
-    print("\n>>> EXTRAORDINARY: TWO-STROKE PASSES 0, 1, AND 2 BYTES BIT-EXACT!")
+    print("\n>>> EXTRAORDINARY: TWO-STROKE ENGINE PASSES BATTERY 1, 2, AND 2+ 100% BIT-EXACT ON mb_ref!")

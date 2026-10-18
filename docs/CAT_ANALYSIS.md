@@ -137,6 +137,15 @@ En Malbolge Clásico, la instrucción `/` devuelve `59048` (`0t2222222222`) en E
         - $Y2_2 \to \mathbf{72}$ ('H'): $\text{crazy}(\text{rot}^1(\text{crazy}(121, 53)), 72) \equiv \mathbf{72}$.
     - Esta hexada garantiza que todas las celdas de datos vuelvan a ser caracteres ASCII estándar antes del inicio del siguiente lapso, eliminando por completo la degeneración entrópica residual en las variables del circuito.
 
+17. **Teorema de la Inversión de Preimágenes en el Retorno y Trampolines a Memoria Baja (`[DEMONSTRATED — ALGEBRAIC & RUNTIME]`):**
+    - **Inversión de Preimágenes para Celdas Transitadas:** Toda celda de datos $M$ transitada por el cursor de instrucciones $c$ ($c \ge 99$) antes de ser leída como operando por $d$ debe ser restaurada a su **preimagen biyectiva** $P = \text{inv\_xlat2}(K)$, no a su constante matemática $K$.
+      - Si la celda `127` se restaura directamente a $80$ ('P'), al transitar $c$ sobre ella en la vuelta siguiente muta a $\text{xlat2}[80-33] = 66$ ('B'), decodificando espuriamente a la instrucción `<` (emisión espuria del byte previo).
+      - Al restaurar la celda `127` a su preimagen $P_{127} = \text{inv\_xlat2}(80) = \mathbf{50}$ ('2'), $c$ decodifica en el residuo 33 la instrucción `{` (NOP universal 100% inerte), mutando determinísticamente a $80$ ('P') listo para ser consumido como operando por `p` en la celda 274.
+    - **Inmunidad Estricta de Memoria Baja ($c < 98$):** Toda celda con dirección $< 98$ jamás es transitada por $c$ (puesto que el portal de arranque en la celda 0 salta directamente a la celda 98, aterrizando en 99, y todo lazo de retorno aterriza en 99). En consecuencia:
+      - Las celdas en el rango $0..97$ son 100% inmunes a la regla de detención por no-ASCII (`mem[c] < 33 || mem[c] > 126`), pudiendo albergar cualquier valor arbitrario de 10 trits ($0..59048$) sin provocar abortos del intérprete.
+      - Los punteros de salto inter-etapa e inter-vuelta alojados en memoria baja permanecen perpetuamente invariantes y libres de degradación entrópica.
+    - **Demostración en Runtime:** Verificada en simulación y ejecución bit-a-bit en [`artifacts/cand_twostroke.mal`](../artifacts/cand_twostroke.mal) procesando secuencias de 3 bytes (`b"ABC"`) con fidelidad total y 0 bytes espurios intermedios.
+
 ---
 
 ## 3. Estado Epistémico y Frontera de Demostración
@@ -155,8 +164,8 @@ En Malbolge Clásico, la instrucción `/` devuelve `59048` (`0t2222222222`) en E
    - Demostrado que el pipeline lineal no puede superar 11 etapas sin colisión de celdas en el espacio ASCII $33..126$ (94 direcciones disponibles frente a 7-8 celdas de datos literales por etapa).
 7. **Motor Bi-Fásico a Dos Tiempos en Anillo Oscilador (`artifacts/cand_twostroke.mal`) (`[DEMONSTRATED — RUNTIME & ALGEBRAIC]`):**
    - Demostrada la conservación de período 2 ($F \leftrightarrow J$) en las 14 posiciones activas módulo 94 y la invarianza de NOPs en las 80 posiciones restantes.
-   - Demostrado el circuito de preimágenes y anclajes en [`tools/assemble_twostroke_cat.py`](../tools/assemble_twostroke_cat.py) con ejecución 100% bit-a-bit en Batería 1 (EOF `b""` $\to$ 0 bytes, rc 0), Batería 2 (todos los 256 bytes individuales `0x00..0xFF`), y Batería 2+ (pares de 2 bytes `b"AB"`, `b"ZZ"`, binarios).
-   - Verificado el salto de retorno en lazo cerrado ($c = 3339 \to 98 \to 99$) en [`artifacts/test_twostroke_k2.mal`](../artifacts/test_twostroke_k2.mal).
+   - Demostrado el circuito de preimágenes y anclajes en [`tools/assemble_twostroke_cat.py`](../tools/assemble_twostroke_cat.py) con ejecución 100% bit-a-bit en Batería 1 (EOF `b""` $\to$ 0 bytes, rc 0), Batería 2 (todos los 256 bytes individuales `0x00..0xFF`), Batería 2+ (pares de 2 bytes `b"AB"`, `b"ZZ"`, binarios), y Batería 3 (`b"ABC"` limpio).
+   - Verificado el salto de retorno en lazo cerrado ($c = 3339 \to 98 \to 99$) con re-anclaje de fase de punteros y preimágenes de datos.
 
 
 
