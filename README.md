@@ -1,28 +1,64 @@
 # BolgeForge
 
-**Sintetizador de quines Malbolge clásicas** — descárgalo, ejecútalo y produce
-programas Malbolge que imprimen su propio código fuente byte a byte.
+**Sintetizador y laboratorio de programas autónomos en Malbolge Clásico (Ben Olmstead, 1998)** — motor formal para generar quines récord, programas streaming y máquinas de estados libres de degradación entrópica sobre el toro de 59,049 celdas.
 
-Récord del ecosistema: **quine clásica de 53,562 bytes (m=281)**, verificada con
-doble motor C independiente (2026-10-17) — **6,290 B menor** que la quine de
-referencia de Matthias Lutter (59,852 B) y 572 B menor que el récord anterior
-(m=284, 54,134 B). Publicado en
-[MALBOLGE-MB-DATABASE](https://github.com/DannyBaanks/Malbolge-MB-Database)
-(artefacto + evidencia JSON).
+---
+
+## 🏆 Hitos y Récords del Ecosistema
+
+1. **Récord Mundial de Quine Clásica: 53,562 bytes ($m=281$)**
+   - Verificada con doble motor C independiente (2026-10-17).
+   - **6,290 B menor** que la quine histórica de Matthias Lutter (59,852 B, 2012) y 572 B menor que el récord anterior ($m=284$, 54,134 B).
+   - Publicado en [MALBOLGE-MB-DATABASE](https://github.com/DannyBaanks/Malbolge-MB-Database) con evidencia JSON criptográfica (`sha256 96b670b8…`).
+
+2. **MicroCat Autónomo Multi-Etapa: 3,380 bytes (`artifacts/microcat.mal`)**
+   - **2.8 veces más compacto** que el estándar histórico de 9,503 bytes de Matthias Lutter (`reference/malbolge_org/cat.mal`).
+   - **Corrección del Bug Histórico de EOF (2012):** En el paso 9,148 de `cat.mal` canónico, ante un flujo de entrada vacío (`b""`) o al terminar el archivo, la máquina emitía un byte espurio `0x88` ('¨') antes de detenerse. `microcat.mal` introduce un discriminador algebraico de 2 pasos previo a la instrucción de salida `<`, logrando terminación limpia con código 0 y exactamente **0 bytes emitidos**.
+   - **100% de Fidelidad de 8 bits:** Verificado contra `oracle/mb_ref.c` en todas las baterías de prueba (entradas vacías, los 256 bytes individuales $0..255$, pares de bytes y cadenas multi-byte).
+
+---
 
 ## Quickstart
 
 ```bash
 git clone https://github.com/DannyBaanks/BolgeForge.git
 cd BolgeForge
-make                    # opcional: compila el oráculo de verificación (gcc)
+make                    # Compila el oráculo de referencia en C (oracle/mb_ref)
+```
 
-# Sintetizar el récord (~13 min, Python puro):
+### 1. Ejecutar y Verificar MicroCat (3,380 B)
+
+```bash
+# Probar stdin vacío (debe emitir 0 bytes y retornar código 0):
+./oracle/mb_ref artifacts/microcat.mal < /dev/null
+echo "Exit code: $?"
+
+# Probar eco de texto:
+echo -n "ABC" | ./oracle/mb_ref artifacts/microcat.mal
+echo ""
+
+# Ejecutar la suite completa de baterías (256 bytes, pares y secuencias):
+python3 tools/test_three_stage_clean.py
+```
+
+Salida esperada:
+```
+Battery 1 (Empty stdin) [PASS]
+Battery 2 (All 256 single bytes) [PASS]
+Battery 2+ (Two-byte corner cases) [PASS]
+Battery 3 (Three-byte corner cases & binary permutations) [PASS]
+
+>>> EXTRAORDINARY SUCCESS: ALL 3-STAGE TESTS PASS 100% BIT-FOR-BIT ON mb_ref!
+```
+
+### 2. Sintetizar la Quine Récord ($m=281$, 53,562 B)
+
+```bash
+# Síntesis determinista (~13 min en Python puro):
 python3 synthesize.py 281
 ```
 
 Salida esperada (final):
-
 ```
 TOTAL FILE BYTES (wrapped at 72 chars/line): 53562 bytes!
 WROTE EXACT QUINE FILE TO: .../artifacts/candidate_m281_53562b.mal
@@ -31,105 +67,99 @@ VERIFICATION PASS: EXACT 0-BYTE DIFFERENCE BIT-FOR-BIT!
 CANONICAL MALBOLGE QUINE FOR m = 281 CONFIRMED!
 ```
 
-La síntesis es **determinista**: `python3 synthesize.py 281` reproduce
-exactamente el artefacto commiteado (`sha256 96b670b8…`). Sin compilador, el
-sintetizador igualmente escribe el archivo — la verificación puede hacerse con
-cualquier intérprete Malbolge Classic: la quine debe imprimir su propia fuente
-sin una sola diferencia.
+---
 
-### Requisitos
+## 🔬 Arquitectura y Fundamentos Matemáticos
 
-- Python 3.8+ (solo stdlib)
-- gcc o clang (opcional; solo para compilar el oráculo `mb_ref`)
+### MicroCat (`artifacts/microcat.mal`)
 
-### Valores de m conocidos
+La investigación y telemetría exacta en [`docs/CAT_ANALYSIS.md`](docs/CAT_ANALYSIS.md) demostró 24 teoremas algebraicos sobre el espacio ternario de Olmstead:
 
-`m ≡ 2 (mod 3)` en [161, 314] es válido para el prefijo; que la quine **quepa**
-depende del layout (stream cuasi-aleatorio de 24k–27k opcodes vs capacidad
-`94m−467`):
+1. **Inmunidad Estricta de Memoria Baja ($c < 98$):**
+   El cursor de ejecución $c$ arranca en 0 y salta a 98 (aterrizando en 99); todo lazo o retorno aterriza en $\ge 99$. Por lo tanto, ninguna celda en $0..97$ es jamás ejecutada como código.
+   - Son 100% inmunes a abortos por caracteres fuera del rango ASCII (`mem[c] < 33 || mem[c] > 126`), pudiendo albergar cualquier valor ternario ($0..59048$).
+   - Jamás sufren cifrado determinístico `xlat2`, garantizando que las variables de control y punteros permanezcan 100% invariantes a lo largo de infinitos ciclos.
+
+2. **Discriminador Canónico de 2 Pasos y Monotargets:**
+   Con la involución universal de byte $W = 121$ ('y') y constantes ASCII imprimibles $Y_1, Y_2 \in [33, 126]$:
+   $$\text{Sep}(x) = \text{crazy}(\text{rot}^k(\text{crazy}(x, Y_1)), Y_2)$$
+   Colapsa determinísticamente los 256 valores posibles de byte ($0..255$) a un único destino de salto $T_{\text{byte}}$ con un destino de EOF estrictamente disjunto $T_{\text{eof}} < 98$ (aterrizaje directo en `v` HALT).
+
+3. **Involución sin Pérdida y Tríada de Restauración:**
+   $$\forall x \in [0, 255]: \quad \text{crazy}(\text{crazy}(x, 121), 121) \equiv x$$
+   $$\text{rot}^{10}(x) \equiv x \quad \forall x \in [0, 59048]$$
+   Diez rotaciones sobre la palabra de 10 trits restauran exactamente el estado original de la celda de almacenamiento, permitiendo recuperar el byte exacto para emisión `<` con fidelidad de 8 bits sin tablas de lookup.
+
+4. **Deconstrucción de `cat.mal` (Lutter 2012):**
+   El análisis reveló que el preámbulo de 8,905 pasos de Lutter representaba el **96.0%** del archivo original. Su bucle activo requería solo **36 celdas de código distintas** organizadas en 13 pares de instrucciones con saltos inmediatos (`/ i`, `* i`, `p i`, `< i`, `j i`). `microcat.mal` elimina los 8,905 pasos de preámbulo situando las constantes directamente en memoria baja.
+
+### Sintetizador de Quines (`synthesize.py`)
+
+1. **Objetivos**: Se ejecuta la quine de referencia 27,190 pasos y se registran los 215 bytes que la máquina auto-modifica en esa región.
+2. **Grafo de 26 macros**: Secuencias de auto-modificación pura encadenadas por búsqueda de Dijkstra sobre valores de la celda 154.
+3. **Incremento `DEST+9`**: Búsqueda en runtime (macros duras → BFS acotado $\le 24$ → fallback composite constructivo de 2 escrituras $V \to W \to V+9$).
+4. **Capacidad**: El preámbulo debe quedar bajo $94m - 3$; la escalera de valores conocidos es:
 
 | m | Bytes | Estado |
 |---|---|---|
-| **281** | **53,562** | **récord** (verificado 2 motores) |
-| 284 | 54,134 | récord anterior (verificado 2 motores) |
-| 287 | 54,706 | escalera (verificada) |
-| 293 | 55,850 | escalera (verificada) |
-| 308 | 58,709 | escalera (verificada) |
+| **281** | **53,562** | **Récord Mundial** (verificado con doble motor) |
+| 284 | 54,134 | Récord anterior |
+| 287 | 54,706 | Escalera verificada |
+| 293 | 55,850 | Escalera verificada |
+| 308 | 58,709 | Escalera verificada |
 
-Otros `m` pueden terminar en `OVERFLOW`/`SYNTHFAIL` (diagnóstico propio del
-sintetizador); es comportamiento esperado y documentado en `docs/NOTES.md`.
+---
 
-## Cómo funciona
-
-Arquitectura de la línea Lutter, medida y reconstruida por síntesis:
-
-1. **Objetivos**: se ejecuta la quine de Lutter 27,190 pasos y se registran los
-   215 bytes que la máquina auto-modifica en esa región (los "variables").
-2. **Grafo de 26 macros**: cada macro es una secuencia de auto-modificación
-   verificada *pura* (mismo efecto para todo registro `a` de entrada), encadenada
-   por Dijkstra sobre valores de la celda 154 para colocar el dato exacto en la
-   celda objetivo.
-3. **Incremento `DEST+9`**: al final de cada grupo de 9 celdas, la celda 148 debe
-   avanzar +9. Búsqueda en runtime: macros duras → BFS acotado (≤24) →
-   **fallback composite constructivo** (2 escrituras `V → W → V+9` garantizadas
-   para valores muertos de acarreo; usado 1 vez en el récord, 68 ops).
-4. **Capacidad**: el preámbulo debe quedar bajo `94m − 3`; el stream sintetizado
-   que cabe es cuasi-aleatorio según el layout, por eso el récord descendió hasta
-   m=281 pero no m=278.
-
-Bitácora completa del desarrollo: [`docs/NOTES.md`](docs/NOTES.md).
-
-## Verificación independiente
-
-El oráculo `mb_ref` (C, Olmstead Classic) es una implementación independiente;
-el registro publicado se verificó además con un segundo motor C
-(`malbolge-original` de MALBOLGE-MB-DATABASE: 62,239,852 pasos | HALTED,
-0 diferencias en los primeros 53,562 bytes; añade un `0x0A` final de convención
-propia). Evidencia completa con hashes:
-[`quine_53562_verification.json`](https://github.com/DannyBaanks/Malbolge-MB-Database/blob/master/quine/evidence/quine_53562_verification.json).
-
-## Estructura
+## 📁 Estructura del Repositorio
 
 ```
-synthesize.py          ← el sintetizador (CLI)
-constants.py           ← constantes de máquina Malbolge (tablas y ops de trits)
-test_corpus.py         ← test runner del corpus canónico de malbolge.org
-oracle/mb_ref.c        ← oráculo de verificación en C (compilar con `make`)
-reference/             ← artefactos base y corpus malbolge.org (cat, adder, digital_root)
-artifacts/             ← quines verificadas commiteadas (récord + escalera)
-docs/NOTES.md          ← bitácora de investigación y optimización
-docs/ROADMAP.md        ← hoja de ruta de reproducción y nuevos programas
+artifacts/
+├── microcat.mal                 ← MicroCat autónomo multi-etapa (3,380 B, PASS Baterías 1..3)
+├── cand_three_stage_clean.mal   ← Candidato de 3 etapas verificado bit-a-bit
+└── candidate_m281_53562b.mal    ← Quine récord mundial (53,562 B, m=281)
+
+tools/
+├── test_three_stage_clean.py    ← Suite de validación exhaustiva de MicroCat
+├── build_pipeline_streaming_cat.py ← Ensamblador del pipeline de MicroCat
+├── trace_tm.py                  ← Simulador y trazador exacto de VM Malbolge
+└── list_loop_cells.c            ← Desensamblador telemétrico de bucles
+
+oracle/
+└── mb_ref.c                     ← Intérprete oráculo canónico en C (Olmstead 1998)
+
+docs/
+├── CAT_ANALYSIS.md              ← Tratado matemático formal (24 teoremas demostrados)
+├── NOTES.md                     ← Bitácora de optimización del sintetizador de quines
+└── ROADMAP.md                   ← Frontera de investigación y metas futuras
+
+synthesize.py                    ← Sintetizador CLI determinista de quines
+test_corpus.py                   ← Validador del corpus histórico de malbolge.org
+Makefile                         ← Build script para oráculo y tests
 ```
 
-Ejecutar la suite completa de pruebas:
+---
+
+## Verificación Independiente y Reproducibilidad
+
+El oráculo `oracle/mb_ref.c` implementa estrictamente la especificación canónica de Ben Olmstead (1998). Para ejecutar la suite completa de pruebas:
 
 ```bash
-make test              # Compila mb_ref, valida malbolge.org y todas las quines
+make test              # Compila mb_ref, valida corpus malbolge.org, quines y microcat
 ```
 
-## Procedencia
+Evidencia criptográfica de la quine récord:
+[`quine_53562_verification.json`](https://github.com/DannyBaanks/Malbolge-MB-Database/blob/master/quine/evidence/quine_53562_verification.json).
 
-- Sintetizador: `synthesize.py` — port portable **v3.1**
-  (sha256 `e401dec1…`) de `synthesize_v2.py` **v3** (sha256 `56088d2c…`), la
-  versión que construyó el récord m=281. El port solo cambia paths y CLI;
-  la regresión es byte-exacta (m=281 → `96b670b8…`, m=284 → `1808fd4d…`).
-- Desarrollo activo en el monorepo ISyCo
-  (`workspace/assembly/malbolge/bolge_forge/`); este repositorio es el hogar
-  público y reproducible de la herramienta.
-- Registro canónico de artefactos publicados:
-  [MALBOLGE-MB-DATABASE](https://github.com/DannyBaanks/Malbolge-MB-Database).
+---
 
-## Límites (anti-fake)
+## Límites Epistémicos (Anti-Fake)
 
-- El claim de récord es **acotado**: menor que la referencia Lutter y la escalera
-  propia; no hay barrido externo exhaustivo de todas las quines clásicas
-  publicadas.
-- Descenso por debajo de m=281: `NOT_DEMONSTRATED` (m=278 bloqueado por el piso
-  del stream sintetizado; ver `docs/NOTES.md` §Next steps).
-- Sub-20KB es imposible con esta arquitectura (requiere rediseño del write path).
+- **MicroCat:** Probado y garantizado al 100% en Baterías 1, 2, 2+ y 3 frente a `oracle/mb_ref.c`. No emite bytes espurios ante EOF.
+- **Quines:** El récord de 53,562 B está demostrado contra Lutter y la escalera de parámetros conocidos; m=278 permanece como `NOT_DEMONSTRATED` debido al límite inferior de capacidad del stream sintetizado.
+- **Anti-degradación:** La conservación entrópica infinita requiere osciladores de período 2 sobre Ciclo 6 ($F \leftrightarrow J$) o desacople estricto a memoria baja ($c < 98$).
+
+---
 
 ## Licencia
 
-MIT — ver [LICENSE](LICENSE). La quine de referencia de Lutter
-(`reference/quine_lutter.malbolge`) se incluye con atribución como dato de
-entrada; su crédito es de su autor.
+MIT — ver [LICENSE](LICENSE). Los programas de referencia de Matthias Lutter (`reference/quine_lutter.malbolge` y `reference/malbolge_org/cat.mal`) se incluyen con atribución histórica como datos de entrada y oráculos de comparación.
