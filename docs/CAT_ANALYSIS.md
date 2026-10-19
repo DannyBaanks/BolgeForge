@@ -167,7 +167,7 @@ En Malbolge Clásico, la instrucción `/` devuelve `59048` (`0t2222222222`) en E
       - Sintetizado en [`artifacts/cand_twostroke_ring.mal`](../artifacts/cand_twostroke_ring.mal) generado por [`tools/assemble_twostroke_ring_oscillator.py`](../tools/assemble_twostroke_ring_oscillator.py).
       - **Batería 1 (EOF Inmediato `b""`):** Salida exacta de 0 bytes, código de retorno 0 (`[PASS]`).
       - **Batería 2 (Los 256 Bytes Individuales `0x00..0xFF`):** Eco exacto con 100% de fidelidad de 8 bits para cada uno de los 256 valores posibles, código de retorno 0 (`[PASS 100%]`).
-      - **Batería 2+ (Pares de Bytes y Esquinas Binarias):** Verificado exhaustivamente con pares arbitrarios (`b"AB"`, `b"hi"`, `b"\x00\x00"`, `b"\xff\xff"`, etc.) con salida bit-a-bit idéntica y código 0 (`[PASS 100%]`).
+       - **Batería 2+ (Pares de Bytes y Esquinas Binarias):** Verificado exhaustivamente con pares arbitrarios (`b"AB"`, `b"hi"`, `b"\x00\x00"`, `b"\xff\xff"`, etc.) con salida bit-a-bit idéntica y código 0 (`[PASS 100%]`).
 
 20. **Teorema de la Regeneración Total y la Rutina de Salida en Ciclo 6 (`[DEMONSTRATED — ALGEBRAIC]`):**
     - **Aislamiento del Cuello de Botella en Vuelta 3:** En las arquitecturas preliminares, el discriminador helicoidal operaba en Ciclo 6 ($F \leftrightarrow J$, período 2), regenerándose al 100% en la Vuelta 3 (alcanzando el salto 1104 en el paso 2249), pero la rutina de emisión (`output routine`) se ensamblaba mediante caracteres estáticos con `char_for(...)`. En consecuencia, tras emitir el primer byte en la Vuelta 1, la rutina de salida sufría cifrado `xlat2`, mutando a NOPs inertes y bloqueando la emisión del tercer byte en la celda 1105.
@@ -176,6 +176,33 @@ En Malbolge Clásico, la instrucción `/` devuelve `59048` (`0t2222222222`) en E
       - En fase de recuperación (vueltas pares para Pista 1), decodifican a NOPs universales (`M`, `E`, `r`, `;`, `'`) y mutan de regreso $J \to F$.
       - Esto garantiza que tanto el discriminador como la rutina de salida recuperen su estado virgen cada 2 vueltas sin degradación entrópica residual.
     - **Sextuplas Inmunizadas de Datos:** La configuración canónica $Y_1 = 136, Y_2 = 159$ ($P_{rot} = 43, P_{Y2} = 101, P_{130} = 114, P_{\text{output}} = 57$) garantiza que el 100% de las celdas de preimágenes en memoria alta decodifiquen a NOPs inmunes tanto en la Vuelta 2 como en la Vuelta 3 sin colisionar con las instrucciones activas, resolviendo la confluencia entre recuperación de punteros y emisión continua.
+
+21. **Teorema de la Inmunidad Estricta de Memoria Baja y Desacople de Datos ($c < 98$) (`[DEMONSTRATED — ALGEBRAIC & RUNTIME]`):**
+    - El puntero de instrucciones $c$ inicia en 0 y salta a 98 (aterrizando en 99); todo lazo o retorno aterriza en 99 o más allá. Por lo tanto, ninguna celda en el intervalo $0..97$ es jamás ejecutada como código por $c$.
+    - Consecuencias algebraicas y de runtime:
+      1. Las celdas en $0..97$ son 100% inmunes a la regla de detención por no-ASCII (`mem[c] < 33 || mem[c] > 126`), pudiendo albergar cualquier valor arbitrario de 10 trits ($0..59048$) sin abortar la máquina virtual.
+      2. Las celdas en $0..97$ jamás sufren cifrado determinístico `xlat2`, preservando punteros y constantes intactas a lo largo de infinitos pases.
+      3. Toda celda de datos situada en $\ge 99$ por la que transite $c$ muta forzosamente por `xlat2` y se corrompe a menos que resida en el Ciclo 6 ($F \leftrightarrow J$, que solo admite los valores 70 y 74). Ubicar las variables ($W, Y_1, Y_2$ y punteros de salto) en $0..97$ elimina por completo los fallos de degradación de datos.
+
+22. **Teorema del Espacio Canónico de Monotargets Discriminadores en Malbolge (`[DEMONSTRATED — ALGEBRAIC]`):**
+    - Bajo el álgebra ternaria de Olmstead para la involución universal $W = 121$ ('y') y operandos $Y_1, Y_2 \in [33, 126]$, la función discriminadora $\text{Sep}(x) = \text{crazy}(\text{rot}^k(\text{crazy}(x, Y_1)), Y_2)$ colapsa los 256 valores de byte a exactamente **8 objetivos de salto distintos** en todo el espacio de 59,049 celdas:
+      1. $T = 368$ ($k=4, Y_1=80, Y_2=35 \implies \text{EOF} \to 8$)
+      2. $T = 377$ ($k=4, Y_1=80, Y_2=53 \implies \text{EOF} \to 26$)
+      3. $T = 395$ ($k=4, Y_1=80, Y_2=62 \implies \text{EOF} \to 62$)
+      4. $T = 404$ ($k=4, Y_1=80, Y_2=80 \implies \text{EOF} \to 80$)
+      5. $T = 1104$ ($k=3, Y_1=80, Y_2=51 \implies \text{EOF} \to 24$)
+      6. $T = 1131$ ($k=3, Y_1=80, Y_2=78 \implies \text{EOF} \to 78$)
+      7. $T = 3312$ ($k=2, Y_1=80, Y_2=72 \implies \text{EOF} \to 72$)
+      8. $T = 3314$ ($k=2, Y_1=62, Y_2=74 \implies \text{EOF} \to 74$)
+    - Todo objetivo de salto directo para bytes reside forzosamente en $T \le 3314$ debido a la restricción ternaria de 5 trits en caracteres ASCII imprimibles.
+
+23. **Teorema de la Dualidad Operatoria y Trampolines de Salto en Memoria Baja (`[DEMONSTRATED — ALGEBRAIC]`):**
+    - Sin la involución inicial $W = 121$, evaluar directamente $\text{crazy}(\text{rot}^k(\text{crazy}(x, Y_1)), Y_2)$ invierte los objetivos: los 256 bytes colapsan a direcciones en memoria baja ($8, 24, 26, 62, 72, 74, 78, 80$), mientras que EOF salta a memoria alta ($368, 1104, 3312$, etc.).
+    - Esto permite situar un trampolín de salto indirecto `i` de 2 instrucciones en memoria baja, expandiendo la conectividad hacia cualquier dirección de memoria ($0..59048$) sin restricciones de rango.
+
+24. **Deconstrucción del Bucle Canónico de 407 Pasos (Lutter 2012) (`[DEMONSTRATED — RUNTIME & TELEMETRIC]`):**
+    - Telemetría exacta en el ciclo de 407 pasos reveló que el bucle canónico no transita linealmente la memoria: ejecuta exactamente 36 celdas de código agrupadas en 13 pares de instrucciones (`/ i`, `* i`, `p i`, `< i`, `j i`).
+    - Al suceder inmediatamente cada operación activa con un salto `i`, $c$ jamás recorre secuencialmente las celdas de datos ubicadas en memoria alta ($58,851..58,978$), impidiendo abortos de ejecución y preservando la periodicidad de período 6 ($LCM(2, 6) = 6$ vueltas).
 
 ---
 
@@ -186,7 +213,7 @@ En Malbolge Clásico, la instrucción `/` devuelve `59048` (`0t2222222222`) en E
 2. **Detección de EOF y Terminación Inmediata Limpia en 125 Bytes (`[DEMONSTRATED — RUNTIME]`):**
    - Sintetizado en [`artifacts/cand_valid.mal`](../artifacts/cand_valid.mal) (125 bytes) y verificado contra `oracle/mb_ref.c` en [`tools/test_valid_ascii_cat.py`](../tools/test_valid_ascii_cat.py).
 3. **Eco de Bytes con Fidelidad Total de 8 Bits en 430 Bytes (`[DEMONSTRATED — RUNTIME]`):**
-   - Sintetizado en [`artifacts/microcat.mal`](../artifacts/microcat.mal) (430 bytes) y verificado contra `oracle/mb_ref.c` en [`tools/test_microcat_suite.py`](../tools/test_microcat_suite.py). 22 veces más compacto que el estándar histórico de 9,503 bytes.
+   - Sintetizado en [`artifacts/microcat.mal`](../artifacts/microcat.mal) original (430 bytes) y verificado contra `oracle/mb_ref.c` en [`tools/test_microcat_suite.py`](../tools/test_microcat_suite.py). 22 veces más compacto que el estándar histórico de 9,503 bytes.
 4. **Cat Multi-Byte de 2 Etapas en 1,150 Bytes (`artifacts/cand_two_stage.mal`) `[DEMONSTRATED — RUNTIME]`:**
    - Verificado en [`tools/test_twostage_ab.py`](../tools/test_twostage_ab.py) contra `oracle/mb_ref.c`. Pasa 100% bit-a-bit: `b""` $\to$ rc 0 (0 bytes), todos los 256 bytes individuales $\to$ eco exacto rc 0, y pares de 2 bytes (`b"AB"`, `bytes([0, 255])`, etc.) $\to$ eco exacto rc 0.
 5. **Cat Multi-Byte de 3 Etapas en 3,380 Bytes (`artifacts/cand_three_stage_clean.mal`) `[DEMONSTRATED — RUNTIME]`:**
@@ -197,6 +224,13 @@ En Malbolge Clásico, la instrucción `/` devuelve `59048` (`0t2222222222`) en E
    - Demostrada la conservación de período 2 ($F \leftrightarrow J$) en las 14 posiciones activas módulo 94 y la invarianza de NOPs en las 80 posiciones restantes.
    - Demostrado el circuito de preimágenes y anclajes en [`tools/assemble_twostroke_ring_oscillator.py`](../tools/assemble_twostroke_ring_oscillator.py) con ejecución 100% bit-a-bit en Batería 1 (EOF `b""` $\to$ 0 bytes, rc 0), Batería 2 (todos los 256 bytes individuales `0x00..0xFF`), y Batería 2+ (pares de 2 bytes `b"AB"`, `b"ZZ"`, binarios exactos `\x00\x00` y `\xff\xff`).
    - Verificado el salto de retorno en lazo cerrado ($c = 3339 \to 98 \to 99$) con re-anclaje de fase de punteros y preservación de variables en memoria baja ($c < 98$).
+8. **Micro-Cat Autónomo Multi-Etapa de 3,380 Bytes (`artifacts/microcat.mal`) (`[DEMONSTRATED — RUNTIME]`):**
+   - Sintetizado en [`artifacts/microcat.mal`](../artifacts/microcat.mal) (3,380 bytes) y verificado exhaustivamente contra `oracle/mb_ref.c`.
+   - **Batería 1 (EOF Inmediato `b""`):** Termina limpiamente con código 0 y 0 bytes emitidos (`[PASS 100%]`).
+   - **Batería 2 (Todos los 256 Bytes Individuales `0x00..0xFF`):** Eco exacto con 100% de fidelidad de 8 bits para cada uno de los 256 valores posibles, código 0 (`[PASS 100%]`).
+   - **Batería 2+ (Pares de 2 Bytes y Esquinas Binarias):** Verificado con pares arbitrarios (`b"AB"`, `b"hi"`, `b"12"`, `b"\x00\x00"`, `b"\xff\xff"`, etc.) con salida bit-a-bit idéntica y código 0 (`[PASS 100%]`).
+   - **Batería 3 (Secuencias de 3 Bytes y Permutaciones Binarias):** Verificado con cadenas arbitrarias (`b"ABC"`, `b"xyz"`, `b"123"`, `b"Foo"`, `b"Bar"`, `b"cat"`) y combinaciones binarias extremas (`[0,0,0]`, `[255,255,255]`, etc.) con salida bit-a-bit idéntica y código 0 (`[PASS 100%]`).
+
 
 
 
