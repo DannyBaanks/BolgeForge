@@ -6,7 +6,7 @@ on:
 
 jobs:
   oracle:
-    name: Verify committed quines byte-for-byte
+    name: Verify all committed Malbolge artifacts on mb_ref
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,11 +17,17 @@ jobs:
       - name: Run oracle on every committed quine
         run: |
           set -e
-          for f in artifacts/*.mal; do
+          for f in artifacts/candidate_m*.mal; do
             ./mb_ref "$f" > /tmp/out.mal
             diff -q "$f" /tmp/out.mal
             echo "OK $f ($(wc -c < "$f") bytes, self-reproduction exact)"
           done
+      - name: Verify microcat artifact (3,380B) on mb_ref
+        run: python3 tools/test_microcat_suite.py
+      - name: Verify compressed benchmarks on mb_ref
+        run: python3 tools/test_compressed.py
+      - name: Verify truth machine artifact (105B) on mb_ref
+        run: python3 tools/verify_truth_machine_full.py
 
   synthesize-record:
     name: Synthesize m=281 and check byte-exact regression

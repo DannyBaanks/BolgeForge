@@ -11,7 +11,7 @@ MAL_FILE = REPO_ROOT / 'artifacts' / 'microcat.mal'
 assert MB_REF.exists(), f"mb_ref not found at {MB_REF}"
 assert MAL_FILE.exists(), f"microcat.mal not found at {MAL_FILE}"
 
-print(f"=== MICROCAT 430B TEST SUITE ON mb_ref ===")
+print(f"=== MICROCAT 3,380B TEST SUITE ON mb_ref ===")
 print(f"Target: {MAL_FILE} ({MAL_FILE.stat().st_size} bytes)")
 
 # Battery 1: Empty input
@@ -34,5 +34,27 @@ if not failed:
 else:
     print(f"  [FAIL] Failed on {len(failed)} bytes: {failed[:5]}")
     sys.exit(1)
+
+# Battery 2+: Two-byte corner cases
+two_byte_samples = [
+    b'AB', b'hi', b'12', b'\n\n', b'\x00\x00', b'\xff\xff',
+    bytes([0, 255]), bytes([255, 0]), bytes([127, 128]), bytes([65, 0]), bytes([0, 65])
+]
+for payload in two_byte_samples:
+    p = subprocess.run([str(MB_REF), str(MAL_FILE)], input=payload, capture_output=True)
+    assert p.returncode == 0 and p.stdout == payload, f"Battery 2+ failed on {payload!r}: {p}"
+print("  [PASS] BATTERY 2+: Two-byte corner cases echo bit-for-bit with clean exit 0.")
+
+# Battery 3: Three-byte corner cases & binary permutations
+three_byte_samples = [
+    b'ABC', b'xyz', b'123', b'Foo', b'Bar', b'cat', b'\r\n\x00',
+    bytes([0, 0, 0]), bytes([255, 255, 255]), bytes([0, 128, 255]),
+    bytes([255, 128, 0]), bytes([0, 255, 0]), bytes([255, 0, 255]),
+    bytes([1, 2, 3]), bytes([254, 255, 0]), bytes([0, 1, 0])
+]
+for payload in three_byte_samples:
+    p = subprocess.run([str(MB_REF), str(MAL_FILE)], input=payload, capture_output=True)
+    assert p.returncode == 0 and p.stdout == payload, f"Battery 3 failed on {payload!r}: {p}"
+print("  [PASS] BATTERY 3: Three-byte corner cases & binary permutations echo bit-for-bit.")
 
 print("\n>>> ALL VERIFIED ON OLMSTEAD REFERENCE INTERPRETER (mb_ref)!")

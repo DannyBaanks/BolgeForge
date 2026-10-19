@@ -27,7 +27,13 @@ microcat: mb_ref
 	python3 tools/microcat.py
 	python3 tools/assemble_microcat.py
 
-test: mb_ref test-corpus microcat
+test-compressed: mb_ref
+	python3 tools/test_compressed.py
+
+test-tm: mb_ref
+	python3 tools/verify_truth_machine_full.py
+
+test: mb_ref test-corpus microcat test-compressed test-tm
 	@echo "Verifying committed quines..."
 	@for f in artifacts/candidate_m*.mal; do \
 		./mb_ref "$$f" > /tmp/out.mal && diff -q "$$f" /tmp/out.mal && echo "OK $$f"; \
@@ -36,5 +42,5 @@ test: mb_ref test-corpus microcat
 audit: mb_ref
 	python3 tools/audit_bloat.py
 
-.PHONY: all clean test test-corpus analyze-corpus synth-cat microcat audit
+.PHONY: all clean test test-corpus test-compressed test-tm analyze-corpus synth-cat microcat audit
 
