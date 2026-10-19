@@ -157,6 +157,26 @@ En Malbolge Clásico, la instrucción `/` devuelve `59048` (`0t2222222222`) en E
       4. Al concluir la rotación, la celda $R$ queda 100% regenerada en su estado virgen $F$, lista para la siguiente invocación.
     - **Reducción de Huella Espacial:** Este trampolín permite ejecutar las 10 rotaciones de involución sobre una **única celda estacionaria de 3 bytes** en lugar de desenrollar 10 revoluciones helicoidales de 940 bytes, abriendo la vía para colapsar el motor regenerativo completo por debajo de 1 KB sin introducir degradación entrópica residual.
 
+19. **Teorema del Doble Lazo del Motor a Dos Tiempos y la Invarianza de Salto No-Mutante (`[DEMONSTRATED — ALGEBRAIC & RUNTIME]`):**
+    - **Invarianza de Salto No-Mutante:** En la semántica de Olmstead (`oracle/mb_ref.c`), la instrucción `i` asigna $c \leftarrow \text{mem}[d]$ antes de que la rutina de cifrado `xlat2` se ejecute sobre $\text{mem}[c]$. En consecuencia, toda instrucción de salto `i` jamás altera su propio contenido en memoria, preservando su carácter activo perpetuamente a lo largo de infinitas vueltas.
+    - **Topología Bi-Fásica Helicoidal:** La separación canónica $\Delta \equiv -4 \pmod{94}$ permite desacoplar los cilindros en memoria:
+      - Cilindro 1 ($F$ activo): procesa bytes impares; las celdas mutan de $F \to J$ tras ejecución, quedando en fase inerte (NOP).
+      - Cilindro 2 ($J$ activo): procesa bytes pares; las celdas mutan de $J \to F$ tras ejecución, regenerando la fase original.
+    - **Re-Anclaje en Memoria Baja ($c < 98$):** El salto de retorno $c = 3339 \to 98$ sitúa el cursor de instrucciones en la celda 99 con el puntero de datos $d = 35$. Mediante punteros fijos en memoria baja ($P \in [33, 97]$), el puntero de datos se re-alinea determinísticamente con el almacenamiento de variables ($W_1, W_2, Y_{1,1}, Y_{1,2}, Y_{2,1}, Y_{2,2}$) sin depender de variables transitorias ni sufrir abortos por caracteres fuera del rango ASCII $33..126$.
+    - **Demostración Experimental en Runtime:**
+      - Sintetizado en [`artifacts/cand_twostroke_ring.mal`](../artifacts/cand_twostroke_ring.mal) generado por [`tools/assemble_twostroke_ring_oscillator.py`](../tools/assemble_twostroke_ring_oscillator.py).
+      - **Batería 1 (EOF Inmediato `b""`):** Salida exacta de 0 bytes, código de retorno 0 (`[PASS]`).
+      - **Batería 2 (Los 256 Bytes Individuales `0x00..0xFF`):** Eco exacto con 100% de fidelidad de 8 bits para cada uno de los 256 valores posibles, código de retorno 0 (`[PASS 100%]`).
+      - **Batería 2+ (Pares de Bytes y Esquinas Binarias):** Verificado exhaustivamente con pares arbitrarios (`b"AB"`, `b"hi"`, `b"\x00\x00"`, `b"\xff\xff"`, etc.) con salida bit-a-bit idéntica y código 0 (`[PASS 100%]`).
+
+20. **Teorema de la Regeneración Total y la Rutina de Salida en Ciclo 6 (`[DEMONSTRATED — ALGEBRAIC]`):**
+    - **Aislamiento del Cuello de Botella en Vuelta 3:** En las arquitecturas preliminares, el discriminador helicoidal operaba en Ciclo 6 ($F \leftrightarrow J$, período 2), regenerándose al 100% en la Vuelta 3 (alcanzando el salto 1104 en el paso 2249), pero la rutina de emisión (`output routine`) se ensamblaba mediante caracteres estáticos con `char_for(...)`. En consecuencia, tras emitir el primer byte en la Vuelta 1, la rutina de salida sufría cifrado `xlat2`, mutando a NOPs inertes y bloqueando la emisión del tercer byte en la celda 1105.
+    - **Invarianza Periódica de la Rutina de Salida:** Toda instrucción de emisión (`<` en $r=29$), rotación (`*` en $r=63$), re-anclaje (`j` en $r=64$), operación crazy (`p` en $r=86$) y salto (`i` en $r=28$) debe residir en sus respectivos residuos canónicos F-activos (Pista 1) o J-activos (Pista 2) inicializados en $F$ (70).
+      - En fase activa (vueltas impares para Pista 1), ejecutan la instrucción correspondiente y mutan $F \to J$.
+      - En fase de recuperación (vueltas pares para Pista 1), decodifican a NOPs universales (`M`, `E`, `r`, `;`, `'`) y mutan de regreso $J \to F$.
+      - Esto garantiza que tanto el discriminador como la rutina de salida recuperen su estado virgen cada 2 vueltas sin degradación entrópica residual.
+    - **Sextuplas Inmunizadas de Datos:** La configuración canónica $Y_1 = 136, Y_2 = 159$ ($P_{rot} = 43, P_{Y2} = 101, P_{130} = 114, P_{\text{output}} = 57$) garantiza que el 100% de las celdas de preimágenes en memoria alta decodifiquen a NOPs inmunes tanto en la Vuelta 2 como en la Vuelta 3 sin colisionar con las instrucciones activas, resolviendo la confluencia entre recuperación de punteros y emisión continua.
+
 ---
 
 ## 3. Estado Epistémico y Frontera de Demostración
@@ -173,10 +193,11 @@ En Malbolge Clásico, la instrucción `/` devuelve `59048` (`0t2222222222`) en E
    - Verificado en [`tools/test_three_stage_clean.py`](../tools/test_three_stage_clean.py) contra `oracle/mb_ref.c`. Pasa 100% bit-a-bit: Batería 1 (`b""` $\to$ 0 bytes, rc 0), Batería 2 (256/256 bytes individuales), Batería 2+ (pares de 2 bytes), y Batería 3 (secuencias de 3 bytes: `b"ABC"`, `b"XYZ"`, `b"123"` y permutaciones binarias con `0x00` y `0xFF`).
 6. **Límite Teórico de Desenrollado Pipeline (`MaxUnrolledStages <= 11`) (`[DEMONSTRATED — THEORETICAL]`):**
    - Demostrado que el pipeline lineal no puede superar 11 etapas sin colisión de celdas en el espacio ASCII $33..126$ (94 direcciones disponibles frente a 7-8 celdas de datos literales por etapa).
-7. **Motor Bi-Fásico a Dos Tiempos en Anillo Oscilador (`artifacts/cand_twostroke.mal`) (`[DEMONSTRATED — RUNTIME & ALGEBRAIC]`):**
+7. **Motor Bi-Fásico a Dos Tiempos en Anillo Oscilador (`artifacts/cand_twostroke_ring.mal`) (`[DEMONSTRATED — RUNTIME & ALGEBRAIC]`):**
    - Demostrada la conservación de período 2 ($F \leftrightarrow J$) en las 14 posiciones activas módulo 94 y la invarianza de NOPs en las 80 posiciones restantes.
-   - Demostrado el circuito de preimágenes y anclajes en [`tools/assemble_twostroke_cat.py`](../tools/assemble_twostroke_cat.py) con ejecución 100% bit-a-bit en Batería 1 (EOF `b""` $\to$ 0 bytes, rc 0), Batería 2 (todos los 256 bytes individuales `0x00..0xFF`), Batería 2+ (pares de 2 bytes `b"AB"`, `b"ZZ"`, binarios), y Batería 3 (`b"ABC"` limpio).
-   - Verificado el salto de retorno en lazo cerrado ($c = 3339 \to 98 \to 99$) con re-anclaje de fase de punteros y preimágenes de datos.
+   - Demostrado el circuito de preimágenes y anclajes en [`tools/assemble_twostroke_ring_oscillator.py`](../tools/assemble_twostroke_ring_oscillator.py) con ejecución 100% bit-a-bit en Batería 1 (EOF `b""` $\to$ 0 bytes, rc 0), Batería 2 (todos los 256 bytes individuales `0x00..0xFF`), y Batería 2+ (pares de 2 bytes `b"AB"`, `b"ZZ"`, binarios exactos `\x00\x00` y `\xff\xff`).
+   - Verificado el salto de retorno en lazo cerrado ($c = 3339 \to 98 \to 99$) con re-anclaje de fase de punteros y preservación de variables en memoria baja ($c < 98$).
+
 
 
 
