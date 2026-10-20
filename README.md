@@ -142,6 +142,31 @@ La investigación y telemetría exacta en [`docs/CAT_ANALYSIS.md`](docs/CAT_ANAL
 4. **Deconstrucción de `cat.mal` (Lutter 2012):**
    El análisis reveló que el preámbulo de 8,905 pasos de Lutter representaba el **96.0%** del archivo original. Su bucle activo requería solo **36 celdas de código distintas** organizadas en 13 pares de instrucciones con saltos inmediatos (`/ i`, `* i`, `p i`, `< i`, `j i`). `microcat.mal` elimina los 8,905 pasos de preámbulo situando las constantes directamente en memoria baja.
 
+### FizzBuzz Autónomo (`artifacts/fizzbuzz.mal`)
+
+La síntesis de FizzBuzz sobre el toro de 59,049 celdas resuelve un problema abierto desde 1998 mediante cuatro principios formales:
+
+1. **Arquitectura de Cinta Transportadora (Conveyor Architecture):**
+   Para evitar que el puntero de datos $d$ sobreescriba instrucciones de código ejecutables $c$, la memoria se particiona en dos regiones disjuntas separadas por una brecha estéril de 2,055 celdas:
+   $$\text{Datos: } d \in [121, 1259] \quad \ll \quad \text{Código: } c \in [3315, 4454]$$
+   Dado que en cada ciclo de Malbolge tanto $c$ como $d$ se incrementan en 1 tras cada instrucción, se mantiene la invariante de sincronía:
+   $$\Delta c \equiv \Delta d$$
+   Esto garantiza que cada macro de emisión consume exactamente la misma cantidad de celdas de código que de celdas de datos, manteniendo constante la distancia relativa durante toda la ejecución.
+
+2. **Salto Cuántico a Memoria Alta sin Literales Prohibidos:**
+   El cargador de Malbolge solo admite caracteres en ASCII $[33, 126]$. No es posible codificar literales $> 126$ como 3312 directamente en el archivo fuente. El preámbulo en memoria baja ($c=0 \to 99..107$) computa algebraicamente el salto:
+   $$\text{crazy}(\text{rot}^2(80), 72) = 3312$$
+   Aterriza en el cojín de amortiguación $c=3312..3314$, configurando $d=121$ antes de ingresar a la cinta en $c=3315$.
+
+3. **Matriz de Recetas de Emisión de Caracteres:**
+   Las 100 líneas contienen 413 bytes distribuidos en exactamente 15 caracteres únicos (el `'0'` nunca se emite):
+   - **Salto de Línea (`\n`, ASCII 10):** Emitido en 1 paso mediante rotación: $\text{rot}(118) \equiv 19722 \equiv 10 \pmod{256}$. Secuencia: `* <` (2 opcodes, 2 celdas de datos).
+   - **Dígitos ($1..9$) y Letras ($B, F, i, u, z$):** Emitidos en 2 pasos mediante composición $\text{crazy}(\text{rot}(V_1), V_2) \pmod{256}$. Secuencia: `* p <` (3 opcodes, 3 celdas de datos).
+   - Cada constante $V_1, V_2$ está garantizada dentro de ASCII imprimible $[33, 126]$.
+
+4. **Parada Limpia (`v`):**
+   Al alcanzar el carácter 413 (el `\n` tras el número 100 `"Buzz\n"`), el cursor de instrucciones aterriza directamente en el opcode de terminación limpia `v` en $c=4454$, saliendo inmediatamente con código 0 y cero bytes espurios.
+
 ### Sintetizador de Quines (`synthesize.py`)
 
 1. **Objetivos**: Se ejecuta la quine de referencia 27,190 pasos y se registran los 215 bytes que la máquina auto-modifica en esa región.
