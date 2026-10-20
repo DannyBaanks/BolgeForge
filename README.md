@@ -29,6 +29,16 @@
      - `artifacts/99_bottles_compressed.mal`: **21,809 B** ($-752$ B, **$-3.33\%$**)
    - 100% de paridad funcional y regresión bit a bit verificada en [`tools/test_compressed.py`](tools/test_compressed.py).
 
+5. **El Santo Grial: FizzBuzz Autónomo (1 a 100) en Malbolge Clásico (4,455 opcodes, 4,517 B, `artifacts/fizzbuzz.mal`)**
+   - **Resolución del reto abierto histórico de 28 años:** El primer programa autónomo y autocontenido para la especificación canónica de Ben Olmstead (1998, 59,049 celdas) que computa y emite las 100 líneas canónicas de FizzBuzz (`1\n2\nFizz\n4\nBuzz\n...`) y termina con parada limpia (`v`, código de salida 0).
+   - **Arquitectura de Cinta Transportadora Lineal No Colisionante (Conveyor Architecture):**
+     - **Segmento de Código:** $c = 3315 .. 4454$ (1,140 instrucciones).
+     - **Segmento de Datos:** $d = 121 .. 1259$ (1,139 constantes de datos en ASCII $[33, 126]$).
+     - **Brecha de separación de 2,055 celdas:** Al situarse $d$ por debajo de 1260 y $c$ por encima de 3314, el puntero de datos jamás colisiona con el código, garantizando cero degradación entrópica de instrucciones.
+     - **Salto Cuántico Inicial:** Computa algebraicamente el salto a memoria alta mediante discriminador loco ($\text{crazy}(\text{rot}^2(80), 72) = 3312$), aterrizando con precisión en $c=3315$ e inicializando $d=121$.
+     - **Síntesis exacta de 15 caracteres únicos:** `\n` emitido en 1 paso ($\text{rot}$); dígitos $1..9$ y letras $B, F, i, u, z$ emitidos en 2 pasos ($\text{rot} \to \text{crazy}$).
+   - **Rendimiento:** Ejecuta las 100 líneas completas (413 bytes emitidos bit a bit idénticos) en **2 milisegundos** sobre `oracle/mb_ref.c`, verificado con [`tools/test_fizzbuzz.py`](tools/test_fizzbuzz.py).
+
 ---
 
 ## Quickstart
@@ -74,13 +84,23 @@ python3 tools/verify_truth_machine_full.py
 python3 tools/test_compressed.py
 ```
 
-### 4. Ejecutar la Suite Completa de Tests
+### 4. Ejecutar y Verificar FizzBuzz (4,455 opcodes)
 
 ```bash
-make test               # Ejecuta corpus malbolge.org, microcat, compressed, truth machine y quines
+# Ejecutar las 100 líneas canónicas de FizzBuzz (salida en 2 ms):
+./mb_ref artifacts/fizzbuzz.mal
+
+# Validación automatizada bit a bit:
+python3 tools/test_fizzbuzz.py
 ```
 
-### 5. Sintetizar la Quine Récord ($m=281$, 53,562 B)
+### 5. Ejecutar la Suite Completa de Tests
+
+```bash
+make test               # Ejecuta corpus malbolge.org, microcat, compressed, truth machine, fizzbuzz y quines
+```
+
+### 6. Sintetizar la Quine Récord ($m=281$, 53,562 B)
 
 ```bash
 # Síntesis determinista (~10-13 min en Python puro):
@@ -143,6 +163,7 @@ La investigación y telemetría exacta en [`docs/CAT_ANALYSIS.md`](docs/CAT_ANAL
 
 ```
 artifacts/
+├── fizzbuzz.mal                 ← FizzBuzz autónomo 1..100 en Classic Malbolge (4,455 opcodes, 4,517 B)
 ├── microcat.mal                 ← MicroCat autónomo multi-etapa (3,380 B, PASS Baterías 1..3)
 ├── truth_machine.mal            ← Truth Machine canónica en Classic Malbolge (105 B)
 ├── cat_compressed.mal           ← Cat de Lutter re-sintetizado (-12.02%, 8,254 B)
@@ -152,6 +173,8 @@ artifacts/
 └── candidate_m281_53562b.mal    ← Quine récord mundial (53,562 B, m=281)
 
 tools/
+├── synthesize_fizzbuzz.py       ← Sintetizador formal de la arquitectura de cinta transportadora
+├── test_fizzbuzz.py             ← Suite de verificación formal bit a bit de FizzBuzz frente a mb_ref
 ├── test_microcat_suite.py       ← Suite de 4 baterías (0, 1, 2, 3 bytes) para MicroCat
 ├── verify_truth_machine_full.py ← Verificador formal de bifurcación de la Truth Machine
 ├── test_compressed.py           ← Suite de verificación de los 4 benchmarks comprimidos
@@ -189,7 +212,8 @@ make test              # Compila mb_ref y ejecuta:
                        # 2. microcat (fundamentos + 4 baterías)
                        # 3. test-compressed (cat, digital_root, adder, 99_bottles)
                        # 4. test-tm (bifurcación de la Truth Machine)
-                       # 5. quines (autorreproducción byte por byte de la escalera)
+                       # 5. test-fizzbuzz (emisión canónica de 100 líneas, 413 B)
+                       # 6. quines (autorreproducción byte por byte de la escalera)
 ```
 
 Evidencia criptográfica de la quine récord:

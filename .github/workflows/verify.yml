@@ -28,6 +28,8 @@ jobs:
         run: python3 tools/test_compressed.py
       - name: Verify truth machine artifact (105B) on mb_ref
         run: python3 tools/verify_truth_machine_full.py
+      - name: Verify FizzBuzz (1..100) artifact (4,455 opcodes) on mb_ref
+        run: python3 tools/test_fizzbuzz.py
 
   synthesize-record:
     name: Synthesize m=281 and check byte-exact regression

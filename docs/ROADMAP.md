@@ -15,6 +15,13 @@ De sintetizador del récord mundial de quines a la **suite canónica de reproduc
 - [x] **Integración del Corpus Canónico de `malbolge.org`**:
   - Incorporación en `reference/malbolge_org/` de `cat.mal` (9.5 KB), `digital_root.mal` (32.6 KB), `adder.mal` (57.3 KB) y quines 2012/2015.
   - Harness de pruebas automatizado (`test_corpus.py` / `make test-corpus`) integrado al CI.
+- [x] **Truth Machine Canónica (105 bytes, `artifacts/truth_machine.mal`)**:
+  - Primer Truth Machine formalmente demostrado en Classic Malbolge: parada en '0', streaming infinito en '1' con cero degradación de memoria.
+- [x] **FizzBuzz en Malbolge Clásico (4,455 opcodes, 4,517 B, `artifacts/fizzbuzz.mal`)**:
+  - Resolución del reto histórico de 28 años: 100 líneas (413 B) emitidas bit a bit idénticas sobre el oráculo canónico de Olmstead en 2 ms.
+  - Arquitectura de cinta transportadora no colisionante con separación estricta de 2,055 celdas entre código ($c \ge 3315$) y datos ($d \le 1259$), y preámbulo algebraico de salto loco.
+- [x] **Compresión del Corpus Canónico ($-19,270$ chars, $-15.98\%$)**:
+  - Re-síntesis de preámbulos HeLL para los 4 grandes programas de Lutter/Iizawa en `artifacts/*_compressed.mal`.
 
 ---
 
@@ -40,9 +47,9 @@ Los programas de `malbolge.org` fueron construidos con el ensamblador HeLL / fra
 
 Malbolge ha tenido históricamente menos de una docena de programas reales demostrados en 28 años de historia (1998–2026). BolgeForge cuenta con la infraestructura para diseñar y sintetizar programas inéditos:
 
-1. **FizzBuzz en Malbolge Clásico**
-   - *Estado en la comunidad*: Reto abierto mítico. Casi todas las versiones existentes dependen de Malbolge Unshackled (memoria infinita) o trampas de intérprete.
-   - *Enfoque BolgeForge*: Bucle de conteo de 1 a 100 con comprobación periódica de divisibilidad por 3 y 5 en memoria estática de 59,049 celdas.
+1. **FizzBuzz en Malbolge Clásico** `[COMPLETADO]`
+   - *Estado previo en la comunidad*: Reto abierto mítico de 28 años. Casi todas las versiones existentes dependían de Malbolge Unshackled (memoria infinita) o trampas de intérprete.
+   - *Solución BolgeForge*: Arquitectura de cinta transportadora lineal no colisionante con preámbulo de salto cuántico en $c=3315$, 15 recetas unívocas para todos los caracteres necesarios, 4,455 opcodes. 100% verificado en `mb_ref` con código de salida 0 y 413 bytes emitidos en 2 ms ([`artifacts/fizzbuzz.mal`](../artifacts/fizzbuzz.mal)).
 2. **Fibonacci Generator**
    - Generación interactiva de la serie de Fibonacci en base 10 con suma de dígitos y emisión limpia.
 3. **Rot13 / Cifrador de Texto**

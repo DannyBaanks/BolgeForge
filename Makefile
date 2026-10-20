@@ -33,7 +33,10 @@ test-compressed: mb_ref
 test-tm: mb_ref
 	python3 tools/verify_truth_machine_full.py
 
-test: mb_ref test-corpus microcat test-compressed test-tm
+test-fizzbuzz: mb_ref
+	python3 tools/test_fizzbuzz.py
+
+test: mb_ref test-corpus microcat test-compressed test-tm test-fizzbuzz
 	@echo "Verifying committed quines..."
 	@for f in artifacts/candidate_m*.mal; do \
 		./mb_ref "$$f" > /tmp/out.mal && diff -q "$$f" /tmp/out.mal && echo "OK $$f"; \
@@ -42,5 +45,5 @@ test: mb_ref test-corpus microcat test-compressed test-tm
 audit: mb_ref
 	python3 tools/audit_bloat.py
 
-.PHONY: all clean test test-corpus test-compressed test-tm analyze-corpus synth-cat microcat audit
+.PHONY: all clean test test-corpus test-compressed test-tm test-fizzbuzz analyze-corpus synth-cat microcat audit
 
