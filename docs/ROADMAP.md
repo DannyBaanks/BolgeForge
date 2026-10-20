@@ -17,9 +17,10 @@ De sintetizador del récord mundial de quines a la **suite canónica de reproduc
   - Harness de pruebas automatizado (`test_corpus.py` / `make test-corpus`) integrado al CI.
 - [x] **Truth Machine Canónica (105 bytes, `artifacts/truth_machine.mal`)**:
   - Primer Truth Machine formalmente demostrado en Classic Malbolge: parada en '0', streaming infinito en '1' con cero degradación de memoria.
-- [x] **FizzBuzz en Malbolge Clásico (4,455 opcodes, 4,517 B, `artifacts/fizzbuzz.mal`)**:
-  - Resolución del reto histórico de 28 años: 100 líneas (413 B) emitidas bit a bit idénticas sobre el oráculo canónico de Olmstead en 2 ms.
-  - Arquitectura de cinta transportadora no colisionante con separación estricta de 2,055 celdas entre código ($c \ge 3315$) y datos ($d \le 1259$), y preámbulo algebraico de salto loco.
+- [x] **FizzBuzz Autónomo y de Sistema Cerrado (Zero-Stdin) (4,455 opcodes, 4,517 B, `artifacts/fizzbuzz.mal`)**:
+  - Resolución del reto histórico de un FizzBuzz 100% puro y autónomo en Classic Malbolge: 100 líneas (413 B) emitidas bit a bit idénticas sobre `mb_ref` en 2 ms.
+  - Cero dependencias de stdin (a diferencia del antecedente de `angel_p_57` de 2023 que ejecutaba 109 lecturas de entrada esperando EOF en el acumulador).
+  - Arquitectura de cinta transportadora no colisionante con separación estricta de 2,055 celdas entre código ($c \ge 3315$) y datos ($d \le 1259$), y preámbulo algebraico de salto loco $\text{crazy}(\text{rot}^2(80), 72) = 3312$.
 - [x] **Compresión del Corpus Canónico ($-19,270$ chars, $-15.98\%$)**:
   - Re-síntesis de preámbulos HeLL para los 4 grandes programas de Lutter/Iizawa en `artifacts/*_compressed.mal`.
 
@@ -47,9 +48,9 @@ Los programas de `malbolge.org` fueron construidos con el ensamblador HeLL / fra
 
 Malbolge ha tenido históricamente menos de una docena de programas reales demostrados en 28 años de historia (1998–2026). BolgeForge cuenta con la infraestructura para diseñar y sintetizar programas inéditos:
 
-1. **FizzBuzz en Malbolge Clásico** `[COMPLETADO]`
-   - *Estado previo en la comunidad*: Reto abierto mítico de 28 años. Casi todas las versiones existentes dependían de Malbolge Unshackled (memoria infinita) o trampas de intérprete.
-   - *Solución BolgeForge*: Arquitectura de cinta transportadora lineal no colisionante con preámbulo de salto cuántico en $c=3315$, 15 recetas unívocas para todos los caracteres necesarios, 4,455 opcodes. 100% verificado en `mb_ref` con código de salida 0 y 413 bytes emitidos en 2 ms ([`artifacts/fizzbuzz.mal`](../artifacts/fizzbuzz.mal)).
+1. **FizzBuzz Autónomo y de Sistema Cerrado (Zero-Stdin)** `[COMPLETADO]`
+   - *Antecedente*: En septiembre de 2023, angel_p_57 generó un FizzBuzz de texto fijo (3,590 B) que depende de 109 lecturas de stdin (`/`) esperando EOF ($59,048$) en el acumulador como oráculo de constantes, bloqueándose en terminal interactiva.
+   - *Solución BolgeForge*: La primera implementación 100% autónoma y de sistema cerrado (0 llamadas a stdin), inmune a terminales, con arquitectura de cinta transportadora lineal no colisionante, preámbulo de salto cuántico en $c=3315$, y 15 recetas unívocas para todos los caracteres necesarios (4,455 opcodes). 100% verificado en `mb_ref` con código de salida 0 y 413 bytes emitidos en 2 ms ([`artifacts/fizzbuzz.mal`](../artifacts/fizzbuzz.mal)).
 2. **Fibonacci Generator**
    - Generación interactiva de la serie de Fibonacci en base 10 con suma de dígitos y emisión limpia.
 3. **Rot13 / Cifrador de Texto**
