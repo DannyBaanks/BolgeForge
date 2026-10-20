@@ -16,6 +16,19 @@
    - **Corrección del Bug Histórico de EOF (2012):** En el paso 9,148 de `cat.mal` canónico, ante un flujo de entrada vacío (`b""`) o al terminar el archivo, la máquina emitía un byte espurio `0x88` ('¨') antes de detenerse. `microcat.mal` introduce un discriminador algebraico de 2 pasos previo a la instrucción de salida `<`, logrando terminación limpia con código 0 y exactamente **0 bytes emitidos**.
    - **100% de Fidelidad de 8 bits:** Verificado contra `oracle/mb_ref.c` en todas las baterías de prueba (entradas vacías, los 256 bytes individuales $0..255$, pares de bytes y cadenas multi-byte).
 
+3. **Truth Machine en Malbolge Clásico: 105 bytes (`artifacts/truth_machine.mal`)**
+   - El primer Truth Machine limpio demostrado en la arquitectura canónica de 59,049 celdas.
+   - **Bifurcación exacta:** Entrada `'0'` $\to$ emite `'0'` y parada limpia (`v`) en solo 8 pasos de VM; Entrada `'1'` $\to$ ciclo límite cerrado de 3 celdas que emite infinitamente `'1'`s sin degradar la memoria.
+   - Verificado formalmente en `oracle/mb_ref.c` mediante [`tools/verify_truth_machine_full.py`](tools/verify_truth_machine_full.py).
+
+4. **Re-síntesis y Compresión de los 4 Grandes de Lutter/Iizawa ($-19,270$ caracteres, $-15.98\%$)**
+   - Análisis y optimización estructural del corpus de `malbolge.org` ([`docs/CORPUS_AUDIT.md`](docs/CORPUS_AUDIT.md)), eliminando preámbulos redundantes HeLL:
+     - `artifacts/cat_compressed.mal`: **8,254 B** ($-1,128$ B, **$-12.02\%$**)
+     - `artifacts/digital_root_compressed.mal`: **26,308 B** ($-5,828$ B, **$-18.14\%$**)
+     - `artifacts/adder_compressed.mal`: **44,914 B** ($-11,562$ B, **$-20.47\%$**)
+     - `artifacts/99_bottles_compressed.mal`: **21,809 B** ($-752$ B, **$-3.33\%$**)
+   - 100% de paridad funcional y regresión bit a bit verificada en [`tools/test_compressed.py`](tools/test_compressed.py).
+
 ---
 
 ## Quickstart
@@ -23,38 +36,54 @@
 ```bash
 git clone https://github.com/DannyBaanks/BolgeForge.git
 cd BolgeForge
-make                    # Compila el oráculo de referencia en C (oracle/mb_ref)
+make                    # Compila el oráculo de referencia en C (mb_ref)
 ```
 
 ### 1. Ejecutar y Verificar MicroCat (3,380 B)
 
 ```bash
 # Probar stdin vacío (debe emitir 0 bytes y retornar código 0):
-./oracle/mb_ref artifacts/microcat.mal < /dev/null
+./mb_ref artifacts/microcat.mal < /dev/null
 echo "Exit code: $?"
 
 # Probar eco de texto:
-echo -n "ABC" | ./oracle/mb_ref artifacts/microcat.mal
+echo -n "ABC" | ./mb_ref artifacts/microcat.mal
 echo ""
 
 # Ejecutar la suite completa de baterías (256 bytes, pares y secuencias):
-python3 tools/test_three_stage_clean.py
+python3 tools/test_microcat_suite.py
 ```
 
-Salida esperada:
-```
-Battery 1 (Empty stdin) [PASS]
-Battery 2 (All 256 single bytes) [PASS]
-Battery 2+ (Two-byte corner cases) [PASS]
-Battery 3 (Three-byte corner cases & binary permutations) [PASS]
-
->>> EXTRAORDINARY SUCCESS: ALL 3-STAGE TESTS PASS 100% BIT-FOR-BIT ON mb_ref!
-```
-
-### 2. Sintetizar la Quine Récord ($m=281$, 53,562 B)
+### 2. Probar la Truth Machine (105 B)
 
 ```bash
-# Síntesis determinista (~13 min en Python puro):
+# Caso '0': debe emitir '0' y terminar inmediatamente con exit 0:
+echo -n "0" | ./mb_ref artifacts/truth_machine.mal
+echo ""
+
+# Caso '1': debe emitir '1' continuamente (cortar con 1,000 pasos de prueba):
+echo -n "1" | ./mb_ref artifacts/truth_machine.mal 1000
+
+# Validación automatizada:
+python3 tools/verify_truth_machine_full.py
+```
+
+### 3. Verificar Benchmarks Comprimidos del Corpus
+
+```bash
+python3 tools/test_compressed.py
+```
+
+### 4. Ejecutar la Suite Completa de Tests
+
+```bash
+make test               # Ejecuta corpus malbolge.org, microcat, compressed, truth machine y quines
+```
+
+### 5. Sintetizar la Quine Récord ($m=281$, 53,562 B)
+
+```bash
+# Síntesis determinista (~10-13 min en Python puro):
 python3 synthesize.py 281
 ```
 
@@ -115,36 +144,52 @@ La investigación y telemetría exacta en [`docs/CAT_ANALYSIS.md`](docs/CAT_ANAL
 ```
 artifacts/
 ├── microcat.mal                 ← MicroCat autónomo multi-etapa (3,380 B, PASS Baterías 1..3)
-├── cand_three_stage_clean.mal   ← Candidato de 3 etapas verificado bit-a-bit
+├── truth_machine.mal            ← Truth Machine canónica en Classic Malbolge (105 B)
+├── cat_compressed.mal           ← Cat de Lutter re-sintetizado (-12.02%, 8,254 B)
+├── digital_root_compressed.mal  ← Digital Root re-sintetizado (-18.14%, 26,308 B)
+├── adder_compressed.mal         ← Adder re-sintetizado (-20.47%, 44,914 B)
+├── 99_bottles_compressed.mal    ← 99 Bottles re-sintetizado (-3.33%, 21,809 B)
 └── candidate_m281_53562b.mal    ← Quine récord mundial (53,562 B, m=281)
 
 tools/
-├── test_three_stage_clean.py    ← Suite de validación exhaustiva de MicroCat
-├── build_pipeline_streaming_cat.py ← Ensamblador del pipeline de MicroCat
+├── test_microcat_suite.py       ← Suite de 4 baterías (0, 1, 2, 3 bytes) para MicroCat
+├── verify_truth_machine_full.py ← Verificador formal de bifurcación de la Truth Machine
+├── test_compressed.py           ← Suite de verificación de los 4 benchmarks comprimidos
+├── test_three_stage_clean.py    ← Ensamblador y validador de las 3 etapas de MicroCat
+├── resynthesize.py              ← Compresor de preámbulos HeLL y solucionador Dijkstra
 ├── trace_tm.py                  ← Simulador y trazador exacto de VM Malbolge
 └── list_loop_cells.c            ← Desensamblador telemétrico de bucles
+
+reference/
+└── malbolge_org/                ← Corpus histórico completo de 8 programas (Lutter, Iizawa, Cooke)
 
 oracle/
 └── mb_ref.c                     ← Intérprete oráculo canónico en C (Olmstead 1998)
 
 docs/
 ├── CAT_ANALYSIS.md              ← Tratado matemático formal (24 teoremas demostrados)
+├── CORPUS_AUDIT.md              ← Auditoría y telemetría exacta de los programas de malbolge.org
 ├── NOTES.md                     ← Bitácora de optimización del sintetizador de quines
 └── ROADMAP.md                   ← Frontera de investigación y metas futuras
 
 synthesize.py                    ← Sintetizador CLI determinista de quines
 test_corpus.py                   ← Validador del corpus histórico de malbolge.org
-Makefile                         ← Build script para oráculo y tests
+Makefile                         ← Build script para oráculo y tests integrados
 ```
 
 ---
 
 ## Verificación Independiente y Reproducibilidad
 
-El oráculo `oracle/mb_ref.c` implementa estrictamente la especificación canónica de Ben Olmstead (1998). Para ejecutar la suite completa de pruebas:
+El oráculo `oracle/mb_ref.c` implementa estrictamente la especificación canónica de Ben Olmstead (1998). Para compilar y ejecutar la suite completa de pruebas:
 
 ```bash
-make test              # Compila mb_ref, valida corpus malbolge.org, quines y microcat
+make test              # Compila mb_ref y ejecuta:
+                       # 1. test-corpus (8 programas de malbolge.org)
+                       # 2. microcat (fundamentos + 4 baterías)
+                       # 3. test-compressed (cat, digital_root, adder, 99_bottles)
+                       # 4. test-tm (bifurcación de la Truth Machine)
+                       # 5. quines (autorreproducción byte por byte de la escalera)
 ```
 
 Evidencia criptográfica de la quine récord:
