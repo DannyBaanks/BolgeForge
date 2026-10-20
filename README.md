@@ -137,6 +137,16 @@ La investigación y telemetría exacta en [`docs/CAT_ANALYSIS.md`](docs/CAT_ANAL
 4. **Deconstrucción de `cat.mal` (Lutter 2012):**
    El análisis reveló que el preámbulo de 8,905 pasos de Lutter representaba el **96.0%** del archivo original. Su bucle activo requería solo **36 celdas de código distintas** organizadas en 13 pares de instrucciones con saltos inmediatos (`/ i`, `* i`, `p i`, `< i`, `j i`). `microcat.mal` elimina los 8,905 pasos de preámbulo situando las constantes directamente en memoria baja.
 
+5. **El Teorema de Período 2 ($F \leftrightarrow J$) y el Motor Reversible a Dos Tiempos:**
+   - **Unicidad de la Órbita 2 en `xlat2`:** La descomposición cíclica de la permutación de cifrado determinista `xlat2` de Ben Olmstead demuestra que existe **exactamente una única órbita de longitud 2** en todo el alfabeto ASCII imprimible $[33, 126]$: los caracteres $\{70, 74\}$ (`'F'` y `'J'`). Todas las demás órbitas poseen longitudes 4, 5, 6, 9 o 68.
+   - **Bifurcación Activo/Pasivo Inmune:** Al espaciar las 14 instrucciones del Discriminador y las 20 celdas de la Rutina de Salida en residuos canónicos módulo 94 inicializados con `ord('F')` (70), el circuito adquiere dinámica bi-fásica estricta:
+     - **Pase Activo (Estado 70):** Ejecuta las operaciones computacionales (`/`, `j`, `p`, `*`, `<`, `i`) y muta determinísticamente a 74.
+     - **Pase de Barrido y Recarga (Estado 74):** Los 14 residuos decodifican a instrucciones puramente pasivas y sin efectos colaterales (`P`, `E`, `r`, `M`, `'`), permitiendo que el cursor $c$ atraviese el circuito recargando todas las celdas nuevamente a 70 sin colisiones ni emisiones espurias.
+   - **Tríada de Auto-Reset Algebraico Involutivo:**
+     $$\forall b \in [0, 255], \quad w = \text{crazy}(b, 121): \quad \text{crazy}(\text{crazy}(121, w), \text{crazy}(121, w)) \equiv 121$$
+     $$\forall b \in [0, 255]: \quad \text{crazy}(\text{crazy}(121, b), \text{crazy}(121, b)) \equiv 121$$
+     Dos aplicaciones sucesivas de la operación `p` con $A=121$ colapsan tanto el byte recuperado como su representación intermedia en memoria exactamente a 121 con cero excepciones a lo largo de todo el espacio de 8 bits, demostrando la posibilidad teórica de un bucle infinito cerrado sin consumo de memoria.
+
 ### FizzBuzz Autónomo (`artifacts/fizzbuzz.mal`)
 
 La síntesis de FizzBuzz sobre el toro de 59,049 celdas resuelve un problema abierto desde 1998 mediante cuatro principios formales:
