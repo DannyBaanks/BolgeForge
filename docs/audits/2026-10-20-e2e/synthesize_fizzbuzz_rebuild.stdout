@@ -1,0 +1,8 @@
+=== SYNTHESIZING CLASSIC MALBOLGE FIZZBUZZ (1..100) ===
+Synthesized /tmp/bolgeforge-audit-20261020/checkout/artifacts/fizzbuzz.mal (4,455 opcodes, 4,517 bytes wrapped at 72 cols).
+Verifying against Olmstead reference oracle (mb_ref)...
+  [PASS] Clean HALT (rc=0), exact 413 bytes emitted (100 lines).
+  [PASS] Output matches canonical FizzBuzz 1..100 bit-for-bit!
+======================================================================
+ALL VERIFIED ON OLMSTEAD REFERENCE INTERPRETER (mb_ref)!
+======================================================================

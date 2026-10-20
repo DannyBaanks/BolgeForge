@@ -1,0 +1,22 @@
+[
+  {
+    "name": "make_test",
+    "argv": [
+      "make",
+      "test"
+    ],
+    "cwd": "/tmp/bolgeforge-audit-20261020/checkout",
+    "returncode": 0,
+    "seconds": 1.6422518200015475
+  },
+  {
+    "name": "microcat_suite",
+    "argv": [
+      "python3",
+      "tools/test_microcat_suite.py"
+    ],
+    "cwd": "/tmp/bolgeforge-audit-20261020/checkout",
+    "returncode": 0,
+    "seconds": 0.5153026779989887
+  }
+]

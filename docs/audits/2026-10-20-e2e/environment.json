@@ -1,0 +1,10 @@
+{
+  "date_client": "2026-10-20",
+  "timezone_client": "America/Mexico_City",
+  "utc": "2026-10-20T17:00:15.970011+00:00",
+  "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "gcc": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "local_oracle_sha256": "bbfedc87e127384580d04eb0f4754a4ce1706bd788c566b569e9aa2e4c94d6c7",
+  "strict_oracle_sha256": "3dbce5e51f5cecfb14295faf41fb1621ca22932ac1c3dd6b99ee7d5c6dfd91fc"
+}

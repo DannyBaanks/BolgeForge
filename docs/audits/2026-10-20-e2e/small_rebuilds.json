@@ -1,0 +1,26 @@
+[
+  {
+    "argv": [
+      "python3",
+      "tools/synthesize_fizzbuzz.py"
+    ],
+    "returncode": 0,
+    "same_bytes": true
+  },
+  {
+    "argv": [
+      "python3",
+      "tools/synthesize_truth_machine.py"
+    ],
+    "returncode": 0,
+    "same_bytes": true
+  },
+  {
+    "argv": [
+      "python3",
+      "tools/test_three_stage_clean.py"
+    ],
+    "returncode": 0,
+    "same_bytes": true
+  }
+]

@@ -1,0 +1,15 @@
+Assembly complete. Stage 1 at 99..394, Stage 2 at 450..466, Output 2 at 1105..1132. N=1150
+Assembled 1150 bytes to /tmp/bolgeforge-audit-20261020/checkout/artifacts/cand_two_stage.mal
+Empty stdin: rc=0, stdout=b''
+Input 'A': rc=0, stdout=b'A'
+Input 'AB': rc=0, stdout=b'AB'
+
+>>> EXTRAORDINARY SUCCESS: BOTH 'A' AND 'AB' ECHOED 100% BIT-FOR-BIT ON mb_ref!
+Assembly complete. Stage 1 at 99..394, Stage 2 at 450..466, Output 2 at 1105..1132. N=1150
+Assembled 3-stage candidate (3380 bytes) to /tmp/bolgeforge-audit-20261020/checkout/artifacts/cand_three_stage_clean.mal
+Battery 1 (Empty stdin) [PASS]
+Battery 2 (All 256 single bytes) [PASS]
+Battery 2+ (Two-byte corner cases) [PASS]
+Battery 3 (Three-byte corner cases & binary permutations) [PASS]
+
+>>> EXTRAORDINARY SUCCESS: ALL 3-STAGE TESTS PASS 100% BIT-FOR-BIT ON mb_ref!

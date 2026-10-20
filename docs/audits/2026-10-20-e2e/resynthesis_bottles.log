@@ -1,0 +1,6 @@
+
+=== Compressing 99_bottles (99_bottles.mal) ===
+Compressed 99_bottles: {'orig_chars': 22561, 'new_chars': 21809, 'saved_chars': 752, 'saved_pct': 3.33, 'k': 8, 'delta': 752, 'end_c': 21116, 'pad_len': 176, 'elapsed_s': 28.499}
+  [PASS mb_ref] full lyrics (11459B) -> exact bit-for-bit match!
+
+EXIT=0

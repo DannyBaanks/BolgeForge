@@ -1,0 +1,5 @@
+# Original raw evidence retains private workstation paths locally.
+/baseline.json
+/runs/runs.json
+/strict_build.stderr
+/strict_mirror_provenance.json

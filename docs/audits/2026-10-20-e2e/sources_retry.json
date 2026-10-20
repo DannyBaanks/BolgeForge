@@ -1,0 +1,10 @@
+[
+  {
+    "url": "https://www.lscheffer.com/malbolge_interp.html",
+    "error": "<urlopen error _ssl.c:983: The handshake operation timed out>"
+  },
+  {
+    "url": "https://www.lscheffer.com/malbolge_spec.html",
+    "error": "<urlopen error _ssl.c:983: The handshake operation timed out>"
+  }
+]

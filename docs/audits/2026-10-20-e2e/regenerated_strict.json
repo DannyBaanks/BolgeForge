@@ -1,0 +1,22 @@
+[
+  {
+    "artifact": "regenerated_digital_root_compressed.mal",
+    "returncode": -11,
+    "input_hex": "300a",
+    "output_hex": "",
+    "stderr_hex": "",
+    "expected_hex": "300a",
+    "sha256": "d522f65e26d4209dc7c888371ae7347cad987f96383c5567dd3999d4c30806f9",
+    "same_as_committed": false
+  },
+  {
+    "artifact": "regenerated_adder_compressed.mal",
+    "returncode": -11,
+    "input_hex": "3020300a",
+    "output_hex": "",
+    "stderr_hex": "",
+    "expected_hex": "300a",
+    "sha256": "873105d4bbf58246bebf12b68267fae01dea2a58490c5993b154bf2ed0e4205d",
+    "same_as_committed": false
+  }
+]

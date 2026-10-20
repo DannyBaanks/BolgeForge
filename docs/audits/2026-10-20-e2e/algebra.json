@@ -1,0 +1,21 @@
+{
+  "xlat2_cycle_lengths": [
+    68,
+    6,
+    5,
+    4,
+    9,
+    2
+  ],
+  "period_2_cycles": [
+    [
+      70,
+      74
+    ]
+  ],
+  "byte_involution_121_failures": [],
+  "reset_byte_failures": [],
+  "reset_intermediate_failures": [],
+  "portal_value": 3312,
+  "rot10_failures": []
+}

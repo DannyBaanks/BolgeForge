@@ -1,0 +1,331 @@
+[
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/K2_C_BRANCH_SEAM_20261018_H/hashes.json",
+    "path": "verification.txt",
+    "expected": "de23363faba8bfc5a03bc93e13c1f136a75159ef1ea0400030c1ef7075abc985",
+    "actual": "de23363faba8bfc5a03bc93e13c1f136a75159ef1ea0400030c1ef7075abc985",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/K2_RAIL_READ_20261018_M/hashes.json",
+    "path": "REPORT.md",
+    "expected": "5544160f20ef0d4e57d20941da08d11ea49b103d6715259c754156090dd1ab3f",
+    "actual": "5544160f20ef0d4e57d20941da08d11ea49b103d6715259c754156090dd1ab3f",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/K2_RAIL_READ_20261018_M/hashes.json",
+    "path": "results.json",
+    "expected": "08f067e8120af033891b34b48ca959448bffe498b16cda43cdb0081ba2fd4224",
+    "actual": "08f067e8120af033891b34b48ca959448bffe498b16cda43cdb0081ba2fd4224",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/K2_RAIL_READ_20261018_M/hashes.json",
+    "path": "verification.txt",
+    "expected": "5d573c713d9f330b82f5ab4b59f548d28d825a7fae17ee86ca2bf482e0fa98b6",
+    "actual": "5d573c713d9f330b82f5ab4b59f548d28d825a7fae17ee86ca2bf482e0fa98b6",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/K2_PSI_ROUTE_20261018_E/hashes.json",
+    "path": "REPORT.md",
+    "expected": "4520b70bf124f8009f2e8e1d66ec49dd420b6a8914392a78166159ae6e566619",
+    "actual": "4520b70bf124f8009f2e8e1d66ec49dd420b6a8914392a78166159ae6e566619",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/K2_PSI_ROUTE_20261018_E/hashes.json",
+    "path": "cat_loop_summary.txt",
+    "expected": "bf5e847298e8b8b8749c1838543a3216a2b4f1fdac01fa9dd0b849bd0d9e2b68",
+    "actual": "bf5e847298e8b8b8749c1838543a3216a2b4f1fdac01fa9dd0b849bd0d9e2b68",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/K2_PSI_ROUTE_20261018_E/hashes.json",
+    "path": "cat_loop_trace.txt",
+    "expected": "447af1724009922e9a07b4ad0db78162d62eb2af1e0468ebb9167fd0aeb6a817",
+    "actual": "447af1724009922e9a07b4ad0db78162d62eb2af1e0468ebb9167fd0aeb6a817",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/K2_PSI_ROUTE_20261018_E/hashes.json",
+    "path": "results.json",
+    "expected": "919817f3cb1d47fda7443a5b26d8c5937149f201de91c5b021667be1400d7d8d",
+    "actual": "919817f3cb1d47fda7443a5b26d8c5937149f201de91c5b021667be1400d7d8d",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/K2_PSI_ROUTE_20261018_E/hashes.json",
+    "path": "verification.txt",
+    "expected": "1a315333a337f1fab1f2e715c31232e4487c0f4a5ab4e6f05371fddd0e09b855",
+    "actual": "1a315333a337f1fab1f2e715c31232e4487c0f4a5ab4e6f05371fddd0e09b855",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/K2_ALGEBRA_EOF_AUDIT_20261018_G/hashes.json",
+    "path": "REPORT.md",
+    "expected": "69d0f30972bf05bfa3c9240307a24bacc841ac94fc43391d99bf12930e8ec5f4",
+    "actual": "69d0f30972bf05bfa3c9240307a24bacc841ac94fc43391d99bf12930e8ec5f4",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/K2_ALGEBRA_EOF_AUDIT_20261018_G/hashes.json",
+    "path": "verification.txt",
+    "expected": "332aa56e4d57a4a1d50e259646cb4ae6c942ab04a57e66a08fd535f86f1b0f7c",
+    "actual": "332aa56e4d57a4a1d50e259646cb4ae6c942ab04a57e66a08fd535f86f1b0f7c",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/K2_ALGEBRA_EOF_AUDIT_20261018_G/hashes.json",
+    "path": "C_stderr.txt",
+    "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/K2_ALGEBRA_EOF_AUDIT_20261018_G/hashes.json",
+    "path": "Q_trace_stderr.txt",
+    "expected": "909cb79d0e4eed9b3f8c1a9fa5c3f2124742c3cfe4718a8c88e1bea9073c54e5",
+    "actual": "909cb79d0e4eed9b3f8c1a9fa5c3f2124742c3cfe4718a8c88e1bea9073c54e5",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/K2_ALGEBRA_EOF_AUDIT_20261018_G/hashes.json",
+    "path": "Q_trace.txt",
+    "expected": "d0897a16bc093d827113b7bfa5cd1a0ad4cea3ed145e4d7c5d6dc655d5179aeb",
+    "actual": "d0897a16bc093d827113b7bfa5cd1a0ad4cea3ed145e4d7c5d6dc655d5179aeb",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/K2_ALGEBRA_EOF_AUDIT_20261018_G/hashes.json",
+    "path": "C_trace_stderr.txt",
+    "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/K2_ALGEBRA_EOF_AUDIT_20261018_G/hashes.json",
+    "path": "C_stdin.bin",
+    "expected": "1911ed50ac1f34cff92b5c9021afbe5a52211a6729c80cfb13551eb4ad03a1c9",
+    "actual": "1911ed50ac1f34cff92b5c9021afbe5a52211a6729c80cfb13551eb4ad03a1c9",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/K2_ALGEBRA_EOF_AUDIT_20261018_G/hashes.json",
+    "path": "Q_stdin.bin",
+    "expected": "4ae81572f06e1b88fd5ced7a1a000945432e83e1551e6f721ee9c00b8cc33260",
+    "actual": "4ae81572f06e1b88fd5ced7a1a000945432e83e1551e6f721ee9c00b8cc33260",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/K2_ALGEBRA_EOF_AUDIT_20261018_G/hashes.json",
+    "path": "C_stdout.bin",
+    "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/K2_ALGEBRA_EOF_AUDIT_20261018_G/hashes.json",
+    "path": "Q_stderr.txt",
+    "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/K2_ALGEBRA_EOF_AUDIT_20261018_G/hashes.json",
+    "path": "Q_stdout.bin",
+    "expected": "7cab1285f63ef99e56d8cec97bb575a8e03a0fccfa6530038b18187f690af61c",
+    "actual": "7cab1285f63ef99e56d8cec97bb575a8e03a0fccfa6530038b18187f690af61c",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/K2_ALGEBRA_EOF_AUDIT_20261018_G/hashes.json",
+    "path": "results.json",
+    "expected": "20934cc569de1c3baef039d4245bc6e47fecf2b7a270722a22bbaed354ad76bf",
+    "actual": "20934cc569de1c3baef039d4245bc6e47fecf2b7a270722a22bbaed354ad76bf",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/K2_ALGEBRA_EOF_AUDIT_20261018_G/hashes.json",
+    "path": "C_trace.txt",
+    "expected": "b86f191eb582f95c678a1dd0c7082454814194b50ff7236121c6b9174ec67c71",
+    "actual": "b86f191eb582f95c678a1dd0c7082454814194b50ff7236121c6b9174ec67c71",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/K2_C_BRANCH_SEAM_20261018_I/hashes.json",
+    "path": "REPORT.md",
+    "expected": "5ab5ae62c72259f3b48560b2eb1e3a9ebd24f66d524c5e00bf93be79e61bbbf1",
+    "actual": "5ab5ae62c72259f3b48560b2eb1e3a9ebd24f66d524c5e00bf93be79e61bbbf1",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/K2_C_BRANCH_SEAM_20261018_I/hashes.json",
+    "path": "verification.txt",
+    "expected": "2144633513a367ce06caa4ea3325d558f546513b9283bb8214104d612da70a98",
+    "actual": "2144633513a367ce06caa4ea3325d558f546513b9283bb8214104d612da70a98",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/K2_C_BRANCH_SEAM_20261018_I/hashes.json",
+    "path": "results.json",
+    "expected": "8b68798f25cd776376a2dc3e6654f98ae67da4702f99dbc6441451fa0cacbec0",
+    "actual": "8b68798f25cd776376a2dc3e6654f98ae67da4702f99dbc6441451fa0cacbec0",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/K2_C_BRANCH_SEAM_20261018_I/hashes.json",
+    "path": "candidate_psi_route_m281.mal",
+    "expected": "8622e37cc83d39011c2827ff02d92b624fcfac2bed20155402215517520b441c",
+    "actual": "8622e37cc83d39011c2827ff02d92b624fcfac2bed20155402215517520b441c",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/K2_STORE_DEPTH_20261018_J/hashes.json",
+    "path": "REPORT.md",
+    "expected": "bb909fba717f6ba8309e88eb13bae660bfd97281ae65353197803f2466e332e1",
+    "actual": "bb909fba717f6ba8309e88eb13bae660bfd97281ae65353197803f2466e332e1",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/K2_STORE_DEPTH_20261018_J/hashes.json",
+    "path": "results.json",
+    "expected": "d51c0b84f581ff8d6aac884e5d942dc9ba4eec3f540565a0201661148253da68",
+    "actual": "d51c0b84f581ff8d6aac884e5d942dc9ba4eec3f540565a0201661148253da68",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/K2_STORE_DEPTH_20261018_J/hashes.json",
+    "path": "verification.txt",
+    "expected": "00e7f4354b879c2956d5cad0967b34b9de965851c3e1e9c5b43c51a22da33e59",
+    "actual": "00e7f4354b879c2956d5cad0967b34b9de965851c3e1e9c5b43c51a22da33e59",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/K2_PAIR_EDIT_CYCLE_20261018_P/hashes.json",
+    "path": "REPORT.md",
+    "expected": "b39589591970c0bd9d34fb2157ac3ed50c0cbbe4a77f3b5c191fb721b70bf980",
+    "actual": "b39589591970c0bd9d34fb2157ac3ed50c0cbbe4a77f3b5c191fb721b70bf980",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/K2_PAIR_EDIT_CYCLE_20261018_P/hashes.json",
+    "path": "results.json",
+    "expected": "daf4b39f01db3e0cb7a384e470f78c363ed48559483f8d9f8c6d91e42ab7351f",
+    "actual": "daf4b39f01db3e0cb7a384e470f78c363ed48559483f8d9f8c6d91e42ab7351f",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/K2_PAIR_EDIT_CYCLE_20261018_P/hashes.json",
+    "path": "verification.txt",
+    "expected": "518ec4f04bdf3892f0de0b1672ba4ab3be125dee887f56d56d7c545370842c32",
+    "actual": "518ec4f04bdf3892f0de0b1672ba4ab3be125dee887f56d56d7c545370842c32",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/M3_SELECTOR_20261018/sha256sums.txt",
+    "path": "candidate_selector_m281.mal",
+    "expected": "7cab1285f63ef99e56d8cec97bb575a8e03a0fccfa6530038b18187f690af61c",
+    "actual": "7cab1285f63ef99e56d8cec97bb575a8e03a0fccfa6530038b18187f690af61c",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/M3_SELECTOR_20261018/sha256sums.txt",
+    "path": "out_q_selector.bin",
+    "expected": "7cab1285f63ef99e56d8cec97bb575a8e03a0fccfa6530038b18187f690af61c",
+    "actual": "7cab1285f63ef99e56d8cec97bb575a8e03a0fccfa6530038b18187f690af61c",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/M3_SELECTOR_20261018/sha256sums.txt",
+    "path": "out_c_selector.bin",
+    "expected": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "actual": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/M3_SELECTOR_20261018/sha256sums.txt",
+    "path": "run_q_report.txt",
+    "expected": "d0897a16bc093d827113b7bfa5cd1a0ad4cea3ed145e4d7c5d6dc655d5179aeb",
+    "actual": "d0897a16bc093d827113b7bfa5cd1a0ad4cea3ed145e4d7c5d6dc655d5179aeb",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/M3_SELECTOR_20261018/sha256sums.txt",
+    "path": "run_c_report.txt",
+    "expected": "b86f191eb582f95c678a1dd0c7082454814194b50ff7236121c6b9174ec67c71",
+    "actual": "b86f191eb582f95c678a1dd0c7082454814194b50ff7236121c6b9174ec67c71",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/M3_SELECTOR_20261018/sha256sums.txt",
+    "path": "search_report.txt",
+    "expected": "5e21e0403f3f05babf0c9adef1118a416809e67dccb9258ec5d3a50d7b1db557",
+    "actual": "5e21e0403f3f05babf0c9adef1118a416809e67dccb9258ec5d3a50d7b1db557",
+    "match": true
+  },
+  {
+    "manifest": "experiments/cat_quine_kaleidoscope/evidence/M3_SELECTOR_20261018/sha256sums.txt",
+    "path": "dryrun_report.txt",
+    "expected": "a97b7c8cc7a132f2ae2493d191b10e74dbdcfb3dfcdecb0dfd601a0881892375",
+    "actual": "a97b7c8cc7a132f2ae2493d191b10e74dbdcfb3dfcdecb0dfd601a0881892375",
+    "match": true
+  },
+  {
+    "manifest": "reference/malbolge_org/README.md",
+    "path": "reference/malbolge_org/cat.mal",
+    "expected": "ce04a6f27b7045b6e0010d6c97873ad8b34ba87c7be6e16d53be0b97a7224a52",
+    "actual": "ce04a6f27b7045b6e0010d6c97873ad8b34ba87c7be6e16d53be0b97a7224a52",
+    "match": true
+  },
+  {
+    "manifest": "reference/malbolge_org/README.md",
+    "path": "reference/malbolge_org/digital_root.mal",
+    "expected": "d23023b73b16d86a8bfd2a470f4d9f4cfc531a78abfd7ce431eae3d2197c1e6d",
+    "actual": "d23023b73b16d86a8bfd2a470f4d9f4cfc531a78abfd7ce431eae3d2197c1e6d",
+    "match": true
+  },
+  {
+    "manifest": "reference/malbolge_org/README.md",
+    "path": "reference/malbolge_org/adder.mal",
+    "expected": "f7a23ea3d55d943489653d17ff0f4e048f81bb952bc81f1d313a0a26151dcf7a",
+    "actual": "f7a23ea3d55d943489653d17ff0f4e048f81bb952bc81f1d313a0a26151dcf7a",
+    "match": true
+  },
+  {
+    "manifest": "reference/malbolge_org/README.md",
+    "path": "reference/malbolge_org/quine-2012.mal",
+    "expected": "419e274e3fa7f6356473a17058571cf3bcca9b0652063c27acebce064a800a4f",
+    "actual": "419e274e3fa7f6356473a17058571cf3bcca9b0652063c27acebce064a800a4f",
+    "match": true
+  },
+  {
+    "manifest": "reference/malbolge_org/README.md",
+    "path": "reference/malbolge_org/quine.mal",
+    "expected": "dca8476f8b70c8462c32f661f63c5f8b1ad6c33946b3c7a9a35186c824117d98",
+    "actual": "dca8476f8b70c8462c32f661f63c5f8b1ad6c33946b3c7a9a35186c824117d98",
+    "match": true
+  },
+  {
+    "manifest": "reference/malbolge_org/README.md",
+    "path": "reference/malbolge_org/hello_world.mal",
+    "expected": "c8a95363dbe2e997192834cf42a6f317be4a3bef93263e026300bc8243e77601",
+    "actual": "c8a95363dbe2e997192834cf42a6f317be4a3bef93263e026300bc8243e77601",
+    "match": true
+  },
+  {
+    "manifest": "reference/malbolge_org/README.md",
+    "path": "reference/malbolge_org/rot13.mal",
+    "expected": "3fa5d20f955265cc6a4dd28b5571a2a310c99d24b29077cfc4d654aa4ed88578",
+    "actual": "3fa5d20f955265cc6a4dd28b5571a2a310c99d24b29077cfc4d654aa4ed88578",
+    "match": true
+  },
+  {
+    "manifest": "reference/malbolge_org/README.md",
+    "path": "reference/malbolge_org/99_bottles.mal",
+    "expected": "f82723aa7a957f2986f554bf7f421498880bd9ee59a613861868c5c2f0741e0c",
+    "actual": "f82723aa7a957f2986f554bf7f421498880bd9ee59a613861868c5c2f0741e0c",
+    "match": true
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "source_path": "<SIBLING_REPOS>/ags-shinh/be/fetcher/malbolge.c",
+  "sha256": "05abd38e78b266050c5a5e8cc5b36584daa5bbdeb404bfb351de7ea6fa26b510",
+  "note": "Local strict mirror attributed to Ben Olmstead, public-domain header. Rejects non-ASCII explicitly; agrees with original printable-instruction validation for all audited ASCII artifacts.",
+  "repository_remote": "origin\thttps://github.com/shinh/ags (fetch)\norigin\thttps://github.com/shinh/ags (push)\n",
+  "source_commit": "b37fe88ade0d3d862c0500f0b2c0e0f91cc1254e\n"
+}

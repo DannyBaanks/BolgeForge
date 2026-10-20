@@ -1,0 +1,1892 @@
+[
+  {
+    "a": 0,
+    "b": 0,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "300a",
+    "expected": "0\n",
+    "exact": true
+  },
+  {
+    "a": 0,
+    "b": 0,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "300a",
+    "expected": "0\n",
+    "exact": true
+  },
+  {
+    "a": 999,
+    "b": 999,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313939380a",
+    "expected": "1998\n",
+    "exact": true
+  },
+  {
+    "a": 999,
+    "b": 999,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313939380a",
+    "expected": "1998\n",
+    "exact": true
+  },
+  {
+    "a": 999,
+    "b": 1,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313030300a",
+    "expected": "1000\n",
+    "exact": true
+  },
+  {
+    "a": 999,
+    "b": 1,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313030300a",
+    "expected": "1000\n",
+    "exact": true
+  },
+  {
+    "a": 1,
+    "b": 999,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313030300a",
+    "expected": "1000\n",
+    "exact": true
+  },
+  {
+    "a": 1,
+    "b": 999,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313030300a",
+    "expected": "1000\n",
+    "exact": true
+  },
+  {
+    "a": 998,
+    "b": 2,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313030300a",
+    "expected": "1000\n",
+    "exact": true
+  },
+  {
+    "a": 998,
+    "b": 2,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313030300a",
+    "expected": "1000\n",
+    "exact": true
+  },
+  {
+    "a": 792,
+    "b": 470,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313236320a",
+    "expected": "1262\n",
+    "exact": true
+  },
+  {
+    "a": 792,
+    "b": 470,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313236320a",
+    "expected": "1262\n",
+    "exact": true
+  },
+  {
+    "a": 763,
+    "b": 667,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313433300a",
+    "expected": "1430\n",
+    "exact": true
+  },
+  {
+    "a": 763,
+    "b": 667,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313433300a",
+    "expected": "1430\n",
+    "exact": true
+  },
+  {
+    "a": 837,
+    "b": 321,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313135380a",
+    "expected": "1158\n",
+    "exact": true
+  },
+  {
+    "a": 837,
+    "b": 321,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313135380a",
+    "expected": "1158\n",
+    "exact": true
+  },
+  {
+    "a": 217,
+    "b": 492,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3730390a",
+    "expected": "709\n",
+    "exact": true
+  },
+  {
+    "a": 217,
+    "b": 492,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3730390a",
+    "expected": "709\n",
+    "exact": true
+  },
+  {
+    "a": 63,
+    "b": 666,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3732390a",
+    "expected": "729\n",
+    "exact": true
+  },
+  {
+    "a": 63,
+    "b": 666,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3732390a",
+    "expected": "729\n",
+    "exact": true
+  },
+  {
+    "a": 879,
+    "b": 814,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313639330a",
+    "expected": "1693\n",
+    "exact": true
+  },
+  {
+    "a": 879,
+    "b": 814,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313639330a",
+    "expected": "1693\n",
+    "exact": true
+  },
+  {
+    "a": 507,
+    "b": 83,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3539300a",
+    "expected": "590\n",
+    "exact": true
+  },
+  {
+    "a": 507,
+    "b": 83,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3539300a",
+    "expected": "590\n",
+    "exact": true
+  },
+  {
+    "a": 151,
+    "b": 32,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3138330a",
+    "expected": "183\n",
+    "exact": true
+  },
+  {
+    "a": 151,
+    "b": 32,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3138330a",
+    "expected": "183\n",
+    "exact": true
+  },
+  {
+    "a": 330,
+    "b": 520,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3835300a",
+    "expected": "850\n",
+    "exact": true
+  },
+  {
+    "a": 330,
+    "b": 520,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3835300a",
+    "expected": "850\n",
+    "exact": true
+  },
+  {
+    "a": 208,
+    "b": 67,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3237350a",
+    "expected": "275\n",
+    "exact": true
+  },
+  {
+    "a": 208,
+    "b": 67,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3237350a",
+    "expected": "275\n",
+    "exact": true
+  },
+  {
+    "a": 252,
+    "b": 437,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3638390a",
+    "expected": "689\n",
+    "exact": true
+  },
+  {
+    "a": 252,
+    "b": 437,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3638390a",
+    "expected": "689\n",
+    "exact": true
+  },
+  {
+    "a": 92,
+    "b": 569,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3636310a",
+    "expected": "661\n",
+    "exact": true
+  },
+  {
+    "a": 92,
+    "b": 569,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3636310a",
+    "expected": "661\n",
+    "exact": true
+  },
+  {
+    "a": 227,
+    "b": 644,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3837310a",
+    "expected": "871\n",
+    "exact": true
+  },
+  {
+    "a": 227,
+    "b": 644,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3837310a",
+    "expected": "871\n",
+    "exact": true
+  },
+  {
+    "a": 686,
+    "b": 540,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313232360a",
+    "expected": "1226\n",
+    "exact": true
+  },
+  {
+    "a": 686,
+    "b": 540,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313232360a",
+    "expected": "1226\n",
+    "exact": true
+  },
+  {
+    "a": 218,
+    "b": 157,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3337350a",
+    "expected": "375\n",
+    "exact": true
+  },
+  {
+    "a": 218,
+    "b": 157,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3337350a",
+    "expected": "375\n",
+    "exact": true
+  },
+  {
+    "a": 51,
+    "b": 39,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "39300a",
+    "expected": "90\n",
+    "exact": true
+  },
+  {
+    "a": 51,
+    "b": 39,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "39300a",
+    "expected": "90\n",
+    "exact": true
+  },
+  {
+    "a": 162,
+    "b": 988,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313135300a",
+    "expected": "1150\n",
+    "exact": true
+  },
+  {
+    "a": 162,
+    "b": 988,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313135300a",
+    "expected": "1150\n",
+    "exact": true
+  },
+  {
+    "a": 990,
+    "b": 116,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313130360a",
+    "expected": "1106\n",
+    "exact": true
+  },
+  {
+    "a": 990,
+    "b": 116,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313130360a",
+    "expected": "1106\n",
+    "exact": true
+  },
+  {
+    "a": 760,
+    "b": 767,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313532370a",
+    "expected": "1527\n",
+    "exact": true
+  },
+  {
+    "a": 760,
+    "b": 767,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313532370a",
+    "expected": "1527\n",
+    "exact": true
+  },
+  {
+    "a": 275,
+    "b": 476,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3735310a",
+    "expected": "751\n",
+    "exact": true
+  },
+  {
+    "a": 275,
+    "b": 476,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3735310a",
+    "expected": "751\n",
+    "exact": true
+  },
+  {
+    "a": 416,
+    "b": 281,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3639370a",
+    "expected": "697\n",
+    "exact": true
+  },
+  {
+    "a": 416,
+    "b": 281,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3639370a",
+    "expected": "697\n",
+    "exact": true
+  },
+  {
+    "a": 796,
+    "b": 997,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313739330a",
+    "expected": "1793\n",
+    "exact": true
+  },
+  {
+    "a": 796,
+    "b": 997,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313739330a",
+    "expected": "1793\n",
+    "exact": true
+  },
+  {
+    "a": 806,
+    "b": 211,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313031370a",
+    "expected": "1017\n",
+    "exact": true
+  },
+  {
+    "a": 806,
+    "b": 211,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313031370a",
+    "expected": "1017\n",
+    "exact": true
+  },
+  {
+    "a": 798,
+    "b": 702,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313530300a",
+    "expected": "1500\n",
+    "exact": true
+  },
+  {
+    "a": 798,
+    "b": 702,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313530300a",
+    "expected": "1500\n",
+    "exact": true
+  },
+  {
+    "a": 455,
+    "b": 940,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313339350a",
+    "expected": "1395\n",
+    "exact": true
+  },
+  {
+    "a": 455,
+    "b": 940,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313339350a",
+    "expected": "1395\n",
+    "exact": true
+  },
+  {
+    "a": 731,
+    "b": 745,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313437360a",
+    "expected": "1476\n",
+    "exact": true
+  },
+  {
+    "a": 731,
+    "b": 745,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313437360a",
+    "expected": "1476\n",
+    "exact": true
+  },
+  {
+    "a": 92,
+    "b": 326,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3431380a",
+    "expected": "418\n",
+    "exact": true
+  },
+  {
+    "a": 92,
+    "b": 326,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3431380a",
+    "expected": "418\n",
+    "exact": true
+  },
+  {
+    "a": 816,
+    "b": 899,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313731350a",
+    "expected": "1715\n",
+    "exact": true
+  },
+  {
+    "a": 816,
+    "b": 899,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313731350a",
+    "expected": "1715\n",
+    "exact": true
+  },
+  {
+    "a": 812,
+    "b": 209,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313032310a",
+    "expected": "1021\n",
+    "exact": true
+  },
+  {
+    "a": 812,
+    "b": 209,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313032310a",
+    "expected": "1021\n",
+    "exact": true
+  },
+  {
+    "a": 95,
+    "b": 731,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3832360a",
+    "expected": "826\n",
+    "exact": true
+  },
+  {
+    "a": 95,
+    "b": 731,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3832360a",
+    "expected": "826\n",
+    "exact": true
+  },
+  {
+    "a": 594,
+    "b": 597,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313139310a",
+    "expected": "1191\n",
+    "exact": true
+  },
+  {
+    "a": 594,
+    "b": 597,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313139310a",
+    "expected": "1191\n",
+    "exact": true
+  },
+  {
+    "a": 50,
+    "b": 518,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3536380a",
+    "expected": "568\n",
+    "exact": true
+  },
+  {
+    "a": 50,
+    "b": 518,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3536380a",
+    "expected": "568\n",
+    "exact": true
+  },
+  {
+    "a": 211,
+    "b": 468,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3637390a",
+    "expected": "679\n",
+    "exact": true
+  },
+  {
+    "a": 211,
+    "b": 468,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3637390a",
+    "expected": "679\n",
+    "exact": true
+  },
+  {
+    "a": 220,
+    "b": 476,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3639360a",
+    "expected": "696\n",
+    "exact": true
+  },
+  {
+    "a": 220,
+    "b": 476,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3639360a",
+    "expected": "696\n",
+    "exact": true
+  },
+  {
+    "a": 977,
+    "b": 328,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313330350a",
+    "expected": "1305\n",
+    "exact": true
+  },
+  {
+    "a": 977,
+    "b": 328,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313330350a",
+    "expected": "1305\n",
+    "exact": true
+  },
+  {
+    "a": 174,
+    "b": 319,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3439330a",
+    "expected": "493\n",
+    "exact": true
+  },
+  {
+    "a": 174,
+    "b": 319,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3439330a",
+    "expected": "493\n",
+    "exact": true
+  },
+  {
+    "a": 582,
+    "b": 619,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313230310a",
+    "expected": "1201\n",
+    "exact": true
+  },
+  {
+    "a": 582,
+    "b": 619,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313230310a",
+    "expected": "1201\n",
+    "exact": true
+  },
+  {
+    "a": 970,
+    "b": 141,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313131310a",
+    "expected": "1111\n",
+    "exact": true
+  },
+  {
+    "a": 970,
+    "b": 141,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313131310a",
+    "expected": "1111\n",
+    "exact": true
+  },
+  {
+    "a": 95,
+    "b": 945,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313034300a",
+    "expected": "1040\n",
+    "exact": true
+  },
+  {
+    "a": 95,
+    "b": 945,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313034300a",
+    "expected": "1040\n",
+    "exact": true
+  },
+  {
+    "a": 47,
+    "b": 375,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3432320a",
+    "expected": "422\n",
+    "exact": true
+  },
+  {
+    "a": 47,
+    "b": 375,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3432320a",
+    "expected": "422\n",
+    "exact": true
+  },
+  {
+    "a": 97,
+    "b": 196,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3239330a",
+    "expected": "293\n",
+    "exact": true
+  },
+  {
+    "a": 97,
+    "b": 196,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3239330a",
+    "expected": "293\n",
+    "exact": true
+  },
+  {
+    "a": 694,
+    "b": 94,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3738380a",
+    "expected": "788\n",
+    "exact": true
+  },
+  {
+    "a": 694,
+    "b": 94,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3738380a",
+    "expected": "788\n",
+    "exact": true
+  },
+  {
+    "a": 406,
+    "b": 709,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313131350a",
+    "expected": "1115\n",
+    "exact": true
+  },
+  {
+    "a": 406,
+    "b": 709,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313131350a",
+    "expected": "1115\n",
+    "exact": true
+  },
+  {
+    "a": 879,
+    "b": 195,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313037340a",
+    "expected": "1074\n",
+    "exact": true
+  },
+  {
+    "a": 879,
+    "b": 195,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313037340a",
+    "expected": "1074\n",
+    "exact": true
+  },
+  {
+    "a": 6,
+    "b": 564,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3537300a",
+    "expected": "570\n",
+    "exact": true
+  },
+  {
+    "a": 6,
+    "b": 564,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3537300a",
+    "expected": "570\n",
+    "exact": true
+  },
+  {
+    "a": 738,
+    "b": 411,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313134390a",
+    "expected": "1149\n",
+    "exact": true
+  },
+  {
+    "a": 738,
+    "b": 411,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313134390a",
+    "expected": "1149\n",
+    "exact": true
+  },
+  {
+    "a": 917,
+    "b": 552,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313436390a",
+    "expected": "1469\n",
+    "exact": true
+  },
+  {
+    "a": 917,
+    "b": 552,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313436390a",
+    "expected": "1469\n",
+    "exact": true
+  },
+  {
+    "a": 651,
+    "b": 516,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313136370a",
+    "expected": "1167\n",
+    "exact": true
+  },
+  {
+    "a": 651,
+    "b": 516,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313136370a",
+    "expected": "1167\n",
+    "exact": true
+  },
+  {
+    "a": 411,
+    "b": 628,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313033390a",
+    "expected": "1039\n",
+    "exact": true
+  },
+  {
+    "a": 411,
+    "b": 628,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313033390a",
+    "expected": "1039\n",
+    "exact": true
+  },
+  {
+    "a": 132,
+    "b": 688,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3832300a",
+    "expected": "820\n",
+    "exact": true
+  },
+  {
+    "a": 132,
+    "b": 688,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3832300a",
+    "expected": "820\n",
+    "exact": true
+  },
+  {
+    "a": 160,
+    "b": 409,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3536390a",
+    "expected": "569\n",
+    "exact": true
+  },
+  {
+    "a": 160,
+    "b": 409,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3536390a",
+    "expected": "569\n",
+    "exact": true
+  },
+  {
+    "a": 402,
+    "b": 214,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3631360a",
+    "expected": "616\n",
+    "exact": true
+  },
+  {
+    "a": 402,
+    "b": 214,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3631360a",
+    "expected": "616\n",
+    "exact": true
+  },
+  {
+    "a": 767,
+    "b": 667,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313433340a",
+    "expected": "1434\n",
+    "exact": true
+  },
+  {
+    "a": 767,
+    "b": 667,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313433340a",
+    "expected": "1434\n",
+    "exact": true
+  },
+  {
+    "a": 185,
+    "b": 288,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3437330a",
+    "expected": "473\n",
+    "exact": true
+  },
+  {
+    "a": 185,
+    "b": 288,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3437330a",
+    "expected": "473\n",
+    "exact": true
+  },
+  {
+    "a": 825,
+    "b": 490,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313331350a",
+    "expected": "1315\n",
+    "exact": true
+  },
+  {
+    "a": 825,
+    "b": 490,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313331350a",
+    "expected": "1315\n",
+    "exact": true
+  },
+  {
+    "a": 365,
+    "b": 465,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3833300a",
+    "expected": "830\n",
+    "exact": true
+  },
+  {
+    "a": 365,
+    "b": 465,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3833300a",
+    "expected": "830\n",
+    "exact": true
+  },
+  {
+    "a": 431,
+    "b": 470,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3930310a",
+    "expected": "901\n",
+    "exact": true
+  },
+  {
+    "a": 431,
+    "b": 470,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3930310a",
+    "expected": "901\n",
+    "exact": true
+  },
+  {
+    "a": 849,
+    "b": 455,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313330340a",
+    "expected": "1304\n",
+    "exact": true
+  },
+  {
+    "a": 849,
+    "b": 455,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313330340a",
+    "expected": "1304\n",
+    "exact": true
+  },
+  {
+    "a": 244,
+    "b": 221,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3436350a",
+    "expected": "465\n",
+    "exact": true
+  },
+  {
+    "a": 244,
+    "b": 221,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3436350a",
+    "expected": "465\n",
+    "exact": true
+  },
+  {
+    "a": 16,
+    "b": 879,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3839350a",
+    "expected": "895\n",
+    "exact": true
+  },
+  {
+    "a": 16,
+    "b": 879,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3839350a",
+    "expected": "895\n",
+    "exact": true
+  },
+  {
+    "a": 18,
+    "b": 533,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3535310a",
+    "expected": "551\n",
+    "exact": true
+  },
+  {
+    "a": 18,
+    "b": 533,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3535310a",
+    "expected": "551\n",
+    "exact": true
+  },
+  {
+    "a": 201,
+    "b": 65,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3236360a",
+    "expected": "266\n",
+    "exact": true
+  },
+  {
+    "a": 201,
+    "b": 65,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3236360a",
+    "expected": "266\n",
+    "exact": true
+  },
+  {
+    "a": 740,
+    "b": 795,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313533350a",
+    "expected": "1535\n",
+    "exact": true
+  },
+  {
+    "a": 740,
+    "b": 795,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313533350a",
+    "expected": "1535\n",
+    "exact": true
+  },
+  {
+    "a": 655,
+    "b": 701,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313335360a",
+    "expected": "1356\n",
+    "exact": true
+  },
+  {
+    "a": 655,
+    "b": 701,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313335360a",
+    "expected": "1356\n",
+    "exact": true
+  },
+  {
+    "a": 559,
+    "b": 562,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313132310a",
+    "expected": "1121\n",
+    "exact": true
+  },
+  {
+    "a": 559,
+    "b": 562,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313132310a",
+    "expected": "1121\n",
+    "exact": true
+  },
+  {
+    "a": 148,
+    "b": 887,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313033350a",
+    "expected": "1035\n",
+    "exact": true
+  },
+  {
+    "a": 148,
+    "b": 887,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313033350a",
+    "expected": "1035\n",
+    "exact": true
+  },
+  {
+    "a": 355,
+    "b": 176,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3533310a",
+    "expected": "531\n",
+    "exact": true
+  },
+  {
+    "a": 355,
+    "b": 176,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3533310a",
+    "expected": "531\n",
+    "exact": true
+  },
+  {
+    "a": 50,
+    "b": 118,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3136380a",
+    "expected": "168\n",
+    "exact": true
+  },
+  {
+    "a": 50,
+    "b": 118,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3136380a",
+    "expected": "168\n",
+    "exact": true
+  },
+  {
+    "a": 650,
+    "b": 940,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313539300a",
+    "expected": "1590\n",
+    "exact": true
+  },
+  {
+    "a": 650,
+    "b": 940,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313539300a",
+    "expected": "1590\n",
+    "exact": true
+  },
+  {
+    "a": 865,
+    "b": 906,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313737310a",
+    "expected": "1771\n",
+    "exact": true
+  },
+  {
+    "a": 865,
+    "b": 906,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313737310a",
+    "expected": "1771\n",
+    "exact": true
+  },
+  {
+    "a": 648,
+    "b": 179,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3832370a",
+    "expected": "827\n",
+    "exact": true
+  },
+  {
+    "a": 648,
+    "b": 179,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3832370a",
+    "expected": "827\n",
+    "exact": true
+  },
+  {
+    "a": 475,
+    "b": 534,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313030390a",
+    "expected": "1009\n",
+    "exact": true
+  },
+  {
+    "a": 475,
+    "b": 534,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313030390a",
+    "expected": "1009\n",
+    "exact": true
+  },
+  {
+    "a": 795,
+    "b": 922,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313731370a",
+    "expected": "1717\n",
+    "exact": true
+  },
+  {
+    "a": 795,
+    "b": 922,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313731370a",
+    "expected": "1717\n",
+    "exact": true
+  },
+  {
+    "a": 505,
+    "b": 584,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313038390a",
+    "expected": "1089\n",
+    "exact": true
+  },
+  {
+    "a": 505,
+    "b": 584,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313038390a",
+    "expected": "1089\n",
+    "exact": true
+  },
+  {
+    "a": 165,
+    "b": 294,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3435390a",
+    "expected": "459\n",
+    "exact": true
+  },
+  {
+    "a": 165,
+    "b": 294,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3435390a",
+    "expected": "459\n",
+    "exact": true
+  },
+  {
+    "a": 11,
+    "b": 833,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3834340a",
+    "expected": "844\n",
+    "exact": true
+  },
+  {
+    "a": 11,
+    "b": 833,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3834340a",
+    "expected": "844\n",
+    "exact": true
+  },
+  {
+    "a": 717,
+    "b": 694,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313431310a",
+    "expected": "1411\n",
+    "exact": true
+  },
+  {
+    "a": 717,
+    "b": 694,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313431310a",
+    "expected": "1411\n",
+    "exact": true
+  },
+  {
+    "a": 374,
+    "b": 281,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3635350a",
+    "expected": "655\n",
+    "exact": true
+  },
+  {
+    "a": 374,
+    "b": 281,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3635350a",
+    "expected": "655\n",
+    "exact": true
+  },
+  {
+    "a": 261,
+    "b": 683,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3934340a",
+    "expected": "944\n",
+    "exact": true
+  },
+  {
+    "a": 261,
+    "b": 683,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3934340a",
+    "expected": "944\n",
+    "exact": true
+  },
+  {
+    "a": 454,
+    "b": 694,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313134380a",
+    "expected": "1148\n",
+    "exact": true
+  },
+  {
+    "a": 454,
+    "b": 694,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313134380a",
+    "expected": "1148\n",
+    "exact": true
+  },
+  {
+    "a": 461,
+    "b": 553,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313031340a",
+    "expected": "1014\n",
+    "exact": true
+  },
+  {
+    "a": 461,
+    "b": 553,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313031340a",
+    "expected": "1014\n",
+    "exact": true
+  },
+  {
+    "a": 710,
+    "b": 228,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3933380a",
+    "expected": "938\n",
+    "exact": true
+  },
+  {
+    "a": 710,
+    "b": 228,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3933380a",
+    "expected": "938\n",
+    "exact": true
+  },
+  {
+    "a": 388,
+    "b": 488,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3837360a",
+    "expected": "876\n",
+    "exact": true
+  },
+  {
+    "a": 388,
+    "b": 488,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3837360a",
+    "expected": "876\n",
+    "exact": true
+  },
+  {
+    "a": 340,
+    "b": 224,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3536340a",
+    "expected": "564\n",
+    "exact": true
+  },
+  {
+    "a": 340,
+    "b": 224,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3536340a",
+    "expected": "564\n",
+    "exact": true
+  },
+  {
+    "a": 449,
+    "b": 643,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313039320a",
+    "expected": "1092\n",
+    "exact": true
+  },
+  {
+    "a": 449,
+    "b": 643,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313039320a",
+    "expected": "1092\n",
+    "exact": true
+  },
+  {
+    "a": 93,
+    "b": 273,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3336360a",
+    "expected": "366\n",
+    "exact": true
+  },
+  {
+    "a": 93,
+    "b": 273,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3336360a",
+    "expected": "366\n",
+    "exact": true
+  },
+  {
+    "a": 940,
+    "b": 773,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313731330a",
+    "expected": "1713\n",
+    "exact": true
+  },
+  {
+    "a": 940,
+    "b": 773,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313731330a",
+    "expected": "1713\n",
+    "exact": true
+  },
+  {
+    "a": 958,
+    "b": 487,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313434350a",
+    "expected": "1445\n",
+    "exact": true
+  },
+  {
+    "a": 958,
+    "b": 487,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313434350a",
+    "expected": "1445\n",
+    "exact": true
+  },
+  {
+    "a": 497,
+    "b": 112,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3630390a",
+    "expected": "609\n",
+    "exact": true
+  },
+  {
+    "a": 497,
+    "b": 112,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3630390a",
+    "expected": "609\n",
+    "exact": true
+  },
+  {
+    "a": 687,
+    "b": 86,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3737330a",
+    "expected": "773\n",
+    "exact": true
+  },
+  {
+    "a": 687,
+    "b": 86,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3737330a",
+    "expected": "773\n",
+    "exact": true
+  },
+  {
+    "a": 387,
+    "b": 573,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3936300a",
+    "expected": "960\n",
+    "exact": true
+  },
+  {
+    "a": 387,
+    "b": 573,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3936300a",
+    "expected": "960\n",
+    "exact": true
+  },
+  {
+    "a": 740,
+    "b": 390,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313133300a",
+    "expected": "1130\n",
+    "exact": true
+  },
+  {
+    "a": 740,
+    "b": 390,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313133300a",
+    "expected": "1130\n",
+    "exact": true
+  },
+  {
+    "a": 991,
+    "b": 599,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313539300a",
+    "expected": "1590\n",
+    "exact": true
+  },
+  {
+    "a": 991,
+    "b": 599,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313539300a",
+    "expected": "1590\n",
+    "exact": true
+  },
+  {
+    "a": 397,
+    "b": 24,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3432310a",
+    "expected": "421\n",
+    "exact": true
+  },
+  {
+    "a": 397,
+    "b": 24,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3432310a",
+    "expected": "421\n",
+    "exact": true
+  },
+  {
+    "a": 230,
+    "b": 900,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313133300a",
+    "expected": "1130\n",
+    "exact": true
+  },
+  {
+    "a": 230,
+    "b": 900,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313133300a",
+    "expected": "1130\n",
+    "exact": true
+  },
+  {
+    "a": 459,
+    "b": 924,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313338330a",
+    "expected": "1383\n",
+    "exact": true
+  },
+  {
+    "a": 459,
+    "b": 924,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313338330a",
+    "expected": "1383\n",
+    "exact": true
+  },
+  {
+    "a": 142,
+    "b": 632,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3737340a",
+    "expected": "774\n",
+    "exact": true
+  },
+  {
+    "a": 142,
+    "b": 632,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3737340a",
+    "expected": "774\n",
+    "exact": true
+  },
+  {
+    "a": 2,
+    "b": 445,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3434370a",
+    "expected": "447\n",
+    "exact": true
+  },
+  {
+    "a": 2,
+    "b": 445,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3434370a",
+    "expected": "447\n",
+    "exact": true
+  },
+  {
+    "a": 310,
+    "b": 509,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "3831390a",
+    "expected": "819\n",
+    "exact": true
+  },
+  {
+    "a": 310,
+    "b": 509,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "3831390a",
+    "expected": "819\n",
+    "exact": true
+  },
+  {
+    "a": 807,
+    "b": 666,
+    "artifact": "reference/malbolge_org",
+    "returncode": 0,
+    "output_hex": "313437330a",
+    "expected": "1473\n",
+    "exact": true
+  },
+  {
+    "a": 807,
+    "b": 666,
+    "artifact": "artifacts",
+    "returncode": 0,
+    "output_hex": "313437330a",
+    "expected": "1473\n",
+    "exact": true
+  }
+]

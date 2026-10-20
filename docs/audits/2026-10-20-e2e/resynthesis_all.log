@@ -1,0 +1,20 @@
+
+=== Compressing cat (cat.mal) ===
+Compressed cat: {'orig_chars': 9382, 'new_chars': 8254, 'saved_chars': 1128, 'saved_pct': 12.02, 'k': 12, 'delta': 1128, 'end_c': 7822, 'pad_len': 53, 'elapsed_s': 12.255}
+  [PASS mb_ref] input (19B) -> exact output match!
+  [PASS mb_ref] input (44B) -> exact output match!
+  [PASS mb_ref] input (0B) -> exact output match!
+
+=== Compressing digital_root (digital_root.mal) ===
+Compressed digital_root: {'orig_chars': 32136, 'new_chars': 26308, 'saved_chars': 5828, 'saved_pct': 18.14, 'k': 62, 'delta': 5828, 'end_c': 25569, 'pad_len': 51, 'elapsed_s': 31.562}
+Traceback (most recent call last):
+  File "/tmp/bolgeforge-audit-20261020/checkout/tools/resynthesize.py", line 730, in <module>
+    main()
+  File "/tmp/bolgeforge-audit-20261020/checkout/tools/resynthesize.py", line 724, in main
+    run_target(t)
+  File "/tmp/bolgeforge-audit-20261020/checkout/tools/resynthesize.py", line 703, in run_target
+    assert res.returncode == 0 and res.stdout == res_orig.stdout, f"Mismatch: {res.stdout!r} != {res_orig.stdout!r}"
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Mismatch: b'4\xef' != b'0\n'
+
+EXIT=1

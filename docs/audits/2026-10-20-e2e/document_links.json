@@ -1,0 +1,38 @@
+[
+  {
+    "doc": "docs/CAT_ANALYSIS.md",
+    "target": "../tools/test_exact_ascii_circuit.py",
+    "exists_on_disk": true,
+    "tracked": false
+  },
+  {
+    "doc": "docs/CAT_ANALYSIS.md",
+    "target": "../tools/test_period2_loop.c",
+    "exists_on_disk": true,
+    "tracked": false
+  },
+  {
+    "doc": "docs/CAT_ANALYSIS.md",
+    "target": "../artifacts/cand_twostroke_ring.mal",
+    "exists_on_disk": true,
+    "tracked": false
+  },
+  {
+    "doc": "docs/CAT_ANALYSIS.md",
+    "target": "../tools/assemble_twostroke_ring_oscillator.py",
+    "exists_on_disk": true,
+    "tracked": false
+  },
+  {
+    "doc": "docs/CAT_ANALYSIS.md",
+    "target": "../artifacts/cand_valid.mal",
+    "exists_on_disk": true,
+    "tracked": false
+  },
+  {
+    "doc": "docs/CAT_ANALYSIS.md",
+    "target": "../tools/assemble_twostroke_ring_oscillator.py",
+    "exists_on_disk": true,
+    "tracked": false
+  }
+]

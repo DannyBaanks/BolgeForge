@@ -1,0 +1,24 @@
+[
+  {
+    "file": "olmstead_interpreter.html",
+    "url": "https://www.lscheffer.com/malbolge_interp.html",
+    "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1000)>"
+  },
+  {
+    "file": "olmstead_spec.html",
+    "url": "https://www.lscheffer.com/malbolge_spec.html",
+    "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1000)>"
+  },
+  {
+    "file": "lutter_cat.html",
+    "url": "https://malbolge.org/cat.html",
+    "size": 2417,
+    "sha256": "42f55c4b75d49af2292a3d330f5710a7943ac8cebbe8b4be3236db64a2c8e93d"
+  },
+  {
+    "file": "angel_repository.json",
+    "url": "https://api.github.com/repos/angel-p57/malbolge/git/trees/main?recursive=1",
+    "size": 2635,
+    "sha256": "1eda90e13c5f3b54cb12158a6601ae1afb5b6ac101233b79833e2fa982234e55"
+  }
+]

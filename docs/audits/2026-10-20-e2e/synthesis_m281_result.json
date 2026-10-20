@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "python3",
+    "synthesize.py",
+    "281"
+  ],
+  "cwd": "/tmp/bolgeforge-audit-20261020/checkout",
+  "synthesis_returncode": 0,
+  "source_bytes": 53562,
+  "source_sha256": "96b670b825372a0f41fa3b574d47457f92654b76411e5d5be4c438003087610e",
+  "published_sha256": "96b670b825372a0f41fa3b574d47457f92654b76411e5d5be4c438003087610e",
+  "matches_published": true,
+  "matches_committed": true,
+  "strict_returncode": 0,
+  "strict_stdout_sha256": "96b670b825372a0f41fa3b574d47457f92654b76411e5d5be4c438003087610e",
+  "self_reproduction_exact": true
+}

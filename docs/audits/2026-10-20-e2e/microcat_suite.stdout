@@ -1,0 +1,9 @@
+=== MICROCAT 3,380B TEST SUITE ON mb_ref ===
+Target: /tmp/bolgeforge-audit-20261020/checkout/artifacts/microcat.mal (3380 bytes)
+  [PASS] BATTERY 1: Immediate EOF halts with rc=0 and 0 bytes emitted.
+  [RUN ] Testing all 256 byte values (0x00..0xFF)...
+  [PASS] BATTERY 2: All 256/256 bytes echo with 100% bit-for-bit fidelity and clean exit 0!
+  [PASS] BATTERY 2+: Two-byte corner cases echo bit-for-bit with clean exit 0.
+  [PASS] BATTERY 3: Three-byte corner cases & binary permutations echo bit-for-bit.
+
+>>> ALL VERIFIED ON OLMSTEAD REFERENCE INTERPRETER (mb_ref)!

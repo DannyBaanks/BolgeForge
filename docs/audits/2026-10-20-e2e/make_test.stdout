@@ -1,0 +1,89 @@
+python3 test_corpus.py
+=== RUNNING MALBOLGE.ORG REFERENCE CORPUS VERIFICATION ===
+Testing cat.mal... PASS
+Testing digital_root.mal... PASS
+Testing adder.mal... PASS
+Testing quine.mal self-reproduction... PASS (0-byte diff bit-for-bit)
+Testing quine-2012.mal self-reproduction... PASS (0-byte diff bit-for-bit)
+Testing hello_world.mal... PASS
+Testing rot13.mal... PASS
+Testing 99_bottles.mal (full 99-verse execution)... PASS (11,459 bytes, 99 verses)
+=== ALL MALBOLGE.ORG CORPUS TESTS PASSED (0.49s) ===
+python3 tools/microcat.py
+=== BOLGEFORGE MICRO-CAT ARCHITECTURAL VERIFICATION ===
+======================================================================
+1. VERIFYING 2-STEP TERNARY EOF DETECTOR INVARIANT
+======================================================================
+  [PASS] crazy(crazy(59048, EOF), 29524) == 0 (Exact Cell 0 Halt)
+  [PASS] Tested 256 byte values: 0 collisions with Halt cell (100% collision-free).
+
+======================================================================
+2. VERIFYING 29524 TRIT TRANSPOSITION INVOLUTION (LOSSLESS STORAGE)
+======================================================================
+  [PASS] Proved across all 59,049 ternary values: crazy(crazy(x, 29524), 29524) == x.
+
+======================================================================
+3. VERIFYING THE 4 CORE PRIMITIVES UNDER XLAT1/XLAT2 DYNAMICS
+======================================================================
+  [PASS] Primitive HALT (v)     at c % 94 =  1 with ASCII 80 ('P') -> decoded op 'v'.
+  [PASS] Primitive OUTPUT (<)   at c % 94 = 25 with ASCII 74 ('J') -> decoded op '<'.
+  [PASS] Primitive INPUT (/)    at c % 94 = 43 with ASCII 74 ('J') -> decoded op '/'.
+  [PASS] Primitive SET D (j)    at c % 94 = 64 with ASCII 70 ('F') -> decoded op 'j'.
+  [PASS] Primitive JUMP (i)     at c % 94 = 65 with ASCII 33 ('!') -> decoded op 'i'.
+
+======================================================================
+4. CANONICAL CAT REFERENCE AUDIT (MATTHIAS LUTTER 2012)
+======================================================================
+  Canonical cat.mal: 9,503 bytes (9,382 opcodes).
+  Verified execution in loop touches only 145 distinct cells (22 low, 123 high).
+  95% of cat.mal is unrolled HeLL initialization; direct loop eliminates this bloat.
+======================================================================
+ALL ARCHITECTURAL INVARIANTS DEMONSTRATED AND FROZEN.
+======================================================================
+python3 tools/assemble_microcat.py
+=== BOLGEFORGE ALGEBRAIC PRIMITIVE & CAT ORACLE HARNESS ===
+Checking algebraic invariants ([DEMONSTRATED - ALGEBRAIC])...
+  [PASS] Invariant 1: crazy(crazy(59048, EOF), 29524) == 0 (0 collisions in 256 bytes).
+  [PASS] Invariant 2: crazy(crazy(x, 29524), 29524) == x for all 59,049 values.
+  [PASS] Invariant 3: Separation theorem (K1=59048, K2=729 -> EOF=0, all 256 ASCII/bytes=1458).
+  [PASS] Invariant 4: Trit-4 invariant (< 188 layout target 162 vs 81).
+Verified existing artifact: /tmp/bolgeforge-audit-20261020/checkout/artifacts/microcat.mal (3,380 B).
+Verifying microcat.mal against mb_ref...
+  [PASS] Battery 1: immediate EOF -> clean HALT (exit 0, 0 bytes out).
+  [PASS] Battery 2: single char 'A' -> echoed bit-for-bit, clean HALT.
+  [PASS] Battery 2+: two-byte pair 'AB' -> exact echo bit-for-bit.
+  [PASS] Battery 3: three-byte string 'ABC' -> exact match.
+============================================================
+ALL BATTERIES PASSED BIT-FOR-BIT FOR microcat.mal!
+============================================================
+python3 tools/test_compressed.py
+=== VERIFYING COMPRESSED BENCHMARKS AGAINST mb_ref ===
+  [PASS] cat_compressed.mal: verified bit-exact echo
+  [PASS] digital_root_compressed.mal: verified 12345 -> 6
+  [PASS] adder_compressed.mal: verified 12+34 -> 46
+  [PASS] 99_bottles_compressed.mal: verified 11,459 bytes output
+=== ALL COMPRESSED BENCHMARKS VERIFIED! ===
+python3 tools/verify_truth_machine_full.py
+=== VERIFYING TRUTH MACHINE (truth_machine.mal) ON mb_ref ===
+  [PASS] Input '0': Cleanly halts with returncode 0 and emits b'0'.
+  [PASS] Input '1': Infinitely streams '1's (1111 bytes verified, 100% '1').
+=== TRUTH MACHINE 100% VERIFIED ON mb_ref ===
+python3 tools/test_fizzbuzz.py
+=== VERIFYING FIZZBUZZ (1..100) IN CLASSIC MALBOLGE ===
+Artifact: /tmp/bolgeforge-audit-20261020/checkout/artifacts/fizzbuzz.mal
+Size:     4,517 bytes (wrapped)
+SHA-256:  14f372ac74909c344638bf5c1ffbf1797fcd9b26cb18111a3b21bc31dd1bcd42
+  [PASS] Artifact hash matches canonical recorded checksum.
+Opcodes:  4,455 non-whitespace bytes
+  [PASS] All opcodes strictly satisfy ASCII [33, 126] loader constraint.
+  [PASS] Clean HALT (rc=0) executed in 2.06 ms.
+  [PASS] Exact 100 lines, 413 bytes emitted bit-for-bit identical to canonical spec.
+======================================================================
+SUCCESS: FIZZBUZZ IN CLASSIC MALBOLGE FULLY VERIFIED ON mb_ref!
+======================================================================
+Verifying committed quines...
+OK artifacts/candidate_m281_53562b.mal
+OK artifacts/candidate_m284_54134b.mal
+OK artifacts/candidate_m287_54706b.mal
+OK artifacts/candidate_m293_55850b.mal
+OK artifacts/candidate_m308_58709b.mal

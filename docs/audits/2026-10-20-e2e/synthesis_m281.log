@@ -1,0 +1,82 @@
+=== SYNTHESIZING MALBOLGE QUINE FOR m = 281 ===
+Found 215 variables to synthesize.
+Prefix finished: c=1473, d=149, a=29524
+Seed 26163 written to cell 148.
+Generated 27 group increment macro sequence for m=281 (BFS fallbacks: 0).
+Group 00 written! Current c = 2387
+Group 01 written! Current c = 3010
+Group 02 written! Current c = 3678
+Group 03 written! Current c = 4208
+Group 04 written! Current c = 4978
+Group 05 written! Current c = 5731
+Group 06 written! Current c = 6508
+Group 07 written! Current c = 7430
+  BFS failed @ 26235 -> COMPOSITE INC
+  COMPOSITE INC V=26235 W=3276 T=26244 X1=39364 X2=3280 est_extra=38
+  COMPOSITE INC OK mem[148]=26244 d=140 c=71
+Group 08 written! Current c = 8271
+Group 09 written! Current c = 8997
+Group 10 written! Current c = 9721
+Group 11 written! Current c = 10450
+Group 12 written! Current c = 11276
+Group 13 written! Current c = 11537
+Group 14 written! Current c = 12118
+Group 15 written! Current c = 12701
+Group 16 written! Current c = 13249
+Group 17 written! Current c = 14030
+Group 18 written! Current c = 14839
+Group 19 written! Current c = 15653
+Group 20 written! Current c = 16344
+Group 21 written! Current c = 16990
+Group 22 written! Current c = 17820
+Group 23 written! Current c = 18353
+Group 24 written! Current c = 18713
+Group 25 written! Current c = 18952
+Group 26 written! Current c = 19539
+Group 27 written! Current c = 19944
+All 215 variables written! Current c = 19944
+Writing end-of-program boundary cell 52828 = 127...
+End-of-program boundary cell 52828 written to 127! Current c = 20104
+Cell 148 reset to 44. Current c = 20184
+All 94 landing table cells written to 26318! Current c = 25428
+Cell 139 written with 26372! Current c = 25513
+Position c before handoff jump: 25565
+Maximum allowed c (capacity - 3): 25944
+============================================================
+PREAMBLE SYNTHESIS 100% COMPLETE AND VERIFIED FOR m = 281!
+Final handoff: c = 25976, d = 26409, a = 26407
+Total synthesized opcodes: 24094
+PHASE BREAKDOWN:
+  g_synth           8809
+  g_clear           3642
+  g_write           3295
+  land_clear        2323
+  g_setup           1720
+  land_write        1380
+  land_reload       1128
+  g_inc              884
+  land_inc           340
+  boundary           160
+  cell139             85
+  reset               80
+  land_prep           73
+  comp_inc            68
+  handoff             54
+  seed                53
+  g_ret          n= 215 total=    944 mean=   4.4
+  g_synth        n= 215 total=   8809 mean=  41.0
+  land_ret       n=  94 total=    450 mean=   4.8
+  land_synth     n=   1 total=      7 mean=   7.0
+Positive margin before loop slice (25947): 380 opcodes!
+============================================================
+TOTAL FILE BYTES (wrapped at 72 chars/line): 53562 bytes!
+WROTE EXACT QUINE FILE TO: /tmp/bolgeforge-audit-20261020/checkout/artifacts/candidate_m281_53562b.mal
+RUNNING CANONICAL OLMSTEAD VERIFICATION WITH /tmp/bolgeforge-audit-20261020/checkout/mb_ref...
+Interpreter finished in 0.14s with returncode 0
+************************************************************
+VERIFICATION PASS: EXACT 0-BYTE DIFFERENCE BIT-FOR-BIT!
+CANONICAL MALBOLGE QUINE FOR m = 281 CONFIRMED!
+FILE SIZE: 53562 BYTES (vs Lutter's 59,852 bytes, saved 6290 bytes!)
+************************************************************
+
+EXIT=0

@@ -1,0 +1,2357 @@
+[
+  {
+    "label": "strict_candidate_m281_53562b",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/candidate_m281_53562b.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.13804029600214562,
+    "input_bytes": 0,
+    "output_bytes": 53562,
+    "output_sha256": "96b670b825372a0f41fa3b574d47457f92654b76411e5d5be4c438003087610e",
+    "raw_prefix": "0000_strict_candidate_m281_53562b",
+    "expected_sha256": "96b670b825372a0f41fa3b574d47457f92654b76411e5d5be4c438003087610e",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "strict_candidate_m284_54134b",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/candidate_m284_54134b.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.1386204180016648,
+    "input_bytes": 0,
+    "output_bytes": 54134,
+    "output_sha256": "1808fd4d862a274abc6b9f7b8965d1eee65fc11aa2424c23a8077040876b483c",
+    "raw_prefix": "0001_strict_candidate_m284_54134b",
+    "expected_sha256": "1808fd4d862a274abc6b9f7b8965d1eee65fc11aa2424c23a8077040876b483c",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "strict_candidate_m287_54706b",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/candidate_m287_54706b.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.14111951299855718,
+    "input_bytes": 0,
+    "output_bytes": 54706,
+    "output_sha256": "3da997b9e559230d43acf828188269d441afc03d773e71a83f49ae7e9d663efb",
+    "raw_prefix": "0002_strict_candidate_m287_54706b",
+    "expected_sha256": "3da997b9e559230d43acf828188269d441afc03d773e71a83f49ae7e9d663efb",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "strict_candidate_m293_55850b",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/candidate_m293_55850b.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.14145760500105098,
+    "input_bytes": 0,
+    "output_bytes": 55850,
+    "output_sha256": "1719515d85fa2d5dfc0c36cdcc935eefd363fca0a435b2588ef36a1509b1b2ea",
+    "raw_prefix": "0003_strict_candidate_m293_55850b",
+    "expected_sha256": "1719515d85fa2d5dfc0c36cdcc935eefd363fca0a435b2588ef36a1509b1b2ea",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "strict_candidate_m308_58709b",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/candidate_m308_58709b.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.15030478999688057,
+    "input_bytes": 0,
+    "output_bytes": 58709,
+    "output_sha256": "67628cf1cd8befe907c39aac6476d31927499f0421013c34195891f2ec4ca071",
+    "raw_prefix": "0004_strict_candidate_m308_58709b",
+    "expected_sha256": "67628cf1cd8befe907c39aac6476d31927499f0421013c34195891f2ec4ca071",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "strict_microcat",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/microcat.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 1,
+    "seconds": 0.0032593659998383373,
+    "input_bytes": 3,
+    "output_bytes": 0,
+    "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "raw_prefix": "0005_strict_microcat",
+    "expected_sha256": "b5d4045c3f466fa91fe2cc6abe79232a1a57cdf104f7a26e716e0a1e2789df78",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "strict_truth_machine",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/truth_machine.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 1,
+    "seconds": 0.002331327999854693,
+    "input_bytes": 1,
+    "output_bytes": 0,
+    "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "raw_prefix": "0006_strict_truth_machine",
+    "expected_sha256": "5feceb66ffc86f38d952786c6d696c79c2dbc239dd4e91b46729d73a27fb57e9",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "strict_fizzbuzz",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/fizzbuzz.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 1,
+    "seconds": 0.0007823719970474485,
+    "input_bytes": 0,
+    "output_bytes": 0,
+    "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "raw_prefix": "0007_strict_fizzbuzz",
+    "expected_sha256": "f039dc221ad122dda8b7226ad5bc68b8654e9e3a42dcea2b37554cd6f91b56af",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "strict_reference_malbolge_org_cat",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/cat.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.0024825050022627693,
+    "input_bytes": 0,
+    "output_bytes": 0,
+    "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "raw_prefix": "0008_strict_reference_malbolge_org_cat",
+    "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "strict_reference_malbolge_org_cat",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/cat.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.0026424870011396706,
+    "input_bytes": 4,
+    "output_bytes": 4,
+    "output_sha256": "e12e115acf4552b2568b55e93cbd39394c4ef81c82447fafc997882a02d23677",
+    "raw_prefix": "0009_strict_reference_malbolge_org_cat",
+    "expected_sha256": "e12e115acf4552b2568b55e93cbd39394c4ef81c82447fafc997882a02d23677",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "strict_reference_malbolge_org_cat",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/cat.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.001909847000206355,
+    "input_bytes": 256,
+    "output_bytes": 256,
+    "output_sha256": "40aff2e9d2d8922e47afd4648e6967497158785fbd1da870e7110266bf944880",
+    "raw_prefix": "0010_strict_reference_malbolge_org_cat",
+    "expected_sha256": "40aff2e9d2d8922e47afd4648e6967497158785fbd1da870e7110266bf944880",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "strict_reference_malbolge_org_digital_root",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/digital_root.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.0019773200001509394,
+    "input_bytes": 6,
+    "output_bytes": 2,
+    "output_sha256": "06e9d52c1720fca412803e3b07c4b228ff113e303f4c7ab94665319d832bbfb7",
+    "raw_prefix": "0011_strict_reference_malbolge_org_digital_root",
+    "expected_sha256": "06e9d52c1720fca412803e3b07c4b228ff113e303f4c7ab94665319d832bbfb7",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "strict_reference_malbolge_org_adder",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/adder.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.0018370830002822913,
+    "input_bytes": 6,
+    "output_bytes": 3,
+    "output_sha256": "a5331f18877e9e1543361e44b4cb0a1f5f0ed5f8297d850bf1fcc68bd7a3ab5f",
+    "raw_prefix": "0012_strict_reference_malbolge_org_adder",
+    "expected_sha256": "a5331f18877e9e1543361e44b4cb0a1f5f0ed5f8297d850bf1fcc68bd7a3ab5f",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "strict_bottles_reference_malbolge_org",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/99_bottles.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.03478765000181738,
+    "input_bytes": 0,
+    "output_bytes": 11459,
+    "output_sha256": "a759597138f098c09a80d0474e83a0b99ea57f3b22821375361c7e913fb1968a",
+    "raw_prefix": "0013_strict_bottles_reference_malbolge_org"
+  },
+  {
+    "label": "strict_artifacts_cat_compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/cat_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.0018382150010438636,
+    "input_bytes": 0,
+    "output_bytes": 0,
+    "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "raw_prefix": "0014_strict_artifacts_cat_compressed",
+    "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "strict_artifacts_cat_compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/cat_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.0014080069995543454,
+    "input_bytes": 4,
+    "output_bytes": 4,
+    "output_sha256": "e12e115acf4552b2568b55e93cbd39394c4ef81c82447fafc997882a02d23677",
+    "raw_prefix": "0015_strict_artifacts_cat_compressed",
+    "expected_sha256": "e12e115acf4552b2568b55e93cbd39394c4ef81c82447fafc997882a02d23677",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "strict_artifacts_cat_compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/cat_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.002201930998126045,
+    "input_bytes": 256,
+    "output_bytes": 256,
+    "output_sha256": "40aff2e9d2d8922e47afd4648e6967497158785fbd1da870e7110266bf944880",
+    "raw_prefix": "0016_strict_artifacts_cat_compressed",
+    "expected_sha256": "40aff2e9d2d8922e47afd4648e6967497158785fbd1da870e7110266bf944880",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "strict_artifacts_digital_root_compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/digital_root_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.0030596310025430284,
+    "input_bytes": 6,
+    "output_bytes": 2,
+    "output_sha256": "06e9d52c1720fca412803e3b07c4b228ff113e303f4c7ab94665319d832bbfb7",
+    "raw_prefix": "0017_strict_artifacts_digital_root_compressed",
+    "expected_sha256": "06e9d52c1720fca412803e3b07c4b228ff113e303f4c7ab94665319d832bbfb7",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "strict_artifacts_adder_compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/adder_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.0028705549993901514,
+    "input_bytes": 6,
+    "output_bytes": 3,
+    "output_sha256": "a5331f18877e9e1543361e44b4cb0a1f5f0ed5f8297d850bf1fcc68bd7a3ab5f",
+    "raw_prefix": "0018_strict_artifacts_adder_compressed",
+    "expected_sha256": "a5331f18877e9e1543361e44b4cb0a1f5f0ed5f8297d850bf1fcc68bd7a3ab5f",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "strict_bottles_artifacts",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/99_bottles_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.03474966100111487,
+    "input_bytes": 0,
+    "output_bytes": 11459,
+    "output_sha256": "a759597138f098c09a80d0474e83a0b99ea57f3b22821375361c7e913fb1968a",
+    "raw_prefix": "0019_strict_bottles_artifacts"
+  },
+  {
+    "label": "arithmetic_adder_0_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/adder.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.0020274620001146104,
+    "input_bytes": 4,
+    "output_bytes": 2,
+    "output_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "raw_prefix": "0020_arithmetic_adder_0_reference",
+    "expected_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_adder_0__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/adder_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.0016643259987176862,
+    "input_bytes": 4,
+    "output_bytes": 2,
+    "output_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "raw_prefix": "0021_arithmetic_adder_0__compressed",
+    "expected_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_adder_1_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/adder.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.0018122380024578888,
+    "input_bytes": 6,
+    "output_bytes": 5,
+    "output_sha256": "83c02ac2d48c863dab2ccf6870455aadfc2cec073b8db269b517c879d76aa6d9",
+    "raw_prefix": "0022_arithmetic_adder_1_reference",
+    "expected_sha256": "83c02ac2d48c863dab2ccf6870455aadfc2cec073b8db269b517c879d76aa6d9",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_adder_1__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/adder_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.0027129970003443304,
+    "input_bytes": 6,
+    "output_bytes": 5,
+    "output_sha256": "83c02ac2d48c863dab2ccf6870455aadfc2cec073b8db269b517c879d76aa6d9",
+    "raw_prefix": "0023_arithmetic_adder_1__compressed",
+    "expected_sha256": "83c02ac2d48c863dab2ccf6870455aadfc2cec073b8db269b517c879d76aa6d9",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_adder_2_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/adder.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.0062117919987940695,
+    "input_bytes": 43,
+    "output_bytes": 5,
+    "output_sha256": "83c02ac2d48c863dab2ccf6870455aadfc2cec073b8db269b517c879d76aa6d9",
+    "raw_prefix": "0024_arithmetic_adder_2_reference",
+    "expected_sha256": "b966da9844b86683adc16817be16d5a3c9a78758192d1b7381c6cf6e615e3a15",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_2__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/adder_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.005850099001690978,
+    "input_bytes": 43,
+    "output_bytes": 5,
+    "output_sha256": "83c02ac2d48c863dab2ccf6870455aadfc2cec073b8db269b517c879d76aa6d9",
+    "raw_prefix": "0025_arithmetic_adder_2__compressed",
+    "expected_sha256": "b966da9844b86683adc16817be16d5a3c9a78758192d1b7381c6cf6e615e3a15",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_3_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/adder.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.006657237001491012,
+    "input_bytes": 62,
+    "output_bytes": 4,
+    "output_sha256": "82d20bdb3ec683c1f2c3429814e7ef9b85ea76d7695c16651ac3b114c6f7839c",
+    "raw_prefix": "0026_arithmetic_adder_3_reference",
+    "expected_sha256": "294cd12979143d81b6a0b4779d16daf278e8838d3c98bddc36b2b09cf27a09e2",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_3__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/adder_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.006675741002254654,
+    "input_bytes": 62,
+    "output_bytes": 4,
+    "output_sha256": "82d20bdb3ec683c1f2c3429814e7ef9b85ea76d7695c16651ac3b114c6f7839c",
+    "raw_prefix": "0027_arithmetic_adder_3__compressed",
+    "expected_sha256": "294cd12979143d81b6a0b4779d16daf278e8838d3c98bddc36b2b09cf27a09e2",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_4_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/adder.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.007776214999466902,
+    "input_bytes": 60,
+    "output_bytes": 5,
+    "output_sha256": "b1f399641fe8b9556a1f0106c4c5e7eaeb932ccdf84d265edd2593e0adadc8a5",
+    "raw_prefix": "0028_arithmetic_adder_4_reference",
+    "expected_sha256": "8230c149fac30076fcbe6eae4f349f031a6c091e95a4552776bfeab7360a0580",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_4__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/adder_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.006631739997828845,
+    "input_bytes": 60,
+    "output_bytes": 5,
+    "output_sha256": "b1f399641fe8b9556a1f0106c4c5e7eaeb932ccdf84d265edd2593e0adadc8a5",
+    "raw_prefix": "0029_arithmetic_adder_4__compressed",
+    "expected_sha256": "8230c149fac30076fcbe6eae4f349f031a6c091e95a4552776bfeab7360a0580",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_5_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/adder.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.007238009999127826,
+    "input_bytes": 62,
+    "output_bytes": 4,
+    "output_sha256": "30d33d45f7c4b3a30b3db06dbf98076bc7ca99be23ee5698062947e09cdd12e1",
+    "raw_prefix": "0030_arithmetic_adder_5_reference",
+    "expected_sha256": "7a99b62ee11ade71212af1406554deded74ad061c5d8e5215fdffbf4b10b32bf",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_5__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/adder_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.007289664001291385,
+    "input_bytes": 62,
+    "output_bytes": 4,
+    "output_sha256": "30d33d45f7c4b3a30b3db06dbf98076bc7ca99be23ee5698062947e09cdd12e1",
+    "raw_prefix": "0031_arithmetic_adder_5__compressed",
+    "expected_sha256": "7a99b62ee11ade71212af1406554deded74ad061c5d8e5215fdffbf4b10b32bf",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_6_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/adder.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.007666643999982625,
+    "input_bytes": 60,
+    "output_bytes": 4,
+    "output_sha256": "34a0b7468a3000c6ecf66c919fbc42938d4a536c747383a58ae3bf5a7aee7b35",
+    "raw_prefix": "0032_arithmetic_adder_6_reference",
+    "expected_sha256": "0f6dbfa4ffc53fe2a73312edca9c0080fb53cd387e8e440aef56e08e02854440",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_6__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/adder_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.007407320001220796,
+    "input_bytes": 60,
+    "output_bytes": 4,
+    "output_sha256": "34a0b7468a3000c6ecf66c919fbc42938d4a536c747383a58ae3bf5a7aee7b35",
+    "raw_prefix": "0033_arithmetic_adder_6__compressed",
+    "expected_sha256": "0f6dbfa4ffc53fe2a73312edca9c0080fb53cd387e8e440aef56e08e02854440",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_7_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/adder.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.007310392000363208,
+    "input_bytes": 62,
+    "output_bytes": 4,
+    "output_sha256": "2a73933aa63b17f4659e6f47bf862ed573436b47fb3882691f0fbb383be96b9a",
+    "raw_prefix": "0034_arithmetic_adder_7_reference",
+    "expected_sha256": "74a3b0edb3c47679990ccfffca7bb32d13d33a2e06b03bd7f6b31f943982b4b1",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_7__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/adder_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.007075893001456279,
+    "input_bytes": 62,
+    "output_bytes": 4,
+    "output_sha256": "2a73933aa63b17f4659e6f47bf862ed573436b47fb3882691f0fbb383be96b9a",
+    "raw_prefix": "0035_arithmetic_adder_7__compressed",
+    "expected_sha256": "74a3b0edb3c47679990ccfffca7bb32d13d33a2e06b03bd7f6b31f943982b4b1",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_8_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/adder.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.007851923000998795,
+    "input_bytes": 62,
+    "output_bytes": 5,
+    "output_sha256": "b79f31ec677233b7fc1dc48a9507e0c65d84c0aa43684a97cd8a3f4f97fbfd0b",
+    "raw_prefix": "0036_arithmetic_adder_8_reference",
+    "expected_sha256": "a8ce32401a16e363ea979cda3be0687b9567a95f4270cdc6a4f54f4e92422ccc",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_8__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/adder_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.008072066997556249,
+    "input_bytes": 62,
+    "output_bytes": 5,
+    "output_sha256": "b79f31ec677233b7fc1dc48a9507e0c65d84c0aa43684a97cd8a3f4f97fbfd0b",
+    "raw_prefix": "0037_arithmetic_adder_8__compressed",
+    "expected_sha256": "a8ce32401a16e363ea979cda3be0687b9567a95f4270cdc6a4f54f4e92422ccc",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_9_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/adder.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.006965500997466734,
+    "input_bytes": 62,
+    "output_bytes": 4,
+    "output_sha256": "6482ae52f10140265c025d05fb3d563c175206738a67f9c844abeea5917de660",
+    "raw_prefix": "0038_arithmetic_adder_9_reference",
+    "expected_sha256": "e98eb97722d488776b2b4fcc184aea3c70fee723425dc69d64f3003d8b583975",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_9__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/adder_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.006868243002827512,
+    "input_bytes": 62,
+    "output_bytes": 4,
+    "output_sha256": "6482ae52f10140265c025d05fb3d563c175206738a67f9c844abeea5917de660",
+    "raw_prefix": "0039_arithmetic_adder_9__compressed",
+    "expected_sha256": "e98eb97722d488776b2b4fcc184aea3c70fee723425dc69d64f3003d8b583975",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_10_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/adder.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.00697131099877879,
+    "input_bytes": 62,
+    "output_bytes": 5,
+    "output_sha256": "508b1abfd9f24c2e908201899dc2e1988d98fea50d97a2a31a2a83ac5ead0afc",
+    "raw_prefix": "0040_arithmetic_adder_10_reference",
+    "expected_sha256": "2211f292766516f4d48152ee58e8d9ee3933908cc323a7e818ae760ef18e1abd",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_10__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/adder_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.0071386870004062075,
+    "input_bytes": 62,
+    "output_bytes": 5,
+    "output_sha256": "508b1abfd9f24c2e908201899dc2e1988d98fea50d97a2a31a2a83ac5ead0afc",
+    "raw_prefix": "0041_arithmetic_adder_10__compressed",
+    "expected_sha256": "2211f292766516f4d48152ee58e8d9ee3933908cc323a7e818ae760ef18e1abd",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_11_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/adder.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.007438557000568835,
+    "input_bytes": 62,
+    "output_bytes": 5,
+    "output_sha256": "d1dae7e1b49cb313968fb55b03abead7aca9b797759e328508152e95996b14e5",
+    "raw_prefix": "0042_arithmetic_adder_11_reference",
+    "expected_sha256": "8539ee54670f295c5186093dc004f1fc7a45cb250e6d7482e6e8d21206933533",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_11__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/adder_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.0068327769986353815,
+    "input_bytes": 62,
+    "output_bytes": 5,
+    "output_sha256": "d1dae7e1b49cb313968fb55b03abead7aca9b797759e328508152e95996b14e5",
+    "raw_prefix": "0043_arithmetic_adder_11__compressed",
+    "expected_sha256": "8539ee54670f295c5186093dc004f1fc7a45cb250e6d7482e6e8d21206933533",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_12_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/adder.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.00750714199966751,
+    "input_bytes": 62,
+    "output_bytes": 4,
+    "output_sha256": "fa3d6d936f7886fbbc786edb8fcd99a278d7a7fd219cef0edb21f7be11f1e13d",
+    "raw_prefix": "0044_arithmetic_adder_12_reference",
+    "expected_sha256": "1bf675a1acbcc39a403057eee5ca54261e1bfa31cfcb6813f252296185c6c8cd",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_12__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/adder_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.008014561000891263,
+    "input_bytes": 62,
+    "output_bytes": 4,
+    "output_sha256": "fa3d6d936f7886fbbc786edb8fcd99a278d7a7fd219cef0edb21f7be11f1e13d",
+    "raw_prefix": "0045_arithmetic_adder_12__compressed",
+    "expected_sha256": "1bf675a1acbcc39a403057eee5ca54261e1bfa31cfcb6813f252296185c6c8cd",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_13_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/adder.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.007705044001340866,
+    "input_bytes": 62,
+    "output_bytes": 4,
+    "output_sha256": "65480e7eda9c4b337e13aeaa4dfb6770fb6a37b863438126e4587068402b8bfc",
+    "raw_prefix": "0046_arithmetic_adder_13_reference",
+    "expected_sha256": "08852e513973e247d9e1ac209472b82c5d1e57e9ac8a76367100a9ce6f4cff34",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_13__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/adder_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.006793405998905655,
+    "input_bytes": 62,
+    "output_bytes": 4,
+    "output_sha256": "65480e7eda9c4b337e13aeaa4dfb6770fb6a37b863438126e4587068402b8bfc",
+    "raw_prefix": "0047_arithmetic_adder_13__compressed",
+    "expected_sha256": "08852e513973e247d9e1ac209472b82c5d1e57e9ac8a76367100a9ce6f4cff34",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_14_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/adder.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.007273383998835925,
+    "input_bytes": 62,
+    "output_bytes": 5,
+    "output_sha256": "0c71714e087aaad551c7a1dee2c153ad56951ef11384c30e6e36d4273e398cf3",
+    "raw_prefix": "0048_arithmetic_adder_14_reference",
+    "expected_sha256": "d622cb847282c4cb173165f530839a4a798554a8a2cdea0316b18adedf727c3e",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_14__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/adder_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.008020771998417331,
+    "input_bytes": 62,
+    "output_bytes": 5,
+    "output_sha256": "0c71714e087aaad551c7a1dee2c153ad56951ef11384c30e6e36d4273e398cf3",
+    "raw_prefix": "0049_arithmetic_adder_14__compressed",
+    "expected_sha256": "d622cb847282c4cb173165f530839a4a798554a8a2cdea0316b18adedf727c3e",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_15_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/adder.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.007039805997919757,
+    "input_bytes": 62,
+    "output_bytes": 4,
+    "output_sha256": "05b128a84c8a17bb72b511889d7a67c13735a146621484f819e0b9607f0337bf",
+    "raw_prefix": "0050_arithmetic_adder_15_reference",
+    "expected_sha256": "d6e1b7a04c428ae057d25ba0b85a4d906f9e8b79f768ecf2886feed31470f685",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_15__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/adder_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.007638283001142554,
+    "input_bytes": 62,
+    "output_bytes": 4,
+    "output_sha256": "05b128a84c8a17bb72b511889d7a67c13735a146621484f819e0b9607f0337bf",
+    "raw_prefix": "0051_arithmetic_adder_15__compressed",
+    "expected_sha256": "d6e1b7a04c428ae057d25ba0b85a4d906f9e8b79f768ecf2886feed31470f685",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_16_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/adder.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.006907775001309346,
+    "input_bytes": 61,
+    "output_bytes": 4,
+    "output_sha256": "5dac334cf325e506d4304baaf990f2b52e7e4f5c21388e3f1bcad89b9aa830c8",
+    "raw_prefix": "0052_arithmetic_adder_16_reference",
+    "expected_sha256": "fbf8fbf967e12d67a351f26f5c4b080bd996af11de0a71403d4249b5d210172e",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_16__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/adder_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.007099174999893876,
+    "input_bytes": 61,
+    "output_bytes": 4,
+    "output_sha256": "5dac334cf325e506d4304baaf990f2b52e7e4f5c21388e3f1bcad89b9aa830c8",
+    "raw_prefix": "0053_arithmetic_adder_16__compressed",
+    "expected_sha256": "fbf8fbf967e12d67a351f26f5c4b080bd996af11de0a71403d4249b5d210172e",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_17_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/adder.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.007628975999978138,
+    "input_bytes": 62,
+    "output_bytes": 4,
+    "output_sha256": "7967da211f5678b263bde0310fd5e90b19d621b353fa8ab9ee8467193a712758",
+    "raw_prefix": "0054_arithmetic_adder_17_reference",
+    "expected_sha256": "643535282a69ff01603b41dde56f57aacb649bb833717ffac9aa9accd0a0b580",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_17__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/adder_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.007298189000721322,
+    "input_bytes": 62,
+    "output_bytes": 4,
+    "output_sha256": "7967da211f5678b263bde0310fd5e90b19d621b353fa8ab9ee8467193a712758",
+    "raw_prefix": "0055_arithmetic_adder_17__compressed",
+    "expected_sha256": "643535282a69ff01603b41dde56f57aacb649bb833717ffac9aa9accd0a0b580",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_18_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/adder.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.007033865000266815,
+    "input_bytes": 61,
+    "output_bytes": 4,
+    "output_sha256": "d3c6ac9fafb61163200a886287bfe703a9b308f9858de43ffacda029ee38861d",
+    "raw_prefix": "0056_arithmetic_adder_18_reference",
+    "expected_sha256": "2322259b406a153e643286efb22a240037851dd490cbc8e39043555e1a406305",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_18__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/adder_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.006694685002003098,
+    "input_bytes": 61,
+    "output_bytes": 4,
+    "output_sha256": "d3c6ac9fafb61163200a886287bfe703a9b308f9858de43ffacda029ee38861d",
+    "raw_prefix": "0057_arithmetic_adder_18__compressed",
+    "expected_sha256": "2322259b406a153e643286efb22a240037851dd490cbc8e39043555e1a406305",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_19_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/adder.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.00677397999970708,
+    "input_bytes": 62,
+    "output_bytes": 5,
+    "output_sha256": "95cf7b03e761efa51e09bfeb087e907a1159cf487240d90aedac3a2685945538",
+    "raw_prefix": "0058_arithmetic_adder_19_reference",
+    "expected_sha256": "0e3ef9fb5db0e1886f66829de8b25f889c771c31eb301b6d228f4f2b74eda699",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_19__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/adder_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.0068888699970557354,
+    "input_bytes": 62,
+    "output_bytes": 5,
+    "output_sha256": "95cf7b03e761efa51e09bfeb087e907a1159cf487240d90aedac3a2685945538",
+    "raw_prefix": "0059_arithmetic_adder_19__compressed",
+    "expected_sha256": "0e3ef9fb5db0e1886f66829de8b25f889c771c31eb301b6d228f4f2b74eda699",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_20_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/adder.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.006792914999095956,
+    "input_bytes": 62,
+    "output_bytes": 5,
+    "output_sha256": "3fa364a8be0694e468cb6728a5d6725befcd3d98dc3dd68ce8da3a388d60a2a2",
+    "raw_prefix": "0060_arithmetic_adder_20_reference",
+    "expected_sha256": "9b95b180c3983c9cd0420ca2a7356c070476c4e03e9f02a12c01567096a44aaf",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_20__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/adder_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.007369210001343163,
+    "input_bytes": 62,
+    "output_bytes": 5,
+    "output_sha256": "3fa364a8be0694e468cb6728a5d6725befcd3d98dc3dd68ce8da3a388d60a2a2",
+    "raw_prefix": "0061_arithmetic_adder_20__compressed",
+    "expected_sha256": "9b95b180c3983c9cd0420ca2a7356c070476c4e03e9f02a12c01567096a44aaf",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_21_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/adder.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.007995767002284992,
+    "input_bytes": 62,
+    "output_bytes": 5,
+    "output_sha256": "2c28dd7da7659b21c438caf1c6e778ec4c37c90faf1f9e9679151d54aa4e5431",
+    "raw_prefix": "0062_arithmetic_adder_21_reference",
+    "expected_sha256": "6d47368d5d913cfc4f7e6597bc4f8850814708691be92ad64cd4f2e03421c5cc",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_21__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/adder_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.006924916000571102,
+    "input_bytes": 62,
+    "output_bytes": 5,
+    "output_sha256": "2c28dd7da7659b21c438caf1c6e778ec4c37c90faf1f9e9679151d54aa4e5431",
+    "raw_prefix": "0063_arithmetic_adder_21__compressed",
+    "expected_sha256": "6d47368d5d913cfc4f7e6597bc4f8850814708691be92ad64cd4f2e03421c5cc",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_22_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/adder.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.006846813997981371,
+    "input_bytes": 62,
+    "output_bytes": 5,
+    "output_sha256": "7d6cb158de55ef4e9a4425aaebedec339dda4ed3536ddc1d88229200032bf63c",
+    "raw_prefix": "0064_arithmetic_adder_22_reference",
+    "expected_sha256": "72172354d5c834a73d7694a9e887a2f834a4078d4fd7cb773d843bcd3552e337",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_adder_22__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/adder_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.006966732998989755,
+    "input_bytes": 62,
+    "output_bytes": 5,
+    "output_sha256": "7d6cb158de55ef4e9a4425aaebedec339dda4ed3536ddc1d88229200032bf63c",
+    "raw_prefix": "0065_arithmetic_adder_22__compressed",
+    "expected_sha256": "72172354d5c834a73d7694a9e887a2f834a4078d4fd7cb773d843bcd3552e337",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "arithmetic_digital_root_0_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/digital_root.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.001861306998762302,
+    "input_bytes": 2,
+    "output_bytes": 2,
+    "output_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "raw_prefix": "0066_arithmetic_digital_root_0_reference",
+    "expected_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_0__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/digital_root_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.0016696160018909723,
+    "input_bytes": 2,
+    "output_bytes": 2,
+    "output_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "raw_prefix": "0067_arithmetic_digital_root_0__compressed",
+    "expected_sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_1_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/digital_root.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.0015353210001194384,
+    "input_bytes": 2,
+    "output_bytes": 2,
+    "output_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "raw_prefix": "0068_arithmetic_digital_root_1_reference",
+    "expected_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_1__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/digital_root_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.0014769040026294533,
+    "input_bytes": 2,
+    "output_bytes": 2,
+    "output_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "raw_prefix": "0069_arithmetic_digital_root_1__compressed",
+    "expected_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_2_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/digital_root.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.0015611279995937366,
+    "input_bytes": 2,
+    "output_bytes": 2,
+    "output_sha256": "2e6d31a5983a91251bfae5aefa1c0a19d8ba3cf601d0e8a706b4cfa9661a6b8a",
+    "raw_prefix": "0070_arithmetic_digital_root_2_reference",
+    "expected_sha256": "2e6d31a5983a91251bfae5aefa1c0a19d8ba3cf601d0e8a706b4cfa9661a6b8a",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_2__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/digital_root_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.0015931559973978437,
+    "input_bytes": 2,
+    "output_bytes": 2,
+    "output_sha256": "2e6d31a5983a91251bfae5aefa1c0a19d8ba3cf601d0e8a706b4cfa9661a6b8a",
+    "raw_prefix": "0071_arithmetic_digital_root_2__compressed",
+    "expected_sha256": "2e6d31a5983a91251bfae5aefa1c0a19d8ba3cf601d0e8a706b4cfa9661a6b8a",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_3_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/digital_root.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.0015907920023892075,
+    "input_bytes": 3,
+    "output_bytes": 2,
+    "output_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "raw_prefix": "0072_arithmetic_digital_root_3_reference",
+    "expected_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_3__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/digital_root_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.001531903999421047,
+    "input_bytes": 3,
+    "output_bytes": 2,
+    "output_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "raw_prefix": "0073_arithmetic_digital_root_3__compressed",
+    "expected_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_4_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/digital_root.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.005682793002051767,
+    "input_bytes": 41,
+    "output_bytes": 2,
+    "output_sha256": "2e6d31a5983a91251bfae5aefa1c0a19d8ba3cf601d0e8a706b4cfa9661a6b8a",
+    "raw_prefix": "0074_arithmetic_digital_root_4_reference",
+    "expected_sha256": "2e6d31a5983a91251bfae5aefa1c0a19d8ba3cf601d0e8a706b4cfa9661a6b8a",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_4__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/digital_root_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.005969017001916654,
+    "input_bytes": 41,
+    "output_bytes": 2,
+    "output_sha256": "2e6d31a5983a91251bfae5aefa1c0a19d8ba3cf601d0e8a706b4cfa9661a6b8a",
+    "raw_prefix": "0075_arithmetic_digital_root_4__compressed",
+    "expected_sha256": "2e6d31a5983a91251bfae5aefa1c0a19d8ba3cf601d0e8a706b4cfa9661a6b8a",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_5_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/digital_root.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.00573476800127537,
+    "input_bytes": 41,
+    "output_bytes": 2,
+    "output_sha256": "1121cfccd5913f0a63fec40a6ffd44ea64f9dc135c66634ba001d10bcf4302a2",
+    "raw_prefix": "0076_arithmetic_digital_root_5_reference",
+    "expected_sha256": "1121cfccd5913f0a63fec40a6ffd44ea64f9dc135c66634ba001d10bcf4302a2",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_5__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/digital_root_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.0062483180008712225,
+    "input_bytes": 41,
+    "output_bytes": 2,
+    "output_sha256": "1121cfccd5913f0a63fec40a6ffd44ea64f9dc135c66634ba001d10bcf4302a2",
+    "raw_prefix": "0077_arithmetic_digital_root_5__compressed",
+    "expected_sha256": "1121cfccd5913f0a63fec40a6ffd44ea64f9dc135c66634ba001d10bcf4302a2",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_6_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/digital_root.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.006511610001325607,
+    "input_bytes": 41,
+    "output_bytes": 2,
+    "output_sha256": "06e9d52c1720fca412803e3b07c4b228ff113e303f4c7ab94665319d832bbfb7",
+    "raw_prefix": "0078_arithmetic_digital_root_6_reference",
+    "expected_sha256": "06e9d52c1720fca412803e3b07c4b228ff113e303f4c7ab94665319d832bbfb7",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_6__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/digital_root_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.006712908001645701,
+    "input_bytes": 41,
+    "output_bytes": 2,
+    "output_sha256": "06e9d52c1720fca412803e3b07c4b228ff113e303f4c7ab94665319d832bbfb7",
+    "raw_prefix": "0079_arithmetic_digital_root_6__compressed",
+    "expected_sha256": "06e9d52c1720fca412803e3b07c4b228ff113e303f4c7ab94665319d832bbfb7",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_7_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/digital_root.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.005786502002592897,
+    "input_bytes": 41,
+    "output_bytes": 2,
+    "output_sha256": "06e9d52c1720fca412803e3b07c4b228ff113e303f4c7ab94665319d832bbfb7",
+    "raw_prefix": "0080_arithmetic_digital_root_7_reference",
+    "expected_sha256": "06e9d52c1720fca412803e3b07c4b228ff113e303f4c7ab94665319d832bbfb7",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_7__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/digital_root_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.006013759000779828,
+    "input_bytes": 41,
+    "output_bytes": 2,
+    "output_sha256": "06e9d52c1720fca412803e3b07c4b228ff113e303f4c7ab94665319d832bbfb7",
+    "raw_prefix": "0081_arithmetic_digital_root_7__compressed",
+    "expected_sha256": "06e9d52c1720fca412803e3b07c4b228ff113e303f4c7ab94665319d832bbfb7",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_8_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/digital_root.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.005898427996726241,
+    "input_bytes": 41,
+    "output_bytes": 2,
+    "output_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "raw_prefix": "0082_arithmetic_digital_root_8_reference",
+    "expected_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_8__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/digital_root_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.005991999001707882,
+    "input_bytes": 41,
+    "output_bytes": 2,
+    "output_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "raw_prefix": "0083_arithmetic_digital_root_8__compressed",
+    "expected_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_9_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/digital_root.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.0059606709983199835,
+    "input_bytes": 41,
+    "output_bytes": 2,
+    "output_sha256": "7de1555df0c2700329e815b93b32c571c3ea54dc967b89e81ab73b9972b72d1d",
+    "raw_prefix": "0084_arithmetic_digital_root_9_reference",
+    "expected_sha256": "7de1555df0c2700329e815b93b32c571c3ea54dc967b89e81ab73b9972b72d1d",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_9__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/digital_root_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.005872170000657206,
+    "input_bytes": 41,
+    "output_bytes": 2,
+    "output_sha256": "7de1555df0c2700329e815b93b32c571c3ea54dc967b89e81ab73b9972b72d1d",
+    "raw_prefix": "0085_arithmetic_digital_root_9__compressed",
+    "expected_sha256": "7de1555df0c2700329e815b93b32c571c3ea54dc967b89e81ab73b9972b72d1d",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_10_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/digital_root.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.005741540000599343,
+    "input_bytes": 41,
+    "output_bytes": 2,
+    "output_sha256": "1121cfccd5913f0a63fec40a6ffd44ea64f9dc135c66634ba001d10bcf4302a2",
+    "raw_prefix": "0086_arithmetic_digital_root_10_reference",
+    "expected_sha256": "1121cfccd5913f0a63fec40a6ffd44ea64f9dc135c66634ba001d10bcf4302a2",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_10__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/digital_root_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.005731831999582937,
+    "input_bytes": 41,
+    "output_bytes": 2,
+    "output_sha256": "1121cfccd5913f0a63fec40a6ffd44ea64f9dc135c66634ba001d10bcf4302a2",
+    "raw_prefix": "0087_arithmetic_digital_root_10__compressed",
+    "expected_sha256": "1121cfccd5913f0a63fec40a6ffd44ea64f9dc135c66634ba001d10bcf4302a2",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_11_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/digital_root.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.005966923003143165,
+    "input_bytes": 41,
+    "output_bytes": 2,
+    "output_sha256": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3",
+    "raw_prefix": "0088_arithmetic_digital_root_11_reference",
+    "expected_sha256": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_11__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/digital_root_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.006173451001814101,
+    "input_bytes": 41,
+    "output_bytes": 2,
+    "output_sha256": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3",
+    "raw_prefix": "0089_arithmetic_digital_root_11__compressed",
+    "expected_sha256": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_12_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/digital_root.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.00681418300155201,
+    "input_bytes": 40,
+    "output_bytes": 2,
+    "output_sha256": "f0b5c2c2211c8d67ed15e75e656c7862d086e9245420892a7de62cd9ec582a06",
+    "raw_prefix": "0090_arithmetic_digital_root_12_reference",
+    "expected_sha256": "f0b5c2c2211c8d67ed15e75e656c7862d086e9245420892a7de62cd9ec582a06",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_12__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/digital_root_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.006357528000080492,
+    "input_bytes": 40,
+    "output_bytes": 2,
+    "output_sha256": "f0b5c2c2211c8d67ed15e75e656c7862d086e9245420892a7de62cd9ec582a06",
+    "raw_prefix": "0091_arithmetic_digital_root_12__compressed",
+    "expected_sha256": "f0b5c2c2211c8d67ed15e75e656c7862d086e9245420892a7de62cd9ec582a06",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_13_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/digital_root.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.006561742000485538,
+    "input_bytes": 41,
+    "output_bytes": 2,
+    "output_sha256": "7de1555df0c2700329e815b93b32c571c3ea54dc967b89e81ab73b9972b72d1d",
+    "raw_prefix": "0092_arithmetic_digital_root_13_reference",
+    "expected_sha256": "7de1555df0c2700329e815b93b32c571c3ea54dc967b89e81ab73b9972b72d1d",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_13__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/digital_root_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.006506840996735264,
+    "input_bytes": 41,
+    "output_bytes": 2,
+    "output_sha256": "7de1555df0c2700329e815b93b32c571c3ea54dc967b89e81ab73b9972b72d1d",
+    "raw_prefix": "0093_arithmetic_digital_root_13__compressed",
+    "expected_sha256": "7de1555df0c2700329e815b93b32c571c3ea54dc967b89e81ab73b9972b72d1d",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_14_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/digital_root.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.006573153001227183,
+    "input_bytes": 40,
+    "output_bytes": 2,
+    "output_sha256": "aa67a169b0bba217aa0aa88a65346920c84c42447c36ba5f7ea65f422c1fe5d8",
+    "raw_prefix": "0094_arithmetic_digital_root_14_reference",
+    "expected_sha256": "aa67a169b0bba217aa0aa88a65346920c84c42447c36ba5f7ea65f422c1fe5d8",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_14__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/digital_root_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.008015342998987762,
+    "input_bytes": 40,
+    "output_bytes": 2,
+    "output_sha256": "aa67a169b0bba217aa0aa88a65346920c84c42447c36ba5f7ea65f422c1fe5d8",
+    "raw_prefix": "0095_arithmetic_digital_root_14__compressed",
+    "expected_sha256": "aa67a169b0bba217aa0aa88a65346920c84c42447c36ba5f7ea65f422c1fe5d8",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_15_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/digital_root.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.006161730001622345,
+    "input_bytes": 41,
+    "output_bytes": 2,
+    "output_sha256": "f0b5c2c2211c8d67ed15e75e656c7862d086e9245420892a7de62cd9ec582a06",
+    "raw_prefix": "0096_arithmetic_digital_root_15_reference",
+    "expected_sha256": "f0b5c2c2211c8d67ed15e75e656c7862d086e9245420892a7de62cd9ec582a06",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_15__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/digital_root_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.006821077000495279,
+    "input_bytes": 41,
+    "output_bytes": 2,
+    "output_sha256": "f0b5c2c2211c8d67ed15e75e656c7862d086e9245420892a7de62cd9ec582a06",
+    "raw_prefix": "0097_arithmetic_digital_root_15__compressed",
+    "expected_sha256": "f0b5c2c2211c8d67ed15e75e656c7862d086e9245420892a7de62cd9ec582a06",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_16_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/digital_root.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.006246714998269454,
+    "input_bytes": 41,
+    "output_bytes": 2,
+    "output_sha256": "7de1555df0c2700329e815b93b32c571c3ea54dc967b89e81ab73b9972b72d1d",
+    "raw_prefix": "0098_arithmetic_digital_root_16_reference",
+    "expected_sha256": "7de1555df0c2700329e815b93b32c571c3ea54dc967b89e81ab73b9972b72d1d",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_16__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/digital_root_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.0067787489970214665,
+    "input_bytes": 41,
+    "output_bytes": 2,
+    "output_sha256": "7de1555df0c2700329e815b93b32c571c3ea54dc967b89e81ab73b9972b72d1d",
+    "raw_prefix": "0099_arithmetic_digital_root_16__compressed",
+    "expected_sha256": "7de1555df0c2700329e815b93b32c571c3ea54dc967b89e81ab73b9972b72d1d",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_17_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/digital_root.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.006328503997792723,
+    "input_bytes": 41,
+    "output_bytes": 2,
+    "output_sha256": "7de1555df0c2700329e815b93b32c571c3ea54dc967b89e81ab73b9972b72d1d",
+    "raw_prefix": "0100_arithmetic_digital_root_17_reference",
+    "expected_sha256": "7de1555df0c2700329e815b93b32c571c3ea54dc967b89e81ab73b9972b72d1d",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_17__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/digital_root_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.0064887679982348345,
+    "input_bytes": 41,
+    "output_bytes": 2,
+    "output_sha256": "7de1555df0c2700329e815b93b32c571c3ea54dc967b89e81ab73b9972b72d1d",
+    "raw_prefix": "0101_arithmetic_digital_root_17__compressed",
+    "expected_sha256": "7de1555df0c2700329e815b93b32c571c3ea54dc967b89e81ab73b9972b72d1d",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_18_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/digital_root.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.005557864002184942,
+    "input_bytes": 41,
+    "output_bytes": 2,
+    "output_sha256": "1121cfccd5913f0a63fec40a6ffd44ea64f9dc135c66634ba001d10bcf4302a2",
+    "raw_prefix": "0102_arithmetic_digital_root_18_reference",
+    "expected_sha256": "1121cfccd5913f0a63fec40a6ffd44ea64f9dc135c66634ba001d10bcf4302a2",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_18__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/digital_root_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.0064074290021380875,
+    "input_bytes": 41,
+    "output_bytes": 2,
+    "output_sha256": "1121cfccd5913f0a63fec40a6ffd44ea64f9dc135c66634ba001d10bcf4302a2",
+    "raw_prefix": "0103_arithmetic_digital_root_18__compressed",
+    "expected_sha256": "1121cfccd5913f0a63fec40a6ffd44ea64f9dc135c66634ba001d10bcf4302a2",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_19_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/digital_root.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.006612024000787642,
+    "input_bytes": 41,
+    "output_bytes": 2,
+    "output_sha256": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3",
+    "raw_prefix": "0104_arithmetic_digital_root_19_reference",
+    "expected_sha256": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_19__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/digital_root_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.006259358000534121,
+    "input_bytes": 41,
+    "output_bytes": 2,
+    "output_sha256": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3",
+    "raw_prefix": "0105_arithmetic_digital_root_19__compressed",
+    "expected_sha256": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_20_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/digital_root.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.006886475999635877,
+    "input_bytes": 41,
+    "output_bytes": 2,
+    "output_sha256": "aa67a169b0bba217aa0aa88a65346920c84c42447c36ba5f7ea65f422c1fe5d8",
+    "raw_prefix": "0106_arithmetic_digital_root_20_reference",
+    "expected_sha256": "aa67a169b0bba217aa0aa88a65346920c84c42447c36ba5f7ea65f422c1fe5d8",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_20__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/digital_root_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.006562612998095574,
+    "input_bytes": 41,
+    "output_bytes": 2,
+    "output_sha256": "aa67a169b0bba217aa0aa88a65346920c84c42447c36ba5f7ea65f422c1fe5d8",
+    "raw_prefix": "0107_arithmetic_digital_root_20__compressed",
+    "expected_sha256": "aa67a169b0bba217aa0aa88a65346920c84c42447c36ba5f7ea65f422c1fe5d8",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_21_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/digital_root.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.00644220300091547,
+    "input_bytes": 41,
+    "output_bytes": 2,
+    "output_sha256": "2e6d31a5983a91251bfae5aefa1c0a19d8ba3cf601d0e8a706b4cfa9661a6b8a",
+    "raw_prefix": "0108_arithmetic_digital_root_21_reference",
+    "expected_sha256": "2e6d31a5983a91251bfae5aefa1c0a19d8ba3cf601d0e8a706b4cfa9661a6b8a",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_21__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/digital_root_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.006313526999292662,
+    "input_bytes": 41,
+    "output_bytes": 2,
+    "output_sha256": "2e6d31a5983a91251bfae5aefa1c0a19d8ba3cf601d0e8a706b4cfa9661a6b8a",
+    "raw_prefix": "0109_arithmetic_digital_root_21__compressed",
+    "expected_sha256": "2e6d31a5983a91251bfae5aefa1c0a19d8ba3cf601d0e8a706b4cfa9661a6b8a",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_22_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/digital_root.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.007067517002724344,
+    "input_bytes": 41,
+    "output_bytes": 2,
+    "output_sha256": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3",
+    "raw_prefix": "0110_arithmetic_digital_root_22_reference",
+    "expected_sha256": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_22__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/digital_root_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.006750598000508035,
+    "input_bytes": 41,
+    "output_bytes": 2,
+    "output_sha256": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3",
+    "raw_prefix": "0111_arithmetic_digital_root_22__compressed",
+    "expected_sha256": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_23_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/digital_root.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.005971530998067465,
+    "input_bytes": 40,
+    "output_bytes": 2,
+    "output_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "raw_prefix": "0112_arithmetic_digital_root_23_reference",
+    "expected_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_23__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/digital_root_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.005627331000141567,
+    "input_bytes": 40,
+    "output_bytes": 2,
+    "output_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "raw_prefix": "0113_arithmetic_digital_root_23__compressed",
+    "expected_sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_24_reference",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/digital_root.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.007262905000970932,
+    "input_bytes": 41,
+    "output_bytes": 2,
+    "output_sha256": "7de1555df0c2700329e815b93b32c571c3ea54dc967b89e81ab73b9972b72d1d",
+    "raw_prefix": "0114_arithmetic_digital_root_24_reference",
+    "expected_sha256": "7de1555df0c2700329e815b93b32c571c3ea54dc967b89e81ab73b9972b72d1d",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "arithmetic_digital_root_24__compressed",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/digital_root_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.006354853001539595,
+    "input_bytes": 41,
+    "output_bytes": 2,
+    "output_sha256": "7de1555df0c2700329e815b93b32c571c3ea54dc967b89e81ab73b9972b72d1d",
+    "raw_prefix": "0115_arithmetic_digital_root_24__compressed",
+    "expected_sha256": "7de1555df0c2700329e815b93b32c571c3ea54dc967b89e81ab73b9972b72d1d",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "bottles_reference_full",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/reference/malbolge_org/99_bottles.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.03539103500224883,
+    "input_bytes": 0,
+    "output_bytes": 11459,
+    "output_sha256": "a759597138f098c09a80d0474e83a0b99ea57f3b22821375361c7e913fb1968a",
+    "raw_prefix": "0116_bottles_reference_full"
+  },
+  {
+    "label": "bottles_compressed_full",
+    "argv": [
+      "<AUDIT_TEMP>/olmstead_strict",
+      "<AUDIT_TEMP>/checkout/artifacts/99_bottles_compressed.mal"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.03516760700222221,
+    "input_bytes": 0,
+    "output_bytes": 11459,
+    "output_sha256": "a759597138f098c09a80d0474e83a0b99ea57f3b22821375361c7e913fb1968a",
+    "raw_prefix": "0117_bottles_compressed_full",
+    "expected_sha256": "a759597138f098c09a80d0474e83a0b99ea57f3b22821375361c7e913fb1968a",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "local_microcat_0",
+    "argv": [
+      "<AUDIT_TEMP>/checkout/mb_ref",
+      "<AUDIT_TEMP>/checkout/artifacts/microcat.mal",
+      "2000000"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.004486792997340672,
+    "input_bytes": 0,
+    "output_bytes": 0,
+    "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "raw_prefix": "0118_local_microcat_0",
+    "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "local_microcat_1",
+    "argv": [
+      "<AUDIT_TEMP>/checkout/mb_ref",
+      "<AUDIT_TEMP>/checkout/artifacts/microcat.mal",
+      "2000000"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.0018561580000096,
+    "input_bytes": 1,
+    "output_bytes": 1,
+    "output_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd",
+    "raw_prefix": "0119_local_microcat_1",
+    "expected_sha256": "559aead08264d5795d3909718cdd05abd49572e84fe55590eef31a88a08fdffd",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "local_microcat_2",
+    "argv": [
+      "<AUDIT_TEMP>/checkout/mb_ref",
+      "<AUDIT_TEMP>/checkout/artifacts/microcat.mal",
+      "2000000"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.0014001330018800218,
+    "input_bytes": 3,
+    "output_bytes": 3,
+    "output_sha256": "b5d4045c3f466fa91fe2cc6abe79232a1a57cdf104f7a26e716e0a1e2789df78",
+    "raw_prefix": "0120_local_microcat_2",
+    "expected_sha256": "b5d4045c3f466fa91fe2cc6abe79232a1a57cdf104f7a26e716e0a1e2789df78",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "local_microcat_3",
+    "argv": [
+      "<AUDIT_TEMP>/checkout/mb_ref",
+      "<AUDIT_TEMP>/checkout/artifacts/microcat.mal",
+      "2000000"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.0014592719999200199,
+    "input_bytes": 4,
+    "output_bytes": 3,
+    "output_sha256": "b5d4045c3f466fa91fe2cc6abe79232a1a57cdf104f7a26e716e0a1e2789df78",
+    "raw_prefix": "0121_local_microcat_3",
+    "expected_sha256": "e12e115acf4552b2568b55e93cbd39394c4ef81c82447fafc997882a02d23677",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "local_microcat_4",
+    "argv": [
+      "<AUDIT_TEMP>/checkout/mb_ref",
+      "<AUDIT_TEMP>/checkout/artifacts/microcat.mal",
+      "2000000"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.0013681649979844224,
+    "input_bytes": 5,
+    "output_bytes": 3,
+    "output_sha256": "b5d4045c3f466fa91fe2cc6abe79232a1a57cdf104f7a26e716e0a1e2789df78",
+    "raw_prefix": "0122_local_microcat_4",
+    "expected_sha256": "f0393febe8baaa55e32f7be2a7cc180bf34e52137d99e056c817a9c07b8f239a",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "local_microcat_5",
+    "argv": [
+      "<AUDIT_TEMP>/checkout/mb_ref",
+      "<AUDIT_TEMP>/checkout/artifacts/microcat.mal",
+      "2000000"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.0012891999977000523,
+    "input_bytes": 16,
+    "output_bytes": 3,
+    "output_sha256": "cb1ad2119d8fafb69566510ee712661f9f14b83385006ef92aec47f523a38358",
+    "raw_prefix": "0123_local_microcat_5",
+    "expected_sha256": "991204fba2b6216d476282d375ab88d20e6108d109aecded97ef424ddd114706",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "local_microcat_6",
+    "argv": [
+      "<AUDIT_TEMP>/checkout/mb_ref",
+      "<AUDIT_TEMP>/checkout/artifacts/microcat.mal",
+      "2000000"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.0012791920016752556,
+    "input_bytes": 256,
+    "output_bytes": 3,
+    "output_sha256": "ae4b3280e56e2faf83f414a6e3dabe9d5fbe18976544c05fed121accb85b53fc",
+    "raw_prefix": "0124_local_microcat_6",
+    "expected_sha256": "40aff2e9d2d8922e47afd4648e6967497158785fbd1da870e7110266bf944880",
+    "exact": false,
+    "meets_expectation": false
+  },
+  {
+    "label": "local_fizzbuzz_0",
+    "argv": [
+      "<AUDIT_TEMP>/checkout/mb_ref",
+      "<AUDIT_TEMP>/checkout/artifacts/fizzbuzz.mal",
+      "2000000"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.0012965229980181903,
+    "input_bytes": 0,
+    "output_bytes": 413,
+    "output_sha256": "f039dc221ad122dda8b7226ad5bc68b8654e9e3a42dcea2b37554cd6f91b56af",
+    "raw_prefix": "0125_local_fizzbuzz_0",
+    "expected_sha256": "f039dc221ad122dda8b7226ad5bc68b8654e9e3a42dcea2b37554cd6f91b56af",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "local_fizzbuzz_1",
+    "argv": [
+      "<AUDIT_TEMP>/checkout/mb_ref",
+      "<AUDIT_TEMP>/checkout/artifacts/fizzbuzz.mal",
+      "2000000"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.0012950900018040556,
+    "input_bytes": 17,
+    "output_bytes": 413,
+    "output_sha256": "f039dc221ad122dda8b7226ad5bc68b8654e9e3a42dcea2b37554cd6f91b56af",
+    "raw_prefix": "0126_local_fizzbuzz_1",
+    "expected_sha256": "f039dc221ad122dda8b7226ad5bc68b8654e9e3a42dcea2b37554cd6f91b56af",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "local_fizzbuzz_2",
+    "argv": [
+      "<AUDIT_TEMP>/checkout/mb_ref",
+      "<AUDIT_TEMP>/checkout/artifacts/fizzbuzz.mal",
+      "2000000"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.0012584939977386966,
+    "input_bytes": 256,
+    "output_bytes": 413,
+    "output_sha256": "f039dc221ad122dda8b7226ad5bc68b8654e9e3a42dcea2b37554cd6f91b56af",
+    "raw_prefix": "0127_local_fizzbuzz_2",
+    "expected_sha256": "f039dc221ad122dda8b7226ad5bc68b8654e9e3a42dcea2b37554cd6f91b56af",
+    "exact": true,
+    "meets_expectation": true
+  },
+  {
+    "label": "missing_all_compressed",
+    "argv": [
+      "/usr/bin/python3",
+      "<SIBLING_REPOS>/BolgeForge/docs/audits/2026-10-20-e2e/runs/missing_fixture/tools/test_compressed.py"
+    ],
+    "cwd": "<SIBLING_REPOS>/BolgeForge/docs/audits/2026-10-20-e2e/runs/missing_fixture",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.021633241998642916,
+    "input_bytes": 0,
+    "output_bytes": 99,
+    "output_sha256": "e2eaa25608d3f4551e02f07ba27b62525875e895f2ba3d387ed5c9c205fa628e",
+    "raw_prefix": "0128_missing_all_compressed"
+  },
+  {
+    "label": "broken_first_quine_recipe",
+    "argv": [
+      "/bin/sh",
+      "-c",
+      "for f in artifacts/candidate_m*.mal; do ./mb_ref \"$f\" > out.mal && diff -q \"$f\" out.mal && echo \"OK $f\"; done"
+    ],
+    "cwd": "<SIBLING_REPOS>/BolgeForge/docs/audits/2026-10-20-e2e/runs/quine_recipe_fixture",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.16034108700114302,
+    "input_bytes": 0,
+    "output_bytes": 97,
+    "output_sha256": "e4f1cc215adfcfcea71aafb878235d1951b36030f965ee60e5c1224ae1187880",
+    "raw_prefix": "0129_broken_first_quine_recipe"
+  },
+  {
+    "label": "local_zero_fuel",
+    "argv": [
+      "<AUDIT_TEMP>/checkout/mb_ref",
+      "<AUDIT_TEMP>/checkout/artifacts/fizzbuzz.mal",
+      "0"
+    ],
+    "cwd": "<AUDIT_TEMP>/checkout",
+    "status": "EXIT",
+    "returncode": 0,
+    "seconds": 0.0015774370003782678,
+    "input_bytes": 0,
+    "output_bytes": 0,
+    "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "raw_prefix": "0130_local_zero_fuel",
+    "expected_sha256": "f039dc221ad122dda8b7226ad5bc68b8654e9e3a42dcea2b37554cd6f91b56af",
+    "exact": false,
+    "meets_expectation": false
+  }
+]

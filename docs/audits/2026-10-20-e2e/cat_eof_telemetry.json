@@ -1,0 +1,23 @@
+[
+  {
+    "name": "cat_empty",
+    "returncode": 0,
+    "input_hex": "",
+    "output_hex": "",
+    "telemetry": "AUDIT HALT steps=9268 input_reads=1 outputs=0 c=9025\n"
+  },
+  {
+    "name": "cat_A",
+    "returncode": 0,
+    "input_hex": "41",
+    "output_hex": "41",
+    "telemetry": "AUDIT HALT steps=9675 input_reads=2 outputs=1 c=9025\n"
+  },
+  {
+    "name": "cat_ABCD",
+    "returncode": 0,
+    "input_hex": "41424344",
+    "output_hex": "41424344",
+    "telemetry": "AUDIT HALT steps=10896 input_reads=5 outputs=4 c=9025\n"
+  }
+]

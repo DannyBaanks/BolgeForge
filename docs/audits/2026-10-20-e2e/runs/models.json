@@ -1,0 +1,515 @@
+{
+  "truth_0": {
+    "status": "HALT",
+    "step": 8,
+    "output_hex": "30",
+    "input_reads": 1,
+    "trace": [
+      {
+        "step": 0,
+        "a": 0,
+        "c": 0,
+        "d": 0,
+        "instruction": "/"
+      },
+      {
+        "step": 1,
+        "a": 48,
+        "c": 1,
+        "d": 1,
+        "instruction": "<"
+      },
+      {
+        "step": 2,
+        "a": 48,
+        "c": 2,
+        "d": 2,
+        "instruction": "j"
+      },
+      {
+        "step": 3,
+        "a": 48,
+        "c": 3,
+        "d": 39,
+        "instruction": "p"
+      },
+      {
+        "step": 4,
+        "a": 29491,
+        "c": 4,
+        "d": 40,
+        "instruction": "j"
+      },
+      {
+        "step": 5,
+        "a": 29491,
+        "c": 5,
+        "d": 84,
+        "instruction": "p"
+      },
+      {
+        "step": 6,
+        "a": 36,
+        "c": 6,
+        "d": 85,
+        "instruction": "j"
+      },
+      {
+        "step": 7,
+        "a": 36,
+        "c": 7,
+        "d": 84,
+        "instruction": "i"
+      },
+      {
+        "step": 8,
+        "a": 36,
+        "c": 37,
+        "d": 85,
+        "instruction": "v"
+      }
+    ]
+  },
+  "truth_1": {
+    "status": "NONPRINTABLE_PC",
+    "step": 9,
+    "c": 39,
+    "raw": 29490
+  },
+  "fizzbuzz": {
+    "status": "HALT",
+    "step": 1151,
+    "output_hex": "310a320a46697a7a0a340a42757a7a0a46697a7a0a370a380a46697a7a0a42757a7a0a31310a46697a7a0a31330a31340a46697a7a42757a7a0a31360a31370a46697a7a0a31390a42757a7a0a46697a7a0a32320a32330a46697a7a0a42757a7a0a32360a46697a7a0a32380a32390a46697a7a42757a7a0a33310a33320a46697a7a0a33340a42757a7a0a46697a7a0a33370a33380a46697a7a0a42757a7a0a34310a46697a7a0a34330a34340a46697a7a42757a7a0a34360a34370a46697a7a0a34390a42757a7a0a46697a7a0a35320a35330a46697a7a0a42757a7a0a35360a46697a7a0a35380a35390a46697a7a42757a7a0a36310a36320a46697a7a0a36340a42757a7a0a46697a7a0a36370a36380a46697a7a0a42757a7a0a37310a46697a7a0a37330a37340a46697a7a42757a7a0a37360a37370a46697a7a0a37390a42757a7a0a46697a7a0a38320a38330a46697a7a0a42757a7a0a38360a46697a7a0a38380a38390a46697a7a42757a7a0a39310a39320a46697a7a0a39340a42757a7a0a46697a7a0a39370a39380a46697a7a0a42757a7a0a",
+    "input_reads": 0,
+    "trace": [
+      {
+        "step": 0,
+        "a": 0,
+        "c": 0,
+        "d": 0,
+        "instruction": "i"
+      },
+      {
+        "step": 1,
+        "a": 0,
+        "c": 99,
+        "d": 1,
+        "instruction": "j"
+      },
+      {
+        "step": 2,
+        "a": 0,
+        "c": 100,
+        "d": 94,
+        "instruction": "*"
+      },
+      {
+        "step": 3,
+        "a": 39392,
+        "c": 101,
+        "d": 95,
+        "instruction": "j"
+      },
+      {
+        "step": 4,
+        "a": 39392,
+        "c": 102,
+        "d": 94,
+        "instruction": "*"
+      },
+      {
+        "step": 5,
+        "a": 52496,
+        "c": 103,
+        "d": 95,
+        "instruction": "o"
+      },
+      {
+        "step": 6,
+        "a": 52496,
+        "c": 104,
+        "d": 96,
+        "instruction": "j"
+      },
+      {
+        "step": 7,
+        "a": 52496,
+        "c": 105,
+        "d": 74,
+        "instruction": "p"
+      },
+      {
+        "step": 8,
+        "a": 3312,
+        "c": 106,
+        "d": 75,
+        "instruction": "j"
+      },
+      {
+        "step": 9,
+        "a": 3312,
+        "c": 107,
+        "d": 74,
+        "instruction": "i"
+      },
+      {
+        "step": 10,
+        "a": 3312,
+        "c": 3313,
+        "d": 75,
+        "instruction": "o"
+      },
+      {
+        "step": 11,
+        "a": 3312,
+        "c": 3314,
+        "d": 76,
+        "instruction": "j"
+      },
+      {
+        "step": 12,
+        "a": 3312,
+        "c": 3315,
+        "d": 121,
+        "instruction": "*"
+      },
+      {
+        "step": 13,
+        "a": 36,
+        "c": 3316,
+        "d": 122,
+        "instruction": "p"
+      },
+      {
+        "step": 14,
+        "a": 29489,
+        "c": 3317,
+        "d": 123,
+        "instruction": "<"
+      },
+      {
+        "step": 15,
+        "a": 29489,
+        "c": 3318,
+        "d": 124,
+        "instruction": "*"
+      },
+      {
+        "step": 16,
+        "a": 19722,
+        "c": 3319,
+        "d": 125,
+        "instruction": "<"
+      },
+      {
+        "step": 17,
+        "a": 19722,
+        "c": 3320,
+        "d": 126,
+        "instruction": "*"
+      },
+      {
+        "step": 18,
+        "a": 37,
+        "c": 3321,
+        "d": 127,
+        "instruction": "p"
+      },
+      {
+        "step": 19,
+        "a": 29490,
+        "c": 3322,
+        "d": 128,
+        "instruction": "<"
+      },
+      {
+        "step": 20,
+        "a": 29490,
+        "c": 3323,
+        "d": 129,
+        "instruction": "*"
+      },
+      {
+        "step": 21,
+        "a": 19722,
+        "c": 3324,
+        "d": 130,
+        "instruction": "<"
+      },
+      {
+        "step": 22,
+        "a": 19722,
+        "c": 3325,
+        "d": 131,
+        "instruction": "*"
+      },
+      {
+        "step": 23,
+        "a": 27,
+        "c": 3326,
+        "d": 132,
+        "instruction": "p"
+      },
+      {
+        "step": 24,
+        "a": 29510,
+        "c": 3327,
+        "d": 133,
+        "instruction": "<"
+      },
+      {
+        "step": 25,
+        "a": 29510,
+        "c": 3328,
+        "d": 134,
+        "instruction": "*"
+      },
+      {
+        "step": 26,
+        "a": 11,
+        "c": 3329,
+        "d": 135,
+        "instruction": "p"
+      },
+      {
+        "step": 27,
+        "a": 29545,
+        "c": 3330,
+        "d": 136,
+        "instruction": "<"
+      },
+      {
+        "step": 28,
+        "a": 29545,
+        "c": 3331,
+        "d": 137,
+        "instruction": "*"
+      },
+      {
+        "step": 29,
+        "a": 11,
+        "c": 3332,
+        "d": 138,
+        "instruction": "p"
+      }
+    ]
+  },
+  "microcat_ABCD": {
+    "status": "HALT",
+    "step": 208,
+    "output_hex": "414243",
+    "input_reads": 3,
+    "trace": [
+      {
+        "step": 0,
+        "a": 0,
+        "c": 0,
+        "d": 0,
+        "instruction": "i"
+      },
+      {
+        "step": 1,
+        "a": 0,
+        "c": 99,
+        "d": 1,
+        "instruction": "/"
+      },
+      {
+        "step": 2,
+        "a": 65,
+        "c": 100,
+        "d": 2,
+        "instruction": "j"
+      },
+      {
+        "step": 3,
+        "a": 65,
+        "c": 101,
+        "d": 36,
+        "instruction": "p"
+      },
+      {
+        "step": 4,
+        "a": 29543,
+        "c": 102,
+        "d": 37,
+        "instruction": "o"
+      },
+      {
+        "step": 5,
+        "a": 29543,
+        "c": 103,
+        "d": 38,
+        "instruction": "j"
+      },
+      {
+        "step": 6,
+        "a": 29543,
+        "c": 104,
+        "d": 48,
+        "instruction": "p"
+      },
+      {
+        "step": 7,
+        "a": 52,
+        "c": 105,
+        "d": 49,
+        "instruction": "j"
+      },
+      {
+        "step": 8,
+        "a": 52,
+        "c": 106,
+        "d": 48,
+        "instruction": "*"
+      },
+      {
+        "step": 9,
+        "a": 19700,
+        "c": 107,
+        "d": 49,
+        "instruction": "j"
+      },
+      {
+        "step": 10,
+        "a": 19700,
+        "c": 108,
+        "d": 48,
+        "instruction": "*"
+      },
+      {
+        "step": 11,
+        "a": 45932,
+        "c": 109,
+        "d": 49,
+        "instruction": "j"
+      },
+      {
+        "step": 12,
+        "a": 45932,
+        "c": 110,
+        "d": 48,
+        "instruction": "*"
+      },
+      {
+        "step": 13,
+        "a": 54676,
+        "c": 111,
+        "d": 49,
+        "instruction": "j"
+      },
+      {
+        "step": 14,
+        "a": 54676,
+        "c": 112,
+        "d": 48,
+        "instruction": "*"
+      },
+      {
+        "step": 15,
+        "a": 37908,
+        "c": 113,
+        "d": 49,
+        "instruction": "o"
+      },
+      {
+        "step": 16,
+        "a": 37908,
+        "c": 114,
+        "d": 50,
+        "instruction": "p"
+      },
+      {
+        "step": 17,
+        "a": 368,
+        "c": 115,
+        "d": 51,
+        "instruction": "o"
+      },
+      {
+        "step": 18,
+        "a": 368,
+        "c": 116,
+        "d": 52,
+        "instruction": "j"
+      },
+      {
+        "step": 19,
+        "a": 368,
+        "c": 117,
+        "d": 50,
+        "instruction": "i"
+      },
+      {
+        "step": 20,
+        "a": 368,
+        "c": 369,
+        "d": 51,
+        "instruction": "j"
+      },
+      {
+        "step": 21,
+        "a": 368,
+        "c": 370,
+        "d": 36,
+        "instruction": "*"
+      },
+      {
+        "step": 22,
+        "a": 49213,
+        "c": 371,
+        "d": 37,
+        "instruction": "j"
+      },
+      {
+        "step": 23,
+        "a": 49213,
+        "c": 372,
+        "d": 36,
+        "instruction": "*"
+      },
+      {
+        "step": 24,
+        "a": 36087,
+        "c": 373,
+        "d": 37,
+        "instruction": "j"
+      },
+      {
+        "step": 25,
+        "a": 36087,
+        "c": 374,
+        "d": 36,
+        "instruction": "*"
+      },
+      {
+        "step": 26,
+        "a": 12029,
+        "c": 375,
+        "d": 37,
+        "instruction": "j"
+      },
+      {
+        "step": 27,
+        "a": 12029,
+        "c": 376,
+        "d": 36,
+        "instruction": "*"
+      },
+      {
+        "step": 28,
+        "a": 43375,
+        "c": 377,
+        "d": 37,
+        "instruction": "j"
+      },
+      {
+        "step": 29,
+        "a": 43375,
+        "c": 378,
+        "d": 36,
+        "instruction": "*"
+      }
+    ]
+  }
+}

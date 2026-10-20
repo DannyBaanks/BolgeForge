@@ -1,0 +1,14 @@
+
+=== Compressing adder (adder.mal) ===
+Compressed adder: {'orig_chars': 56476, 'new_chars': 44914, 'saved_chars': 11562, 'saved_pct': 20.47, 'k': 123, 'delta': 11562, 'end_c': 43901, 'pad_len': 99, 'elapsed_s': 37.208}
+Traceback (most recent call last):
+  File "/tmp/bolgeforge-audit-20261020/checkout/tools/resynthesize.py", line 730, in <module>
+    main()
+  File "/tmp/bolgeforge-audit-20261020/checkout/tools/resynthesize.py", line 724, in main
+    run_target(t)
+  File "/tmp/bolgeforge-audit-20261020/checkout/tools/resynthesize.py", line 709, in run_target
+    assert res.returncode == 0 and res.stdout == res_orig.stdout, f"Mismatch: {res.stdout!r} != {res_orig.stdout!r}"
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Mismatch: b'<\x0f' != b'0\n'
+
+EXIT=1

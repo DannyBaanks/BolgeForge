@@ -1,0 +1,26 @@
+[
+  {
+    "file": "angel_README.md",
+    "url": "https://raw.githubusercontent.com/angel-p57/malbolge/b2d278d36e65d66574d435d4cfeb1560b79ed593/README.md",
+    "size": 2884,
+    "sha256": "c8786d195a2bbb1d160403ec5319289268e6f469346da5225de5822b957dbad5"
+  },
+  {
+    "file": "angel_malconv.rb",
+    "url": "https://raw.githubusercontent.com/angel-p57/malbolge/b2d278d36e65d66574d435d4cfeb1560b79ed593/malconv.rb",
+    "size": 1220,
+    "sha256": "c3855248f715f05475d53715a69a3517cc45058fd59ce8eff1fb781fa713a890"
+  },
+  {
+    "file": "angel_fizzbuzz.mals",
+    "url": "https://raw.githubusercontent.com/angel-p57/malbolge/b2d278d36e65d66574d435d4cfeb1560b79ed593/sample/fizzbuzz.mals",
+    "size": 7597,
+    "sha256": "e95fba275be6c9011deb3cfa614c6722f40656bbb2672ac347f1c2b749247ff2"
+  },
+  {
+    "file": "olmstead_upstream_mirror.c",
+    "url": "https://raw.githubusercontent.com/shinh/ags/b37fe88ade0d3d862c0500f0b2c0e0f91cc1254e/be/fetcher/malbolge.c",
+    "size": 4879,
+    "sha256": "aa54d4862340ebccae634e76fc900c2118fc5ff49ba02ca9ed60e2a5f863c880"
+  }
+]

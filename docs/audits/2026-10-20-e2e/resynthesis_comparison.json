@@ -1,0 +1,14 @@
+[
+  {
+    "artifact": "cat_compressed.mal",
+    "regenerated_sha256": "b4ddd5ec59f33c7776bf5b85f51065c836dce9135b36a8a3be7f2c2340e85dda",
+    "committed_sha256": "b4ddd5ec59f33c7776bf5b85f51065c836dce9135b36a8a3be7f2c2340e85dda",
+    "byte_exact": true
+  },
+  {
+    "artifact": "digital_root_compressed.mal",
+    "regenerated_sha256": "d522f65e26d4209dc7c888371ae7347cad987f96383c5567dd3999d4c30806f9",
+    "committed_sha256": "ca20ffb18598f449e15acf3972e87c566130c29cea9749c29ae08034356b66cb",
+    "byte_exact": false
+  }
+]

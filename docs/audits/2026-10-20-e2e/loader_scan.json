@@ -1,0 +1,180 @@
+[
+  {
+    "file": "artifacts/99_bottles_compressed.mal",
+    "bytes": 21809,
+    "cells": 21809,
+    "illegal_loader_cells": 0,
+    "first_illegal": []
+  },
+  {
+    "file": "artifacts/adder_compressed.mal",
+    "bytes": 44914,
+    "cells": 44914,
+    "illegal_loader_cells": 0,
+    "first_illegal": []
+  },
+  {
+    "file": "artifacts/cand_three_stage_clean.mal",
+    "bytes": 3380,
+    "cells": 3380,
+    "illegal_loader_cells": 2918,
+    "first_illegal": [
+      {
+        "address": 1,
+        "raw": 111,
+        "decoded": "f"
+      },
+      {
+        "address": 2,
+        "raw": 35,
+        "decoded": "9"
+      },
+      {
+        "address": 3,
+        "raw": 111,
+        "decoded": "!"
+      }
+    ]
+  },
+  {
+    "file": "artifacts/cand_twostroke.mal",
+    "bytes": 3500,
+    "cells": 3500,
+    "illegal_loader_cells": 3378,
+    "first_illegal": [
+      {
+        "address": 1,
+        "raw": 70,
+        "decoded": "7"
+      },
+      {
+        "address": 2,
+        "raw": 70,
+        "decoded": ","
+      },
+      {
+        "address": 3,
+        "raw": 70,
+        "decoded": "X"
+      }
+    ]
+  },
+  {
+    "file": "artifacts/candidate_m281_53562b.mal",
+    "bytes": 53562,
+    "cells": 52828,
+    "illegal_loader_cells": 0,
+    "first_illegal": []
+  },
+  {
+    "file": "artifacts/candidate_m284_54134b.mal",
+    "bytes": 54134,
+    "cells": 53392,
+    "illegal_loader_cells": 0,
+    "first_illegal": []
+  },
+  {
+    "file": "artifacts/candidate_m287_54706b.mal",
+    "bytes": 54706,
+    "cells": 53956,
+    "illegal_loader_cells": 0,
+    "first_illegal": []
+  },
+  {
+    "file": "artifacts/candidate_m293_55850b.mal",
+    "bytes": 55850,
+    "cells": 55084,
+    "illegal_loader_cells": 0,
+    "first_illegal": []
+  },
+  {
+    "file": "artifacts/candidate_m308_58709b.mal",
+    "bytes": 58709,
+    "cells": 57904,
+    "illegal_loader_cells": 0,
+    "first_illegal": []
+  },
+  {
+    "file": "artifacts/cat_compressed.mal",
+    "bytes": 8254,
+    "cells": 8254,
+    "illegal_loader_cells": 0,
+    "first_illegal": []
+  },
+  {
+    "file": "artifacts/digital_root_compressed.mal",
+    "bytes": 26308,
+    "cells": 26308,
+    "illegal_loader_cells": 0,
+    "first_illegal": []
+  },
+  {
+    "file": "artifacts/fizzbuzz.mal",
+    "bytes": 4517,
+    "cells": 4455,
+    "illegal_loader_cells": 3035,
+    "first_illegal": [
+      {
+        "address": 1,
+        "raw": 93,
+        "decoded": "5"
+      },
+      {
+        "address": 2,
+        "raw": 111,
+        "decoded": "$"
+      },
+      {
+        "address": 3,
+        "raw": 111,
+        "decoded": "!"
+      }
+    ]
+  },
+  {
+    "file": "artifacts/microcat.mal",
+    "bytes": 3380,
+    "cells": 3380,
+    "illegal_loader_cells": 2918,
+    "first_illegal": [
+      {
+        "address": 1,
+        "raw": 111,
+        "decoded": "f"
+      },
+      {
+        "address": 2,
+        "raw": 35,
+        "decoded": "9"
+      },
+      {
+        "address": 3,
+        "raw": 111,
+        "decoded": "!"
+      }
+    ]
+  },
+  {
+    "file": "artifacts/truth_machine.mal",
+    "bytes": 103,
+    "cells": 103,
+    "illegal_loader_cells": 82,
+    "first_illegal": [
+      {
+        "address": 8,
+        "raw": 111,
+        "decoded": "t"
+      },
+      {
+        "address": 9,
+        "raw": 111,
+        "decoded": ":"
+      },
+      {
+        "address": 10,
+        "raw": 111,
+        "decoded": "P"
+      }
+    ]
+  }
+]

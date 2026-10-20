@@ -1,0 +1,4 @@
+<SIBLING_REPOS>/BolgeForge/docs/audits/2026-10-20-e2e/olmstead_strict_mirror.c: In function ‘main’:
+<SIBLING_REPOS>/BolgeForge/docs/audits/2026-10-20-e2e/olmstead_strict_mirror.c:49:25: warning: unused variable ‘j’ [-Wunused-variable]
+   49 |   unsigned short i = 0, j;
+      |                         ^

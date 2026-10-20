@@ -1,0 +1,15 @@
+============================================================
+BolgeForge: Truth Machine in Classic Malbolge (Olmstead 1998)
+============================================================
+Generated: /tmp/bolgeforge-audit-20261020/checkout/artifacts/truth_machine.mal
+Size:      103 bytes
+SHA-256:   9b0e15e73145af7882157565d0c8a91aaaf2272b62b59594d71850daa87d5895
+Build time: 0.12 ms
+
+Verifying truth_machine.mal against /tmp/bolgeforge-audit-20261020/checkout/mb_ref...
+  [PASS] Input '0': Exits with code 0, stdout = b'0'
+  [PASS] Input '1': Sustained infinite loop (2778 pure '1' chars in 50k steps)
+
+============================================================
+ALL VERIFICATIONS PASSED: 100% BIT-FOR-BIT CANONICAL SUCCESS
+============================================================
