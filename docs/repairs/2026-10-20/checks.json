@@ -1,0 +1,82 @@
+{
+  "timestamp_utc": "2026-10-20T21:59:52Z",
+  "python": "3.12.3",
+  "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+  "runs": [
+    {
+      "name": "final-suite",
+      "command": [
+        "make",
+        "test"
+      ],
+      "cwd": ".",
+      "returncode": 0,
+      "seconds": 19.568,
+      "stdout_sha256": "e4500603b6d4c4ad07120cd58f2f7b650296b8cbb35ba25d3bb3c7f4ec81d4b1",
+      "stderr_sha256": "34b6f85c989ae3f437e935649aa47daa82c8dd9462debcc11469048a286d7f62"
+    },
+    {
+      "name": "cat-example",
+      "command": [
+        "bash",
+        "-c",
+        "printf 'ABCD' | ./mb_ref artifacts/cat_compressed.mal"
+      ],
+      "cwd": ".",
+      "returncode": 0,
+      "seconds": 0.092,
+      "stdout_sha256": "e12e115acf4552b2568b55e93cbd39394c4ef81c82447fafc997882a02d23677",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "prototype-rejection",
+      "command": [
+        "bash",
+        "-c",
+        "printf '0' | ./mb_ref artifacts/truth_machine.mal"
+      ],
+      "cwd": ".",
+      "returncode": 1,
+      "seconds": 0.006,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "95d816eb05d5907a8cc9cca5dfb7db6249c6c2c8c5b1d3ce077ae4872239ae88"
+    },
+    {
+      "name": "budget-rejection",
+      "command": [
+        "bash",
+        "-c",
+        "./mb_ref artifacts/cat_compressed.mal 0 < /dev/null"
+      ],
+      "cwd": ".",
+      "returncode": 2,
+      "seconds": 0.003,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "09504e40c02f54fae6d6d3c9cb29a1ef1c89d565647da6224902e0b15bd4b7db"
+    },
+    {
+      "name": "legacy-tm",
+      "command": [
+        "make",
+        "test-tm"
+      ],
+      "cwd": ".",
+      "returncode": 2,
+      "seconds": 0.791,
+      "stdout_sha256": "ee79f610e564a5970b958315d74d6830b319160d97ff454e0dd895fa5f1d32f7",
+      "stderr_sha256": "301ddd99dd1f9d385fae2ab59b664158dbb53b278956386ec892fc0c2e3434dd"
+    },
+    {
+      "name": "legacy-fizzbuzz",
+      "command": [
+        "make",
+        "test-fizzbuzz"
+      ],
+      "cwd": ".",
+      "returncode": 2,
+      "seconds": 0.253,
+      "stdout_sha256": "bc4aa15811cfe0a8ffe26ce4eb7bb56811f8f59c0590b76cf9bd0a9783166a79",
+      "stderr_sha256": "d82a5f69d6d3b7580e40b3f4a55298773c539f800c55d09f7de75bfd8717e226"
+    }
+  ]
+}

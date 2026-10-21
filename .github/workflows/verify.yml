@@ -6,40 +6,30 @@ on:
 
 jobs:
   oracle:
-    name: Verify all committed Malbolge artifacts on mb_ref
+    name: Strict Classic certification and negative controls
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - name: Build oracle
         run: make
-      - name: Verify malbolge.org reference corpus
-        run: make test-corpus
-      - name: Run oracle on every committed quine
-        run: |
-          set -e
-          for f in artifacts/candidate_m*.mal; do
-            ./mb_ref "$f" > /tmp/out.mal
-            diff -q "$f" /tmp/out.mal
-            echo "OK $f ($(wc -c < "$f") bytes, self-reproduction exact)"
-          done
-      - name: Verify microcat artifact (3,380B) on mb_ref
-        run: python3 tools/test_microcat_suite.py
-      - name: Verify compressed benchmarks on mb_ref
-        run: python3 tools/test_compressed.py
-      - name: Verify truth machine artifact (105B) on mb_ref
-        run: python3 tools/verify_truth_machine_full.py
-      - name: Verify FizzBuzz (1..100) artifact (4,455 opcodes) on mb_ref
-        run: python3 tools/test_fizzbuzz.py
+      - name: Verify corpus, quines, compressed programs and rejection controls
+        run: make test
+      - name: Reconstruct all four compressed programs without changing artifacts
+        run: make test-rebuild
 
   synthesize-record:
     name: Synthesize m=281 and check byte-exact regression
     runs-on: ubuntu-latest
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
       - name: Build oracle
         run: make
-      - name: Synthesize the record (~13 min, deterministic)
+      - name: Synthesize best verified quine of this family (~13 min)
         run: python3 synthesize.py 281
-      - name: Byte-exact regression vs published record
+      - name: Byte-exact regression vs published artifact
         run: |
           echo "96b670b825372a0f41fa3b574d47457f92654b76411e5d5be4c438003087610e  artifacts/candidate_m281_53562b.mal" | sha256sum -c -
+      - name: Execute the rebuilt quine under the strict oracle
+        run: make test-quines

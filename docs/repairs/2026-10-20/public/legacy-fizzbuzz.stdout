@@ -1,0 +1,9 @@
+python3 tools/test_fizzbuzz.py
+=== VERIFYING FIZZBUZZ (1..100) IN CLASSIC MALBOLGE ===
+Artifact: <REPO>/artifacts/fizzbuzz.mal
+Size:     4,517 bytes (wrapped)
+SHA-256:  14f372ac74909c344638bf5c1ffbf1797fcd9b26cb18111a3b21bc31dd1bcd42
+  [PASS] Artifact hash matches canonical recorded checksum.
+Opcodes:  4,455 non-whitespace bytes
+  [PASS] All opcodes strictly satisfy ASCII [33, 126] loader constraint.
+FAIL: Program exited with returncode 1

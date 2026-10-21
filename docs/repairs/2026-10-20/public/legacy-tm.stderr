@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "<REPO>/tools/verify_truth_machine_full.py", line 36, in <module>
+    verify_truth_machine()
+  File "<REPO>/tools/verify_truth_machine_full.py", line 23, in verify_truth_machine
+    require(p0.returncode == 0, f"Expected returncode 0 on '0', got {p0.returncode}")
+  File "<REPO>/tools/verify_truth_machine_full.py", line 13, in require
+    raise RuntimeError(message)
+RuntimeError: Expected returncode 0 on '0', got 1
+make: *** [Makefile:34: test-tm] Error 1

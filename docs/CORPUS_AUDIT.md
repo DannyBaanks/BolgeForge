@@ -1,3 +1,6 @@
+> **Historical corpus telemetry — correction, 2026-10-20.** The tables below preserve the 2026-10-18 report and its original hashes. CURRENT and 100% labels below are historical claims, not universal conformance proofs. The audit found that Digital Root and Adder did not regenerate from that source. The repaired generator uses handoffs 31802 and 55802; current compressed artifacts have new hashes, documented in the repair report. Previous artifacts are preserved there. The M3 selector fails strict loading and is not a demonstrated Classic program.
+> See [the E2E audit](audits/2026-10-20-e2e/REPORT.md) and [repair report](repairs/2026-10-20/REPORT.md) for evidence and current scope.
+
 # BolgeForge Corpus Telemetry & Structural Audit
 
 **Date:** 2026-10-18  

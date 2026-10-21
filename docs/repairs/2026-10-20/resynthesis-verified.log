@@ -1,0 +1,4 @@
+Compressing digital_root (handoff 31802)
+PASS digital_root: 6 cases; published after verification; {'orig_chars': 32136, 'new_chars': 26308, 'saved_chars': 5828, 'saved_pct': 18.14, 'k': 62, 'delta': 5828, 'end_c': 25743, 'pad_len': 231, 'elapsed_s': 31.417}
+Compressing adder (handoff 55802)
+PASS adder: 100 cases; published after verification; {'orig_chars': 56476, 'new_chars': 44914, 'saved_chars': 11562, 'saved_pct': 20.47, 'k': 123, 'delta': 11562, 'end_c': 43973, 'pad_len': 267, 'elapsed_s': 39.253}

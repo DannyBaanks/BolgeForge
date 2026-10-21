@@ -1,0 +1,26 @@
+python3 -m unittest discover -s tests -v
+python3 test_corpus.py
+=== RUNNING MALBOLGE.ORG REFERENCE CORPUS VERIFICATION ===
+Testing cat.mal... PASS
+Testing digital_root.mal... PASS
+Testing adder.mal... PASS
+Testing quine.mal self-reproduction... PASS (0-byte diff bit-for-bit)
+Testing quine-2012.mal self-reproduction... PASS (0-byte diff bit-for-bit)
+Testing hello_world.mal... PASS
+Testing rot13.mal... PASS
+Testing 99_bottles.mal (full 99-verse execution)... PASS (11,459 bytes, 99 verses)
+=== ALL MALBOLGE.ORG CORPUS TESTS PASSED (0.48s) ===
+python3 tools/test_compressed.py
+PASS cat: 7 exact-output cases; strict HALT and reference parity
+PASS digital_root: 6 exact-output cases; strict HALT and reference parity
+PASS adder: 100 exact-output cases; strict HALT and reference parity
+PASS 99_bottles: 1 exact-output cases; strict HALT and reference parity
+python3 tools/test_quines.py
+PASS candidate_m281_53562b.mal: byte-exact self-reproduction and strict HALT
+PASS candidate_m284_54134b.mal: byte-exact self-reproduction and strict HALT
+PASS candidate_m287_54706b.mal: byte-exact self-reproduction and strict HALT
+PASS candidate_m293_55850b.mal: byte-exact self-reproduction and strict HALT
+PASS candidate_m308_58709b.mal: byte-exact self-reproduction and strict HALT
+python3 tools/test_independent.py
+PASS independent Olmstead mirror: 231 exact-output comparisons
+Mirror source SHA-256: 05abd38e78b266050c5a5e8cc5b36584daa5bbdeb404bfb351de7ea6fa26b510

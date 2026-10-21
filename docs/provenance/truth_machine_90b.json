@@ -1,0 +1,28 @@
+{
+  "artifact": "artifacts/truth_machine_classic_90b.mal",
+  "sha256": "1e34e2afd1fc645dadac1f1aac0fe2348ff469878cc3da396a6a1e7bad2a4417",
+  "bytes": 90,
+  "provenance": {
+    "source": "https://codegolf.stackexchange.com/a/277557",
+    "site": "Code Golf Stack Exchange",
+    "question": "Implement a Truth Machine (question 62732)",
+    "answer_id": 277557,
+    "author": "Weird Glyphs",
+    "published_utc": "2025-01-08T21:38:31Z",
+    "license": "CC BY-SA 4.0",
+    "retrieved": "2026-10-20",
+    "method": "Answer body fetched through the Stack Exchange API (filter=withbody), HTML-unescaped, first <pre><code> block, no other edits"
+  },
+  "claimed_semantics": {
+    "input_0": "print '0' once and halt",
+    "input_1": "print '1' forever",
+    "dialect": "Classic Malbolge (the author also states it works with Malbolge Unshackled)"
+  },
+  "verification": {
+    "loader": "Accepted by the strict Olmstead mirror (docs/audits/2026-10-20-e2e/olmstead_strict_mirror.c) and by oracle/mb_ref.c",
+    "input_0": "HALT after 38 instructions, output 0x30",
+    "input_1": "full VM state (a,c,d,59,049 memory cells) repeats from step 1000 to step 1408; 17 output bytes per 408-instruction cycle, all 0x31",
+    "tool": "python3 tools/prove_truth_machine.py artifacts/truth_machine_classic_90b.mal --json"
+  },
+  "scope": "This is a documented reproduction, not a BolgeForge synthesis. Historical primacy is not claimed and cannot be proven by this evidence."
+}

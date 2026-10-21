@@ -1,0 +1,29 @@
+FFF
+======================================================================
+FAIL: test_invalid_loader_is_rejected (test_trace.TraceTests.test_invalid_loader_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<REPO>/tests/test_trace.py", line 9, in test_invalid_loader_is_rejected
+    with self.assertRaisesRegex(ValueError, 'INVALID_OPCODE'):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_jump_encrypts_destination_and_never_indexes_invalid_word (test_trace.TraceTests.test_jump_encrypts_destination_and_never_indexes_invalid_word)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<REPO>/tests/test_trace.py", line 14, in test_jump_encrypts_destination_and_never_indexes_invalid_word
+    with self.assertRaisesRegex(ValueError, 'INVALID_ENCRYPTION'):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_nonprintable_pc_is_not_a_nop (test_trace.TraceTests.test_nonprintable_pc_is_not_a_nop)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<REPO>/tests/test_trace.py", line 19, in test_nonprintable_pc_is_not_a_nop
+    with self.assertRaisesRegex(ValueError, 'NONPRINTABLE_PC'):
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.090s
+
+FAILED (failures=3)

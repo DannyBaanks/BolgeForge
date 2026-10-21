@@ -1,0 +1,13 @@
+..F
+======================================================================
+FAIL: test_unknown_rebuild_target_fails (test_verifiers.VerifierTests.test_unknown_rebuild_target_fails)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<REPO>/tests/test_verifiers.py", line 37, in test_unknown_rebuild_target_fails
+    self.assertNotEqual(p.returncode, 0)
+AssertionError: 0 == 0
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.284s
+
+FAILED (failures=1)

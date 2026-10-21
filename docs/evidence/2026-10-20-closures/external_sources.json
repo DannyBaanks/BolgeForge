@@ -1,0 +1,29 @@
+{
+  "checked_utc": "2026-10-20",
+  "method": "HTTPS download to /tmp, byte count and SHA-256; committed references hashed locally",
+  "quine_reference": {
+    "url": "https://malbolge.org/quine.mal",
+    "page": "https://malbolge.org/quine.html",
+    "downloaded_bytes": 59852,
+    "downloaded_lines": 820,
+    "downloaded_sha256": "dca8476f8b70c8462c32f661f63c5f8b1ad6c33946b3c7a9a35186c824117d98",
+    "committed_reference": "reference/malbolge_org/quine.mal",
+    "committed_sha256": "dca8476f8b70c8462c32f661f63c5f8b1ad6c33946b3c7a9a35186c824117d98",
+    "byte_identical": true,
+    "unformatted_2012_reference": "reference/malbolge_org/quine-2012.mal",
+    "unformatted_bytes": 59032
+  },
+  "angel_fizzbuzz": {
+    "commit": "b2d278d36e65d66574d435d4cfeb1560b79ed593",
+    "url": "https://raw.githubusercontent.com/angel-p57/malbolge/b2d278d36e65d66574d435d4cfeb1560b79ed593/sample/fizzbuzz.txt",
+    "bytes": 413,
+    "lines": 100,
+    "sha256": "f039dc221ad122dda8b7226ad5bc68b8654e9e3a42dcea2b37554cd6f91b56af",
+    "matches_emitted_output_sha256": true
+  },
+  "converted_reference": {
+    "path": "docs/audits/2026-10-20-e2e/angel_fizzbuzz_converted.mal",
+    "bytes": 3590,
+    "sha256": "bd2c88d31d68da28bc5d75541d791c9110f59762022a809c1ba6bb7a4a6b00a1"
+  }
+}

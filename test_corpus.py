@@ -14,12 +14,18 @@ MB_REF = REPO_ROOT / 'mb_ref'
 CORPUS_DIR = REPO_ROOT / 'reference' / 'malbolge_org'
 
 
+def require(condition, message):
+    if not condition:
+        raise RuntimeError(message)
+
+
 def run_prog(prog_path: Path, stdin_text: str = '') -> str:
     res = subprocess.run(
         [str(MB_REF), str(prog_path)],
         input=stdin_text.encode('latin1'),
         capture_output=True,
-        check=True
+        check=True,
+        timeout=20
     )
     return res.stdout.decode('latin1')
 
@@ -34,7 +40,7 @@ def test_cat():
     ]
     for v in vectors:
         out = run_prog(prog, v)
-        assert out == v, f"cat mismatch: expected {v!r}, got {out!r}"
+        require(out == v, f"cat mismatch: expected {v!r}, got {out!r}")
     print("PASS")
 
 
@@ -50,7 +56,7 @@ def test_digital_root():
     ]
     for inp, expected in vectors:
         out = run_prog(prog, inp)
-        assert out == expected, f"digital_root mismatch on {inp!r}: expected {expected!r}, got {out!r}"
+        require(out == expected, f"digital_root mismatch on {inp!r}: expected {expected!r}, got {out!r}")
     print("PASS")
 
 
@@ -65,7 +71,7 @@ def test_adder():
     ]
     for inp, expected in vectors:
         out = run_prog(prog, inp)
-        assert out == expected, f"adder mismatch on {inp!r}: expected {expected!r}, got {out!r}"
+        require(out == expected, f"adder mismatch on {inp!r}: expected {expected!r}, got {out!r}")
     print("PASS")
 
 
@@ -74,9 +80,9 @@ def test_quines():
         print(f"Testing {name} self-reproduction...", end=" ", flush=True)
         prog = CORPUS_DIR / name
         expected = prog.read_bytes()
-        res = subprocess.run([str(MB_REF), str(prog)], capture_output=True)
-        assert res.returncode == 0, f"Non-zero exit code: {res.returncode}"
-        assert res.stdout == expected, f"Quine mismatch for {name}: {len(res.stdout)} vs {len(expected)} bytes"
+        res = subprocess.run([str(MB_REF), str(prog)], input=b'', capture_output=True, timeout=20)
+        require(res.returncode == 0, f"Non-zero exit code: {res.returncode}")
+        require(res.stdout == expected, f"Quine mismatch for {name}: {len(res.stdout)} vs {len(expected)} bytes")
         print("PASS (0-byte diff bit-for-bit)")
 
 
@@ -84,7 +90,7 @@ def test_hello_world():
     print("Testing hello_world.mal...", end=" ", flush=True)
     prog = CORPUS_DIR / 'hello_world.mal'
     out = run_prog(prog)
-    assert out == "Hello, world.", f"hello_world mismatch: got {out!r}"
+    require(out == "Hello, world.", f"hello_world mismatch: got {out!r}")
     print("PASS")
 
 
@@ -98,19 +104,19 @@ def test_rot13():
     ]
     for inp, expected in vectors:
         out = run_prog(prog, inp)
-        assert out == expected, f"rot13 mismatch on {inp!r}: expected {expected!r}, got {out!r}"
+        require(out == expected, f"rot13 mismatch on {inp!r}: expected {expected!r}, got {out!r}")
     print("PASS")
 
 
 def test_99_bottles():
     print("Testing 99_bottles.mal (full 99-verse execution)...", end=" ", flush=True)
     prog = CORPUS_DIR / '99_bottles.mal'
-    res = subprocess.run([str(MB_REF), str(prog)], capture_output=True, check=True)
-    assert res.returncode == 0
-    assert len(res.stdout) == 11459, f"Expected 11,459 bytes, got {len(res.stdout)}"
-    assert res.stdout.startswith(b"99 bottles of beer on the wall,\n99 bottles of beer,\nTake one down, pass it around,\n")
-    assert b"\n1 bottle of beer on the wall.\n\n1 bottle of beer on the wall,\n1 bottle of beer,\n" in res.stdout
-    assert res.stdout.endswith(b"Take one down, pass it around,\nNo more bottles of beer on the wall.\n\n")
+    res = subprocess.run([str(MB_REF), str(prog)], input=b'', capture_output=True, check=True, timeout=20)
+    require(res.returncode == 0, 'Corpus verification failed')
+    require(len(res.stdout) == 11459, f"Expected 11,459 bytes, got {len(res.stdout)}")
+    require(res.stdout.startswith(b"99 bottles of beer on the wall,\n99 bottles of beer,\nTake one down, pass it around,\n"), 'Corpus verification failed')
+    require(b"\n1 bottle of beer on the wall.\n\n1 bottle of beer on the wall,\n1 bottle of beer,\n" in res.stdout, 'Corpus verification failed')
+    require(res.stdout.endswith(b"Take one down, pass it around,\nNo more bottles of beer on the wall.\n\n"), 'Corpus verification failed')
     print("PASS (11,459 bytes, 99 verses)")
 
 

@@ -1,0 +1,21 @@
+{
+  "environment": {
+    "python": "3.12.3",
+    "platform": "Linux-7.0.0-38-generic-x86_64-with-glibc2.39",
+    "mb_ref_sha256": "463723a2484d1ea384472c232cfe89fdce7a19aa73d4d2396c2cc68f6d45889a"
+  },
+  "run": {
+    "returncode": 0,
+    "stdout_bytes": 413,
+    "stdout_sha256": "f039dc221ad122dda8b7226ad5bc68b8654e9e3a42dcea2b37554cd6f91b56af",
+    "lines": 100,
+    "first_lines": [
+      "1",
+      "2",
+      "Fizz",
+      "4",
+      "Buzz"
+    ],
+    "last_line": "Buzz"
+  }
+}

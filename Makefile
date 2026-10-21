@@ -36,14 +36,24 @@ test-tm: mb_ref
 test-fizzbuzz: mb_ref
 	python3 tools/test_fizzbuzz.py
 
-test: mb_ref test-corpus microcat test-compressed test-tm test-fizzbuzz
-	@echo "Verifying committed quines..."
-	@for f in artifacts/candidate_m*.mal; do \
-		./mb_ref "$$f" > /tmp/out.mal && diff -q "$$f" /tmp/out.mal && echo "OK $$f"; \
-	done
+test-oracle: mb_ref
+	python3 -m unittest discover -s tests -v
+
+test-quines: mb_ref
+	python3 tools/test_quines.py
+
+test-independent: mb_ref
+	python3 tools/test_independent.py
+
+# Strict certification never regenerates artifacts or treats rejected prototypes
+# as working Classic programs. Negative loader controls are in test-oracle.
+test: test-oracle test-corpus test-compressed test-quines test-independent
+
+test-rebuild: mb_ref
+	python3 tools/resynthesize.py all --check
 
 audit: mb_ref
 	python3 tools/audit_bloat.py
 
-.PHONY: all clean test test-corpus test-compressed test-tm test-fizzbuzz analyze-corpus synth-cat microcat audit
+.PHONY: all clean test test-oracle test-quines test-independent test-rebuild test-corpus test-compressed test-tm test-fizzbuzz analyze-corpus synth-cat microcat audit
 

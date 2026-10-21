@@ -16,6 +16,14 @@ artifacts/cand_*.mal
 !artifacts/cand_twostroke.mal
 artifacts/test_*.mal
 
+# Repair logs with absolute local paths: keep locally, publish sanitized copies
+docs/repairs/2026-10-20/legacy-tm.stderr
+docs/repairs/2026-10-20/oracle-before.log
+docs/repairs/2026-10-20/independent-invalid-input-attempt.log
+docs/repairs/2026-10-20/verifiers-before.log
+docs/repairs/2026-10-20/trace-before.log
+docs/repairs/2026-10-20/legacy-fizzbuzz.stdout
+
 # Compiled C binaries in tools
 tools/check_29491
 tools/check_d_access

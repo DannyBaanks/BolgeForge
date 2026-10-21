@@ -1,0 +1,7 @@
+python3 tools/prove_truth_machine.py artifacts/truth_machine_classic_90b.mal --json
+printf '0' | ./mb_ref artifacts/truth_machine_classic_90b.mal 10000
+printf '1' | ./mb_ref artifacts/truth_machine_classic_90b.mal 1408
+python3 -m unittest tests.test_truth_machine_strict tests.test_cat_streaming tests.test_fizzbuzz_reference -v
+./mb_ref artifacts/cat_compressed.mal 200000000 < docs/evidence/2026-10-20-closures/payload.bin
+./mb_ref reference/malbolge_org/cat.mal 200000000 < docs/evidence/2026-10-20-closures/payload.bin
+./mb_ref docs/audits/2026-10-20-e2e/angel_fizzbuzz_converted.mal 100000000 < /dev/null

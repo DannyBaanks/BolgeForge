@@ -1,0 +1,7 @@
+34f3914467e82c1f8392fda6cab96e8177f4d82e32a9036dfae45a9b940de8f5  docs/evidence/2026-10-20-closures/cat_streaming.json
+24bf208ed5361702375796ac64b183d1fc30298b89251482c05a4ae647c12a8d  docs/evidence/2026-10-20-closures/fizzbuzz_reference.json
+00370921e096469815fdfdfedecea227f6bbce6c6ae4c70331382d7adef3ec64  docs/evidence/2026-10-20-closures/truth_machine_proof.json
+4eac8659fea07a5f4daf9e462d0ac2d889fbd5784c7c1b84eff0b59c1644d3e6  docs/evidence/2026-10-20-closures/commands.txt
+011e7766af89ad9f3a4fe4a6299432a538411aac4cb422217684ae373d4eeed2  docs/evidence/2026-10-20-closures/payload.bin
+090227ecadd8c0a5ef84fc2079fc25154a12b27c4a7dafa7f3a0addd3820754f  docs/evidence/2026-10-20-closures/REPORT.md
+cc20edcec25097c979354b2f20449e11b94d60f05d0552fc401608e4130b351c  docs/evidence/2026-10-20-closures/external_sources.json

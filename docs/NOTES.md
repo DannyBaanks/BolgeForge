@@ -1,5 +1,9 @@
 # m=299 resynthesis — status 2026-10-15 [NOT_DEMONSTRATED: no sub-59,852 quine exists yet]
 
+> **CLOSURE 2026-10-20:** this title is a historical status, not a current claim.
+> The current terminal statuses are in [`docs/CLAIMS.md`](CLAIMS.md); this file
+> remains research history and is not rewritten.
+
 > **CORRECTION 2026-10-16:** sub-59,852 quines now EXIST and are verified. See the
 > "Session 2026-10-16" section at the bottom: m=284 (54,134 B), m=293 (55,850 B),
 > m=308 (58,709 B), all mb_ref 0-byte-diff. `m299_candidate_56993b.mal` is INVALID

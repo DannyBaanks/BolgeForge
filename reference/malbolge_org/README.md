@@ -11,9 +11,9 @@ Programas canónicos de Malbolge clásico publicados en [malbolge.org](https://m
 | `adder.mal` | 57,283 B | 56,476 B | `f7a23ea3d55d943489653d17ff0f4e048f81bb952bc81f1d313a0a26151dcf7a` | Matthias Lutter (2012) |
 | `quine-2012.mal` | 59,032 B | 59,032 B | `419e274e3fa7f6356473a17058571cf3bcca9b0652063c27acebce064a800a4f` | Matthias Lutter (2012) |
 | `quine.mal` | 59,852 B | 59,032 B | `dca8476f8b70c8462c32f661f63c5f8b1ad6c33946b3c7a9a35186c824117d98` | Matthias Lutter (2015) |
-| `hello_world.mal` | 89 B | 85 B | `c8a95363dbe2e997192834cf42a6f317be4a3bef93263e026300bc8243e77601` | Andrew Cooke (2000) |
+| `hello_world.mal` | 89 B | 88 B | `c8a95363dbe2e997192834cf42a6f317be4a3bef93263e026300bc8243e77601` | Andrew Cooke (2000) |
 | `rot13.mal` | 33,383 B | 33,031 B | `3fa5d20f955265cc6a4dd28b5571a2a310c99d24b29077cfc4d654aa4ed88578` | Sakai & Iizawa / Nagoya Univ (2006) |
-| `99_bottles.mal` | 22,807 B | 22,572 B | `f82723aa7a957f2986f554bf7f421498880bd9ee59a613861868c5c2f0741e0c` | Hisashi Iizawa / Nagoya Univ (2005) |
+| `99_bottles.mal` | 22,807 B | 22,561 B | `f82723aa7a957f2986f554bf7f421498880bd9ee59a613861868c5c2f0741e0c` | Hisashi Iizawa / Nagoya Univ (2005) |
 
 ## Ejecución y Verificación
 

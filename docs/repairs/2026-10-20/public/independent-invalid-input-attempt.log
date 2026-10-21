@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "<REPO>/tools/test_independent.py", line 54, in <module>
+    main()
+  File "<REPO>/tools/test_independent.py", line 43, in main
+    expected = execute(ROOT / 'mb_ref', program, payload)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<REPO>/tools/test_independent.py", line 20, in execute
+    raise RuntimeError(f'{program.name}: independent execution failed ({result.returncode})')
+RuntimeError: adder.mal: independent execution failed (2)

@@ -1,0 +1,9 @@
+python3 tools/resynthesize.py all --check
+Compressing cat (handoff 9003)
+PASS cat: 7 cases; byte-exact rebuild; {'orig_chars': 9382, 'new_chars': 8254, 'saved_chars': 1128, 'saved_pct': 12.02, 'k': 12, 'delta': 1128, 'end_c': 7822, 'pad_len': 53, 'elapsed_s': 16.039}
+Compressing digital_root (handoff 31802)
+PASS digital_root: 6 cases; byte-exact rebuild; {'orig_chars': 32136, 'new_chars': 26308, 'saved_chars': 5828, 'saved_pct': 18.14, 'k': 62, 'delta': 5828, 'end_c': 25743, 'pad_len': 231, 'elapsed_s': 31.672}
+Compressing adder (handoff 55802)
+PASS adder: 100 cases; byte-exact rebuild; {'orig_chars': 56476, 'new_chars': 44914, 'saved_chars': 11562, 'saved_pct': 20.47, 'k': 123, 'delta': 11562, 'end_c': 43973, 'pad_len': 267, 'elapsed_s': 72.296}
+Compressing 99_bottles (handoff 22044)
+PASS 99_bottles: 1 cases; byte-exact rebuild; {'orig_chars': 22561, 'new_chars': 21809, 'saved_chars': 752, 'saved_pct': 3.33, 'k': 8, 'delta': 752, 'end_c': 21116, 'pad_len': 176, 'elapsed_s': 218.205}

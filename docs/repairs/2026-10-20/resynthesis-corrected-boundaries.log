@@ -1,0 +1,2 @@
+digital_root {'orig_chars': 32136, 'new_chars': 26308, 'saved_chars': 5828, 'saved_pct': 18.14, 'k': 62, 'delta': 5828, 'end_c': 25743, 'pad_len': 231, 'elapsed_s': 37.613} 69c668a834587a49987f19ba87f663d84be9d2d8873e1c6430e1bda873b9fa36
+adder {'orig_chars': 56476, 'new_chars': 44914, 'saved_chars': 11562, 'saved_pct': 20.47, 'k': 123, 'delta': 11562, 'end_c': 43973, 'pad_len': 267, 'elapsed_s': 38.319} 5177cb74d0bfcdc1120f13f56bfaa08ac6f062123c3e3b1317523f492946c64b

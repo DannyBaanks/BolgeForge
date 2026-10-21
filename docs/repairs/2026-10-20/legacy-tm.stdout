@@ -1,0 +1,2 @@
+python3 tools/verify_truth_machine_full.py
+=== VERIFYING TRUTH MACHINE (truth_machine.mal) ON mb_ref ===

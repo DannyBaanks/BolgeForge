@@ -1,3 +1,6 @@
+> **Historical Cat research — correction, 2026-10-20.** The research text below is historical. Its CURRENT and DEMONSTRATED labels describe prior local experiments, not current Classic certification. MicroCat and the other Cat candidates fail the strict loader; MicroCat only echoes up to three bytes in the old permissive dialect. The alleged EOF bug in the included historical Cat was refuted. Algebraic identities do not prove loader validity, a working complete program or infinite execution. Several linked scratch sources were never tracked; those portions are NOT_DEMONSTRATED from a clean checkout.
+> See [the E2E audit](audits/2026-10-20-e2e/REPORT.md) and [repair report](repairs/2026-10-20/REPORT.md) for evidence and current scope.
+
 # Desensamble y Análisis Arquitectónico de Cat en Malbolge Clásico
 
 Investigación y telemetría exacta del programa `cat.mal` (9,503 B) de [malbolge.org](https://malbolge.org/) desarrollado por Matthias Lutter (2012), invariantes algebraicas de detección de EOF en 2 pasos, y registro de límites experimentales (`[CURRENT]` vs `[NOT_DEMONSTRATED]`).

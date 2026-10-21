@@ -1,0 +1,35 @@
+{
+  "note": "Raw logs are kept locally and excluded from Git; these copies replace only the absolute repository path with <REPO>.",
+  "files": {
+    "legacy-tm.stderr": {
+      "raw_sha256": "301ddd99dd1f9d385fae2ab59b664158dbb53b278956386ec892fc0c2e3434dd",
+      "public_sha256": "7822fa4101fdc147a90301525973f33e5fcb3d76eb591f10b368ae1b20d66b83",
+      "raw_paths_redacted": 3
+    },
+    "oracle-before.log": {
+      "raw_sha256": "b07518363435580dae88c482cfef3558810e6af27219edccc8487a0284b3115b",
+      "public_sha256": "845c203b7acb860fe93ed971251b7e96990db9c4a0bb443ed0a35a3e81a7eb69",
+      "raw_paths_redacted": 16
+    },
+    "independent-invalid-input-attempt.log": {
+      "raw_sha256": "b126779bc27ce08e9e17a7806a7b82dbc090d30759a358529567dd9e6d5f4df7",
+      "public_sha256": "c91c003408bd70e56c2be161abc5bfd911b1ec82000917ef38dc97c29ee4d6f0",
+      "raw_paths_redacted": 3
+    },
+    "verifiers-before.log": {
+      "raw_sha256": "f8271d3a30de1bb9ad0f034e1bbf1b174aa19023d0873d0e17e15ee11708c7d7",
+      "public_sha256": "27c6ae92cbc52719b86acd6a628f6e0c19a89c0c4451799450f01702817cd5eb",
+      "raw_paths_redacted": 1
+    },
+    "trace-before.log": {
+      "raw_sha256": "dc026c94fd21b1863a82f35dcd9d17a32a0326e26e5fdbf3e998eba8cbe14ad6",
+      "public_sha256": "75156b86d5b3b4d5da89951f3608e2e5023bc9db8c2a4281bc5d6376fbdbc91b",
+      "raw_paths_redacted": 3
+    },
+    "legacy-fizzbuzz.stdout": {
+      "raw_sha256": "bc4aa15811cfe0a8ffe26ce4eb7bb56811f8f59c0590b76cf9bd0a9783166a79",
+      "public_sha256": "164e6507d38b0acc75d1408509931a9207a364e82fa4a52fed7a6341308ae3f2",
+      "raw_paths_redacted": 1
+    }
+  }
+}

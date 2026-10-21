@@ -2,7 +2,9 @@
 """tools/resynthesize.py - Real, mb_ref-verified preamble compressor for malbolge.org programs."""
 from __future__ import annotations
 
+import argparse
 import ctypes
+import tempfile
 import subprocess
 import sys
 import time
@@ -280,12 +282,18 @@ def extract_target_state(prog_path: Path, lin_end: int) -> tuple[list[int], dict
     init_mem = list(mem)
 
     a = c = d = 0
-    while True:
-        ch = XLAT1[(mem[c] - 33 + c) % 94] if 33 <= mem[c] <= 126 else CH_NOP
+    for _ in range(1000000):
+        if not 33 <= mem[c] <= 126:
+            raise ValueError(f"Nonprintable preamble instruction at {c}")
+        ch = XLAT1[(mem[c] - 33 + c) % 94]
         if c == lin_end:
+            if ch != CH_JMP:
+                raise ValueError("Preamble handoff must be a jump")
             handoff_d = d
             handoff_c_target = mem[d]
             break
+        if ch in '</v':
+            raise ValueError("Preamble boundary reached I/O or HALT before handoff")
         if ch == CH_DLD:
             d = mem[d]
         elif ch == CH_JMP:
@@ -296,10 +304,13 @@ def extract_target_state(prog_path: Path, lin_end: int) -> tuple[list[int], dict
         elif ch == CH_CRZ:
             mem[d] = crazy_op(a, mem[d])
             a = mem[d]
-        if 33 <= mem[c] <= 126:
-            mem[c] = ord(XLAT2[mem[c] - 33])
+        if not 33 <= mem[c] <= 126:
+            raise ValueError(f"Invalid preamble encryption at {c}")
+        mem[c] = ord(XLAT2[mem[c] - 33])
         c = (c + 1) % MEM_SIZE
         d = (d + 1) % MEM_SIZE
+    else:
+        raise ValueError("Preamble handoff not reached within 1000000 steps")
 
     high_mods = {i: mem[i] for i in range(n, MEM_SIZE) if mem[i] != init_mem[i]}
     return clean, high_mods, handoff_d, handoff_c_target
@@ -673,57 +684,46 @@ def build_compressed_program(
 
 TARGETS = {
     "cat": ("cat.mal", 9003, "cat_compressed.mal"),
-    "digital_root": ("digital_root.mal", 31448, "digital_root_compressed.mal"),
-    "adder": ("adder.mal", 55562, "adder_compressed.mal"),
+    "digital_root": ("digital_root.mal", 31802, "digital_root_compressed.mal"),
+    "adder": ("adder.mal", 55802, "adder_compressed.mal"),
     "99_bottles": ("99_bottles.mal", 22044, "99_bottles_compressed.mal"),
 }
 
 
-def run_target(name: str) -> None:
+def run_target(name: str, check: bool = False, output_dir: Path | None = None) -> None:
+    from tools.test_compressed import verify_target
     src_file, lin_end, out_file = TARGETS[name]
     prog_path = REPO_ROOT / "reference" / "malbolge_org" / src_file
-    out_path = REPO_ROOT / "artifacts" / out_file
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-
-    print(f"\n=== Compressing {name} ({src_file}) ===")
+    out_path = (output_dir or REPO_ROOT / "artifacts") / out_file
+    print(f"Compressing {name} (handoff {lin_end})", flush=True)
     raw_prog, info = build_compressed_program(prog_path, lin_end)
-    out_path.write_bytes(raw_prog)
-    print(f"Compressed {name}: {info}")
-
-    mb_ref = REPO_ROOT / "mb_ref"
-    if name == "cat":
-        for test_in in [b"Hello, BolgeForge!\n", b"ISyCo 2026 - Malbolge Compression Verified!\n", b""]:
-            res = subprocess.run([str(mb_ref), str(out_path)], input=test_in, capture_output=True, timeout=5)
-            assert res.returncode == 0 and res.stdout == test_in, f"Mismatch: {res.stdout!r} != {test_in!r}"
-            print(f"  [PASS mb_ref] input ({len(test_in)}B) -> exact output match!")
-    elif name == "digital_root":
-        for test_in in [b"0\n", b"9\n", b"12345\n", b"987654321\n"]:
-            res = subprocess.run([str(mb_ref), str(out_path)], input=test_in, capture_output=True, timeout=10)
-            res_orig = subprocess.run([str(mb_ref), str(prog_path)], input=test_in, capture_output=True, timeout=10)
-            assert res.returncode == 0 and res.stdout == res_orig.stdout, f"Mismatch: {res.stdout!r} != {res_orig.stdout!r}"
-            print(f"  [PASS mb_ref] input {test_in.strip()!r} -> exact output match ({res.stdout.strip()!r})!")
-    elif name == "adder":
-        for test_in in [b"0 0\n", b"1 2\n", b"99 1\n", b"1234 5678\n"]:
-            res = subprocess.run([str(mb_ref), str(out_path)], input=test_in, capture_output=True, timeout=15)
-            res_orig = subprocess.run([str(mb_ref), str(prog_path)], input=test_in, capture_output=True, timeout=15)
-            assert res.returncode == 0 and res.stdout == res_orig.stdout, f"Mismatch: {res.stdout!r} != {res_orig.stdout!r}"
-            print(f"  [PASS mb_ref] input {test_in.strip()!r} -> exact output match ({res.stdout.strip()!r})!")
-    elif name == "99_bottles":
-        res = subprocess.run([str(mb_ref), str(out_path)], capture_output=True, timeout=15)
-        res_orig = subprocess.run([str(mb_ref), str(prog_path)], capture_output=True, timeout=15)
-        assert res.returncode == 0 and res.stdout == res_orig.stdout, f"Mismatch: len {len(res.stdout)} != {len(res_orig.stdout)}"
-        print(f"  [PASS mb_ref] full lyrics ({len(res.stdout)}B) -> exact bit-for-bit match!")
+    # Generated candidates are verified before touching any published artifact.
+    with tempfile.TemporaryDirectory(prefix="bolgeforge-verify-") as directory:
+        candidate = Path(directory) / out_file
+        candidate.write_bytes(raw_prog)
+        count = verify_target(name, candidate)
+    if check:
+        if out_path.read_bytes() != raw_prog:
+            raise RuntimeError(f"Rebuild differs from {out_file}; published file left intact")
+    else:
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        # Same-directory temporary file ensures readers only see complete artifacts.
+        with tempfile.NamedTemporaryFile(dir=out_path.parent, prefix=".verified-", delete=False) as staged:
+            staged.write(raw_prog)
+            staged_path = Path(staged.name)
+        staged_path.replace(out_path)
+    print(f"PASS {name}: {count} cases; {'byte-exact rebuild' if check else 'published after verification'}; {info}", flush=True)
 
 
 def main() -> None:
-    targets = sys.argv[1:] if len(sys.argv) > 1 else ["cat"]
-    if "all" in targets or "--all" in targets:
-        targets = ["cat", "digital_root", "adder", "99_bottles"]
-    for t in targets:
-        if t in TARGETS:
-            run_target(t)
-        else:
-            print(f"Unknown target: {t}. Valid targets: {list(TARGETS.keys())} or 'all'")
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('targets', nargs='*', default=['cat'], choices=[*TARGETS, 'all'])
+    parser.add_argument('--check', action='store_true', help='Verify deterministic reconstruction without changing artifacts')
+    parser.add_argument('--output-dir', type=Path, help='Publish verified artifacts to another directory')
+    args = parser.parse_args()
+    targets = list(TARGETS) if 'all' in args.targets else args.targets
+    for target in targets:
+        run_target(target, args.check, args.output_dir)
 
 
 if __name__ == "__main__":

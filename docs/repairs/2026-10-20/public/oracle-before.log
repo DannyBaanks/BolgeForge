@@ -1,0 +1,133 @@
+FFFFFFFFFFFF.FFFF.
+======================================================================
+FAIL: test_budget_must_be_unsigned_integer (test_oracle.OracleTests.test_budget_must_be_unsigned_integer) (budget='-1')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<REPO>/tests/test_oracle.py", line 41, in test_budget_must_be_unsigned_integer
+    self.assertEqual(self.run_source(b'QC', budget).returncode, 1)
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_budget_must_be_unsigned_integer (test_oracle.OracleTests.test_budget_must_be_unsigned_integer) (budget='abc')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<REPO>/tests/test_oracle.py", line 41, in test_budget_must_be_unsigned_integer
+    self.assertEqual(self.run_source(b'QC', budget).returncode, 1)
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_budget_must_be_unsigned_integer (test_oracle.OracleTests.test_budget_must_be_unsigned_integer) (budget='1x')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<REPO>/tests/test_oracle.py", line 41, in test_budget_must_be_unsigned_integer
+    self.assertEqual(self.run_source(b'QC', budget).returncode, 1)
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_budget_must_be_unsigned_integer (test_oracle.OracleTests.test_budget_must_be_unsigned_integer) (budget='')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<REPO>/tests/test_oracle.py", line 41, in test_budget_must_be_unsigned_integer
+    self.assertEqual(self.run_source(b'QC', budget).returncode, 1)
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_budget_must_be_unsigned_integer (test_oracle.OracleTests.test_budget_must_be_unsigned_integer) (budget='18446744073709551616')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<REPO>/tests/test_oracle.py", line 41, in test_budget_must_be_unsigned_integer
+    self.assertEqual(self.run_source(b'QC', budget).returncode, 1)
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_excess_arguments_rejected (test_oracle.OracleTests.test_excess_arguments_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<REPO>/tests/test_oracle.py", line 44, in test_excess_arguments_rejected
+    self.assertEqual(self.run_source(b'QC', '1', 'extra').returncode, 1)
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_experimental_programs_cannot_be_certified_as_classic (test_oracle.OracleTests.test_experimental_programs_cannot_be_certified_as_classic) (name='microcat.mal')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<REPO>/tests/test_oracle.py", line 60, in test_experimental_programs_cannot_be_certified_as_classic
+    self.assertEqual(result.returncode, 1)
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_experimental_programs_cannot_be_certified_as_classic (test_oracle.OracleTests.test_experimental_programs_cannot_be_certified_as_classic) (name='truth_machine.mal')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<REPO>/tests/test_oracle.py", line 60, in test_experimental_programs_cannot_be_certified_as_classic
+    self.assertEqual(result.returncode, 1)
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_experimental_programs_cannot_be_certified_as_classic (test_oracle.OracleTests.test_experimental_programs_cannot_be_certified_as_classic) (name='fizzbuzz.mal')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<REPO>/tests/test_oracle.py", line 60, in test_experimental_programs_cannot_be_certified_as_classic
+    self.assertEqual(result.returncode, 1)
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_experimental_programs_cannot_be_certified_as_classic (test_oracle.OracleTests.test_experimental_programs_cannot_be_certified_as_classic) (name='cand_three_stage_clean.mal')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<REPO>/tests/test_oracle.py", line 60, in test_experimental_programs_cannot_be_certified_as_classic
+    self.assertEqual(result.returncode, 1)
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_experimental_programs_cannot_be_certified_as_classic (test_oracle.OracleTests.test_experimental_programs_cannot_be_certified_as_classic) (name='cand_twostroke.mal')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<REPO>/tests/test_oracle.py", line 60, in test_experimental_programs_cannot_be_certified_as_classic
+    self.assertEqual(result.returncode, 1)
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_halt_is_the_only_success (test_oracle.OracleTests.test_halt_is_the_only_success)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<REPO>/tests/test_oracle.py", line 33, in test_halt_is_the_only_success
+    self.assertEqual(result.returncode, 2)
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_invalid_initial_opcode_rejected (test_oracle.OracleTests.test_invalid_initial_opcode_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<REPO>/tests/test_oracle.py", line 20, in test_invalid_initial_opcode_rejected
+    self.assertEqual(result.returncode, 1)
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_too_short_rejected (test_oracle.OracleTests.test_too_short_rejected) (source=b'')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<REPO>/tests/test_oracle.py", line 27, in test_too_short_rejected
+    self.assertEqual(result.returncode, 1)
+AssertionError: -11 != 1
+
+======================================================================
+FAIL: test_too_short_rejected (test_oracle.OracleTests.test_too_short_rejected) (source=b' ')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<REPO>/tests/test_oracle.py", line 27, in test_too_short_rejected
+    self.assertEqual(result.returncode, 1)
+AssertionError: -11 != 1
+
+======================================================================
+FAIL: test_too_short_rejected (test_oracle.OracleTests.test_too_short_rejected) (source=b'Q')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<REPO>/tests/test_oracle.py", line 27, in test_too_short_rejected
+    self.assertEqual(result.returncode, 1)
+AssertionError: -11 != 1
+
+----------------------------------------------------------------------
+Ran 8 tests in 3.501s
+
+FAILED (failures=16)
