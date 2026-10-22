@@ -1,0 +1,2 @@
+python3 tools/synthesize_truth_machine_variant.py
+python3 tools/prove_truth_machine.py artifacts/truth_machine_variant_90b.mal --json

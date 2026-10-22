@@ -27,6 +27,8 @@ audit-result column preserves historical `NOT_DEMONSTRATED` findings.
 | Truth Machine is a Classic program | REFUTED for the 103-byte artifact | **DEMONSTRATED** by the 90-byte strict-valid reproduction | `artifacts/truth_machine_classic_90b.mal`; `tools/prove_truth_machine.py`; `tests/test_truth_machine_strict.py` |
 | Truth Machine `0` branch prints one `0` and halts | — | **DEMONSTRATED** | HALT at instruction 38, output `30` |
 | Truth Machine `1` branch emits `1` forever | NOT_DEMONSTRATED for the old artifact | **DEMONSTRATED** by full-state cycle | Period 408 instructions; 17 output bytes per cycle; state SHA-256 `6962734d54aa4f33…`; evidence `truth_machine_proof.json` |
+| Behavior-preserving 90-byte Truth Machine variant exists | — | **DEMONSTRATED** (derivative variant) | 9 free-cell re-encodings; SHA-256 `08691d13d55141f9458df4ac43f802acc7e72f405a2459c302b40f727bf53f09`; strict `mb_ref`; `tools/prove_truth_machine.py`; `docs/evidence/2026-10-22-truth-machine-variant/REPORT.md` |
+| The variant is an independent from-scratch synthesis | — | **NOT_DEMONSTRATED** | Derived from the CC BY-SA 4.0 90-byte reference; independent synthesis remains OPEN |
 | Truth Machine historical primacy | NOT_DEMONSTRATED | **RETIRED** | — |
 | Loader-valid FizzBuzz exists | REFUTED for the 4,517-byte artifact | **DEMONSTRATED** via the preserved angel_p_57 conversion | Empty stdin; 413 bytes; 100 exact lines; HALT; SHA-256 `f039dc221ad122dd…`; `tests/test_fizzbuzz_reference.py` |
 | FizzBuzz with zero stdin reads | NOT_DEMONSTRATED | **RETIRED** | Reference performs 109 EOF reads |

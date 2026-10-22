@@ -1,0 +1,3 @@
+08691d13d55141f9458df4ac43f802acc7e72f405a2459c302b40f727bf53f09  artifacts/truth_machine_variant_90b.mal
+b256610f9890020fa017f9d11f36a608c1caf47a6dc1b0d5db71685bad087baf  docs/evidence/2026-10-22-truth-machine-variant/report.json
+37b185039dee3b0f481c7e890c1adc4a69fc1737fe36221d22161474d67846fd  docs/evidence/2026-10-22-truth-machine-variant/REPORT.md

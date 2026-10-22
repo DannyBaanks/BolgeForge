@@ -38,7 +38,7 @@ After the 2026-10-20 closure pass, every item in this README, the roadmap and th
 
 These savings compare non-whitespace cells. Formatted reference file bytes are a different measure. Digital Root and Adder were repaired using the actual linear handoffs at 31,802 and 55,802. Their corrected hashes and preserved previous artifacts are recorded in [the repair report](docs/repairs/2026-10-20/REPORT.md).
 
-Tests cover binary Cat streams through 65,536 bytes, six Digital Root vectors, 100 Adder pairs with each operand in the author's `0..999` domain, the complete 99 Bottles output, the strict-valid Truth Machine (including its cycle proof), and the loader-valid FizzBuzz reference. They compare reference and compressed programs and require strict HALT. The generator validates a candidate before publishing it; `--check` never changes published artifacts.
+Tests cover binary Cat streams through 65,536 bytes, six Digital Root vectors, 100 Adder pairs with each operand in the author's `0..999` domain, the complete 99 Bottles output, the strict-valid Truth Machine (including its cycle proof), its behavior-preserving 90-byte variant, and the loader-valid FizzBuzz reference. They compare reference and compressed programs and require strict HALT. The generator validates a candidate before publishing it; `--check` never changes published artifacts.
 
 ## Oracle and verification
 

@@ -1,0 +1,207 @@
+{
+  "generated_utc": "2026-10-22T23:28:24.980208+00:00",
+  "scope": "Behavior-preserving strict-valid variant of the 90-byte CC BY-SA 4.0 reference. This is not an independent from-scratch synthesis; independent architecture synthesis remains OPEN.",
+  "seed": {
+    "path": "artifacts/truth_machine_classic_90b.mal",
+    "bytes": 90,
+    "sha256": "1e34e2afd1fc645dadac1f1aac0fe2348ff469878cc3da396a6a1e7bad2a4417",
+    "free_cells": [
+      38,
+      39,
+      40,
+      70,
+      71,
+      72,
+      85,
+      86,
+      87
+    ]
+  },
+  "variant": {
+    "path": "artifacts/truth_machine_variant_90b.mal",
+    "bytes": 90,
+    "sha256": "08691d13d55141f9458df4ac43f802acc7e72f405a2459c302b40f727bf53f09",
+    "changes": [
+      {
+        "address": 38,
+        "old_byte": 124,
+        "new_byte": 96,
+        "old_op": "o",
+        "new_op": "j"
+      },
+      {
+        "address": 39,
+        "old_byte": 123,
+        "new_byte": 95,
+        "old_op": "o",
+        "new_op": "j"
+      },
+      {
+        "address": 40,
+        "old_byte": 122,
+        "new_byte": 94,
+        "old_op": "o",
+        "new_op": "j"
+      },
+      {
+        "address": 70,
+        "old_byte": 92,
+        "new_byte": 64,
+        "old_op": "o",
+        "new_op": "j"
+      },
+      {
+        "address": 71,
+        "old_byte": 91,
+        "new_byte": 63,
+        "old_op": "o",
+        "new_op": "j"
+      },
+      {
+        "address": 72,
+        "old_byte": 90,
+        "new_byte": 62,
+        "old_op": "o",
+        "new_op": "j"
+      },
+      {
+        "address": 85,
+        "old_byte": 77,
+        "new_byte": 49,
+        "old_op": "o",
+        "new_op": "j"
+      },
+      {
+        "address": 86,
+        "old_byte": 76,
+        "new_byte": 48,
+        "old_op": "o",
+        "new_op": "j"
+      },
+      {
+        "address": 87,
+        "old_byte": 75,
+        "new_byte": 47,
+        "old_op": "o",
+        "new_op": "j"
+      }
+    ]
+  },
+  "verification": {
+    "strict_loader": "ACCEPT",
+    "local": {
+      "checks": {
+        "zero_halts": true,
+        "zero_prints_one_zero": true,
+        "one_cycles": true,
+        "one_period_positive": true,
+        "one_outputs_ones": true
+      },
+      "zero": {
+        "status": "HALT",
+        "steps": 38,
+        "output_hex": "30",
+        "output_len": 1
+      },
+      "one": {
+        "status": "CYCLE",
+        "steps": 501,
+        "period": 408,
+        "state_sha256": "635084c38f5b95fd3d2f054e71b585cb6db59c4bf191efeb215444689b777755",
+        "output_hex": "3131313131313131313131313131313131313131",
+        "output_len": 20
+      },
+      "verdict": "DEMONSTRATED"
+    },
+    "prover": {
+      "command": [
+        "python3",
+        "tools/prove_truth_machine.py",
+        "artifacts/truth_machine_variant_90b.mal",
+        "--json"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "payload": {
+        "program": "artifacts/truth_machine_variant_90b.mal",
+        "source_sha256": "08691d13d55141f9458df4ac43f802acc7e72f405a2459c302b40f727bf53f09",
+        "source_bytes": 90,
+        "loader": "ACCEPT",
+        "branch_zero": {
+          "status": "HALT",
+          "steps": 38,
+          "output_hex": "30"
+        },
+        "branch_one": {
+          "status": "CYCLE",
+          "steps": 1408,
+          "cycle_start": 1000,
+          "cycle_end": 1408,
+          "period": 408,
+          "outputs_per_cycle": 17,
+          "output_bytes": 58,
+          "first_output_hex": "31",
+          "state_sha256": "e2005dd6e9799880f70a9c1d9c042db1674491eed25fdb94c7e1906fa0f7539a"
+        },
+        "checks": {
+          "loader_accepts_source": true,
+          "zero_halts": true,
+          "zero_prints_exactly_one_zero": true,
+          "one_repeats_full_state": true,
+          "one_outputs_only_ones": true,
+          "one_emits_per_cycle": true
+        },
+        "verdict": "DEMONSTRATED"
+      }
+    },
+    "mb_ref_zero": {
+      "returncode": 0,
+      "stdout_hex": "30",
+      "stderr": ""
+    },
+    "mb_ref_one": {
+      "returncode": 2,
+      "stdout_len": 58,
+      "stdout_all_ones": true,
+      "stderr": "MAX_STEPS: 1408 (HALT not reached)\n"
+    },
+    "controls": [
+      {
+        "address": 0,
+        "old_op": "j",
+        "new_op": "i",
+        "strict_loader": "ACCEPT",
+        "zero_status": "INVALID_EXECUTION",
+        "one_status": "INVALID_EXECUTION",
+        "verdict": "NOT_DEMONSTRATED"
+      },
+      {
+        "address": 37,
+        "old_op": "i",
+        "new_op": "*",
+        "strict_loader": "ACCEPT",
+        "zero_status": "INVALID_EXECUTION",
+        "one_status": "INVALID_EXECUTION",
+        "verdict": "NOT_DEMONSTRATED"
+      },
+      {
+        "address": 41,
+        "old_op": "/",
+        "new_op": "v",
+        "strict_loader": "ACCEPT",
+        "zero_status": "HALT",
+        "one_status": "INVALID_EXECUTION",
+        "verdict": "NOT_DEMONSTRATED"
+      },
+      {
+        "address": 73,
+        "old_op": "v",
+        "new_op": "o",
+        "strict_loader": "ACCEPT",
+        "zero_status": "INVALID_EXECUTION",
+        "one_status": "CYCLE",
+        "verdict": "NOT_DEMONSTRATED"
+      }
+    ]
+  }
+}
