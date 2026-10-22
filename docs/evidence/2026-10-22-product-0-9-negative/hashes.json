@@ -1,0 +1,37 @@
+{
+  "experiment": "product_0_9_native_dispatcher_blocked",
+  "created_utc": "2026-10-22T21:24:31Z",
+  "status": "NOT_DEMONSTRATED",
+  "files": {
+    "README.md": "e19adb527e052f80f4abd35c63d069715765a113c355aad04f62ebe7b17e1178",
+    "check_product_block.py": "6533237e22553ccf9bfce5250af7cc3e3cb9d87b5ec5a9bca8f95c46f2922652",
+    "native_square.mal": "6026ddc03133c824d821dcc5b779fce414fd07c2e3d3c8591b8bcaadcbcfd6d0",
+    "build_native_square.py": "ecb65a3921915a519c7579c4a61a490e16b2f5acae0e5e3f90913e9eed359ccf",
+    "verify_native_square.py": "e47c3584de2377f9b07bc35856ea5d796e62fd5e6abeccb4e2692b1d639f57c9"
+  },
+  "control": {
+    "command": "python3 experiments/square_0_9_native_dispatcher/verify_native_square.py",
+    "exit": 0,
+    "vectors": {
+      "0": "0\n",
+      "1": "1\n",
+      "2": "4\n",
+      "3": "9\n",
+      "4": "16\n",
+      "5": "25\n",
+      "6": "36\n",
+      "7": "49\n",
+      "8": "64\n",
+      "9": "81\n"
+    }
+  },
+  "blocker": {
+    "packing_before_branch_unique": 100,
+    "packing_before_branch_min_gap": 27,
+    "packing_after_branch_unique": 56,
+    "packing_after_branch_min_gap": 0,
+    "bootstrap_c50_working": [
+      48
+    ]
+  }
+}

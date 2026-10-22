@@ -1,0 +1,40 @@
+{
+  "experiment": "square_0_9_native_dispatcher",
+  "created_utc": "2026-10-22T18:57:51Z",
+  "artifact": {
+    "path": "native_square.mal",
+    "bytes": 39406,
+    "sha256": "6026ddc03133c824d821dcc5b779fce414fd07c2e3d3c8591b8bcaadcbcfd6d0",
+    "loader_cells": 59049
+  },
+  "builder": {
+    "path": "build_native_square.py",
+    "sha256": "ecb65a3921915a519c7579c4a61a490e16b2f5acae0e5e3f90913e9eed359ccf"
+  },
+  "verifier": {
+    "path": "verify_native_square.py",
+    "sha256": "e47c3584de2377f9b07bc35856ea5d796e62fd5e6abeccb4e2692b1d639f57c9"
+  },
+  "readme": {
+    "path": "README.md",
+    "sha256": "dd74294b5aa0f7621c27584c3d8664c6e8ea9b9f52df33732beb07c2ba7b0eb6"
+  },
+  "dependencies": {
+    "constants.py": "d1a65a4da8cbe0c7084122db61d4c55decd924e1e96aa101d8040f7bae3286ef",
+    "oracle/mb_ref": "bbfedc87e127384580d04eb0f4754a4ce1706bd788c566b569e9aa2e4c94d6c7",
+    "tools/prove_truth_machine.py": "52b4838bef18b26e72d1d326e2efcae35361e43bc6a750946ebd605df48f8ac2"
+  },
+  "vectors": {
+    "0": "0\n",
+    "1": "1\n",
+    "2": "4\n",
+    "3": "9\n",
+    "4": "16\n",
+    "5": "25\n",
+    "6": "36\n",
+    "7": "49\n",
+    "8": "64\n",
+    "9": "81\n"
+  },
+  "status": "DEMONSTRATED: 10/10 under mb_ref and strict loader; single-digit scope only"
+}
