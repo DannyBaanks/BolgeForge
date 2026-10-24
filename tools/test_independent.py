@@ -5,6 +5,7 @@ Only known loader-valid programs are executed; malformed/short sources never
 reach the historical interpreter's unsafe memory initialization paths.
 """
 import hashlib
+import random
 import subprocess
 import tempfile
 from pathlib import Path
@@ -28,7 +29,11 @@ def main():
         cases = []
         for folder in ['reference/malbolge_org', 'artifacts']:
             for program in sorted((ROOT / folder).glob('*.mal')):
-                if folder == 'artifacts' and not (program.name.startswith('candidate_m') or program.name.endswith('_compressed.mal')):
+                if folder == 'artifacts' and not (
+                    program.name.startswith('candidate_m')
+                    or program.name.endswith('_compressed.mal')
+                    or program.name == 'cat_compact.mal'
+                ):
                     continue
                 payload = b'12 34\n' if 'adder' in program.name else b'123\n'
                 if 'quine' in program.name or 'candidate_m' in program.name or 'bottles' in program.name:
@@ -42,6 +47,15 @@ def main():
                        for b in (0, 1, 2, 9, 10, 99, 100, 499, 998, 999)])]:
             for folder, suffix in [('reference/malbolge_org', ''), ('artifacts', '_compressed')]:
                 cases.extend((ROOT / folder / f'{name}{suffix}.mal', payload) for payload in payloads)
+        # The compact Cat is a separate artifact (not one of the four rebuilt benchmarks);
+        # give it the same streaming battery as the compressed Cat.
+        compact = ROOT / 'artifacts' / 'cat_compact.mal'
+        if not compact.is_file():
+            raise RuntimeError(f'Required artifact missing: {compact}')
+        rng = random.Random(2026)
+        for payload in (b'', b'ABCD', bytes(range(256)) * 16,
+                        bytes(rng.randrange(256) for _ in range(65_536))):
+            cases.append((compact, payload))
         for program, payload in cases:
             expected = execute(ROOT / 'mb_ref', program, payload)
             actual = execute(binary, program, payload)
