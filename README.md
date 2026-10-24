@@ -1,6 +1,6 @@
 # BolgeForge
 
-A synthesizer and research laboratory for Classic Malbolge. The verified core contains byte-exact quines, the historical reference corpus and four compressed benchmarks. Experimental programs are preserved separately from certification claims.
+A synthesizer and research laboratory for Classic Malbolge. The verified core contains byte-exact quines, the historical reference corpus, four rebuilt compressed benchmarks and a smaller compact Cat (7,972 cells). Experimental programs are preserved separately from certification claims.
 
 ```bash
 make test
@@ -17,6 +17,7 @@ Owner's instructions in Spanish: [GUIA.md](GUIA.md).
 | Five committed quines | Strict loading, HALT and byte-exact self-reproduction are required for every file. |
 | Eight historical reference programs | Checked against explicit output expectations and exact self-reproduction for the historical quines. |
 | Four compressed benchmarks | Strict execution and reference parity on the documented vectors. Rebuilding must reproduce the committed bytes. This is finite testing, not a proof for every input. |
+| Compact streaming Cat, 7,972 cells | **DEMONSTRATED** by `artifacts/cat_compact.mal`: 282 cells fewer than the compressed Cat (3.4%) and 1,410 fewer than the 9,382-cell reference, with the reference handoff state reproduced 124/124. Exact-output battery through 64 KiB binary under both `mb_ref` and the independent Olmstead mirror. Finite testing, not a proof for every input. |
 | MicroCat, 3,380 bytes | **REFUTED as a Classic artifact.** The historical permissive VM echoes at most three input bytes; `ABCD` becomes `ABC`. The streaming-Cat capability is **DEMONSTRATED** separately by `cat_compressed.mal` (64 KiB binary stream, strict HALT). |
 | Truth Machine, 90 bytes | **DEMONSTRATED** by a strict-valid reproduction (`artifacts/truth_machine_classic_90b.mal`, provenance in `docs/provenance/truth_machine_90b.json`): input `0` prints `0` and halts; input `1` repeats the full VM state after 408 instructions and emits 17 bytes per cycle, proving an infinite `1` stream. Historical primacy is **RETIRED**. The old 103-byte artifact remains rejected by the strict loader. |
 | FizzBuzz, loader-valid reference | **DEMONSTRATED** with the preserved [angel_p_57 conversion](https://github.com/angel-p57/malbolge/tree/b2d278d36e65d66574d435d4cfeb1560b79ed593) (`docs/audits/2026-10-20-e2e/angel_fizzbuzz_converted.mal`): empty stdin, 413 bytes, 100 exact lines, strict HALT. It performs 109 EOF reads. Zero-read behaviour, divisibility computed inside the VM, and historical primacy are **RETIRED**. The old 4,517-byte artifact remains rejected by the strict loader. |
@@ -24,7 +25,7 @@ Owner's instructions in Spanish: [GUIA.md](GUIA.md).
 
 The alleged EOF defect in the included historical `cat.mal` was refuted: that file terminates cleanly without emitting an extra byte. Mathematical identities in research notes do not establish correctness of complete programs.
 
-After the 2026-10-20 closure pass, every item in this README, the roadmap and the claims ledger has a terminal status: DEMONSTRATED with evidence, REFUTED, RETIRED (withdrawn, neither asserted nor denied), or OPEN and explicitly unclaimed. The ledger preserves the audit's historical NOT_DEMONSTRATED findings in its audit-result column; historical research and experiment artifacts keep their original labels as evidence. The full mapping is in [the claims ledger](docs/CLAIMS.md); raw evidence is in [the closure evidence](docs/evidence/2026-10-20-closures/).
+After the 2026-10-20 closure pass, every item in this README, the roadmap and the claims ledger has a terminal status: DEMONSTRATED with evidence, REFUTED, RETIRED (withdrawn, neither asserted nor denied), or OPEN and explicitly unclaimed. The ledger preserves the audit's historical NOT_DEMONSTRATED findings in its audit-result column; historical research and experiment artifacts keep their original labels as evidence. The full mapping is in [the claims ledger](docs/CLAIMS.md); raw evidence is in [the closure evidence](docs/evidence/2026-10-20-closures/). The 7,972-cell compact Cat was added on 2026-10-24 after that pass and carries its own dated evidence; it changes the status of no other claim.
 
 ## Compression
 
@@ -40,7 +41,7 @@ These savings compare non-whitespace cells. Formatted reference file bytes are a
 
 A separate, smaller Cat variant also exists: `artifacts/cat_compact.mal` streams the same inputs exactly in **7,972 cells** (282 fewer than the compressed Cat, 1,410 fewer than the reference), with the reference handoff state reproduced 124/124. It is generated deterministically by `tools/build_compact_cat.py`, certified by `tests/test_compact_cat.py`, and documented in [the compact-cat evidence](docs/evidence/2026-10-24-compact-cat-k15/REPORT.md).
 
-Tests cover binary Cat streams through 65,536 bytes, six Digital Root vectors, 100 Adder pairs with each operand in the author's `0..999` domain, the complete 99 Bottles output, the strict-valid Truth Machine (including its cycle proof), its behavior-preserving 90-byte variant, and the loader-valid FizzBuzz reference. They compare reference and compressed programs and require strict HALT. The generator validates a candidate before publishing it; `--check` never changes published artifacts.
+Tests cover binary Cat streams through 65,536 bytes (including the compact Cat under both `mb_ref` and the independent Olmstead mirror), six Digital Root vectors, 100 Adder pairs with each operand in the author's `0..999` domain, the complete 99 Bottles output, the strict-valid Truth Machine (including its cycle proof), its behavior-preserving 90-byte variant, and the loader-valid FizzBuzz reference. They compare reference and compressed programs and require strict HALT. The generator validates a candidate before publishing it; `--check` never changes published artifacts.
 
 ## Oracle and verification
 
@@ -48,15 +49,16 @@ Tests cover binary Cat streams through 65,536 bytes, six Digital Root vectors, 1
 
 ```bash
 make                         # Build mb_ref
-make test                    # Oracle regressions, reference corpus, compressed outputs, quines
+make test                    # Oracle regressions, reference corpus, compressed outputs, quines, independent mirror
 make test-rebuild            # Rebuild four compressed files, verify semantics and committed bytes
+python3 tools/build_compact_cat.py --check   # Rebuild the compact Cat and compare published bytes
 python3 synthesize.py 281     # Regenerate m=281; approximately 13 minutes in the audit
 python3 tools/resynthesize.py all --output-dir /tmp/bolgeforge-new-build
 ```
 
 The default VM budget is 100,000,000 iterations; pass another unsigned decimal budget as the second argument. Exit 0 means HALT and successful output flushing; exit 1 means invalid source/arguments or program-file I/O failure; exit 2 means budget exhausted; exit 3 means execution stalled or encryption was undefined; exit 4 means stdin/stdout failure. A finite output prefix never proves infinite behavior.
 
-`make test` does not generate programs. It fails on missing expected artifacts, any earlier quine failure, an output mismatch or a non-HALT exit. Loader rejection controls protect against accidentally certifying the experimental artifacts. Legacy `test-tm` and `test-fizzbuzz` challenges remain outside certification and currently fail on their invalid sources.
+`make test` does not write artifacts (it rebuilds the compact Cat in memory to check determinism). It fails on missing expected artifacts, any earlier quine failure, an output mismatch or a non-HALT exit. Loader rejection controls protect against accidentally certifying the experimental artifacts. Legacy `test-tm` and `test-fizzbuzz` challenges remain outside certification and currently fail on their invalid sources.
 
 ## Evidence and research
 
