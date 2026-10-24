@@ -1,0 +1,1 @@
+profundidad 2: 64 programas; stats {'NONPRINTABLE_PC': 14, 'WRONG_OUT': 11, 'HALT': 11, 'INVALID_ENCRYPTION': 28}

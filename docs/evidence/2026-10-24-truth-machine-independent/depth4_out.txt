@@ -1,0 +1,1 @@
+profundidad 4: 4096 programas; stats {'ESCAPE': 105, 'NONPRINTABLE_PC': 371, 'WRONG_OUT': 833, 'HALT': 833, 'INVALID_ENCRYPTION': 1954}
