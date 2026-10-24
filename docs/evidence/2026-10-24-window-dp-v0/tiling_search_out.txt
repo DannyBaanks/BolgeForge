@@ -1,0 +1,8 @@
+greedy cap=9: 7331
+greedy cap=10: 7781
+greedy cap=11: 8046
+start best: 7331 (cap 9, 16 ventanas)
+round 0: best neighbor 7432 (shift2@b11R) vs current 7331
+sin mejora; paro
+BEST: 7331 ops (tiling cap=9, 16 ventanas) gap_vs_budget=120
+seeds2000 sobre best tiling: min 7360 seed 1420 best10 [(1420, 7360), (948, 7362), (917, 7376), (528, 7392), (1082, 7400), (1391, 7401), (1509, 7404), (1640, 7419), (1150, 7424), (1710, 7426)]

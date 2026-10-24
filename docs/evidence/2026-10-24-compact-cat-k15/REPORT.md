@@ -127,3 +127,12 @@ cells with their cell-9,003 values gives the gate **124/124**, while patching on
 7,213 budget (+118; 10,000 seeds, no fit); k=16 is 7,612/7,400 and k=17 7,694/7,306. Raw
 evidence and scripts: [`k18_attack/ERRATA.md`](k18_attack/ERRATA.md). The 7,972-cell artifact
 is unchanged.
+
+## 9. Errata (2026-10-24, window-tiling DP)
+
+A follow-up attack profiled the 7,331-op k=18 plan and searched the window-partition space
+with the real simulator (boundary shifts +-1/+-2, merges, offset caps 9/10/11, 2,000 seeds
+over the best tiling). **Refuted**: the greedy cap-9 tiling is a local optimum (best of 89
+neighbors 7,432; cap 10/11 cost +450/+715; best tiling+seed 7,360). The cost lives in the
+per-write `solve_sp` machinery (~5,293 ops), not in the partition. Raw evidence:
+[`../2026-10-24-window-dp-v0/REPORT.md`](../2026-10-24-window-dp-v0/REPORT.md).
