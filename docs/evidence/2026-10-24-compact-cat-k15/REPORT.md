@@ -116,3 +116,14 @@ make test                                      # 52 tests, corpus, compressed, q
 
 Plan: `k=15`, `delta=1,410`, seed 47, borrow penalty 2, direct gap 9; preamble 7,443 operations,
 end cell 7,541, padded to the handoff at 7,593, suffix from 9,004.
+
+## 8. Errata (2026-10-24, later)
+
+A later attack tried to omit cells `58,844` and `59,046` from the installed table and reach
+7,690 cells with a 7,210-operation k=18 plan. **Refuted**: both cells are live on the suffix
+path; the candidate dies with `INVALID_ENCRYPTION: cell 58844 value 29443`, and patching both
+cells with their cell-9,003 values gives the gate **124/124**, while patching only one gives
+123/124. With all 121 targets the measured frontier is k=18 at **7,331** operations against a
+7,213 budget (+118; 10,000 seeds, no fit); k=16 is 7,612/7,400 and k=17 7,694/7,306. Raw
+evidence and scripts: [`k18_attack/ERRATA.md`](k18_attack/ERRATA.md). The 7,972-cell artifact
+is unchanged.
