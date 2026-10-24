@@ -1,24 +1,38 @@
 #!/usr/bin/env python3
 """Handoff-state gate for suffix-shifted Classic Malbolge programs.
 
-Compressing a program by cutting a suffix and moving it down by ``delta`` cells is
-only semantics-preserving if, at the moment execution reaches the shifted suffix,
-the machine state equals the reference state after the same shift:
+Cutting a suffix and moving it down by ``delta`` cells (a multiple of 94 so that
+instruction decoding is preserved) is only semantics-preserving if, at the moment
+execution reaches the shifted suffix, the machine state equals the reference state.
+Two layouts exist and the gate must model the right one:
+
+``keep-high`` (default, used by ``tools/resynthesize.py``)
+  The high-memory workspace keeps its original absolute addresses; only the program
+  image moves.  At the handoff:
 
   * the program counter is the reference cell minus ``delta``;
-  * the registers ``a`` and ``d`` hold the same (shifted) values;
-  * every cell above the reference image that the reference preamble modified is
-    installed at ``addr - delta`` with the shifted value.
+  * ``a`` is unchanged and ``d`` is unchanged (both point into unshifted memory);
+  * every cell at or above the reference image that the reference preamble modified
+    is installed at its *original* address, with values in the shifted band
+    (``value_floor < value < value_ceiling``) decremented by ``delta``.
 
-This gate compares the two states and fails closed. It is the check the
-2026-10-19 compact-cat pilot (``artifacts/candidate_cat_7893b.mal``) never had:
-that candidate reaches its loop with ``d = 98`` instead of the required ``57,377``
-and installs 0 of the reference's 124 variables.
+``shift-all`` (layout assumed by the 2026-10-19 pilot analysis)
+  Every modified cell moves down with the image:
+
+  * the program counter is the reference cell minus ``delta``;
+  * ``d`` is the reference ``d`` minus ``delta``;
+  * each modified cell is installed at ``addr - delta`` with its value decremented
+    by ``delta`` when it is at or above ``value_floor``.
+
+This gate fails closed.  Run against the published ``cat_compressed.mal`` it shows
+why the model matters: that artifact is correct under ``keep-high`` and reports
+0/124 under ``shift-all``.
 
 Usage:
   python3 tools/verify_handoff_state.py \
       --reference reference/malbolge_org/cat.mal --reference-cell 9067 \
-      --candidate artifacts/candidate_cat_7893b.mal --delta 1598
+      --candidate artifacts/cat_compressed.mal --delta 1128 \
+      --memory-mode keep-high --value-floor 9003
 
 Exit codes: 0 = state matches, 1 = mismatch, 2 = invalid input or unreachable cell.
 """
@@ -86,9 +100,17 @@ def run_to_cell(mem: list[int], target_cell: int, limit: int = 1_000_000) -> tup
     return a, c, d, limit, f"UNREACHED after {limit} steps"
 
 
+MEMORY_MODES = ("keep-high", "shift-all")
+
+
 def shifted_value(value: int, delta: int, value_floor: int) -> int:
-    """Apply the shift rule used by the compact-cat generator to a stored value."""
+    """``shift-all`` rule: values at or above the floor move down with the image."""
     return value - delta if value >= value_floor else value
+
+
+def shifted_band_value(value: int, delta: int, value_floor: int, value_ceiling: int) -> int:
+    """``keep-high`` rule: only values that address the shifted suffix are decremented."""
+    return value - delta if value_floor < value < value_ceiling else value
 
 
 def compare_handoff(
@@ -104,9 +126,15 @@ def compare_handoff(
     reference_regs: tuple[int, int],
     candidate_regs: tuple[int, int],
     value_floor: int,
+    value_ceiling: int | None = None,
+    memory_mode: str = "keep-high",
     max_rows: int = 10,
 ) -> dict:
     """Pure comparison of two handoff states; no I/O, used by the CLI and the tests."""
+    if memory_mode not in MEMORY_MODES:
+        raise ValueError(f"unknown memory mode: {memory_mode!r}; expected one of {MEMORY_MODES}")
+    if memory_mode == "keep-high" and value_ceiling is None:
+        raise ValueError("keep-high mode requires value_ceiling (reference image cells)")
     a_ref, d_ref = reference_regs
     a_cand, d_cand = candidate_regs
     rows: list[dict] = []
@@ -120,11 +148,15 @@ def compare_handoff(
     if not cell_match:
         add(candidate_cell, expected_candidate_cell, candidate_cell, "program counter")
 
+    if memory_mode == "keep-high":
+        expected_d = d_ref
+    else:
+        expected_d = d_ref - delta
     register_mismatches = []
     if a_ref != a_cand:
         register_mismatches.append({"register": "a", "reference": a_ref, "candidate": a_cand})
-    if d_ref - delta != d_cand:
-        register_mismatches.append({"register": "d", "reference": d_ref - delta, "candidate": d_cand})
+    if expected_d != d_cand:
+        register_mismatches.append({"register": "d", "reference": expected_d, "candidate": d_cand})
 
     variables = {
         addr: reference_mem[addr]
@@ -135,8 +167,12 @@ def compare_handoff(
     installed = 0
     wrong = 0
     for addr, value in sorted(variables.items()):
-        target = addr - delta
-        expected = shifted_value(value, delta, value_floor)
+        if memory_mode == "keep-high":
+            target = addr
+            expected = shifted_band_value(value, delta, value_floor, value_ceiling)
+        else:
+            target = addr - delta
+            expected = shifted_value(value, delta, value_floor)
         actual = candidate_mem[target]
         if actual == expected:
             installed += 1
@@ -147,8 +183,10 @@ def compare_handoff(
     ok = cell_match and not register_mismatches and wrong == 0
     return {
         "ok": ok,
+        "memory_mode": memory_mode,
         "delta": delta,
         "value_floor": value_floor,
+        "value_ceiling": value_ceiling,
         "reference_cell": reference_cell,
         "candidate_cell": candidate_cell,
         "expected_candidate_cell": expected_candidate_cell,
@@ -170,14 +208,22 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--reference-cell", required=True, type=int, help="loop entry cell in the reference")
     parser.add_argument("--candidate-cell", type=int, default=None, help="default: reference cell - delta")
     parser.add_argument("--delta", required=True, type=int, help="cells the suffix was moved down")
+    parser.add_argument("--memory-mode", choices=MEMORY_MODES, default="keep-high",
+                        help="state layout the candidate uses (default: keep-high)")
     parser.add_argument("--value-floor", type=int, default=None,
-                        help="stored values >= this floor are shifted by delta (default: reference cell)")
+                        help="keep-high: handoff jump cell that ends the shifted band; "
+                             "shift-all: stored values >= this floor shift (default: reference cell)")
+    parser.add_argument("--value-ceiling", type=int, default=None,
+                        help="keep-high: first cell above the reference image (default: reference image cells)")
     parser.add_argument("--step-limit", type=int, default=1_000_000)
     parser.add_argument("--json", type=Path, default=None)
     args = parser.parse_args(argv)
 
     if args.delta <= 0:
         print("INVALID: --delta must be positive", file=sys.stderr)
+        return 2
+    if args.memory_mode == "keep-high" and args.value_floor is None:
+        print("INVALID: --memory-mode keep-high requires --value-floor (the handoff jump cell)", file=sys.stderr)
         return 2
     candidate_cell = args.candidate_cell if args.candidate_cell is not None else args.reference_cell - args.delta
     value_floor = args.value_floor if args.value_floor is not None else args.reference_cell
@@ -211,13 +257,15 @@ def main(argv: list[str] | None = None) -> int:
         reference_regs=(a_ref, d_ref),
         candidate_regs=(a_cand, d_cand),
         value_floor=value_floor,
+        value_ceiling=args.value_ceiling if args.value_ceiling is not None else len(ref_cells),
+        memory_mode=args.memory_mode,
     )
     report["steps"] = {"reference": step_ref, "candidate": step_cand}
     report["files"] = {"reference": str(args.reference), "candidate": str(args.candidate)}
 
     print(f"reference {args.reference}: cell {c_ref} at step {step_ref}, a={a_ref}, d={d_ref}")
     print(f"candidate {args.candidate}: cell {c_cand} at step {step_cand}, a={a_cand}, d={d_cand}")
-    print(f"delta {args.delta}; expected candidate cell {args.reference_cell - args.delta}")
+    print(f"delta {args.delta}; memory mode {args.memory_mode}; expected candidate cell {args.reference_cell - args.delta}")
     print(f"variables installed: {report['variables_installed']}/{report['variables_total']}")
     for mismatch in report["register_mismatches"]:
         print(f"  register {mismatch['register']}: expected {mismatch['reference']} got {mismatch['candidate']}")

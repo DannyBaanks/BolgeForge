@@ -334,6 +334,10 @@ def synthesize_preamble_ops(
     lin_end: int,
     delta: int,
     template_clean: list[int] | None = None,
+    *,
+    borrow_penalty: int = 8,
+    direct_gap: int = 27,
+    rng=None,
 ) -> list[str]:
     if template_clean is None:
         template_clean = clean
@@ -495,7 +499,7 @@ def synthesize_preamble_ops(
                 s1 = nop_entry + solve_sp(a_after_pre, mem[sp_base + 2], mem[sp_base + 3], a_req)
                 s2 = z_entry + solve_sp(0, mem[sp_base + 2], mem[sp_base + 3], a_req)
                 cand = s1 if len(s1) <= len(s2) else s2
-                borrow_pen = 0 if (sp_base == home_sp or mem[sp_base + 3] == a_req) else 8
+                borrow_pen = 0 if (sp_base == home_sp or mem[sp_base + 3] == a_req) else borrow_penalty
                 if len(cand) + borrow_pen < best_sp_score:
                     best_sp_score = len(cand) + borrow_pen
                     best_sp = cand
@@ -532,9 +536,7 @@ def synthesize_preamble_ops(
 
             remaining = [(addr, targ_v) for addr, targ_v in window if mem[addr] != targ_v]
             while remaining:
-                best_i = 0
-                best_score = 10**9
-                best_seq = None
+                scored: list[tuple[int, int, str]] = []
                 for i_rem, (addr, targ_v) in enumerate(remaining):
                     seq = best_write_seq_for_addr(addr, base_dest, targ_v)
                     penalty = 0
@@ -547,11 +549,18 @@ def synthesize_preamble_ops(
                                 if r == addr:
                                     mult = 2 if find_a_for_crazy(mem[u_addr], u_targ) is None else 1
                                     penalty += 2 * mult
-                    score = len(seq) + penalty
-                    if score < best_score:
-                        best_score = score
-                        best_seq = seq
-                        best_i = i_rem
+                    scored.append((len(seq) + penalty, i_rem, seq))
+                # Deterministic by default: sorting is stable, so the first minimum
+                # wins exactly as the previous strict-less-than scan did.  With an
+                # explicit rng the search sometimes takes a slightly worse move, which
+                # lets a caller run seeded restarts and keep the shortest preamble.
+                scored.sort(key=lambda row: row[0])
+                if rng is None or len(scored) == 1 or rng.random() < 0.60:
+                    _best_score, best_i, best_seq = scored[0]
+                elif len(scored) == 2 or rng.random() < 0.75:
+                    _best_score, best_i, best_seq = scored[1]
+                else:
+                    _best_score, best_i, best_seq = scored[2]
                 addr, targ_v = remaining.pop(best_i)
                 assert best_seq is not None
                 sim_ops(best_seq)
@@ -574,7 +583,7 @@ def synthesize_preamble_ops(
     while idx < len(sorted_addrs):
         addr0 = sorted_addrs[idx]
         while addr0 - base_dest > 9:
-            if addr0 - base_dest >= 27:
+            if addr0 - base_dest >= direct_gap:
                 set_dest_94_direct(addr0 - 1)
                 base_dest = mem[94]
             else:
@@ -622,6 +631,35 @@ def synthesize_preamble_ops(
     return ops_out
 
 
+def assemble_shifted_program(
+    template_clean: list[int],
+    ops: list[str],
+    clean: list[int],
+    lin_end: int,
+    delta: int,
+) -> tuple[bytes | None, int]:
+    """Encode ``ops`` after the 99-cell template, pad with NOPs, append the shifted suffix.
+
+    Returns ``(program_bytes, end_c)``; ``program_bytes`` is ``None`` when the encoded
+    preamble would overrun the shifted handoff cell.
+    """
+    end_c = 99 + len(ops) - 1
+    target_lin_end = lin_end - delta
+    if end_c > target_lin_end:
+        return None, end_c
+    pad_len = target_lin_end - end_c
+    out_bytes = bytearray(template_clean[:99])
+    for idx, ch in enumerate(ops):
+        c_pos = 99 + idx
+        out_bytes.append(33 + ((XLAT1.index(ch) - c_pos) % 94))
+    for idx in range(pad_len):
+        c_pos = end_c + 1 + idx
+        out_bytes.append(33 + ((XLAT1.index(CH_NOP) - c_pos) % 94))
+    assert len(out_bytes) == target_lin_end + 1
+    out_bytes.extend(clean[lin_end + 1:])
+    return bytes(out_bytes), end_c
+
+
 def build_compressed_program(
     prog_path: Path,
     lin_end: int,
@@ -645,38 +683,24 @@ def build_compressed_program(
     for k in range(max_k + 15, 0, -1):
         delta = 94 * k
         ops = synthesize_preamble_ops(clean, high_mods, handoff_d, lin_end, delta=delta, template_clean=template_clean)
-        end_c = 99 + len(ops) - 1
-        target_lin_end = lin_end - delta
-        if end_c <= target_lin_end:
-            pad_len = target_lin_end - end_c
-            out_bytes = bytearray(template_clean[:99])
-            for idx, ch in enumerate(ops):
-                c_pos = 99 + idx
-                xlat_idx = XLAT1.index(ch)
-                b = 33 + ((xlat_idx - c_pos) % 94)
-                out_bytes.append(b)
-            for idx in range(pad_len):
-                c_pos = end_c + 1 + idx
-                xlat_idx = XLAT1.index(CH_NOP)
-                b = 33 + ((xlat_idx - c_pos) % 94)
-                out_bytes.append(b)
-            assert len(out_bytes) == target_lin_end + 1
-            out_bytes.extend(clean[lin_end + 1 : n])
-            cand_raw = bytes(out_bytes)
-            if best_raw is None or len(cand_raw) < len(best_raw):
-                best_raw = cand_raw
-                best_info = {
-                    "orig_chars": n,
-                    "new_chars": len(cand_raw),
-                    "saved_chars": n - len(cand_raw),
-                    "saved_pct": round((n - len(cand_raw)) / n * 100.0, 2),
-                    "k": k,
-                    "delta": delta,
-                    "end_c": end_c,
-                    "pad_len": pad_len,
-                    "elapsed_s": round(time.time() - t0, 3),
-                }
-            break
+        cand_raw, end_c = assemble_shifted_program(template_clean, ops, clean, lin_end, delta)
+        if cand_raw is None:
+            continue
+        pad_len = (lin_end - delta) - end_c
+        if best_raw is None or len(cand_raw) < len(best_raw):
+            best_raw = cand_raw
+            best_info = {
+                "orig_chars": n,
+                "new_chars": len(cand_raw),
+                "saved_chars": n - len(cand_raw),
+                "saved_pct": round((n - len(cand_raw)) / n * 100.0, 2),
+                "k": k,
+                "delta": delta,
+                "end_c": end_c,
+                "pad_len": pad_len,
+                "elapsed_s": round(time.time() - t0, 3),
+            }
+        break
 
     assert best_raw is not None and best_info is not None
     return best_raw, best_info

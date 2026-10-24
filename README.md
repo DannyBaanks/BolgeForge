@@ -38,6 +38,8 @@ After the 2026-10-20 closure pass, every item in this README, the roadmap and th
 
 These savings compare non-whitespace cells. Formatted reference file bytes are a different measure. Digital Root and Adder were repaired using the actual linear handoffs at 31,802 and 55,802. Their corrected hashes and preserved previous artifacts are recorded in [the repair report](docs/repairs/2026-10-20/REPORT.md).
 
+A separate, smaller Cat variant also exists: `artifacts/cat_compact.mal` streams the same inputs exactly in **7,972 cells** (282 fewer than the compressed Cat, 1,410 fewer than the reference), with the reference handoff state reproduced 124/124. It is generated deterministically by `tools/build_compact_cat.py`, certified by `tests/test_compact_cat.py`, and documented in [the compact-cat evidence](docs/evidence/2026-10-24-compact-cat-k15/REPORT.md).
+
 Tests cover binary Cat streams through 65,536 bytes, six Digital Root vectors, 100 Adder pairs with each operand in the author's `0..999` domain, the complete 99 Bottles output, the strict-valid Truth Machine (including its cycle proof), its behavior-preserving 90-byte variant, and the loader-valid FizzBuzz reference. They compare reference and compressed programs and require strict HALT. The generator validates a candidate before publishing it; `--check` never changes published artifacts.
 
 ## Oracle and verification

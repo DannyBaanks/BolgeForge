@@ -1,0 +1,130 @@
+{
+  "experiment": "2026-10-24-compact-cat-k15",
+  "date": "2026-10-24",
+  "source": "reference/malbolge_org/cat.mal",
+  "source_cells": 9382,
+  "handoff_jump_cell": 9003,
+  "loop_entry_cell": 9067,
+  "artifact": {
+    "path": "artifacts/cat_compact.mal",
+    "cells": 7972,
+    "sha256": "0d298645bcabd8c832c6bbad0769124828a8805bb46cc4644e35added50334f1",
+    "plan": {"k": 15, "delta": 1410, "seed": 47, "borrow_penalty": 2, "direct_gap": 9},
+    "preamble_ops": 7443,
+    "end_c": 7541,
+    "handoff_cell": 7593,
+    "pad_len": 52
+  },
+  "previous_artifact": {
+    "path": "artifacts/cat_compressed.mal",
+    "cells": 8254,
+    "sha256": "b4ddd5ec59f33c7776bf5b85f51065c836dce9135b36a8a3be7f2c2340e85dda",
+    "plan": {"k": 12, "delta": 1128}
+  },
+  "source_sha256": "ce04a6f27b7045b6e0010d6c97873ad8b34ba87c7be6e16d53be0b97a7224a52",
+  "savings": {
+    "vs_previous_cells": 282,
+    "vs_previous_pct": 3.42,
+    "vs_source_cells": 1410,
+    "vs_source_pct": 15.03
+  },
+  "k_sweep": {
+    "parameters": {"borrow_penalty": 2, "direct_gap": 9},
+    "columns": ["k", "handoff_cell", "preamble_ops", "budget_ops", "gap", "file_cells"],
+    "rows": [
+      [12, 7875, 7695, 7776, -81, 8254],
+      [13, 7781, 8004, 7682, 322, 8160],
+      [14, 7687, 8000, 7588, 412, 8066],
+      [15, 7593, 7546, 7494, 52, 7972],
+      [16, 7499, 7871, 7400, 471, 7878],
+      [17, 7405, 7861, 7306, 555, 7784],
+      [18, 7311, 7712, 7212, 500, 7690],
+      [19, 7217, 7740, 7118, 622, 7596],
+      [20, 7123, 7749, 7024, 725, 7502],
+      [21, 7029, 7578, 6930, 648, 7408],
+      [22, 6935, 7932, 6836, 1096, 7314],
+      [23, 6841, 7551, 6742, 809, 7220],
+      [24, 6747, 7164, 6648, 516, 7126],
+      [25, 6653, 7891, 6554, 1337, 7032],
+      [26, 6559, 7424, 6460, 964, 6938],
+      [27, 6465, 7273, 6366, 907, 6844],
+      [28, 6371, 7524, 6272, 1252, 6750],
+      [29, 6277, 7667, 6178, 1489, 6656],
+      [30, 6183, 7594, 6084, 1510, 6562],
+      [31, 6089, 7900, 5990, 1910, 6468],
+      [32, 5995, 7720, 5896, 1824, 6374],
+      [33, 5901, 7550, 5802, 1748, 6280],
+      [34, 5807, 7744, 5708, 2036, 6186],
+      [35, 5713, 7775, 5614, 2161, 6092],
+      [36, 5619, 7356, 5520, 1836, 5998],
+      [37, 5525, 7850, 5426, 2424, 5904],
+      [38, 5431, 7903, 5332, 2571, 5810],
+      [39, 5337, 7662, 5238, 2424, 5716],
+      [40, 5243, 7918, 5144, 2774, 5622]
+    ],
+    "note": "gap = preamble_ops - budget_ops; only k=12 fits deterministically. k=15 is the closest miss."
+  },
+  "borrow_penalty_sweep_k15": {
+    "direct_gap": 9,
+    "results": {"0": 7638, "1": 7674, "2": 7546, "3": 7575, "4": 7576, "5": 7550, "6": 7669, "7": 7605, "8": 7611, "9": 7668, "10": 7640, "11": 7681, "12": 7719},
+    "best": {"penalty": 2, "preamble_ops": 7546, "gap": 52}
+  },
+  "direct_gap_sweep_k15": {
+    "borrow_penalty": 8,
+    "results": {"9": 7611, "12": 7611, "15": 7611, "18": 7611, "21": 7644, "24": 7644, "27": 7644, "33": 7644, "45": 7644, "999": 7794},
+    "note": "The historical threshold 27 costs 33 operations at k=15; direct jumps (9) are cheaper for this program."
+  },
+  "seeded_restart_search_k15": {
+    "parameters": {"borrow_penalty": 2, "direct_gap": 9},
+    "seeds_tried": "0..47 (stopped at the first fit)",
+    "best": {"seed": 47, "preamble_ops": 7443, "budget_ops": 7494, "gap": -51},
+    "notable": {"0": 7839, "1": 7621, "2": 7523, "7": 7516, "40": 7738, "41": 7706, "42": 7636, "47": 7443}
+  },
+  "rejected_experiments": [
+    {"name": "wider write windows", "result": "worse", "detail": "W=12..30 at k=13/15 produced 8400..9526 ops; offsets cost more than the saved d moves"},
+    {"name": "2-step lookahead ordering", "result": "worse", "detail": "7615 ops at k=15 vs 7546 greedy; the additive heuristic distorts the ordering"},
+    {"name": "final d-setup sp-base search", "result": "unsound", "detail": "7,532 ops at k=15 but the trailing walk is tuned to the 71-base; assert d == handoff_d fails for other penalties"},
+    {"name": "drop dead variable 59046", "result": "fits but rejected", "detail": "7,461 ops; cell 59046 is never accessed in the tested runs but the omission changes the reproduced handoff state"},
+    {"name": "tail truncation", "result": "rejected", "detail": "only cells 9372..9381 are untouched in every run (10 cells); the saving does not justify the semantic change"}
+  ],
+  "handoff": {
+    "memory_mode": "keep-high",
+    "delta": 1410,
+    "value_floor": 9003,
+    "value_ceiling": 9382,
+    "reference_cell": 9067,
+    "candidate_cell": 7657,
+    "registers_reference": {"a": 29524, "d": 58975},
+    "registers_candidate": {"a": 29524, "d": 58975},
+    "variables_total": 124,
+    "variables_installed": 124,
+    "ok": true
+  },
+  "verification": {
+    "repo_cases": 7,
+    "repo_cases_command": "python3 tools/build_compact_cat.py --check",
+    "extended_cases": [
+      {"name": "empty", "bytes": 0, "status": "byte-exact"},
+      {"name": "one", "bytes": 1, "status": "byte-exact"},
+      {"name": "all256", "bytes": 256, "status": "byte-exact"},
+      {"name": "all256x16", "bytes": 4096, "status": "byte-exact"},
+      {"name": "zeros", "bytes": 65536, "status": "byte-exact"},
+      {"name": "random", "bytes": 65536, "status": "byte-exact"},
+      {"name": "text", "bytes": 60000, "status": "byte-exact"},
+      {"name": "newlines", "bytes": 10000, "status": "byte-exact"}
+    ],
+    "unit_tests": 52,
+    "unit_tests_command": "python3 -m unittest discover -s tests",
+    "rebuild": "byte-exact"
+  },
+  "gate_correction": {
+    "finding": "The 2026-10-23 gate modeled a shift-all layout; the working compressor keeps the high-memory workspace at its original addresses (keep-high).",
+    "control": "artifacts/cat_compressed.mal reports 0/124 under shift-all and 124/124 under keep-high.",
+    "effect_on_pilot": "The pilot artifacts/candidate_cat_7893b.mal still fails under keep-high: a=29521 (want 29524), d=97 (want 58975), 0/124 variables."
+  },
+  "hashes": {
+    "tools/build_compact_cat.py": "271168960bd39b72d84e5a163447d14e6c1f31e2d49122483c27311b92bb51cc",
+    "tools/resynthesize.py": "f111666d6d67a7c7c1e5daa054bfc7e49f6c04daf17121364377a1ec3dc4fa26",
+    "tools/verify_handoff_state.py": "b466d64ae1b946de3b6fb5db768517a3829e4f642ac6fc99555fe5dc4bfb9494"
+  }
+}

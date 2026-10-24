@@ -141,3 +141,30 @@ python3 tools/verify_handoff_state.py \
 python3 -m unittest tests.test_handoff_state -v                            # 6 tests, exit 0
 python3 tools/generate_compact_cat.py   # local scratch only: stops at the gate, writes nothing
 ```
+
+## Erratum (2026-10-24): the gate's layout model
+
+The gate used in this report modelled a **shift-all** layout: the program counter, the `d` register
+and the high-memory variable table all move down by `delta`. The working synthesizer
+(`tools/resynthesize.py`) uses a **keep-high** layout instead: only the program image moves; the
+high-memory workspace keeps its original absolute addresses and only values that address the
+shifted suffix are decremented.
+
+`tools/verify_handoff_state.py` now supports both modes and defaults to `keep-high`. The control
+that separates them is the published, byte-verified artifact:
+
+* `artifacts/cat_compressed.mal` → 124/124 variables, `HANDOFF MATCH` under `keep-high`;
+* the same file → 0/124, `HANDOFF MISMATCH` under `shift-all`.
+
+Consequences for this report:
+
+* The failure of `candidate_cat_7893b.mal` is **unchanged and still real**: under `keep-high` the
+  pilot reaches cell 7,469 at step 7,371 with `a = 29,521` (required 29,524), `d = 97` (required
+  **58,975**, not 57,377) and 0/124 variables.
+* The "0 / 124" figure is confirmed under both models, but under `shift-all` it compared the wrong
+  addresses, so it was right by accident.
+* The required `d` value quoted above (57,377 = 58,975 − 1,598) is an artefact of the shift-all
+  layout. The correct requirement is 58,975.
+
+Follow-up with the corrected gate and a smaller working artifact:
+`docs/evidence/2026-10-24-compact-cat-k15/REPORT.md`.

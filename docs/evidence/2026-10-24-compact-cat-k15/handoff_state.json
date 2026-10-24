@@ -1,0 +1,35 @@
+{
+  "ok": true,
+  "memory_mode": "keep-high",
+  "delta": 1410,
+  "value_floor": 9003,
+  "value_ceiling": 9382,
+  "reference_cell": 9067,
+  "candidate_cell": 7657,
+  "expected_candidate_cell": 7657,
+  "reference_image_cells": 9382,
+  "candidate_image_cells": 7972,
+  "registers": {
+    "reference": {
+      "a": 29524,
+      "d": 58975
+    },
+    "candidate": {
+      "a": 29524,
+      "d": 58975
+    }
+  },
+  "register_mismatches": [],
+  "variables_total": 124,
+  "variables_installed": 124,
+  "variables_wrong": 0,
+  "mismatches": [],
+  "steps": {
+    "reference": 8992,
+    "candidate": 7530
+  },
+  "files": {
+    "reference": "reference/malbolge_org/cat.mal",
+    "candidate": "artifacts/cat_compact.mal"
+  }
+}
