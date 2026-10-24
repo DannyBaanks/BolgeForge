@@ -1,0 +1,105 @@
+{
+  "ok": false,
+  "delta": 1598,
+  "value_floor": 9067,
+  "reference_cell": 9067,
+  "candidate_cell": 7469,
+  "expected_candidate_cell": 7469,
+  "reference_image_cells": 9382,
+  "candidate_image_cells": 7784,
+  "registers": {
+    "reference": {
+      "a": 29524,
+      "d": 58975
+    },
+    "candidate": {
+      "a": 29521,
+      "d": 97
+    }
+  },
+  "register_mismatches": [
+    {
+      "register": "a",
+      "reference": 29524,
+      "candidate": 29521
+    },
+    {
+      "register": "d",
+      "reference": 57377,
+      "candidate": 97
+    }
+  ],
+  "variables_total": 124,
+  "variables_installed": 0,
+  "variables_wrong": 124,
+  "mismatches": [
+    {
+      "cell": 57246,
+      "expected": 90,
+      "actual": 29443,
+      "reason": "variable from cell 58844"
+    },
+    {
+      "cell": 57247,
+      "expected": 70,
+      "actual": 81,
+      "reason": "variable from cell 58845"
+    },
+    {
+      "cell": 57248,
+      "expected": 70,
+      "actual": 29443,
+      "reason": "variable from cell 58846"
+    },
+    {
+      "cell": 57249,
+      "expected": 70,
+      "actual": 81,
+      "reason": "variable from cell 58847"
+    },
+    {
+      "cell": 57250,
+      "expected": 70,
+      "actual": 29443,
+      "reason": "variable from cell 58848"
+    },
+    {
+      "cell": 57251,
+      "expected": 70,
+      "actual": 81,
+      "reason": "variable from cell 58849"
+    },
+    {
+      "cell": 57252,
+      "expected": 92,
+      "actual": 29443,
+      "reason": "variable from cell 58850"
+    },
+    {
+      "cell": 57253,
+      "expected": 7490,
+      "actual": 81,
+      "reason": "variable from cell 58851"
+    },
+    {
+      "cell": 57254,
+      "expected": 7489,
+      "actual": 29443,
+      "reason": "variable from cell 58852"
+    },
+    {
+      "cell": 57255,
+      "expected": 57333,
+      "actual": 81,
+      "reason": "variable from cell 58853"
+    }
+  ],
+  "steps": {
+    "reference": 8992,
+    "candidate": 7371
+  },
+  "files": {
+    "reference": "reference/malbolge_org/cat.mal",
+    "candidate": "artifacts/candidate_cat_7893b.mal"
+  }
+}

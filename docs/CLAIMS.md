@@ -23,7 +23,7 @@ audit-result column preserves historical `NOT_DEMONSTRATED` findings.
 | Digital Root and Adder regenerate byte-identically | PARCIAL → repaired | **DEMONSTRATED** | `make test-rebuild`, `docs/repairs/2026-10-20/checks.json` |
 | MicroCat is a general streaming Cat | REFUTED | **REFUTED** as Classic artifact | `runs/models.json`; `ABCD` → `ABC` |
 | Classic streaming Cat exists | DEMONSTRATED via `cat_compressed.mal` and the historical Cat | **DEMONSTRATED** | `tests/test_cat_streaming.py`; `docs/evidence/2026-10-20-closures/cat_streaming.json` (64 KiB binary, exact, HALT) |
-| A streaming Cat smaller than 8,254 cells exists | — | **OPEN** | `candidate_cat_7893b.mal` is loader-valid but fails at step 7,372 (`INVALID_ENCRYPTION`); MicroCat is invalid |
+| A streaming Cat smaller than 8,254 cells exists | — | **OPEN** | `candidate_cat_7893b.mal` is loader-valid but fails at step 7,372 (`INVALID_ENCRYPTION`); it installs 0 of the reference's 124 handoff variables and enters the loop with `d = 97` instead of `57,377` (`tools/verify_handoff_state.py`; `docs/evidence/2026-10-23-compact-cat-diagnosis/`) |
 | Truth Machine is a Classic program | REFUTED for the 103-byte artifact | **DEMONSTRATED** by the 90-byte strict-valid reproduction | `artifacts/truth_machine_classic_90b.mal`; `tools/prove_truth_machine.py`; `tests/test_truth_machine_strict.py` |
 | Truth Machine `0` branch prints one `0` and halts | — | **DEMONSTRATED** | HALT at instruction 38, output `30` |
 | Truth Machine `1` branch emits `1` forever | NOT_DEMONSTRATED for the old artifact | **DEMONSTRATED** by full-state cycle | Period 408 instructions; 17 output bytes per cycle; state SHA-256 `6962734d54aa4f33…`; evidence `truth_machine_proof.json` |
@@ -45,6 +45,8 @@ make
 make test
 python3 tools/prove_truth_machine.py artifacts/truth_machine_classic_90b.mal --json
 python3 -m unittest tests.test_truth_machine_strict tests.test_cat_streaming tests.test_fizzbuzz_reference -v
+python3 tools/verify_handoff_state.py --reference reference/malbolge_org/cat.mal \
+  --reference-cell 9067 --candidate artifacts/candidate_cat_7893b.mal --delta 1598
 ```
 
 Raw closure evidence, commands and hashes:

@@ -1,0 +1,63 @@
+{
+  "date": "2026-10-23",
+  "reference": {
+    "path": "reference/malbolge_org/cat.mal",
+    "sha256": "ce04a6f27b7045b6e0010d6c97873ad8b34ba87c7be6e16d53be0b97a7224a52",
+    "file_bytes": 9503,
+    "cells": 9382,
+    "handoff_cell": 9067,
+    "handoff_step": 8992,
+    "a": 29524,
+    "d": 58975,
+    "high_memory_variables_modified": 124,
+    "high_memory_writes": 185,
+    "high_memory_cells_written": 123,
+    "first_high_memory_write_step": 1478,
+    "first_high_memory_write_cell": 58844,
+    "modified_but_never_written": [
+      58923
+    ]
+  },
+  "candidate_7893b": {
+    "path": "artifacts/candidate_cat_7893b.mal",
+    "sha256": "63e94541e1cb4b43ddb05c764afca8e5172f492dc27b4a1babd28519ce3be9bd",
+    "file_bytes": 7893,
+    "cells": 7784,
+    "delta": 1598,
+    "k": 17,
+    "handoff_cell": 7469,
+    "handoff_step": 7371,
+    "a": 29521,
+    "d": 97,
+    "variables_installed": 0,
+    "variables_total": 124,
+    "chain_writes": 141,
+    "chain_writes_high_memory": 65,
+    "targets_hit": 0,
+    "failure": {
+      "engine": "mb_ref",
+      "exit": 3,
+      "cell": 36082,
+      "value": 29443,
+      "step": 7372
+    }
+  },
+  "compare": {
+    "compressed_cat_cells": 8254,
+    "compressed_cat_sha256": "b4ddd5ec59f33c7776bf5b85f51065c836dce9135b36a8a3be7f2c2340e85dda",
+    "candidate_cells": 7784,
+    "would_save_cells": 470
+  },
+  "negative_prefix_1465": {
+    "sha256": "e6241dba538824b40bb01e60a9d2698f0e4356305a22b4fde8625cbd9c875080",
+    "file_bytes": 7893,
+    "cells": 7784,
+    "failure": {
+      "cell": 2249,
+      "value": 39381,
+      "step": 2151,
+      "mb_ref_exit": 3
+    },
+    "verdict": "splicing 8 cells earlier does not restore the handoff state"
+  }
+}

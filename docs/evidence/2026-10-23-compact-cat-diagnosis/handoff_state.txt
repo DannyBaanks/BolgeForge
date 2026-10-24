@@ -1,0 +1,17 @@
+reference reference/malbolge_org/cat.mal: cell 9067 at step 8992, a=29524, d=58975
+candidate artifacts/candidate_cat_7893b.mal: cell 7469 at step 7371, a=29521, d=97
+delta 1598; expected candidate cell 7469
+variables installed: 0/124
+  register a: expected 29524 got 29521
+  register d: expected 57377 got 97
+  cell 57246: expected 90 got 29443 (variable from cell 58844)
+  cell 57247: expected 70 got 81 (variable from cell 58845)
+  cell 57248: expected 70 got 29443 (variable from cell 58846)
+  cell 57249: expected 70 got 81 (variable from cell 58847)
+  cell 57250: expected 70 got 29443 (variable from cell 58848)
+  cell 57251: expected 70 got 81 (variable from cell 58849)
+  cell 57252: expected 92 got 29443 (variable from cell 58850)
+  cell 57253: expected 7490 got 81 (variable from cell 58851)
+  cell 57254: expected 7489 got 29443 (variable from cell 58852)
+  cell 57255: expected 57333 got 81 (variable from cell 58853)
+HANDOFF MISMATCH
