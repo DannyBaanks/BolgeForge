@@ -47,11 +47,33 @@ el cierre de periodo 408 — el prover store-first lo detecta, el buggy no.
 | 4 | 4,096 | 833 | 833 | 1,954 | 371 | 105 | **0** |
 | 5 | 32,768 | 6,776 | 6,778 | 12,737 | 4,933 | 1,544 | **0** |
 | 6 | 262,144 | 55,616 | 55,609 | 127,120 | 14,469 | 9,330 | **0** |
+| 7 | 2,097,152 | 443,359 | 443,632 | 839,473 | 260,996 | 109,692 | **0** |
+| 8 | 16,777,216 | 3,603,177 | 3,604,534 | 8,131,157 | 788,286 | 650,062 | **0** |
 
-Salidas crudas: `depth{2..6}_out.txt`, `beam_out.txt`, `profile_seed9803.txt` (del
-experimento hermano). Los archivos de profundidad 2-6 se regeneraron tras corregir
-`/`; los numeros de WRONG_OUT/HALT cambian levemente vs la corrida pre-correccion
-(los prefijos con `/` ahora mueren correctamente en su primer `<`).
+Total: **19,173,952 programas, 0 sobrevivientes** (profundidades 2-8 exhaustivas).
+
+## Mecanismo de la referencia descifrado (analisis de nuestra propia reproduccion)
+
+Traza entrada (input '1', pasos 0-37): `j` deref posiciona `d` en una ventana de
+datos (41-62); `p` escribe valores crz en esa ventana (2 rondas con reset `j`);
+`/` lee el input; `<` lo emite; el valor del input propaga por `p` hasta una celda
+de salto (`mem[61]`) y el `i` en 37 ramifica: `c=73` (continuar) vs camino halt.
+Traza de ciclo completa: `cycle_trace_1000_1408.txt`.
+
+**El ciclo estable de 408 pasos NO contiene escrituras**: unidad de 6 pasos
+`64:i 65:E 64:i 65:j 88:i 89:X` con X ciclando `t,<,2,Y` — la celda 89 orbita bajo
+XLAT2 y decodifica `<` cada 4 visitas; `a` queda intacto (=49 desde el `/`). El
+coreografo es el **d-flujo**: celdas nunca ejecutadas (no se cifran) cuyos valores
+son direcciones de salto (33..126 = bytes de programa), consumidas por el `d` que
+avanza +1 por paso, con resets `j`.
+
+## Consecuencia para el diseno propio
+
+La via sin instalador queda refutada hasta profundidad 8; el diseno propio debe
+reproducir la clase de mecanismo con valores/estructura propios: (a) nucleo de
+coreografia (d-flujo de direcciones + celda de salida con orbita XLAT2 alineada +
+reset `j`), buscable con el motor validado; (b) entrada `/` + `<` + rama `p`
+(crz(48/49, B) hacia `v` vs continuar). PENDIENTE (no iniciado).
 
 ## Veredicto
 

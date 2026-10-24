@@ -44,11 +44,14 @@ def job(prefix):
 if __name__ == "__main__":
     depth = int(sys.argv[1])
     cands = list(product(ks.OPS, repeat=depth))
+    stats = Counter()
+    surv = []
     with Pool(12) as pool:
-        results = pool.map(job, cands, chunksize=16)
-    stats = Counter(r[1][0] for r in results)
+        for prefix, res in pool.imap_unordered(job, cands, chunksize=64):
+            stats[res[0]] += 1
+            if res[0] == "MAX_STEPS":
+                surv.append((prefix, res))
     print(f"profundidad {depth}: {len(cands)} programas; stats {dict(stats)}")
-    surv = [(p, r) for p, r in results if r[0] == "MAX_STEPS"]
     surv.sort(key=lambda t: -t[1][2])
     for p, r in surv[:12]:
         print("".join(p), r)
