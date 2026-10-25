@@ -111,8 +111,9 @@ With six pairs, zero adjacent pairs and one usable disjoint link, the total
 available gain is on the order of the measured **16 operations** (a loose
 upper bound over all pairs is ~30), against a **+118** gap at k=18
 (7,331 → 7,213). The structural candidate is exhausted:
-chain sweeps rewrite the *walk*, but 92% of the write cost is the
-`solve_sp` computation, which the alignment condition cannot touch.
+chain sweeps rewrite the *walk*, but the 98 expensive writes account for 4,969
+of the 5,416 write-phase operations and their cost is dominated by `solve_sp`,
+which the alignment condition cannot touch.
 
 ## 5. Same-horizon seed control
 
@@ -165,5 +166,5 @@ byte-exactly from the untouched `tools/resynthesize.py`.
 
 The last untested structural candidate of the window-DP report is now measured
 and refuted. The 7,972-cell artifact stands. A smaller Cat needs a cheaper way
-to *compute* `a_req` (the `solve_sp` primitive, ~35–50 operations per expensive
-write), not a better way to walk between targets.
+to *compute* `a_req` (the `solve_sp` primitive, ~50 operations on average across
+the 98 expensive writes), not a better way to walk between targets.
