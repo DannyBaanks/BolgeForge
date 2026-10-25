@@ -1,0 +1,14 @@
+# Oraculo C (mb_ref recompilado 2026-10-25 desde oracle/mb_ref.c)
+# cc -O2 -o /tmp/opencode/mb_ref oracle/mb_ref.c
+
+## v5 entrada 0 (presupuesto 200000)
+rc=0 stdout_hex=30 stderr=
+
+## v5 entrada 1 (presupuesto 200000)
+rc=2 bytes=8334 valores=31  stderr=MAX_STEPS: 200000 (HALT not reached)
+
+## v5 entrada 1 (presupuesto 1000000)
+rc=2 bytes=41667 valores=31  stderr=MAX_STEPS: 1000000 (HALT not reached)
+
+## control referencia 90b entrada 0
+rc=0 stdout_hex=30 stderr=

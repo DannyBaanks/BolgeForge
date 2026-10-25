@@ -1,0 +1,8 @@
+{
+  "tm_independent_v5.mal": "7b74ec811d9f44d609cee4a51323e2fdc4d73bda77a675ccbfa4ed9db0556961",
+  "build_v5.py": "37311df80d6cfdb832141fa8da1d2e839ec46ad38332dd9791d4985f97c18c7b",
+  "prover_output.json": "49462a57b8ddf1bb87f6e61f951952b723d5e4376338cd8c74df9a965e3fa0a5",
+  "prover_reference_control.json": "00370921e096469815fdfdfedecea227f6bbce6c6ae4c70331382d7adef3ec64",
+  "oracle_evidence.txt": "89d4dbe9777ec25bb5d62fa34b4ec7e17bc384ddcada1567cb6a87872f0b4f5e",
+  "REPORT.md": "7c995ec0d8089d5eae6da86815f38702b5406e9581c5009ac7a6c351762dec43"
+}

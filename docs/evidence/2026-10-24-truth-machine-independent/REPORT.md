@@ -92,3 +92,22 @@ reset `j`), buscable con el motor validado; (b) entrada `/` + `<` + rama `p`
   2026-09-01): input `0` → rc 0, salida `30`; input `1` → rc 2 (MAX_STEPS), 478 B
   todas `0x31`. Precedente de arquitectura, no artefacto de BolgeForge.
 - Agente bridge `opencode_malbolge_genealogy_1792832024`, topic `bolgeforge/truth-machine`.
+
+## ERRATA 2026-10-25 (append-only; no reescribe lo anterior)
+
+- La via "instalador" anunciada como PENDIENTE se ejecuto y **cerro** el 2026-10-25:
+  `docs/evidence/2026-10-25-truth-machine-v5/` (120 celdas, loader estricto ACCEPT,
+  `0` HALT / `1` ciclo 408). Este informe se conserva como evidencia negativa de
+  la ruta de prefijos y del candidato v4.
+- El candidato v4 de esta carpeta (`candidate_source.txt`, `candidate_bytes.txt`,
+  `candidate_params.json`, `solver.py`) queda **REFUTADO** por loader estricto
+  (35 celdas invalidas, `cell 47 decodes to '{'`), aunque funcionase en el motor
+  exacto. Se commitea por primera vez hoy como evidencia negativa.
+- Correccion de mecanica: la cifra post-instruccion cae sobre la celda de
+  instruccion `mem[c]` (o sobre el destino en `i`), **no** sobre `mem[d]`; por eso
+  los valores de ventana instalados (63 en 116/49/51) son estables y no se
+  corrompen al ser leidos por `i`. La traza `cycle_trace_clean.txt` ya lo mostraba.
+- Obstruccion demostrada por enumeracion: las posiciones loader-validas de un
+  valor nunca difieren en 2 ni en 4 (indices de ops validas en XLAT1
+  `{6,7,29,35,48,65,66,84}`), y la ventana exige R1 en `dG` y `dG+2` (o `dG-4`):
+  instalar en runtime es obligatorio para esta familia de kernels.

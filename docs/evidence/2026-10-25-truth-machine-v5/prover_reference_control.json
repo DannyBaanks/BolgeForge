@@ -1,0 +1,31 @@
+{
+  "program": "artifacts/truth_machine_classic_90b.mal",
+  "source_sha256": "1e34e2afd1fc645dadac1f1aac0fe2348ff469878cc3da396a6a1e7bad2a4417",
+  "source_bytes": 90,
+  "loader": "ACCEPT",
+  "branch_zero": {
+    "status": "HALT",
+    "steps": 38,
+    "output_hex": "30"
+  },
+  "branch_one": {
+    "status": "CYCLE",
+    "steps": 1408,
+    "cycle_start": 1000,
+    "cycle_end": 1408,
+    "period": 408,
+    "outputs_per_cycle": 17,
+    "output_bytes": 58,
+    "first_output_hex": "31",
+    "state_sha256": "6962734d54aa4f33b3dba1edd28a412912a201c07f3c2221f3a4cbbb8d290948"
+  },
+  "checks": {
+    "loader_accepts_source": true,
+    "zero_halts": true,
+    "zero_prints_exactly_one_zero": true,
+    "one_repeats_full_state": true,
+    "one_outputs_only_ones": true,
+    "one_emits_per_cycle": true
+  },
+  "verdict": "DEMONSTRATED"
+}

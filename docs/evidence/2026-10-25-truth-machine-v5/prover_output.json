@@ -1,0 +1,31 @@
+{
+  "program": "docs/evidence/2026-10-25-truth-machine-v5/tm_independent_v5.mal",
+  "source_sha256": "7b74ec811d9f44d609cee4a51323e2fdc4d73bda77a675ccbfa4ed9db0556961",
+  "source_bytes": 120,
+  "loader": "ACCEPT",
+  "branch_zero": {
+    "status": "HALT",
+    "steps": 27,
+    "output_hex": "30"
+  },
+  "branch_one": {
+    "status": "CYCLE",
+    "steps": 1408,
+    "cycle_start": 1000,
+    "cycle_end": 1408,
+    "period": 408,
+    "outputs_per_cycle": 17,
+    "output_bytes": 59,
+    "first_output_hex": "31",
+    "state_sha256": "c36f15dce97d1ed341c59160a29a8f0ac75eb93fc87f2941399eb8d54a2ffab5"
+  },
+  "checks": {
+    "loader_accepts_source": true,
+    "zero_halts": true,
+    "zero_prints_exactly_one_zero": true,
+    "one_repeats_full_state": true,
+    "one_outputs_only_ones": true,
+    "one_emits_per_cycle": true
+  },
+  "verdict": "DEMONSTRATED"
+}
