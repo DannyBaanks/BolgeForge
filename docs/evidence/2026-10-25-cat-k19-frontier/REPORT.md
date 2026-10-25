@@ -114,3 +114,26 @@ candidate's gates).
 
 The 7,690-cell k=18 artifact (`artifacts/cat_compact.mal`, SHA-256
 `0e14c807…`) is untouched by this experiment.
+
+## 8. Boot attack (2026-10-25, later) — measured, capped at -22 verified
+
+The ranked next experiment was shortening the boot (1,235 ops, needed -108).
+Machinery and findings (all in this directory):
+
+| probe | result |
+|---|---|
+| `i` ops anywhere in the boot | **0** — the boot is a pure (a, d, mem) program, any segment re-synthesizable |
+| op composition | 687 `o` (55%), 246 `j`, 163 `*`, 139 `p`; verbatim segments total 476 ops |
+| dead stores (writes never read) | ~0-1 per segment — the boot is route-dense: nearly every cell in [32..96] is a live jump anchor |
+| **NOP-run compression** (`nop_compress.py`) | **-22 ops, VERIFIED**: each maximal NOP run is memory-frozen, so a `j` can skip it when a cell holds exactly (later position − 1); boundary equivalence asserted at every op (7,146 checks) + final memory identical |
+| end-to-end validation | the compressed k=18 plan (7,199 → 7,177) assembles, handoff 124/124, `mb_ref` 7/7 — the compression is publishable-grade |
+| segment BFS with writes (`boot_bfs.py`) | naive layered BFS over {o,j,*,p} hits the 4M-state cap at depth 46 on segment A without beating 59 — needs A* with a (live-mismatch + d-distance) heuristic, not more width |
+| liveness precision | LIVE-at-boot-end = 35 cells {32..39, 47..55, 70..78, 80..96}; cells 76..79 are dead at boot end but sit *behind* the return point d=82 — geometry-unfavorable as free anchors |
+
+Net for k=19: 7,227 → **7,205** (with the JMP) vs the 7,119 budget — **+86 remain**.
+The boot's 687 NOPs are mostly irreducible walks between live route anchors; the
+4 compressible runs were worth 22 ops. The remaining levers are (a) A* segment
+re-synthesis with anchor *creation* (rotating dead cells mid-boot to build jump
+shortcuts, the architecture the boot already uses internally), and (b) the
+write-phase entry pads (~4 ops × ~180 spindle entries): both are re-architecture
+with unbounded effort, not tuning.
