@@ -1,0 +1,10 @@
+baseline deterministic : 7643 ops  (budget 7213)
+per-write seq lengths  : 121 targets, sum 5416
+  writes >= 25 ops     : 98 (sum 4969)
+  writes <= 15 ops     : 5 (sum 61)
+  five chain targets   : 58864:7, 58881:13, 58890:14, 58896:14, 58931:13  (sum 61)
+five-target chain     : 7667 ops  delta +24  emitted=[((58864, 58881, 58890, 58896, 58931), 75)]
+pair 58890->58896     : 7627 ops  delta -16  emitted=[((58890, 58896), 12)]
+pair 58884->58893      : invalid at chain time (needs pre-clear): (58893, None, 59047)
+baseline seed 9803     : 7331 ops  (published frontier 7331)
+pair seed 9803         : 7589 ops

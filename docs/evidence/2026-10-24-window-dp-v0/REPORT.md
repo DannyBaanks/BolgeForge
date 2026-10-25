@@ -65,3 +65,19 @@ Facts that pin the structure:
 `artifacts/cat_compact.mal` (7,972 cells) remains the published artifact; claim
 "< 7,972 streaming Cat" stays **OPEN** with frontier k=18 7,331/7,213. Raw outputs:
 `profile_seed9803.txt`, `tiling_search_out.txt`.
+
+## 5. Errata (2026-10-25) — multi-target chain sweeps measured
+
+The last candidate left open in §3 is now measured and **REFUTED** as a path to
+≥118 operations: `../2026-10-25-cat-chain-sweeps/REPORT.md`. The fixed target
+table offers only six legal chain links (`targ_i` must equal the `a` required at
+`j`), none adjacent, for every `k=15..24`; 61 of the 121 targets need a
+pre-clear and cannot be link sources. The five-target chain
+58,864→58,881→58,890→58,896→58,931 costs 75 operations against 61 for the same
+five writes emitted separately (+24 in the plan); the only winning link
+(58,890→58,896) saves 16; a 10,000-seed sweep with that link reaches 7,341 and
+fits 0. Reason: the link condition is exactly the case in which the existing
+planner already writes the next target cheaply (`NOP+DLD+DLD`, 3 ops), so a
+chain removes the return/re-entry/walk (~10–20 per link) but never the
+`solve_sp` computation that dominates the 98 expensive writes (4,969 of the
+5,416 write-phase operations). The 7,331/7,213 frontier stands.

@@ -1,0 +1,10 @@
+{
+  "REPORT.md": "ef1de8461dd5a7c89c8e7ca028601b7572dffbca4c15d033844daf7f402d11d7",
+  "alignment_map.py": "880e667e7418bdd0458a2d19af9cc141045974fcfab6f0e9d2d37b08923fd410",
+  "chain_synth.py": "290c78366be8ab77ca27a4749939cb93c47222e823107c3f79f4fb7d00083990",
+  "measure_chains.py": "58f34b9ba6770414e30e706dbead49c9c562f7d100f8e5dcfd35206cedca4aa6",
+  "out_alignment.txt": "b855a71f3e9cf121d58112f6aac74ffa2331e616fb268f6c986ccc24f719e56e",
+  "out_chain_10k.txt": "9e98fc5df41a06e097866442453b51db20ff85249cddb6c74d83e3512f9108fe",
+  "out_measure.txt": "0adde6e191ee8843111a42066e0c2d8b8c72706b37438c07b41387d4feaf4a07",
+  "search_chains_10k.py": "ee3cf1e785b6fefce1126ae89a95b84e4e79dde639ccff1fc5e6766859d381bc"
+}
