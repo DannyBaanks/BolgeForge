@@ -1,0 +1,20 @@
+A    1..59     len  59 -> no improvement: CAP after 400000 expansions
+C3 111..152    len  42 -> no improvement: CAP after 400000 expansions
+S7 459..468    len  10 ->   9 ops (saves 1)
+S8 485..567    len  75 -> no improvement: CAP after 400000 expansions
+L9a 622..629   len   8 -> no improvement: exhausted (2449 expansions)
+L9b 663..684   len  22 ->   8 ops (saves 14)
+L9c 752..794   len  43 -> no improvement: CAP after 400000 expansions
+L9d 849..870   len  22 ->  12 ops (saves 10)
+L9e 932..947   len  16 ->   9 ops (saves 7)
+C9 948..1005   len  58 -> no improvement: CAP after 400000 expansions
+L10a 1006..1012 len   7 ->   4 ops (saves 3)
+L10b 1020..1054 len  35 -> no improvement: CAP after 400000 expansions
+L10c 1099..1118 len  20 ->   4 ops (saves 16)
+L10d 1163..1177 len  15 ->  12 ops (saves 3)
+L10e 1219..1233 len  15 ->  12 ops (saves 3)
+L10f 1275..1285 len  11 ->   7 ops (saves 4)
+L11a 1342..1344 len   3 -> no improvement: exhausted (5 expansions)
+L11b 1352..1366 len  15 ->  12 ops (saves 3)
+TOTAL: 476 -> 412 (saves 64)
+paths written -> out_astar_segments.json

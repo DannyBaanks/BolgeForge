@@ -37,7 +37,12 @@ from tools.resynthesize import extract_target_state, synthesize_preamble_ops  # 
 REF = ROOT / "reference" / "malbolge_org" / "cat.mal"
 # cells the write-phase PLANNER reads besides what its ops read:
 # spindle temp/x (35/36, 50/51, 73/74), odometer/anchors 82..96
-PLANNER_READS = {35, 36, 50, 51, 73, 74, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96}
+PLANNER_READS = {35, 36, 50, 51, 73, 74, 88, 89, 90, 91, 92, 94}
+
+P1 = "oo*ppojoooo*ojoooopojoo*ppojo*oppojoooo*ojo*oppojoooo*ojoooo*ojoooo*ojoooo*ojoooo*ojoooo*ojoooo*ojo*opp" + "opooj"
+P2 = "oooooooo" + "*jpoj*oooojooooo*ppoj*oooojooooo*pp*jpoj*oj*oj*oj*oj*oj*oj*oj*" + "oopoj"
+ROTOR = "**jp*jo*jp*jo*jp*jp*jppjpoo"
+CUSTOM = [("X-rotor 27", ROTOR), ("X-p1 53=50", P1), ("X-p2 54=47", P2)]
 
 SEGS = [
     ("A    1..59", 1, 60),
@@ -82,17 +87,18 @@ def main() -> None:
     log = []
     for ch in plan:
         w = None
+        d0 = d                      # cell this op acts on / reads (pre-op)
         if ch == CH_DLD:
             d = mem[d]
         elif ch == CH_ROT:
-            mem[d] = rot_op(mem[d])
-            a = mem[d]
-            w = d
+            mem[d0] = rot_op(mem[d0])
+            a = mem[d0]
+            w = d0
         elif ch == CH_CRZ:
-            mem[d] = crazy_op(a, mem[d])
-            a = mem[d]
-            w = d
-        log.append((ch, d, w))
+            mem[d0] = crazy_op(a, mem[d0])
+            a = mem[d0]
+            w = d0
+        log.append((ch, d0, w))      # pre-op d: j reads mem[d0], */p touch d0
         d = (d + 1) % MEM_SIZE
     N = len(log)
 
@@ -190,6 +196,16 @@ def main() -> None:
         out[name.strip()]["end_d"] = d3
         out[name.strip()]["end_a"] = a3
         out[name.strip()]["end_low"] = [m2[c] for c in range(100)]
+    for name, lit in CUSTOM:
+        i = boot.find(lit)
+        assert i >= 0 and boot.find(lit, i + 1) < 0, name
+        live_end = sorted(c for c in live[i + len(lit)] if c < 1000)
+        out[name] = {
+            "boot_pos": i, "len": len(lit),
+            "start_d": None, "start_a": None, "start_low": None,
+            "end_d": None, "end_a": None, "live_end": live_end,
+            "end_low": None, "literal": True,
+        }
     (HERE / "out_boot_segments.json").write_text(json.dumps(out, indent=1))
     print("segment checkpoints dumped -> out_boot_segments.json")
 

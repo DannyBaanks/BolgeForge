@@ -137,3 +137,37 @@ re-synthesis with anchor *creation* (rotating dead cells mid-boot to build jump
 shortcuts, the architecture the boot already uses internally), and (b) the
 write-phase entry pads (~4 ops × ~180 spindle entries): both are re-architecture
 with unbounded effort, not tuning.
+
+## 9. A* segment re-synthesis (2026-10-25, latest) — boot 1,235 -> 1,177, all verified
+
+Root-cause found and fixed along the way: the liveness log recorded the
+**post-op** d, so every `j` read was attributed to its *target* cell instead
+of its *source* — route cells (e.g. cell 95) looked dead, the first A* batch
+overwrote them and the chain broke at C9. With the pre-op-d log the live sets
+are correct (LIVE at boot end grows from 28 to 41 cells).
+
+| step | result |
+|---|---|
+| A* over ops {o,j,*,p}, goal = (d, a, live cells), dead cells free, heuristic = live-mismatch + reverse-BFS d-distance (`boot_astar.py`) | 9 verbatim segments compress: 476 -> 436 ops (**-40**); the 6 big segments and the handoff's custom parts (rotor/p1/p2) cap out at 400k expansions |
+| splice + chain validation (`boot_splice.py`) | **EQUIVALENCE PASS**: new boot (1,195) + the ORIGINAL write ops reach the byte-identical final state (a, d, full memory); zero re-searches needed |
+| NOP-run compression re-applied | boot 1,195 -> **1,177** |
+
+**k=19 scoreboard after this session** (budget 7,119; write = seed-9330 + beam-512, 5,991 ops):
+
+| stage | k=19 total | over budget |
+|---|---:|---:|
+| greedy order (seed 9803) | 7,604 | +485 |
+| 10,000-seed sweep (best 9330) | 7,385 | +266 |
+| + beam-512 spindle/entry assignment | 7,227 | +108 |
+| + NOP-run compression | 7,205 | +86 |
+| + A* segments (-40) | 7,187 | +68 |
+| + NOP compression of the new boot | **7,169** | **+50** |
+
+The k=18 plan with the new boot is 7,159 (budget 7,213, margin 54) with the
+same 7,690-cell artifact size — the new boot is publishable-grade but changes
+no claim (artifact size depends only on k).
+
+Remaining levers for the last 50 ops: higher A* caps on the big segments
+(running), the write-phase entry pads (~4 ops x ~180 spindle entries,
+requires coordinated re-anchoring of cells 84..86 + planner templates), or a
+joint order+assignment search.
