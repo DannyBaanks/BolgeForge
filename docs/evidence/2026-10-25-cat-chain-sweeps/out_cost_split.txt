@@ -1,0 +1,17 @@
+plan seed 9803          : 7331 ops (budget 7213)
+writes traced           : 121
+  pre         0  (  0.0% of writes)
+  arith    3677  ( 68.3% of writes)
+  move      583  ( 10.8% of writes)
+  walk      465  (  8.6% of writes)
+  ret       540  ( 10.0% of writes)
+  total    5386  (100.0% of writes)
+  d-movement (move+walk+ret) 1588
+  outside the 121 writes  : 1945
+    boot solves           :  17 calls, 531 ops
+    boot literal ops      : 834 cells, 834 ops
+    boot total            : 1365 ops
+  writes with arith>=25   : 60 (sum arith 2959)
+  distinct a_req          : 53/121  (repeated values cover 94 writes)
+  top repeats             : 29544x9, 22165x7, 22163x7, 22161x7, 22164x6
+  consecutive a_req       : same 6, rot 0, other 114

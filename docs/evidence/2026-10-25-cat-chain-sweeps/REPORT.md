@@ -156,6 +156,7 @@ produced, so no output battery was run.
 python3 docs/evidence/2026-10-25-cat-chain-sweeps/alignment_map.py
 python3 docs/evidence/2026-10-25-cat-chain-sweeps/measure_chains.py
 python3 docs/evidence/2026-10-25-cat-chain-sweeps/search_chains_10k.py
+python3 docs/evidence/2026-10-25-cat-chain-sweeps/cost_split.py
 ```
 
 `chain_synth.py` is evidence-only: it is not wired into
@@ -168,3 +169,65 @@ The last untested structural candidate of the window-DP report is now measured
 and refuted. The 7,972-cell artifact stands. A smaller Cat needs a cheaper way
 to *compute* `a_req` (the `solve_sp` primitive, ~50 operations on average across
 the 98 expensive writes), not a better way to walk between targets.
+
+## 9. Errata 2026-10-25 — cross-check with the m1 limits work
+
+Question raised after the `m1_limits` / `zig_synth` research (ISyCo monorepo,
+`workspace/assembly/malbolge/analysis/`): the two-cell stationary register
+(`*` at 154, `j` at 155, `o` at 153 — d cycles 154 → 155 → 153 → 154 and the
+same cell rotates in place) and the `routefix` result (routes built on a memory
+snapshot are invalid on live memory; a fresh BFS finds 4–5-op routes). Can
+either close the 118-operation gap?
+
+Measurement (`cost_split.py`, `out_cost_split.txt`) decomposes the published
+seed-9803 plan (7,331 ops) with four bookkeeping hooks on `chain_synth.py`; the
+synthesizer itself is unchanged.
+
+| component | ops | share |
+|---|---:|---:|
+| 121 writes, `solve_sp` strings (`arith`) | 3,677 | 50.2% of the plan |
+| 121 writes, entry pad + final DLD (`move`) | 583 | 8.0% |
+| 121 writes, offset walk (`walk`) | 465 | 6.3% |
+| 121 writes, return to 82 (`ret`) | 540 | 7.4% |
+| boot solves (17 `BOOT_START_MAP` entries) | 531 | 7.2% |
+| boot literal image (834 cells, 1 op each) | 834 | 11.4% |
+| pre-clear domino sweeps + handoff (residual) | 580 | 7.9% |
+
+Within the write phase (5,386 ops) the `a`-arithmetic is **68.3%**; all
+d-movement together (`move + walk + ret`) is 1,588 ops, i.e. **~12 ops per
+target**.
+
+**Finding 1 — the gadget is op-for-op the solver's existing move.** The cost-3
+move in `solve_sp_c` is `oj*` (rotate the tracked cell, 3 ops). `*jo` is also 3
+ops and produces the same `(cell value → rot, a → rot)` transition; the only
+difference is where `d` ends up, and every solver move re-establishes `d` with
+its own `j`. Same cost, same reachable set: **no cheaper metric.**
+*Labels: op-count equality DEMONSTRATED by counting the two sequences; identity
+of the BFS state transition INFERRED from both sequences' op semantics.*
+
+**Finding 2 — displacement is irreducible.** The only NOP run in a write is
+`offset - 1` (the distance from the window base to the target): the CRZ must
+execute *at* the target address, and no register moved `d` there. A stationary
+rotor removes neither the walk nor the CRZ.
+
+**Finding 3 — there is no stale-route defect to fix.** `BOOT_START_MAP` is the
+only precomputed route table (hard-coded `targ_a` per interval, the `ROUTE_MEM`
+analogue), and it costs 531 ops in 17 solves. Unlike the m1 case, there is no
+staleness to recover: every step is replayed by `sim_ops` with assertions, the
+handoff state reproduces 124/124, and each solve is already the BFS shortest
+path *in the solver's metric*. The m1 defect made routes *invalid*; here the
+routes are valid and optimal-in-metric, so `routefix` has nothing to reclaim.
+
+**Consequence.** Neither mechanism touches the 68% that is `solve_sp`, and the
+22% that is movement is ~12 ops/target of which the displacement is geometric.
+**REFUTED as a route to the 118 operations** (scope: k=18 plan, published
+geometry, this synthesizer). The m1 result still matters epistemically — it
+proves a synthesizer frontier is not a language floor — but for the Cat the
+frontier is already known to be a synthesizer frontier, not a Malbolge bound.
+
+**One new measured fact.** The 121 writes use only **53 distinct `a_req`
+values** (the top value, 29,544, appears 9 times; 94 writes share a repeated
+value), and consecutive `a_req` are related by equality in 6 cases and by a
+rotation in 0. Reuse is nevertheless blocked by the write itself: after a CRZ
+`a` equals the *installed value*, not `a_req`, and the 6 equal cases are exactly
+the chain links already refuted in §2–§3.
