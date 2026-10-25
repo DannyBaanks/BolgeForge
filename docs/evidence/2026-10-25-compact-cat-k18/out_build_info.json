@@ -1,0 +1,37 @@
+{
+  "context": "reference/malbolge_org/cat.mal",
+  "delta": 1692,
+  "end_c": 7297,
+  "handoff": {
+    "registers": {
+      "candidate": {
+        "a": 29524,
+        "d": 58975
+      },
+      "reference": {
+        "a": 29524,
+        "d": 58975
+      }
+    },
+    "steps": {
+      "reference_cell": 9067
+    },
+    "variables_installed": 124,
+    "variables_total": 124
+  },
+  "handoff_cell": 7311,
+  "new_cells": 7690,
+  "orig_cells": 9382,
+  "pad_len": 14,
+  "plan": {
+    "boot": "compact",
+    "borrow_penalty": 1,
+    "direct_gap": 18,
+    "k": 18,
+    "restart_p1": 0.8,
+    "restart_p2": 0.9,
+    "seed": 9803
+  },
+  "preamble_ops": 7199,
+  "saved_cells": 1692
+}

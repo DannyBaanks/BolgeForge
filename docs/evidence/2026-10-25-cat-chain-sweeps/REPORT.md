@@ -231,3 +231,19 @@ value), and consecutive `a_req` are related by equality in 6 cases and by a
 rotation in 0. Reuse is nevertheless blocked by the write itself: after a CRZ
 `a` equals the *installed value*, not `a_req`, and the 6 equal cases are exactly
 the chain links already refuted in §2–§3.
+
+## 10. Errata 2026-10-25 (same day, later) — the gap this report guarded is closed
+
+The +118 gap measured here was closed hours later by the compact BOOT (−132
+ops), not by any write-phase route: the 7,690-cell k=18 artifact is published
+in `artifacts/cat_compact.mal` — see
+[`../2026-10-25-compact-cat-k18/REPORT.md`](../2026-10-25-compact-cat-k18/REPORT.md).
+Two consequences for this report's framing:
+
+- §8's "the only live lever is the cost of `solve_sp`" was correct for the
+  *write phase* but missed the BOOT phase entirely: 1,367 boot ops were
+  assumed fixed, and 132 of them were not load-bearing. The cost split added
+  in §9 already contained the tell (`boot 1.365` measured, never audited).
+- The refutations here (window-DP, chain sweeps, `*jo`) remain valid: the
+  7,690 build pays for k=18 with the boot, and the *next* frontier (<7,690,
+  k=19 needs −81) again runs into the write-phase arithmetic.

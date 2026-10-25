@@ -338,6 +338,9 @@ def synthesize_preamble_ops(
     borrow_penalty: int = 8,
     direct_gap: int = 27,
     rng=None,
+    restart_p1: float = 0.60,
+    restart_p2: float = 0.75,
+    boot: str = "original",
 ) -> list[str]:
     if template_clean is None:
         template_clean = clean
@@ -388,23 +391,38 @@ def synthesize_preamble_ops(
                 a = mem[d]
             d = (d + 1) % MEM_SIZE
 
-    b_idx = 1
-    while b_idx <= 1434:
-        if b_idx in BOOT_START_MAP:
-            end_idx, sp_b, targ_a = BOOT_START_MAP[b_idx]
-            if b_idx == 1367:
-                min_addr = min(high_mods.keys())
-                targ_a = find_a_for_crazy(C29524, min_addr - 1)
-                assert targ_a is not None
-            seq = solve_sp(a, mem[sp_b + 2], mem[sp_b + 3], targ_a)
-            sim_ops(seq)
-            b_idx = end_idx + 1
-        else:
-            sim_ops(orig_boot_ops[b_idx])
-            b_idx += 1
+    if boot == "compact":
+        # Compact boot (1,235 ops): the four BOOT savings documented in
+        # tools/compact_boot.py and evidenced in
+        # docs/evidence/2026-10-25-compact-cat-k18/. Leaves the write phase
+        # byte-identical (verified S5: same 5,964 ops, same odometer picks).
+        from tools.compact_boot import build_compact_boot
 
-    sim_ops(CH_NOP + CH_DLD)
-    assert d == 82
+        ops_b, mem_b, a_b, d_b = build_compact_boot(orig_boot_ops, template_clean, high_mods)
+        ops_out.extend(ops_b)
+        mem[:] = mem_b
+        a, d = a_b, d_b
+        assert d == 82
+    elif boot == "original":
+        b_idx = 1
+        while b_idx <= 1434:
+            if b_idx in BOOT_START_MAP:
+                end_idx, sp_b, targ_a = BOOT_START_MAP[b_idx]
+                if b_idx == 1367:
+                    min_addr = min(high_mods.keys())
+                    targ_a = find_a_for_crazy(C29524, min_addr - 1)
+                    assert targ_a is not None
+                seq = solve_sp(a, mem[sp_b + 2], mem[sp_b + 3], targ_a)
+                sim_ops(seq)
+                b_idx = end_idx + 1
+            else:
+                sim_ops(orig_boot_ops[b_idx])
+                b_idx += 1
+
+        sim_ops(CH_NOP + CH_DLD)
+        assert d == 82
+    else:
+        raise ValueError(f"unknown boot mode: {boot!r}")
 
     RESET_94_SEQ = (
         CH_NOP * 2 + CH_DLD + CH_ROT + CH_NOP * 5 + CH_DLD
@@ -555,9 +573,9 @@ def synthesize_preamble_ops(
                 # explicit rng the search sometimes takes a slightly worse move, which
                 # lets a caller run seeded restarts and keep the shortest preamble.
                 scored.sort(key=lambda row: row[0])
-                if rng is None or len(scored) == 1 or rng.random() < 0.60:
+                if rng is None or len(scored) == 1 or rng.random() < restart_p1:
                     _best_score, best_i, best_seq = scored[0]
-                elif len(scored) == 2 or rng.random() < 0.75:
+                elif len(scored) == 2 or rng.random() < restart_p2:
                     _best_score, best_i, best_seq = scored[1]
                 else:
                     _best_score, best_i, best_seq = scored[2]

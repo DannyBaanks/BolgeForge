@@ -1,0 +1,46 @@
+== S0 environment ==
+  reference cat.mal      sha256 ce04a6f27b7045b6…
+  chain_synth.py         sha256 290c78366be8ab77…
+  compact_boot.py        sha256 674710f90cd7ee5d…
+  reference image      9382 cells; delta=1692; budget=7213
+== S1 planner memory model: exact where the plan reads ==
+  model vs real fill: 7784 differing cells, confined to [1533..9380]
+  (that band is the reference image's interior: executed as c, never read
+   as d; S8 proves d never lands there)
+  differing cells inside the write window 58843..59048: 0
+== S2 control C0: patched harness + ORIGINAL boot ==
+  original boot ops    1367
+  total plan ops       7331  (published frontier: 7331)
+== S3 compact boot (in-repo copy) ==
+  compact boot ops     1235  (expected 1235)
+At line 89: 49 93 93 59046 29431
+  cross-check vs handoff scratch function: ops identical=True (scratch len 1235)
+== S4 boot-end memory diff (original vs compact) ==
+  mem[ 59]  orig  6563  compact  1971
+  mem[ 89]  orig 58328  compact    73
+  differing cells: 2
+== S5 instrumented k=18 seed 9803 synthesis (compact boot) ==
+  boot ops             1235
+  write+handoff ops    5964  (original plan: 5964)
+  TOTAL PLAN OPS       7199  (budget 7213, margin 14)
+  odometer +9 calls    13, k_cell chosen: {90: 2, 91: 2, 92: 9}
+  write-phase touches at 50/73/89 by (cell, op): {(50, 'p'): 237, (73, 'p'): 334}
+  write phase identical to the original-boot plan: True (kcell {92: 9, 91: 2, 90: 2} == {92: 9, 91: 2, 90: 2})
+  top touched scratchpads (write phase): 36:1708, 74:1552, 38:1219, 76:1132, 51:989, 94:892, 53:681, 82:379, 35:367, 73:334
+== S6 assembly, budget, determinism ==
+  candidate cells      7690  (expected 7690)
+  end_c                7297  (max allowed 7311)
+  sha256               0e14c807f288d01e17996024474e22395f581e50c1c14afb7b00dc8ec68df74b
+  deterministic rebuild identical: True
+== S7 canonical handoff comparison ==
+  statuses             ref=AT_CELL cand=AT_CELL
+  report ok=True variables=124/124 mismatches=0
+== S8 post-handoff trace (own VM, 2048-byte stream) ==
+  echoed 2048/2048 bytes exact: True  (halted=False, steps=840730, handoff at step 7286)
+  pre-handoff d bands  : {'d=0': 4, 'd=1..99': 5864, 'd=58843..59048': 1418}
+  post-handoff c bands : {'c=7311..7690': 534464, 'c=58843..59048': 296932, 'c=0': 2048}
+  post-handoff d bands : {'d=58843..59048': 833444}
+  post-handoff d < 7311: 0 touches {}
+  post-handoff scratchpad (33..99) touches: 0
+  post-handoff touches of cells 50/73/89: {}
+== VERDICT: k=18 7,690-cell plan DEMONSTRATED under this battery ==

@@ -1,4 +1,4 @@
-"""Certification for artifacts/cat_compact.mal (7,972 cells, k=15 plan)."""
+"""Certification for artifacts/cat_compact.mal (7,690 cells, k=18 plan)."""
 import random
 import sys
 import unittest
@@ -18,15 +18,18 @@ class CompactCatTests(unittest.TestCase):
         self.assertTrue(OUT_PATH.is_file(), "artifacts/cat_compact.mal is missing")
         cells = [b for b in OUT_PATH.read_bytes() if 33 <= b <= 126]
         compressed = [b for b in CAT_COMPRESSED.read_bytes() if 33 <= b <= 126]
-        self.assertEqual(len(cells), 7_972)
+        self.assertEqual(len(cells), 7_690)
         self.assertLess(len(cells), len(compressed))
         self.assertEqual(len(compressed), 8_254)
 
     def test_deterministic_rebuild_matches(self):
         raw, info = build()
         self.assertEqual(OUT_PATH.read_bytes(), raw)
-        self.assertEqual(info["plan"], {"k": 15, "seed": 47, "borrow_penalty": 2, "direct_gap": 9})
-        self.assertEqual(info["preamble_ops"], 7_443)
+        self.assertEqual(info["plan"], {
+            "k": 18, "seed": 9803, "borrow_penalty": 1, "direct_gap": 18,
+            "restart_p1": 0.80, "restart_p2": 0.90, "boot": "compact",
+        })
+        self.assertEqual(info["preamble_ops"], 7_199)
         self.assertLessEqual(info["end_c"], info["handoff_cell"])
 
     def test_exact_output_battery(self):

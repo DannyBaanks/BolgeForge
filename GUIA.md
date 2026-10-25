@@ -12,7 +12,7 @@ Sintetizador y laboratorio de Malbolge Clásico. El núcleo verificado:
 - el corpus histórico de referencia;
 - cuatro benchmarks comprimidos que se reconstruyen byte a byte (`cat`, `digital_root`,
   `adder`, `99_bottles`);
-- **un Cat compacto de 7.972 celdas** (`artifacts/cat_compact.mal`), artefacto aparte del
+- **un Cat compacto de 7.690 celdas** (`artifacts/cat_compact.mal`), artefacto aparte del
   rebuild de los cuatro.
 
 Todo lo demás (MicroCat, pilotos `candidate_cat_*`, variantes) está etiquetado como REFUTADO,
@@ -44,7 +44,7 @@ compila local con `make`; no se versiona.
 |---|---:|---|---|
 | `reference/malbolge_org/cat.mal` | 9.382 | `ce04a6f2…` | referencia histórica |
 | `artifacts/cat_compressed.mal` | 8.254 | `b4ddd5ec…` | `tools/resynthesize.py cat` |
-| `artifacts/cat_compact.mal` | **7.972** | `0d298645…` | `tools/build_compact_cat.py` |
+| `artifacts/cat_compact.mal` | **7.690** | `0e14c807…` | `tools/build_compact_cat.py` |
 | `artifacts/digital_root_compressed.mal` | 26.308 | `69c668a8…` | `tools/resynthesize.py digital_root` |
 | `artifacts/adder_compressed.mal` | 44.914 | `5177cb74…` | `tools/resynthesize.py adder` |
 | `artifacts/99_bottles_compressed.mal` | 21.809 | `9710e8c4…` | `tools/resynthesize.py 99_bottles` |

@@ -1,11 +1,18 @@
 #!/usr/bin/env python3
-"""Build the compact streaming Cat: handoff 9003, k=15, seeded restart 47.
+"""Build the compact streaming Cat: handoff 9003, k=18, seeded restart 9803.
 
-The generic search in ``tools/resynthesize.py`` stops at k=12 (8,254 cells).  At
-k=15 the greedy write ordering misses the preamble budget by 52 operations; a
-seeded restart of that ordering (seed 47, borrow penalty 2, direct window jumps)
-finds a 7,443-operation preamble that fits, yielding 7,972 cells while keeping
-the reference handoff state intact (124/124 variables).
+History: the generic search in ``tools/resynthesize.py`` stops at k=12 (8,254
+cells).  A first seeded plan (k=15, seed 47, borrow penalty 2, direct window
+jumps) fitted 7,443 preamble operations into the k=15 budget and published
+7,972 cells (2026-10-24).  The k=15->k=18 frontier attack then measured that
+the write phase repeats 5,964 operations for every k (the arithmetic of
+``solve_sp``), so only the BOOT phase could pay for the larger shift: the
+compact boot (``tools/compact_boot.py``, 1,235 ops instead of 1,367) removes
+132 operations that the k=18 window plan never uses, and the seed-9803
+restart plan lands at 7,199 operations — 14 under the 7,213 k=18 budget.
+That yields 7,690 cells (282 fewer than the 7,972 build, 1,692 fewer than the
+9,382-cell reference) with the reference handoff state intact (124/124
+variables).  Evidence: ``docs/evidence/2026-10-25-compact-cat-k18/``.
 
 Deterministic: fixed plan, fixed seed, fixed scan order.  Publication is gated by
 
@@ -47,7 +54,15 @@ LIN_END = 9003
 # Reference loop entry used by the handoff gate (the '/' instruction the Cat reaches
 # after its boot); the shifted candidate cell is REFERENCE_CELL - delta.
 REFERENCE_CELL = 9067
-PLAN = {"k": 15, "seed": 47, "borrow_penalty": 2, "direct_gap": 9}
+PLAN = {
+    "k": 18,
+    "seed": 9803,
+    "borrow_penalty": 1,
+    "direct_gap": 18,
+    "restart_p1": 0.80,
+    "restart_p2": 0.90,
+    "boot": "compact",
+}
 
 
 def build() -> tuple[bytes, dict]:
@@ -65,6 +80,9 @@ def build() -> tuple[bytes, dict]:
         borrow_penalty=PLAN["borrow_penalty"],
         direct_gap=PLAN["direct_gap"],
         rng=rng,
+        restart_p1=PLAN["restart_p1"],
+        restart_p2=PLAN["restart_p2"],
+        boot=PLAN["boot"],
     )
     raw, end_c = assemble_shifted_program(template_clean, ops, clean, LIN_END, delta)
     if raw is None:

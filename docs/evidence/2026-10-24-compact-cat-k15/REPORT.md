@@ -136,3 +136,14 @@ over the best tiling). **Refuted**: the greedy cap-9 tiling is a local optimum (
 neighbors 7,432; cap 10/11 cost +450/+715; best tiling+seed 7,360). The cost lives in the
 per-write `solve_sp` machinery (~5,293 ops), not in the partition. Raw evidence:
 [`../2026-10-24-window-dp-v0/REPORT.md`](../2026-10-24-window-dp-v0/REPORT.md).
+
+## Errata 2026-10-25 (supersession)
+
+The 7,972-cell artifact this report certifies was **superseded later the same
+day** by the 7,690-cell k=18 build (compact boot, −132 BOOT ops): see
+[`../2026-10-25-compact-cat-k18/REPORT.md`](../2026-10-25-compact-cat-k18/REPORT.md).
+The 7,972 bytes remain rebuildable from git history and from
+`tools/resynthesize.py` with `boot="original"` and the k=15 plan
+(k=15, seed 47, borrow_penalty 2, direct_gap 9). Nothing in this report was
+changed; the k18 frontier numbers cited here (7,331/7,213, +118) were correct
+at publication time.
