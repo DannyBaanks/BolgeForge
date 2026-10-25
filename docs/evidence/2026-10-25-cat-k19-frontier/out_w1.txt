@@ -1,0 +1,19 @@
+== control ==  total ops 7199 (expected 7199)
+== demand sequence ==  151 rows  {'write': 121, 'plus9': 13, 'sweep': 12, 'sd94': 2, 'reset94': 2, 'final94': 1}
+  CHAIN BREAK spindle 71: x_in 22164 != prev a_req 29544
+  CHAIN BREAK spindle 33: x_in 58953 != prev a_req 58870
+  CHAIN BREAK spindle 48: x_in 22290 != prev a_req 22291
+  CHAIN BREAK spindle 33: x_in 58872 != prev a_req 59048
+  CHAIN BREAK spindle 33: x_in 29543 != prev a_req 29437
+  CHAIN BREAK spindle 33: x_in 21935 != prev a_req 29524
+== cache property ==  chained 78, breaks 16
+  initial x per spindle: {33: 126, 48: 29495, 71: 58890}
+  temp_in per spindle constant: {33: False, 48: False, 71: False}  {33: [59046, 59047], 48: [59046, 59047], 71: [59046, 59047]}
+== real costs ==  entry+solve ops in plan: 3380
+== cost tables ==  50 values x 3 spindles
+  tables done
+  model-greedy total (z-entry):  4751
+  beam-DP best (z-entry model):   4318
+== policy gain bound ==  model: 433 ops (k=19 needs >= 80 on the write phase)
+  sim_ops total (write phase): 29171 in 678 calls
+  demand sequence dumped: 151 rows

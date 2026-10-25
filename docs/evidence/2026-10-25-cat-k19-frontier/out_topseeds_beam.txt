@@ -1,0 +1,7 @@
+seed 3498: == beam best: 6047  (need <= 5883; gain vs greedy 109)
+seed 9509: == beam best: 6046  (need <= 5883; gain vs greedy 113)
+seed 485: == beam best: 6037  (need <= 5883; gain vs greedy 129)
+seed 6532: == beam best: 6046  (need <= 5883; gain vs greedy 120)
+seed 4482: == beam best: 6020  (need <= 5883; gain vs greedy 147)
+seed 8112: == beam best: 6061  (need <= 5883; gain vs greedy 108)
+seed 9330 beam2048: 

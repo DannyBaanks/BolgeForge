@@ -1,0 +1,11 @@
+mode: beam 32
+boot 1,235 ops; rows 151; handoff_d 58930
+  row 25/151: 32 states, best 1031
+  row 50/151: 32 states, best 1999
+  row 75/151: 32 states, best 3030
+  row 100/151: 32 states, best 4034
+  row 125/151: 32 states, best 4955
+  row 150/151: 32 states, best 5838
+== write-phase replay total: 5921 ops (+1 JMP = 5922)
+== beam best: 5921  (k=19 needs <= 5883; gain vs control 42)
+   op stream written: out_beam_ops.txt (5921 chars)

@@ -1,0 +1,31 @@
+  seed 40: total 7605 (write 6369, need <= 5883)
+  seed 41: total 7567 (write 6331, need <= 5883)
+  seed 42: total 7476 (write 6240, need <= 5883)
+  seed 87: total 7408 (write 6172, need <= 5883)
+  seed 485: total 7402 (write 6166, need <= 5883)
+  ... 500/10000 seeds, best (7402, 485), fits 0, 10s
+  ... 1000/10000 seeds, best (7402, 485), fits 0, 13s
+  ... 1500/10000 seeds, best (7402, 485), fits 0, 16s
+  ... 2000/10000 seeds, best (7402, 485), fits 0, 19s
+  ... 2500/10000 seeds, best (7402, 485), fits 0, 21s
+  ... 3000/10000 seeds, best (7402, 485), fits 0, 24s
+  seed 3498: total 7392 (write 6156, need <= 5883)
+  ... 3500/10000 seeds, best (7392, 3498), fits 0, 26s
+  ... 4000/10000 seeds, best (7392, 3498), fits 0, 29s
+  ... 4500/10000 seeds, best (7392, 3498), fits 0, 31s
+  ... 5000/10000 seeds, best (7392, 3498), fits 0, 34s
+  ... 5500/10000 seeds, best (7392, 3498), fits 0, 36s
+  ... 6000/10000 seeds, best (7392, 3498), fits 0, 39s
+  ... 6500/10000 seeds, best (7392, 3498), fits 0, 41s
+  ... 7000/10000 seeds, best (7392, 3498), fits 0, 44s
+  ... 7500/10000 seeds, best (7392, 3498), fits 0, 46s
+  ... 8000/10000 seeds, best (7392, 3498), fits 0, 49s
+  ... 8500/10000 seeds, best (7392, 3498), fits 0, 52s
+  ... 9000/10000 seeds, best (7392, 3498), fits 0, 55s
+  seed 9330: total 7385 (write 6149, need <= 5883)
+  ... 9500/10000 seeds, best (7385, 9330), fits 0, 57s
+  ... 10000/10000 seeds, best (7385, 9330), fits 0, 60s
+== sweep done: 10000 seeds in 60s ==
+  best: seed 9330 total 7385 (write 6149)
+  fits (total <= 7119): 0
+  top 10: [(7385, 9330), (7392, 3498), (7395, 9509), (7402, 485), (7402, 6532), (7403, 4482), (7405, 8112), (7406, 1512), (7408, 87), (7410, 3218)]
