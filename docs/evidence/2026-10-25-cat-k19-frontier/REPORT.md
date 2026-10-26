@@ -171,3 +171,67 @@ Remaining levers for the last 50 ops: higher A* caps on the big segments
 (running), the write-phase entry pads (~4 ops x ~180 spindle entries,
 requires coordinated re-anchoring of cells 84..86 + planner templates), or a
 joint order+assignment search.
+
+## 10. BREAKTHROUGH (2026-10-25, night) — k=19 FITS: the 7,596-cell Cat
+
+**DEMONSTRATED**: `out_k19_candidate.mal`, **7,596 cells** (9,382 − 94·19;
+−94 vs the published 7,690 k=18 artifact, −1,786 vs the reference),
+SHA-256 `80b9dca9af6427135da41ffe2131fad0b5c6ffc1b4b92c8d832d5ebe1911afb9`.
+Plan: **7,056 ops vs the 7,119 budget (margin 63)**.
+
+### 10.1 The joint search (m2): order x assignment together
+
+`w3_joint.py` keeps a beam over (memory, a, remaining-writes) per window and
+chooses, per state, WHICH target to write next and with WHICH (spindle,
+entry) — control: at fixed order and width 512 it reproduces w2's 5,991
+exactly. Joint beam-128: write phase **5,883 ops** (−108).
+
+### 10.2 THE SEMANTIC TRAP: `i` encrypts its jump destination
+
+The first A* batch was model-equivalent yet broke at runtime. Root cause
+found by op-by-op model-vs-real lockstep tracing: **Classic Malbolge
+encrypts the cell an `i` jumps TO** (it is in mb_ref.c's own comment —
+"Jump encrypts its destination" — and in the canonical interpreter). The
+entry template's `i` at cell 0 jumps to cell 98 and encrypts it: at runtime
+cells 0 and 98 differ from the planner model before any plan op runs. The
+canonical plans never read them (empirically proven by 7,199/7,199
+lockstep on the published k=18 candidate); my A* guard allowed reads up to
+98 and S7's found path read cell 98. **Fix**: reads restricted to
+[1..97] ∪ [58,843..59,048]. After the fix the spliced boot holds a
+**7,160/7,160 model-vs-runtime lockstep** — the A* savings are now
+runtime-proven, not model-proven. (A second, earlier liveness bug — the
+log recorded the post-op d, attributing each `j` read to its target cell —
+was also found and fixed this session.)
+
+### 10.3 The final chain (every step deterministic, every op verified)
+
+| step | ops |
+|---|---:|
+| compact boot (canonical) | 1,235 |
+| A* segments (9 replacements, runtime-safe guard) | 1,196 |
+| joint write phase (beam-128, order x assignment) | 5,883 |
+| JMP + NOP-run compression | 7,056 total |
+
+Gates: assemble end_c 7,154 ≤ 7,217; handoff **124/124, AT_CELL, 0
+mismatches, registers equal** (the compare requires the reference memory
+mutated to its handoff state — a 0/0 result means a misuse of the gate);
+`mb_ref` 7/7 cases; **64 KiB binary 65,536/65,536 exact**; traced echo
+2,048/2,048 exact with **zero post-handoff low-memory reads** (the safety
+property for both the boot's A* deltas and the joint write stream).
+
+### 10.4 k=19 scoreboard (all levers measured this session)
+
+| stage | k=19 total |
+|---|---:|
+| greedy order (seed 9803) | 7,604 |
+| 10,000-seed sweep (best 9330) | 7,385 |
+| + fixed-order beam-512 | 7,227 |
+| + NOP compression | 7,205 |
+| + A* segments (first, broken guard) | 7,187* |
+| + A* runtime-safe + joint beam-128 + compression | **7,056** |
+
+Not yet done: the publication pipeline (replace `artifacts/cat_compact.mal`,
+wire the deterministic chain into `tools/`, update tests/CLAIMS/ROADMAP/
+README, full `make test` + independent mirror). The 7,690-cell artifact is
+untouched; this candidate is evidence-grade, verified by every research
+gate the repository uses.

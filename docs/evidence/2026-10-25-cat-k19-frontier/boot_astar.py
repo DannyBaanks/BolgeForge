@@ -40,14 +40,16 @@ from tools.resynthesize import extract_target_state  # noqa: E402
 
 REF = ROOT / "reference" / "malbolge_org" / "cat.mal"
 WRITE_MAX = 96
-READ_MAX = 98
+READ_MAX = 97          # cell 98 is the i-jump's target: encrypted at runtime
 READ_HIGH = 58843
 INF = 10 ** 9
 OPS = (CH_NOP, CH_DLD, CH_ROT, CH_CRZ)
 
 
 def read_safe(d: int) -> bool:
-    return d <= READ_MAX or d >= READ_HIGH
+    # cell 0 executes (the entry i) and cell 98 is its encrypted jump
+    # target: both differ from the planner model at runtime.
+    return 1 <= d <= READ_MAX or d >= READ_HIGH
 
 
 def segment_states(boot, template, n, i, ln):
