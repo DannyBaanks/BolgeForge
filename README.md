@@ -26,7 +26,7 @@ Owner's instructions in Spanish: [GUIA.md](GUIA.md).
 
 The alleged EOF defect in the included historical `cat.mal` was refuted: that file terminates cleanly without emitting an extra byte. Mathematical identities in research notes do not establish correctness of complete programs.
 
-After the 2026-10-20 closure pass, every item in this README, the roadmap and the claims ledger has a terminal status: DEMONSTRATED with evidence, REFUTED, RETIRED (withdrawn, neither asserted nor denied), or OPEN and explicitly unclaimed. The ledger preserves the audit's historical NOT_DEMONSTRATED findings in its audit-result column; historical research and experiment artifacts keep their original labels as evidence. The full mapping is in [the claims ledger](docs/CLAIMS.md); raw evidence is in [the closure evidence](docs/evidence/2026-10-20-closures/). Three items were added after that pass with their own dated evidence: the 7,972-cell compact Cat (2026-10-24, superseded the next day), the independent 120-cell Truth Machine (2026-10-25) and the 7,690-cell k=18 compact Cat (2026-10-25, which replaces the published artifact). The frontier attacks recorded along the way (k=18 gap measurement, window tiling, chain sweeps, the m1 `*jo` transfer) are refutations with dated evidence; the superseded 7,972 bytes remain rebuildable from git history.
+After the 2026-10-20 closure pass, every item in this README, the roadmap and the claims ledger has a terminal status: DEMONSTRATED with evidence, REFUTED, RETIRED (withdrawn, neither asserted nor denied), or OPEN and explicitly unclaimed. The ledger preserves the audit's historical NOT_DEMONSTRATED findings in its audit-result column; historical research and experiment artifacts keep their original labels as evidence. The full mapping is in [the claims ledger](docs/CLAIMS.md); raw evidence is in [the closure evidence](docs/evidence/2026-10-20-closures/). Three items were added after that pass with their own dated evidence: the 7,972-cell compact Cat (2026-10-24, superseded the next day), the independent 120-cell Truth Machine (2026-10-25) and the 7,596-cell k=19 compact Cat (2026-10-25, which replaces the published artifact). The frontier attacks recorded along the way (k=18 gap measurement, window tiling, chain sweeps, the m1 `*jo` transfer) are refutations with dated evidence; the superseded 7,972 bytes remain rebuildable from git history.
 
 ## Compression
 
@@ -40,7 +40,7 @@ After the 2026-10-20 closure pass, every item in this README, the roadmap and th
 
 These savings compare non-whitespace cells. Formatted reference file bytes are a different measure. Digital Root and Adder were repaired using the actual linear handoffs at 31,802 and 55,802. Their corrected hashes and preserved previous artifacts are recorded in [the repair report](docs/repairs/2026-10-20/REPORT.md).
 
-A separate, smaller Cat variant also exists: `artifacts/cat_compact.mal` streams the same inputs exactly in **7,690 cells** (564 fewer than the compressed Cat, 1,692 fewer than the reference), with the reference handoff state reproduced 124/124. It is generated deterministically by `tools/build_compact_cat.py` (k=18 plan, compact boot), certified by `tests/test_compact_cat.py`, and documented in [the compact-cat-k18 evidence](docs/evidence/2026-10-25-compact-cat-k18/REPORT.md) (the first 7,972-cell build: [compact-cat-k15 evidence](docs/evidence/2026-10-24-compact-cat-k15/REPORT.md)).
+A separate, smaller Cat variant also exists: `artifacts/cat_compact.mal` streams the same inputs exactly in **7,596 cells** (564 fewer than the compressed Cat, 1,692 fewer than the reference), with the reference handoff state reproduced 124/124. It is generated deterministically by `tools/build_compact_cat.py` (k=19 plan, compact boot), certified by `tests/test_compact_cat.py`, and documented in [the compact-cat-k19 evidence](docs/evidence/2026-10-25-cat-k19-frontier/REPORT.md) (the first 7,972-cell build: [compact-cat-k15 evidence](docs/evidence/2026-10-24-compact-cat-k15/REPORT.md)).
 
 Tests cover binary Cat streams through 65,536 bytes (including the compact Cat under both `mb_ref` and the independent Olmstead mirror), six Digital Root vectors, 100 Adder pairs with each operand in the author's `0..999` domain, the complete 99 Bottles output, the strict-valid Truth Machine (including its cycle proof), its behavior-preserving 90-byte variant, and the loader-valid FizzBuzz reference. They compare reference and compressed programs and require strict HALT. The generator validates a candidate before publishing it; `--check` never changes published artifacts.
 
@@ -52,7 +52,7 @@ Tests cover binary Cat streams through 65,536 bytes (including the compact Cat u
 make                         # Build mb_ref
 make test                    # Oracle regressions, reference corpus, compressed outputs, quines, independent mirror
 make test-rebuild            # Rebuild four compressed files, verify semantics and committed bytes
-python3 tools/build_compact_cat.py --check   # Rebuild the compact Cat and compare published bytes
+python3 tools/build_compact_cat.py --check   # Rebuild the compact Cat (k=19) and compare published bytes
 python3 synthesize.py 281     # Regenerate m=281; approximately 13 minutes in the audit
 python3 tools/resynthesize.py all --output-dir /tmp/bolgeforge-new-build
 ```

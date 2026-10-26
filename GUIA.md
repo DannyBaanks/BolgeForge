@@ -32,7 +32,7 @@ compila local con `make`; no se versiona.
 | `make test-rebuild` | reconstruye los 4 comprimidos publicados y exige bytes idénticos | ~5 min |
 | `make test-oracle` | solo los unit tests de `tests/` | ~5 s |
 | `make test-independent` | solo el espejo Olmstead independiente | ~5 s |
-| `python3 tools/build_compact_cat.py --check` | reconstruye el Cat compacto y compara con lo publicado | ~2 s |
+| `python3 tools/build_compact_cat.py --check` | reconstruye el Cat compacto (k=19) y compara con lo publicado | ~2 s |
 | `python3 tools/build_compact_cat.py` | reconstruye, verifica y **publica** `cat_compact.mal` | ~2 s |
 | `make test-tm` / `make test-fizzbuzz` | Truth Machine / FizzBuzz | segundos |
 | `make synth-cat` / `make microcat` | sintetizadores experimentales | variable |
@@ -50,7 +50,7 @@ compila local con `make`; no se versiona.
 | `artifacts/99_bottles_compressed.mal` | 21.809 | `9710e8c4…` | `tools/resynthesize.py 99_bottles` |
 
 Los pilotos `artifacts/candidate_cat_*.mal` están **gitignorados** y **no son válidos**; se
-conservan como evidencia. No confundirlos con `cat_compact.mal`.
+conservan como evidencia. No confundirlos con `cat_compact.mal` (k=19, 7.596 celdas).
 
 ## 5. El Cat compacto (7.972 celdas)
 
