@@ -1,6 +1,13 @@
-# BolgeForge
+# BolgeForge v2.0 — Classic Malbolge Synthesis Suite & Oracle Laboratory
 
-A synthesizer and research laboratory for Classic Malbolge. The verified core contains byte-exact quines, the historical reference corpus, four rebuilt compressed benchmarks, a smaller compact Cat (7,690 cells) and an independent 120-cell Truth Machine. Experimental programs are preserved separately from certification claims.
+[![Version](https://img.shields.io/badge/version-2.0-blue.svg)](https://github.com/DannyBaanks/BolgeForge)
+[![C](https://img.shields.io/badge/language-C99-00599C.svg)](https://en.wikipedia.org/wiki/C99)
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://python.org)
+[![Tests](https://img.shields.io/badge/tests-PASS-brightgreen.svg)]()
+
+A synthesizer, benchmark corpus, and reference oracle laboratory for Classic Malbolge. The verified core contains byte-exact quines, the historical reference corpus, four rebuilt compressed benchmarks, a smaller compact Cat (7,596 cells), an independent 120-cell Truth Machine, and the canonical reference oracle `mb_ref.c`.
+
+Core member and oracle provider of the **v2.0 Malbolge Ecosystem Multi-Oracle Fleet**.
 
 ```bash
 make test
