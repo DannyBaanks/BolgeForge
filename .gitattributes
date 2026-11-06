@@ -2,3 +2,8 @@
 *.mal binary
 *.mb binary
 *.malbolge binary
+# Windows native build scripts: CRLF in the Windows working tree
+# (blob stays LF in git); GNU make file stays LF everywhere.
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+Makefile.win text eol=lf

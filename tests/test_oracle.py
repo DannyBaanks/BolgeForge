@@ -6,14 +6,20 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-ORACLE = Path(os.environ.get('MB_REF', ROOT / 'mb_ref'))
+ORACLE = Path(os.environ.get('MB_REF', ROOT / ('mb_ref.exe' if os.name == 'nt' else 'mb_ref')))
 
 class OracleTests(unittest.TestCase):
     def run_source(self, source, *args):
-        with tempfile.NamedTemporaryFile() as program:
+        # delete=False + close before subprocess: on Windows the oracle
+        # cannot fopen a NamedTemporaryFile that Python still holds open.
+        with tempfile.NamedTemporaryFile(delete=False) as program:
             program.write(source)
             program.flush()
-            return subprocess.run([str(ORACLE), program.name, *args], input=b'', capture_output=True, timeout=3)
+            name = program.name
+        try:
+            return subprocess.run([str(ORACLE), name, *args], input=b'', capture_output=True, timeout=3)
+        finally:
+            Path(name).unlink(missing_ok=True)
 
     def test_invalid_initial_opcode_rejected(self):
         result = self.run_source(b'!!', '1')

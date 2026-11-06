@@ -18,6 +18,30 @@ jobs:
       - name: Reconstruct all four compressed programs without changing artifacts
         run: make test-rebuild
 
+  windows-native:
+    name: Native Windows build and strict certification
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Ensure MinGW gcc is on PATH
+        shell: pwsh
+        run: |
+          $mingw = 'C:\msys64\mingw64\bin'
+          if (Test-Path $mingw) { $env:PATH = "$mingw;$env:PATH" }
+          gcc --version
+          python --version
+      - name: Build mb_ref.exe and run the make-test equivalent
+        shell: pwsh
+        run: .\build_windows.ps1
+      - name: Reconstruct all four compressed programs without changing artifacts
+        shell: pwsh
+        run: .\build_windows.ps1 -Rebuild
+
   synthesize-record:
     name: Synthesize m=281 and check byte-exact regression
     runs-on: ubuntu-latest

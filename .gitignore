@@ -1,6 +1,7 @@
 __pycache__/
 *.pyc
 mb_ref
+mb_ref.exe
 oracle/mb_ref
 .build/
 

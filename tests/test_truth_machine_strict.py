@@ -3,11 +3,12 @@ import hashlib
 import json
 import os
 import subprocess
+import sys
 import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-ORACLE = Path(os.environ.get('MB_REF', ROOT / 'mb_ref'))
+ORACLE = Path(os.environ.get('MB_REF', ROOT / ('mb_ref.exe' if os.name == 'nt' else 'mb_ref')))
 ARTIFACT = ROOT / 'artifacts/truth_machine_classic_90b.mal'
 VARIANT = ROOT / 'artifacts/truth_machine_variant_90b.mal'
 PROVER = ROOT / 'tools/prove_truth_machine.py'
@@ -22,7 +23,7 @@ class TruthMachineStrictTests(unittest.TestCase):
 
     def assert_cycle_proof(self, artifact):
         result = subprocess.run(
-            ['python3', str(PROVER), str(artifact), '--json'],
+            [sys.executable, str(PROVER), str(artifact), '--json'],
             capture_output=True, text=True, timeout=120,
         )
         self.assertEqual(result.returncode, 0, result.stderr)

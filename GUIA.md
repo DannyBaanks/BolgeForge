@@ -23,6 +23,11 @@ RETIRADO o ABIERTO en el ledger. No se promociona por conveniencia.
 Linux con `gcc`, `make` y `python3` ≥ 3.10. Sin red. `mb_ref` (el oráculo estricto en C) se
 compila local con `make`; no se versiona.
 
+Windows nativo (sin `make`): MinGW-w64 `gcc` y Python ≥ 3.10 en `PATH`
+(`py -3` se prueba primero; `python3` en Windows suele ser un stub de la
+Store). El oráculo se compila como `mb_ref.exe` con stdin/stdout en
+binario. Guía completa con salidas reales: [GUIA-WINDOWS.md](GUIA-WINDOWS.md).
+
 ## 3. Comandos
 
 | comando | qué hace | tiempo |
@@ -37,6 +42,10 @@ compila local con `make`; no se versiona.
 | `make test-tm` / `make test-fizzbuzz` | Truth Machine / FizzBuzz | segundos |
 | `make synth-cat` / `make microcat` | sintetizadores experimentales | variable |
 | `make audit` / `make analyze-corpus` | auditoría de bloat / análisis del corpus | variable |
+| `.\build_windows.ps1` (Windows) | compila `mb_ref.exe` + equivalente a `make test` | ~10 s |
+| `.\build_windows.ps1 -Rebuild` (Windows) | añade el rebuild de los 4 comprimidos | ~5 min |
+| `build_windows.bat` (Windows, cmd) | mismo que el `.ps1` desde `cmd.exe` | ~10 s |
+| `mingw32-make -f Makefile.win test` (Windows) | equivalente con GNU make/MinGW | ~10 s |
 
 ## 4. Inventario de artefactos
 

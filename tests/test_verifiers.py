@@ -1,6 +1,8 @@
 """End-to-end controls for missing inventories and masked earlier quine failures."""
+import os
 import shutil
 import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -13,7 +15,7 @@ class VerifierTests(unittest.TestCase):
             root = Path(directory)
             (root / 'tools').mkdir()
             shutil.copyfile(ROOT / 'tools/test_compressed.py', root / 'tools/test_compressed.py')
-            p = subprocess.run(['python3', str(root / 'tools/test_compressed.py')], capture_output=True, timeout=5)
+            p = subprocess.run([sys.executable, str(root / 'tools/test_compressed.py')], capture_output=True, timeout=5)
             self.assertNotEqual(p.returncode, 0)
             self.assertNotIn(b'PASS', p.stdout)
 
@@ -23,16 +25,20 @@ class VerifierTests(unittest.TestCase):
             (root / 'tools').mkdir()
             (root / 'artifacts').mkdir()
             shutil.copyfile(ROOT / 'tools/test_quines.py', root / 'tools/test_quines.py')
-            (root / 'mb_ref').symlink_to(ROOT / 'mb_ref')
+            oracle_src = ROOT / ('mb_ref.exe' if os.name == 'nt' else 'mb_ref')
+            try:
+                (root / oracle_src.name).symlink_to(oracle_src)
+            except OSError:
+                shutil.copyfile(oracle_src, root / oracle_src.name)
             for program in (ROOT / 'artifacts').glob('candidate_m*.mal'):
                 shutil.copyfile(program, root / 'artifacts' / program.name)
             (root / 'artifacts/candidate_m281_53562b.mal').write_bytes(b'QC')
-            p = subprocess.run(['python3', str(root / 'tools/test_quines.py')], capture_output=True, timeout=5)
+            p = subprocess.run([sys.executable, str(root / 'tools/test_quines.py')], capture_output=True, timeout=5)
             self.assertNotEqual(p.returncode, 0)
             self.assertIn(b'Quine mismatch', p.stderr)
 
     def test_unknown_rebuild_target_fails(self):
-        p = subprocess.run(['python3', str(ROOT / 'tools/resynthesize.py'), 'missing-target'],
+        p = subprocess.run([sys.executable, str(ROOT / 'tools/resynthesize.py'), 'missing-target'],
                            capture_output=True, timeout=10)
         self.assertNotEqual(p.returncode, 0)
 

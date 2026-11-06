@@ -909,7 +909,11 @@ out_file.write_bytes(formatted_source)
 print(f"WROTE EXACT QUINE FILE TO: {out_file}", flush=True)
 
 # 13. Canonical Olmstead verification with mb_ref
-mb_ref_bin = SCRIPT_DIR / 'mb_ref'
+mb_ref_bin = SCRIPT_DIR / ('mb_ref.exe' if os.name == 'nt' else 'mb_ref')
+if not mb_ref_bin.exists():
+    _alt = SCRIPT_DIR / ('mb_ref' if os.name == 'nt' else 'mb_ref.exe')
+    if _alt.exists():
+        mb_ref_bin = _alt
 if mb_ref_bin.exists():
     print(f"RUNNING CANONICAL OLMSTEAD VERIFICATION WITH {mb_ref_bin}...", flush=True)
     out_run = OUT_DIR / f'output_m{m_target}.mal'
@@ -919,16 +923,18 @@ if mb_ref_bin.exists():
     elapsed = time.time() - t0
     print(f"Interpreter finished in {elapsed:.2f}s with returncode {res.returncode}", flush=True)
     
-    diff_res = subprocess.run(['diff', '-u', str(out_file), str(out_run)], capture_output=True, text=True)
-    if diff_res.returncode == 0:
+    _a = out_file.read_bytes()
+    _b = out_run.read_bytes()
+    if _a == _b:
         print("*" * 60, flush=True)
         print(f"VERIFICATION PASS: EXACT 0-BYTE DIFFERENCE BIT-FOR-BIT!", flush=True)
         print(f"CANONICAL MALBOLGE QUINE FOR m = {m_target} CONFIRMED!", flush=True)
         print(f"FILE SIZE: {file_bytes_count} BYTES (vs Lutter's 59,852 bytes, saved {59852 - file_bytes_count} bytes!)", flush=True)
         print("*" * 60, flush=True)
     else:
-        print("Diff mismatch:", diff_res.stdout[:500], flush=True)
+        print(f"Diff mismatch: {len(_a)} vs {len(_b)} bytes", flush=True)
 else:
-    print(f"mb_ref oracle not found at {mb_ref_bin} -- build it with `make`, then verify:", flush=True)
-    print(f"  ./{mb_ref_bin.name} {out_file} > /tmp/out.mal && diff {out_file} /tmp/out.mal", flush=True)
+    _tmp = os.environ.get('TEMP', '/tmp') if os.name == 'nt' else '/tmp'
+    print(f"mb_ref oracle not found at {mb_ref_bin} -- build it first (`make` on Linux, `build_windows.bat` on Windows), then verify:", flush=True)
+    print(f"  ./{mb_ref_bin.name} {out_file} > {_tmp}/out.mal && diff {out_file} {_tmp}/out.mal", flush=True)
     print("(or use any Classic Malbolge interpreter: the quine must print its own source byte-for-byte)", flush=True)

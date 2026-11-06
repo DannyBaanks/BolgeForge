@@ -12,7 +12,7 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-ORACLE = Path(os.environ.get('MB_REF', ROOT / 'mb_ref'))
+ORACLE = Path(os.environ.get('MB_REF', ROOT / ('mb_ref.exe' if os.name == 'nt' else 'mb_ref')))
 REFERENCE = ROOT / 'docs/audits/2026-10-20-e2e/angel_fizzbuzz_converted.mal'
 EXPECTED_SHA256 = 'f039dc221ad122dda8b7226ad5bc68b8654e9e3a42dcea2b37554cd6f91b56af'
 

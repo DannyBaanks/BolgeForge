@@ -227,13 +227,16 @@ def _load_c_solver() -> ctypes.CDLL:
     build_dir = REPO_ROOT / ".build"
     build_dir.mkdir(exist_ok=True)
     c_path = build_dir / "sp_solver.c"
-    so_path = build_dir / "sp_solver.so"
+    # Windows shared libraries are .dll; POSIX are .so. MinGW gcc builds
+    # the .dll with -shared (no -fPIC needed); Linux gcc keeps -fPIC.
+    so_path = build_dir / ("sp_solver.dll" if sys.platform == "win32" else "sp_solver.so")
     if not so_path.exists() or not c_path.exists() or c_path.read_text() != C_SOLVER_SRC:
         c_path.write_text(C_SOLVER_SRC)
-        subprocess.run(
-            ["gcc", "-O3", "-shared", "-fPIC", str(c_path), "-o", str(so_path)],
-            check=True,
-        )
+        cmd = ["gcc", "-O3", "-shared"]
+        if sys.platform != "win32":
+            cmd.append("-fPIC")
+        cmd += [str(c_path), "-o", str(so_path)]
+        subprocess.run(cmd, check=True)
     lib = ctypes.CDLL(str(so_path))
     lib.solve_sp_c.argtypes = [ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_int, ctypes.c_char_p]
     lib.solve_sp_c.restype = ctypes.c_int

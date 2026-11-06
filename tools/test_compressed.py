@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Strict, bounded, exact-output checks; missing artifacts are failures."""
+import os
 import subprocess
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-MB_REF = REPO_ROOT / 'mb_ref'
+MB_REF = Path(os.environ.get('MB_REF', REPO_ROOT / ('mb_ref.exe' if os.name == 'nt' else 'mb_ref')))
 ARTIFACTS = REPO_ROOT / 'artifacts'
 REFERENCE = REPO_ROOT / 'reference' / 'malbolge_org'
 TARGETS = ('cat', 'digital_root', 'adder', '99_bottles')

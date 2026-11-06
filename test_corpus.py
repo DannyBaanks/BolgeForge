@@ -4,13 +4,14 @@
 Verifies execution and correctness of all programs from malbolge.org against
 the independent C oracle `mb_ref` (Olmstead Classic semantics).
 """
+import os
 import sys
 import subprocess
 import time
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent
-MB_REF = REPO_ROOT / 'mb_ref'
+MB_REF = Path(os.environ.get('MB_REF', REPO_ROOT / ('mb_ref.exe' if os.name == 'nt' else 'mb_ref')))
 CORPUS_DIR = REPO_ROOT / 'reference' / 'malbolge_org'
 
 

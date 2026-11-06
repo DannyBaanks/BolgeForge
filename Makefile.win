@@ -1,0 +1,56 @@
+# Makefile.win - BolgeForge native Windows build (GNU make / mingw32-make).
+#
+# Use with a MinGW-w64 toolchain on PATH (gcc + mingw32-make), e.g. WinLibs:
+#   mingw32-make -f Makefile.win            # build mb_ref.exe
+#   mingw32-make -f Makefile.win test       # make-test equivalent
+#   mingw32-make -f Makefile.win test-rebuild
+#   mingw32-make -f Makefile.win clean
+#
+# Override the interpreter if needed (default is the py launcher, because
+# `python3` on Windows is usually a Microsoft Store stub):
+#   mingw32-make -f Makefile.win PYTHON=python test
+#
+# This file uses LF line endings on every OS (see .gitattributes) and
+# cmd.exe recipes (del, set). The Linux Makefile remains the certified
+# path on Linux; build_windows.ps1/.bat need no make at all.
+# CC must be a plain assignment, not ?=: GNU make's built-in default
+# is `cc`, which does not exist on Windows (only `gcc`). A command-line
+# `CC=clang` still overrides this, as usual for make.
+CC = gcc
+CFLAGS ?= -O2 -Wall
+PYTHON ?= py -3
+EXE = .exe
+MB_REF = mb_ref$(EXE)
+
+all: $(MB_REF)
+
+$(MB_REF): oracle/mb_ref.c
+	$(CC) $(CFLAGS) -o $@ $<
+
+clean:
+	$(PYTHON) -c "import pathlib; pathlib.Path('mb_ref.exe').unlink(missing_ok=True); pathlib.Path('.build/sp_solver.dll').unlink(missing_ok=True)"
+
+test-oracle: $(MB_REF)
+	$(PYTHON) -m unittest discover -s tests -v
+
+test-corpus: $(MB_REF)
+	$(PYTHON) test_corpus.py
+
+test-compressed: $(MB_REF)
+	$(PYTHON) tools/test_compressed.py
+
+test-quines: $(MB_REF)
+	$(PYTHON) tools/test_quines.py
+
+test-independent: $(MB_REF)
+	$(PYTHON) tools/test_independent.py
+
+check-compact: $(MB_REF)
+	$(PYTHON) tools/build_compact_cat.py --check
+
+test: test-oracle test-corpus test-compressed test-quines test-independent check-compact
+
+test-rebuild: $(MB_REF)
+	$(PYTHON) tools/resynthesize.py all --check
+
+.PHONY: all clean test test-oracle test-corpus test-compressed test-quines test-independent check-compact test-rebuild

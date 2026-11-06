@@ -5,7 +5,7 @@ import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-ORACLE = Path(os.environ.get('MB_REF', ROOT / 'mb_ref'))
+ORACLE = Path(os.environ.get('MB_REF', ROOT / ('mb_ref.exe' if os.name == 'nt' else 'mb_ref')))
 CANDIDATES = [
     ROOT / 'artifacts/cat_compressed.mal',
     ROOT / 'reference/malbolge_org/cat.mal',

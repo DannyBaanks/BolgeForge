@@ -5,13 +5,55 @@ Only known loader-valid programs are executed; malformed/short sources never
 reach the historical interpreter's unsafe memory initialization paths.
 """
 import hashlib
+import os
 import random
+import shutil
 import subprocess
 import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / 'docs/audits/2026-10-20-e2e/olmstead_strict_mirror.c'
+ORACLE = Path(os.environ.get('MB_REF', ROOT / ('mb_ref.exe' if os.name == 'nt' else 'mb_ref')))
+
+
+def _find_cc():
+    for name in ('cc', 'gcc', 'clang'):
+        found = shutil.which(name)
+        if found:
+            return found
+    raise RuntimeError('No C compiler found (cc/gcc/clang); install gcc/MinGW on Windows or gcc on Linux')
+
+
+def _mirror_source_for_build(directory):
+    """Return the mirror source to compile.
+
+    The pinned audit mirror in docs/ is never modified. On Windows the
+    historical interpreter needs binary stdin/stdout (and "rb" for the
+    program file); that patch is applied only to a temporary copy.
+    On Linux/macOS the pinned source is compiled as-is.
+    """
+    if os.name != 'nt':
+        return SOURCE
+    # Normalize CRLF/LF first: the Windows working tree has CRLF, the
+    # git blob has LF, and the replacements below must match either.
+    text = SOURCE.read_bytes().decode('utf-8').replace('\r\n', '\n')
+    patched = text.replace(
+        '#include <string.h>',
+        '#include <string.h>\n#include <fcntl.h>\n#include <io.h>', 1)
+    # Inject after the declarations in main() (C89-style block), not
+    # before them, so the patched copy stays declaration-first.
+    patched = patched.replace(
+        'unsigned short *mem;\n',
+        'unsigned short *mem;\n'
+        '  _setmode(_fileno(stdin), _O_BINARY);\n'
+        '  _setmode(_fileno(stdout), _O_BINARY);\n', 1)
+    patched = patched.replace('fopen( argv[1], "r" )', 'fopen( argv[1], "rb" )', 1)
+    if '_setmode' not in patched or '"rb"' not in patched:
+        raise RuntimeError('Windows mirror patch did not apply; mirror source changed?')
+    out = Path(directory) / 'olmstead_mirror_win.c'
+    out.write_bytes(patched.encode('utf-8'))
+    return out
 
 
 def execute(binary, program, payload):
@@ -24,8 +66,9 @@ def execute(binary, program, payload):
 
 def main():
     with tempfile.TemporaryDirectory(prefix='bolgeforge-independent-') as directory:
-        binary = Path(directory) / 'olmstead'
-        subprocess.run(['cc', '-O2', '-o', str(binary), str(SOURCE)], check=True)
+        binary = Path(directory) / ('olmstead.exe' if os.name == 'nt' else 'olmstead')
+        mirror = _mirror_source_for_build(directory)
+        subprocess.run([_find_cc(), '-O2', '-o', str(binary), str(mirror)], check=True)
         cases = []
         for folder in ['reference/malbolge_org', 'artifacts']:
             for program in sorted((ROOT / folder).glob('*.mal')):
@@ -57,7 +100,7 @@ def main():
                         bytes(rng.randrange(256) for _ in range(65_536))):
             cases.append((compact, payload))
         for program, payload in cases:
-            expected = execute(ROOT / 'mb_ref', program, payload)
+            expected = execute(ORACLE, program, payload)
             actual = execute(binary, program, payload)
             if actual != expected:
                 raise RuntimeError(f'Independent mismatch: {program.name}, input {payload[:40]!r}')

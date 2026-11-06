@@ -6,6 +6,10 @@
 #include <ctype.h>
 #include <string.h>
 #include <errno.h>
+#ifdef _WIN32
+#include <fcntl.h>
+#include <io.h>
+#endif
 
 static const char xlat1[] = "+b(29e*j1VMEKLyC})8&m#~W>qxdRp0wkrUo[D7,XTcA\"lI.v%{gJh4G\\-=O@5`_3i<?Z';FNQuY]szf$!BS/|t:Pn6^Ha";
 static const char xlat2[] = "5z]&gqtyfr$(we4{WP)H-Zn,[%\\3dL+Q;>U!pJS72FhOA1CB6v^=I_0/8|jsb9m<.TVac`uY*MK'X~xDl}REokN:#?G\"i@";
@@ -30,6 +34,14 @@ static inline unsigned short op(unsigned short x, unsigned short y) {
 }
 
 int main(int argc, char **argv) {
+#ifdef _WIN32
+    /* Windows C runtime defaults stdin/stdout to text mode: LF becomes
+     * CRLF on output and Ctrl-Z (0x1A) acts as EOF on input, which
+     * corrupts binary Malbolge streams. Linux/macOS are binary by
+     * default, so this is a no-op there. */
+    _setmode(_fileno(stdin), _O_BINARY);
+    _setmode(_fileno(stdout), _O_BINARY);
+#endif
     if (argc < 2 || argc > 3) {
         fprintf(stderr, "Usage: %s <program.mal> [max_steps]\n", argv[0]);
         return 1;

@@ -57,6 +57,44 @@ python3 synthesize.py 281     # Regenerate m=281; approximately 13 minutes in th
 python3 tools/resynthesize.py all --output-dir /tmp/bolgeforge-new-build
 ```
 
+On Windows (native, no `make` required):
+
+```powershell
+.\build_windows.ps1            # Build mb_ref.exe + make-test equivalent
+.\build_windows.ps1 -Rebuild   # + rebuild the four compressed files (~5 min)
+build_windows.bat              # cmd.exe entry point (delegates to the .ps1)
+mingw32-make -f Makefile.win test   # GNU-make flavour, MinGW-w64 only
+```
+
+Windows requirements: MinGW-w64 `gcc` and Python 3.10+ on `PATH`
+(`py -3` is probed first; `python3` on Windows is usually a Store stub).
+`mb_ref.exe` sets binary stdin/stdout (`_setmode(..., _O_BINARY)` on
+`_WIN32` only) so LF is not translated to CRLF and Ctrl-Z is not EOF;
+on Linux/macOS stdin/stdout are already binary and the code is a no-op.
+The `.mal` artifacts are byte-identical on both OSes (`*.mal binary`
+in `.gitattributes`). The pinned Olmstead mirror under `docs/` is never
+modified; on Windows `tools/test_independent.py` compiles a binary-mode
+patched copy in a temp directory. Operator guide: [GUIA-WINDOWS.md](GUIA-WINDOWS.md).
+
+### Windows/Linux parity
+
+Local verification 2026-11-05: Linux = Docker `python:3.11`
+(Debian 13, gcc 14, make 4.4); Windows = Windows 11, MinGW-w64 gcc
+16.1.0, Python 3.12.10. The `.mal` artifacts are byte-identical on
+both OSes (SHA-256 checked disk vs `HEAD` blob, `CR=0`).
+
+| Area | Linux | Windows (native) |
+|---|---|---|
+| Oracle build | `make` → `mb_ref` — DEMONSTRATED (CI `ubuntu-latest` + local) | `build_windows.ps1` → `mb_ref.exe` — DEMONSTRATED local |
+| Certification (`make test` equivalent) | 52 tests + corpus + 4 compressed + 5 quines + independent mirror (236) — DEMONSTRATED | same suite, exit 0 — DEMONSTRATED local |
+| Rebuild 4 compressed (`test-rebuild`) | byte-exact — DEMONSTRATED (CI + local) | `-Rebuild` byte-exact (cat/digital_root/adder/99_bottles) — DEMONSTRATED local |
+| Compact Cat `--check` (7,596 cells, handoff 124/124) | DEMONSTRATED | DEMONSTRATED local |
+| Quine synthesis m=281 (~13 min) | DEMONSTRATED (CI `synthesize-record`) | NOT_DEMONSTRATED (not run on Windows; CI remains Linux) |
+| GitHub Actions `windows-native` job | n/a | YAML present; NOT_DEMONSTRATED on GitHub until its first run |
+| `experiments/…/trace_loop` | ELF x86-64 Linux only | not portable (expected; outside certification) |
+| Legacy `test-tm` / `test-fizzbuzz` | outside certification, fail on invalid sources | same |
+| macOS / ARM64 | NOT_DEMONSTRATED (no host) | NOT_DEMONSTRATED (no host) |
+
 The default VM budget is 100,000,000 iterations; pass another unsigned decimal budget as the second argument. Exit 0 means HALT and successful output flushing; exit 1 means invalid source/arguments or program-file I/O failure; exit 2 means budget exhausted; exit 3 means execution stalled or encryption was undefined; exit 4 means stdin/stdout failure. A finite output prefix never proves infinite behavior.
 
 `make test` does not write artifacts (it rebuilds the compact Cat in memory to check determinism). It fails on missing expected artifacts, any earlier quine failure, an output mismatch or a non-HALT exit. Loader rejection controls protect against accidentally certifying the experimental artifacts. Legacy `test-tm` and `test-fizzbuzz` challenges remain outside certification and currently fail on their invalid sources.

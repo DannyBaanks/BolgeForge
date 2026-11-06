@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Verify the complete committed quine inventory; any failure propagates."""
+import os
 import subprocess
 from pathlib import Path
 
@@ -14,8 +15,9 @@ def verify_quines(root=ROOT):
     for name in EXPECTED:
         if not (artifacts / name).is_file():
             raise FileNotFoundError(f'Required quine missing: {name}')
+    oracle = Path(os.environ.get('MB_REF', root / ('mb_ref.exe' if os.name == 'nt' else 'mb_ref')))
     for program in sorted(artifacts.glob('candidate_m*.mal')):
-        result = subprocess.run([str(root / 'mb_ref'), str(program), '100000000'],
+        result = subprocess.run([str(oracle), str(program), '100000000'],
                                 input=b'', capture_output=True, timeout=20)
         if result.returncode or result.stderr or result.stdout != program.read_bytes():
             raise RuntimeError(f'Quine mismatch: {program.name}, exit={result.returncode}')
